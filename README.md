@@ -1,7 +1,6 @@
 ## payload_generator
 ## Trying to define and implement a proper anatomy of nix command injection
-## Let's try to create proper nix command injection anatomy
-## we can deal with three types of shitty check filters:
+## We can deal with three types of shitty check filters:
 ## 1) the ones that only force the string to begin properly, like ^\w+ 
 ## 2) the ones that only force the string to end properly, like \w+$
 ## 3) the ones that only force the string to have proper beginning and end, with a loophole inside of them, e.g. ^\w+\s+.*\w+$
@@ -10,7 +9,7 @@
 ## PREFIX{PAYLOAD}, PREFIX{PAYLOAD}SUFFIX, {PAYLOAD}SUFFIX,
 ## we'll also be able to cover injection points starting/ending with quotes
 
-## MALICIOUS_COMMAND=COMMAND+ARGUMENT_SEPARATOR
+## MALICIOUS_COMMAND=COMMAND+ARGUMENT_SEPARATOR+ARGUMENT
 ## THE COMBINATION PATTERNS: 
 ## 1) MALICIOUS_COMMAND (will this ever happen? yes it will, in argument injections like `$USER_SUPPLIED` or $(USER_SUPPLIED))
 ## 2) MALICIOUS_COMMAND+COMMAND_TERMINATOR (in case there was write and command separators were unallowed?)
