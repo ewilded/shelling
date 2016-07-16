@@ -23,7 +23,7 @@ BASE PAYLOAD VARIANTS (BASIC CASES)
 EVASIVE TECHNIQUES USED
 - alternative COMMAND_SEPARATORS
 - alternative ARGUMENT_SEPARATORS
-- alternative COMMAND_SEPARATORS
+- alternative COMMAND_TERMINATORS
 - additional prefixes and suffixes to go around lax filters
 - additional prefixes and suffixes to fit into quoted expressions
 
