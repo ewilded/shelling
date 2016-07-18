@@ -48,7 +48,7 @@ $PAYL,
 
 my @ARGUMENT_SEPARATORS=('%20%20',"%09%09",'$IFS$9');
 my @COMMAND_SEPARATORS=('%0a%0a','%0d%0d',';','%26','|','<<D%0aD%0a');
-my @COMMAND_TERMINATORS=("%00",'💩','%20%20#');# these make sense only if the command is saved into a file (script) or a database entry before being executed (in order to get rid of the hardcoded command shite if separators fail to get rid of its impact, or if dealing with some quoted injection
+my @COMMAND_TERMINATORS=("%00",'💩','%20%20#');# the first two make sense only if the command is saved into a file (script) or a database entry before being executed (in order to get rid of the hardcoded command shite if separators fail to get rid of its impact, or if dealing with some quoted injection
 
 # %F0%9F%92%A9 encoded poo
 
