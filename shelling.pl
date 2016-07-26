@@ -3,6 +3,7 @@
 ## SHELLING - payload generator by ewilded, tuned for OS command injection
 
 use strict;
+no strict 'refs';
 
 # CONFIGURATION SECTION START
 my $COMMAND='ping'; # sleep, echo, touch, wget, this could be nicely profiled, e.g. by a parameter called 'feedback_channel' or sth
@@ -82,7 +83,7 @@ sub array_search
 {
 	my $arr=shift;
 	my $seed=shift;
-	foreach my $item(@$arr) 
+	foreach my $item(@{$arr}) 
 	{
 	   return 1 if($item eq $seed);
 	}
