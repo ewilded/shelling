@@ -46,7 +46,7 @@ my @NIX_COMMAND_SEPARATORS=(';');
 my @NIX_ARGUMENT_SEPARATORS=('$IFS$9');
 my @NIX_COMMAND_TERMINATORS=('%20%20#');
 my @WIN_COMMAND_SEPARATORS=('%1A'); # bat files
-my @WIN_ARGUMENT_SEPARATORS=('%25ProgramFiles:~10,1%25'); # hacky space
+my @WIN_ARGUMENT_SEPARATORS=('%0b','%25ProgramFiles:~10,1%25'); # vertical tab, hacky space
 my @WIN_ECHO_ARGUMENT_SEPARATORS=('(','.');
 my @WIN_COMMAND_TERMINATORS=('%26::');	# does not make any difference in direct cmd /c injects (cmd is tolerant for broken syntax following our command, on the other hand it still fails if it encounters something like <>< after this command terminator, but it might get handy for injection into .bat files
 
