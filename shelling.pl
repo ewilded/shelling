@@ -80,11 +80,11 @@ if($TARGET_OS eq 'win'||$TARGET_OS eq 'all')
 
 sub array_search 
 {
-	my @arr=split(/\s/,shift);
+	my $arr=shift;
 	my $seed=shift;
-	foreach my $row(@arr) 
+	foreach my $item(@$arr) 
 	{
-		 return 1 if($row eq $seed);
+	   return 1 if($item eq $seed);
 	}
 	return 0;
 }
@@ -96,19 +96,19 @@ sub incompatible_targets
 	my $what=shift; # terminator or cmd_separator
 	$payload=~/$COMMAND(.*)$ARGUMENT/;
 	my $separator=$1;
-	if(array_search("@NIX_ARGUMENT_SEPARATORS",$separator)||$payload=~/\$\(/||$payload=~/\`/) #nix detection
+	if(array_search(\@NIX_ARGUMENT_SEPARATORS,$separator)||$payload=~/\$\(/||$payload=~/\`/) #nix detection
 	{
 		#print "nix detected: $payload, verifying $entity...\n";
 		# dealing with a nix-specific
 		if($what eq 'separator')
 		{
-			return 1 if(array_search("@WIN_COMMAND_SEPARATORS",$entity)); 
-			return 1 if(array_search("@WIN_ARGUMENT_SEPARATORS",$entity));
+			return 1 if(array_search(\@WIN_COMMAND_SEPARATORS,$entity)); 
+			return 1 if(array_search(\@WIN_ARGUMENT_SEPARATORS,$entity));
 			return 0;
 		}
 		if($what eq 'terminator')
 		{
-			return 1 if(array_search("@WIN_COMMAND_TERMINATORS",$entity)); 
+			return 1 if(array_search(\@WIN_COMMAND_TERMINATORS,$entity)); 
 			return 0;
 		}
 	}
@@ -118,13 +118,13 @@ sub incompatible_targets
 		# dealing with a win-specific payload
 		if($what eq 'separator')
 		{
-			return 1 if(array_search("@NIX_COMMAND_SEPARATORS",$entity)); 
-			return 1 if(array_search("@NIX_ARGUMENT_SEPARATORS",$entity)); 
+			return 1 if(array_search(\@NIX_COMMAND_SEPARATORS,$entity)); 
+			return 1 if(array_search(\@NIX_ARGUMENT_SEPARATORS,$entity)); 
 			return 0;
 		}
 		if($what eq 'terminator')
 		{
-			return 1 if(array_search("@NIX_COMMAND_TERMINATORS",$entity)); 
+			return 1 if(array_search(\@NIX_COMMAND_TERMINATORS,$entity)); 
 			return 0;
 		}
 		
