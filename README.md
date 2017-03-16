@@ -1,11 +1,12 @@
 # SHELLING - an offensive approach to the anatomy of improperly written OS command injection sanitisers
 
-In order to improve the accuracy of our blind OS command injection testing, we need a comprehensive, analytic approach. In general, all the injection payloads can fail due to:
+In order to improve the accuracy of our blind OS command injection testing, we need a comprehensive, analytic approach. In general, our injection payloads may fail to provide us with positive feedback due to:
 - the eventual syntax of the expression we are injecting into (solution: base payload variants)
 - input sanitising mechanisms, which refuse forbidden characters (solution: evasive techniques)
 - platform specific conditions (e.g. using a windows command on a nix host)
 - bad callback method (e.g. asynchronous execution, no outbound traffic etc., solution: base payload variants)
 
+The goal of this tool is to create a comprehensive set of test cases providing solutions to all possible combinations of these issues at a time.
 
 BASE PAYLOAD VARIANTS (BASIC CASES)
 
@@ -31,3 +32,4 @@ Other evasive techniques considered:
 - alternative payloads to avoid particular badcharacters
 - encoding-related variations, like double URL encoding
 
+A more comprehensive version of this README: https://github.com/ewilded/shelling/blob/master/README.pdf
