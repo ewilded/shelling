@@ -156,9 +156,9 @@ This makes us extend our base payload set to combinations like:
 - `PREFIX+FULL_COMMAND+SUFFIX`
 
 
-### The problem of platfor-specific conditions
+### The problem of platform-specific conditions
 
-Depending on the technology we are dealing with, some payloads working on some systems will fail on other. Examples include:
+Depending on the technology we are dealing with, some payloads working on some systems will fail on other. The examples include:
 - using windows-specific command on a nix-like system
 - using nix-like specific argument separator on a windows system
 - dealing with a different underlying system shell (e.g. `cat /etc/passwd #'` will work on bash/ash/dash, but won't work on csh)
