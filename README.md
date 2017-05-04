@@ -7,7 +7,7 @@ This script is a customizable payload generator intended for detecting OS comman
 - the eventual syntax of the expression we are injecting into (e.g. quoted expressions)
 - input sanitizing mechanisms rejecting individual characters (e.g. spaces)
 - platform specific conditions (e.g. there is no "sleep" on windows)
-- bad callback method (e.g. asynchronous execution, no outbound traffic allowed)
+- the callback method (e.g. asynchronous execution, no outbound traffic allowed)
 
 The purpose of creating this tool was to reach the non-trivial OS command injection cases, which stay undetected by generally known and used tools and sets of payloads. 
 
