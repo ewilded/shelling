@@ -207,7 +207,6 @@ The following basic configuration options are available:
 - `$COMMAND` - the name of the system binary to run, the default is `'ping'` (could be changed to echo, touch, wget - basically it depends on our preferred feedback channel)
 - `$TARGET_OS` - the target operating system, possible values are `'win'`, `'nix'`, `'all'` (`'all'` is the default)
 - `@PREFIXES` - a list of optional prefixes and suffixes used to trick some regular expressions (this depends on the type of input our target function is taking, e.g. a username, an IP address or a domain name) - the default is 'aa'
-- `$payload_marking` - whether or not to embed a unique string in each payload, so it can be identified from the feedback channel
 - `$ARGUMENT` - the argument for the command, depending on the feedback channel we want to utilize. The default is `'PAYLOAD_MARK.sub.evilcollab.org'`.
 - `$payload_marking` - whether or not to use the payload marking (see below) - the default is '1' (yes).
 
