@@ -225,6 +225,6 @@ The tool can be used for detection directly - or in a hybrid approach, after ide
 
 ### TODO
 - improve the payload set by analysing payloads from other sources (e.g. fuzzdb)
-- command-line configuration arguments
-- output encoding and form control (HTTP encoding on/off, output in a form of one file (new-line separated) or individual files (so non-encoded newline characters can be used if needed)
+- introduce terminal injection payloads (escape sequences) like this one https://www.exploit-db.com/exploits/33504/
+- turn this thing into a Burp Plugin in the same fashion as psychoPATH
 
