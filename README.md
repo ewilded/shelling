@@ -1,6 +1,6 @@
 Original work by: Julian H. https://github.com/ewilded/shelling
 
-# SHELLING - a comprehensive OS command injection payload generator (now also available as a Burp Plugin!)
+# SHELLING - a comprehensive OS command injection payload generator - now also available as a Burp Plugin
 
 ## What is SHELLING?
 This script is a customizable payload generator intended for detecting OS command injection flaws during dynamic testing, usually conducted with no access to the source code or the filesystem.  Creation of SUCCESSFUL payloads in this kind of assessments requires a lot of guesswork, especially:
@@ -216,6 +216,14 @@ The `PAYLOAD_MARK` holder is either removed - or replaced with a unique payload 
 
 The tool can be used for detection directly - or in a hybrid approach, after identifying suspicious behaviours with Backslash Powered Scanner Burp Plugin.
 
+### The Burp Plugin
+
+It is recommended to use the Burp plugin along with the Burp Collaborator Client (to take advantage of the DNS feedback channel and payload marking):
+
+![Demo Screenshot](plugin.png?raw=true "The Burp Plugin")
+
+![Demo Screenshot](plugin2.png?raw=true "The Burp Plugin")
+
 
 ### Case examples
 #### 1) See the test_cases directory 
@@ -223,8 +231,8 @@ The tool can be used for detection directly - or in a hybrid approach, after ide
 - https://chris-young.net/2017/04/12/pentest-ltd-ctf-securi-tay-2017-walkthrough/
 - https://www.exploit-db.com/exploits/41892/
 
+
 ### TODO
 - improve the payload set by analysing payloads from other sources (e.g. fuzzdb)
+- command-line configuration arguments
 - introduce terminal injection payloads (escape sequences) like this one https://www.exploit-db.com/exploits/33504/
-- turn this thing into a Burp Plugin in the same fashion as psychoPATH
-
