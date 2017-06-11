@@ -21,7 +21,7 @@ public class BurpExtender implements IBurpExtender, IExtensionStateListener {
 
         callbacks.registerIntruderPayloadGeneratorFactory(new PayloadFactory(SHELLING.ShellingTab, "cmd"));
         callbacks.registerIntruderPayloadGeneratorFactory(new PayloadFactory(SHELLING.ShellingTab, "mark"));
-        callbacks.registerIntruderPayloadGeneratorFactory(new PayloadFactory(SHELLING.ShellingTab, "byte"));
+        callbacks.registerIntruderPayloadGeneratorFactory(new PayloadFactory(SHELLING.ShellingTab, "byte2"));
    
     }
 
