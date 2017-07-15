@@ -1,0 +1,16 @@
+SHELLING TODO
+--------------------------------
+- improve the payload set by analysing payloads from other sources (e.g. fuzzdb), starting with https://t.co/GO0xiwWxW1
+- revise the output payload set to make sure all reasonable cases are covered + there are no broken/redundant payloads
+- shape the documentation up
+
+- argument injection:
+ - think of introducing argument injection mode (recent Dawid's RCEs :D)
+ - add/mention the >file case :)
+- introduce terminal injection payloads (escape sequences) like this one https://www.exploit-db.com/exploits/33504/
+- windows stuff:
+ - additional argument separators for windows: ;-_,=/ (find out compatible commands, as echo/type are fine, while ping fails)
+ - THERE IS NO SLEEP IN WINDOWS! must use ping, although this will complicate things, as ping requires argument separators
+- sort the output payloads by starting with the ones most likely to work
+- make payload profiles, e.g. nospace to focus on no-space only
+

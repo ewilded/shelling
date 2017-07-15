@@ -1,7 +1,7 @@
 Original work by: Julian H. https://github.com/ewilded/shelling
 
 # SHELLING - a comprehensive OS command injection payload generator - now also available as a Burp Plugin
-
+![Logo](logo.png?raw=true "Logo")
 ## What is SHELLING?
 This script is a customizable payload generator intended for detecting OS command injection flaws during dynamic testing, usually conducted with no access to the source code or the filesystem.  Creation of SUCCESSFUL payloads in this kind of assessments requires a lot of guesswork, especially:
 - the eventual syntax of the expression we are injecting into (e.g. quoted expressions)
@@ -232,7 +232,3 @@ It is recommended to use the Burp plugin along with the Burp Collaborator Client
 - https://www.exploit-db.com/exploits/41892/
 
 
-### TODO
-- improve the payload set by analysing payloads from other sources (e.g. fuzzdb), starting with https://t.co/GO0xiwWxW1
-- think of introducing argument injection mode (recent Dawid's RCEs :D)
-- introduce terminal injection payloads (escape sequences) like this one https://www.exploit-db.com/exploits/33504/
