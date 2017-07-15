@@ -233,6 +233,6 @@ It is recommended to use the Burp plugin along with the Burp Collaborator Client
 
 
 ### TODO
-- improve the payload set by analysing payloads from other sources (e.g. fuzzdb)
+- improve the payload set by analysing payloads from other sources (e.g. fuzzdb), starting with https://t.co/GO0xiwWxW1
 - think of introducing argument injection mode (recent Dawid's RCEs :D)
 - introduce terminal injection payloads (escape sequences) like this one https://www.exploit-db.com/exploits/33504/
