@@ -104,6 +104,7 @@ Currently supported alternative argument separators are for unix are:
 - `%09` - horizontal tab
 - `$IFS$9` - IFS terminated with 9-nth - usually empty - argument holder)
 - `{OS_COMMAND,ARGUMENT}` - the brace expression
+
 The above is just an example of bypassing poorly written input-sanitizing function from the perspective of alternative argument separators. 
 
 Other options include filters on command separators (not to confuse with argument separators), which are in most cases required to inject arbitrary commands. The list of tested command separators:
