@@ -1,6 +1,6 @@
 SHELLING TODO
 --------------------------------
-- improve the payload set by analysing payloads from other sources (e.g. fuzzdb), starting with https://t.co/GO0xiwWxW1
+- improve the payload set by analysing payloads from other sources (e.g. fuzzdb), starting with https://www.hackerone.com/blog/how-to-command-injections
 - revise the output payload set to make sure all reasonable cases are covered + there are no broken/redundant payloads
 - shape the documentation up
 
