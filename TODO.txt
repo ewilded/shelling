@@ -1,14 +1,12 @@
 SHELLING TODO
 --------------------------------
-- improve the payload set by analysing payloads from other sources (e.g. fuzzdb), starting with https://www.hackerone.com/blog/how-to-command-injections
-
-- revise the output payload set to make sure all reasonable cases are covered + there are no broken/redundant payloads
-
 - shape the documentation up (mention methodology and the use of Backslash Powered Scanner + and test it a bit as well on our test cases), adjust the doc to the fact the tool is now a Burp Plugin and the perl script is no longer maintained (or just maintain it a bit :D)
+- adjust the repo (code & meta) to the BApp store standards and push it to the store
 
-- remove/override the prefix setting; it should be automatically set from the input payload the Intruder API is providing
 
 Nice-to-haves:
+- remove/override the prefix setting; it should be automatically set from the input payload the Intruder API is providing - going to be little difficult
+s
 - it would be nice to make the tool more configurable (so users could choose the basic patterns, as well as separators/terminators etc. in order to limit the number of result payloads.. although I am not sure if this makes a lot of sense, as if they knew what are the limitations of the input they are attacking, they would create a working payload manually instead of using SHELLING)
 
 - argument injection:
@@ -20,3 +18,4 @@ Nice-to-haves:
 	 - THERE IS NO SLEEP IN WINDOWS! must use ping, although this will complicate things, as ping requires argument separators
 - sort the output payloads by starting with the ones most likely to work
 - make payload profiles, e.g. nospace to focus on no-space only
+- also, consider injections into sh expressions
