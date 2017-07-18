@@ -100,6 +100,7 @@ A way to achieve this is an expression like `$IFS$9`, so the alternative payload
 In the unix environment, the `$IFS` environmental variable contains the current argument separator value (which is space by default), while `$9` is just a holder of the ninth argument of the current system shell process, which is always an empty string, but is required to avoid the system shell confusing the `$IFSsomething` syntax with a non-existent environmental variable called `IFSsomething`.
 
 Currently supported alternative argument separators are:
+
 On unix:
 - `%20` - space
 - `%09` - horizontal tab
