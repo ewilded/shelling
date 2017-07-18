@@ -99,26 +99,44 @@ A way to achieve this is an expression like `$IFS$9`, so the alternative payload
 
 In the unix environment, the `$IFS` environmental variable contains the current argument separator value (which is space by default), while `$9` is just a holder of the ninth argument of the current system shell process, which is always an empty string, but is required to avoid the system shell confusing the `$IFSsomething` syntax with a non-existent environmental variable called `IFSsomething`.
 
-Currently supported alternative argument separators are for unix are:
+Currently supported alternative argument separators are:
+On unix:
 - `%20` - space
 - `%09` - horizontal tab
 - `$IFS$9` - IFS terminated with 9-nth - usually empty - argument holder)
 - `{OS_COMMAND,ARGUMENT}` - the brace expression
 
+On windows:
+- `%20` - space
+- `%09` - horizontal tab
+- `%0b` - vertical tab
+- `%25ProgramFiles:~10,1%25` - a hacky cmd expression cutting out a space from the default setting of the %ProgramFiles% environmental variable (`C:\Program Files`)
+
+
 The above is just an example of bypassing poorly written input-sanitizing function from the perspective of alternative argument separators. 
 
-Other options include filters on command separators (not to confuse with argument separators), which are in most cases required to inject arbitrary commands. The list of tested command separators:
+Other options include filters on command separators (not to confuse with argument separators), which are in most cases required to inject arbitrary commands. 
 
-- `%0a` (new line characters)
-- `%0d` (carriage return characters)
+The list of working commmand separators:
+
+On unix:
+- `%0a` (new line character)
+- `%0d` (carriage return character)
 - `;`
 - `&`
 - `|`
 
+On windows:
+- `%0a` (new line character)
+- `&`
+- `|`
+- `%1a` - a magical character working as a command separator in .bat files (full description of the finding: http://seclists.org/fulldisclosure/2016/Nov/67)
+
+
 Additionally, the following command terminators are used (in case input was written into a file or a database before execution and our goal was to get rid of everything appended to our payload in order to avoid syntax issues):
 - `%00` (nullbyte)
 - `%F0%9F%92%A9` (Unicode poo character, known to cause string termination in db software like MySQL)
-- `%20#` - space followed by a hash sign
+- `%20#` - space followed by the hash sign
 
 This way the base payload set is multiplied by all the feasible combinations of alternative argument separators, command separators and command terminators.
 
@@ -235,5 +253,4 @@ This tool was initially written as a perl script. The script is still available,
 #### 2) Some real examples
 - https://chris-young.net/2017/04/12/pentest-ltd-ctf-securi-tay-2017-walkthrough/
 - https://www.exploit-db.com/exploits/41892/
-
 
