@@ -1,7 +1,6 @@
 SHELLING TODO
 --------------------------------
-- shape the documentation up (mention methodology and the use of Backslash Powered Scanner + and test it a bit as well on our test cases), adjust the doc to the fact the tool is now a Burp Plugin and the perl script is no longer maintained (or just maintain it a bit :D)
-- adjust the repo (code & meta) to the BApp store standards and push it to the store
+- fix the $IFS$9234.burpcollaborator.net false negative issue
 
 
 Nice-to-haves:
