@@ -100,7 +100,6 @@ A way to achieve this is an expression like `$IFS$9`, so the alternative payload
 In the unix environment, the `$IFS` environmental variable contains the current argument separator value (which is space by default), while `$9` is just a holder of the ninth argument of the current system shell process, which is always an empty string, but is required to avoid the system shell confusing the `$IFSsomething` syntax with a non-existent environmental variable called `IFSsomething`.
 
 Currently supported alternative argument separators are:
-
 On unix:
 - `%20` - space
 - `%09` - horizontal tab
@@ -226,7 +225,6 @@ All we need is another set of payloads, this time with the `OS_COMMAND` set to t
 The following basic configuration options are available:
 - `$COMMAND` - the name of the system binary to run, the default is `'ping'` (could be changed to echo, touch, wget - basically it depends on our preferred feedback channel)
 - `$TARGET_OS` - the target operating system, possible values are `'win'`, `'nix'`, `'all'` (`'all'` is the default)
-- `@PREFIXES` - a list of optional prefixes and suffixes used to trick some regular expressions (this depends on the type of input our target function is taking, e.g. a username, an IP address or a domain name) - the default is 'aa'
 - `$ARGUMENT` - the argument for the command, depending on the feedback channel we want to utilize. The default is `'PAYLOAD_MARK.sub.evilcollab.org'`.
 - `$payload_marking` - whether or not to use the payload marking (see below) - the default is '1' (yes).
 
@@ -237,13 +235,30 @@ The `PAYLOAD_MARK` holder is either removed - or replaced with a unique payload 
 
 The tool can be used for detection directly - or in a hybrid approach, after identifying suspicious behaviours with Backslash Powered Scanner Burp Plugin.
 
-### The Burp Plugin
+### Using the plugin
 
-It is recommended to use the Burp plugin along with the Burp Collaborator Client (to take advantage of the DNS feedback channel and payload marking):
+It is recommended to use the Burp plugin along with the Burp Collaborator Client (to take advantage of  DNS as a feedback channel and use payload marking):
 
-![Demo Screenshot](plugin.png?raw=true "The Burp Plugin")
+Our vulnerable code example:
+![Demo Screenshot](screenshots/vuln_code.png?raw=true "Vulnerable code")
 
-![Demo Screenshot](plugin2.png?raw=true "The Burp Plugin")
+Our legitimate application request:
+![Demo Screenshot](screenshots/vuln_request.png?raw=true "Legitimate request")
+
+We choose the `Command injection` payload generator:
+![Demo Screenshot](screenshots/plugin_config.png?raw=true "Intruder config")
+
+We paste the Collaborator domain to as the argument, following the PAYLOAD_MARK. holder to take advanvtage of payload marking:
+![Demo Screenshot](screenshots/plugin_config.png?raw=true "Plugin config")
+
+We run the Intruder attack:
+![Demo Screenshot](screenshots/plugin_attack_2.png?raw=true "Intruder attack")
+
+We look at the Collaborator client feedback:
+![Demo Screenshot](screenshots/plugin_feedback_2.png?raw=true "Collaborator feedback")
+
+So we can track down the working payload:
+![Demo Screenshot](screenshots/plugin_feedback.png?raw=true "Identifying the payload")
 
 
 ### The perl script
