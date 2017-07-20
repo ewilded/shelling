@@ -252,13 +252,13 @@ We paste the Collaborator domain to as the argument, following the PAYLOAD_MARK.
 ![Demo Screenshot](screenshots/plugin_config.png?raw=true "Plugin config")
 
 We run the Intruder attack:
-![Demo Screenshot](screenshots/plugin_attack_2.png?raw=true "Intruder attack")
+![Demo Screenshot](screenshots/plugin_feedback.png?raw=true "Intruder attack")
 
 We look at the Collaborator client feedback:
-![Demo Screenshot](screenshots/plugin_feedback_2.png?raw=true "Collaborator feedback")
+![Demo Screenshot](screenshots/plugin_attack.png?raw=true "Collaborator feedback")
 
 So we can track down the working payload:
-![Demo Screenshot](screenshots/plugin_feedback.png?raw=true "Identifying the payload")
+![Demo Screenshot](screenshots/plugin_feedback_2.png?raw=true "Identifying the payload")
 
 
 ### The perl script
