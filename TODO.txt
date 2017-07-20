@@ -1,11 +1,9 @@
 SHELLING TODO
 --------------------------------
-- fix the $IFS$9234.burpcollaborator.net false negative issue
-
+- more automation (Scanner integration?), includig payload marking, so multiple scans can be queued
+- support for manually provided arguments (e.g. ARGUMENT_SEPARATOR-c1 for ping on nix, so the additional argument is handled consistently with the currently used separator)
 
 Nice-to-haves:
-- remove/override the prefix setting; it should be automatically set from the input payload the Intruder API is providing - going to be little difficult
-s
 - it would be nice to make the tool more configurable (so users could choose the basic patterns, as well as separators/terminators etc. in order to limit the number of result payloads.. although I am not sure if this makes a lot of sense, as if they knew what are the limitations of the input they are attacking, they would create a working payload manually instead of using SHELLING)
 
 - argument injection:
