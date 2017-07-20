@@ -246,7 +246,7 @@ Our legitimate application request:
 ![Demo Screenshot](screenshots/vuln_request.png?raw=true "Legitimate request")
 
 We choose the `Command injection` payload generator:
-![Demo Screenshot](screenshots/plugin_config.png?raw=true "Intruder config")
+![Demo Screenshot](screenshots/plugin_config_2.png?raw=true "Intruder config")
 
 We paste the Collaborator domain to as the argument, following the PAYLOAD_MARK. holder to take advanvtage of payload marking:
 ![Demo Screenshot](screenshots/plugin_config.png?raw=true "Plugin config")
