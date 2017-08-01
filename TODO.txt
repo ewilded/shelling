@@ -1,5 +1,7 @@
 SHELLING TODO
 --------------------------------
+- make mene scalable
+- add instructions to BappDesc.html
 - more automation (Scanner integration?), includig payload marking, so multiple scans can be queued
 - support for manually provided arguments (e.g. ARGUMENT_SEPARATOR-c1 for ping on nix, so the additional argument is handled consistently with the currently used separator)
 - it would be nice to make the tool more configurable:
