@@ -20,9 +20,10 @@ public class BurpExtender implements IBurpExtender, IExtensionStateListener {
         callbacks.registerExtensionStateListener(this);
 
         callbacks.registerIntruderPayloadGeneratorFactory(new PayloadFactory(SHELLING.ShellingTab, "cmd"));
-        callbacks.registerIntruderPayloadGeneratorFactory(new PayloadFactory(SHELLING.ShellingTab, "mark"));
         callbacks.registerIntruderPayloadGeneratorFactory(new PayloadFactory(SHELLING.ShellingTab, "byte2"));
    
+        //callbacks.registerScannerCheck(new CollaboratorScannerCheck(callbacks));
+        callbacks.registerScannerCheck(new DirectScannerCheck(callbacks,SHELLING.ShellingTab));
     }
 
     @Override
