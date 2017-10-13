@@ -8,11 +8,14 @@ public class BinaryPayloadIssue extends ShellingScannerIssue {
 	
 	private static final String DETAIL_TEMPLATE = "The target is vulnerable to OS Command Injection.";
 	
-	public BinaryPayloadIssue(IBurpExtenderCallbacks cb,IHttpRequestResponse exploitRR) {
-		super(cb,exploitRR);
+	public BinaryPayloadIssue(IBurpExtenderCallbacks cb,IHttpRequestResponse exploitRR, String details) {
+		super(cb,exploitRR,details);
 		issueDetail = DETAIL_TEMPLATE;
 	}
-        
+        public void appendIssueDetail(String text)
+        {
+                this.issueDetail = this.issueDetail+text;
+        }        
 	@Override
 	public String getIssueDetail() {
 		return issueDetail;

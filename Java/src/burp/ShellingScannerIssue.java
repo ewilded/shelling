@@ -15,15 +15,16 @@ abstract public class ShellingScannerIssue implements IScanIssue {
 	private IBurpExtenderCallbacks callbacks;
 	private IExtensionHelpers helpers;
 	
-	private static final String ISSUE_BACKGROUND = "Someone is having a bad day";
-	private static final String REM_BACKGROUND = "It's time to play";
+	private static String ISSUE_BACKGROUND = "Someone is having a bad day.";
+	private static String REM_BACKGROUND = "It's time to play.";
 	
-	ShellingScannerIssue(IBurpExtenderCallbacks cb,IHttpRequestResponse exploitRR) {
+	ShellingScannerIssue(IBurpExtenderCallbacks cb,IHttpRequestResponse exploitRR, String details) {
 		callbacks = cb;
 		helpers = callbacks.getHelpers();
 		url = helpers.analyzeRequest(exploitRR).getUrl();
 		httpService = exploitRR.getHttpService();	
 		httpMessages = new IHttpRequestResponse[] {exploitRR};
+                ISSUE_BACKGROUND = ISSUE_BACKGROUND + details;
 	}
 
 	

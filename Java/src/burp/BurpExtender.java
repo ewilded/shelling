@@ -13,7 +13,7 @@ public class BurpExtender implements IBurpExtender, IExtensionStateListener {
     @Override
     public void registerExtenderCallbacks(IBurpExtenderCallbacks callbacks) {
         SHELLING.callbacks = callbacks;
-        callbacks.setExtensionName("SHELLING Extension");
+        callbacks.setExtensionName("SHELLING");
         SHELLING.ShellingTab = new ShellingTab();
         callbacks.addSuiteTab(SHELLING.ShellingTab);
         
