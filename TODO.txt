@@ -1,11 +1,13 @@
 SHELLING TODO
 --------------------------------
-- make mene scalable
+- make the menu scalable
+- introduce this IFS=,;`cat<<<uname,-a` by https://twitter.com/MrHappiey
+- L%60ping$IFS$9-n$IFS$915$IFS$94dim4tn3ikxxjozed521x5i3full9a.burpcollaborator.net%60dteetd_EQUA <-- this should not happen
+- finish up interface changes
+- windows-mode is sending {sleep,15}, what the fuck
+- implement collaborator scanner checks [ almost done ]
+- unify the intruder with the new ShellingPayloadGenerator class
 - add instructions to BappDesc.html
-- more automation (Scanner integration?), includig payload marking, so multiple scans can be queued
-- support for manually provided arguments (e.g. ARGUMENT_SEPARATOR-c1 for ping on nix, so the additional argument is handled consistently with the currently used separator)
-- it would be nice to make the tool more configurable:
- - so users could choose the basic patterns (final payload number optimization, e.g. levels 'superficial', 'profound', 'paranoid' like 'risk' in sqlmap, for example IMHO not-prefixed patterns are redundant - this would significantly reduce the current high number of payloads)
 
 Nice-to-haves:
 
@@ -15,7 +17,5 @@ Nice-to-haves:
 - introduce terminal injection payloads (escape sequences) like this one https://www.exploit-db.com/exploits/33504/
 - windows stuff:
 	 - additional argument separators for windows: ;-_,=/ (find out compatible commands, as echo/type are fine, while ping fails)
-	 - THERE IS NO SLEEP IN WINDOWS! must use ping, although this will complicate things, as ping requires argument separators
-- sort the output payloads by starting with the ones most likely to work
 - make payload profiles, e.g. nospace to focus on no-space only
 - also, consider injections into sh expressions
