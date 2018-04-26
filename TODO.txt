@@ -2,6 +2,7 @@ SHELLING TODO
 --------------------------------
 - make the menu scalable
 - introduce this IFS=,;`cat<<<uname,-a` by https://twitter.com/MrHappiey
+- introduce (optional) argument injection testing; a nice list to start: https://security.szurek.pl/exploit-bypass-php-escapeshellarg-escapeshellcmd.html#known-bypassesexploits
 - L%60ping$IFS$9-n$IFS$915$IFS$94dim4tn3ikxxjozed521x5i3full9a.burpcollaborator.net%60dteetd_EQUA <-- this should not happen
 - finish up interface changes
 - windows-mode is sending {sleep,15}, what the fuck
