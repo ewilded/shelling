@@ -3,7 +3,7 @@ SHELLING TODO
 
 Unify the intruder with the new ShellingPayloadGenerator class
 
-Introduce (optional) argument injection testing; a nice list to start: 
+OS-specific improvements: 
 	- nix: https://security.szurek.pl/exploit-bypass-php-escapeshellarg-escapeshellcmd.html#known-bypassesexploits
 	- nix: introduce terminal injection payloads (escape sequences) like this one https://www.exploit-db.com/exploits/33504/
 	- nix: Introduce this IFS=,;`cat<<<uname,-a` by https://twitter.com/MrHappiey
