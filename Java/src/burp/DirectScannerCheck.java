@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.ArrayList;
 import java.net.URL;
 import java.util.Iterator;
-import java.util.logging.Logger;
 import uk.co.pentest.SHELLING.IntruderPayloadGenerator;
 import uk.co.pentest.SHELLING.ShellingTab;
 import uk.co.pentest.SHELLING.collabSession;
@@ -22,8 +21,7 @@ import uk.co.pentest.SHELLING.collabSession;
 public class DirectScannerCheck extends ShellingScannerCheck {
 
         private ShellingTab tab;
-	private IBurpCollaboratorClientContext collabClient;	
-        private String collabLoc;
+	private IBurpCollaboratorClientContext collabClient;	        
         private List<IBurpCollaboratorInteraction> collabInter;
         private List<IScanIssue> issues;
         private IHttpRequestResponse base;
@@ -54,6 +52,7 @@ public class DirectScannerCheck extends ShellingScannerCheck {
         	IRequestInfo reqInfo = helpers.analyzeRequest(baseRequestResponse);
 		URL url = reqInfo.getUrl();
                 int port = url.getPort();
+                String loc="";
 		boolean https=false;
                 String host = url.getHost();
                 if(url.getProtocol()=="https") https=true;
@@ -63,25 +62,24 @@ public class DirectScannerCheck extends ShellingScannerCheck {
                     callbacks.printError("HTTP connection failed");
                     callbacks.issueAlert("HTTP connection failed");
                     return issues;
-                }                
-                generator = new IntruderPayloadGenerator("cmd", tab, "scanner");    
-                int counter=0;
+                }             
+                
+                generator = new IntruderPayloadGenerator("cmd", tab, "scanner");  
+                loc = generator.loc; // obtain the collaborator domain generated for this one
                 if(tab.shellingPanel.feedbackChannel=="DNS")
                 {
-                    this.collabClient = callbacks.createBurpCollaboratorClientContext(); 
-                    this.collabLoc = collabClient.generatePayload(true);  
-                    this.tab.shellingPanel.collabSessions.add(new collabSession(collabLoc,urlStr));
+                     // this needs to be globalized as well 
+                    /*
+                      loc = this.tab.shellingPanel.collabClient.generatePayload(true);  
+                      this.tab.shellingPanel.collabSessions.add(new collabSession(loc,urlStr));
+                     */
                 }
+                
+                int counter=0;
                 while(generator.hasMorePayloads())
                 {
                     byte[] payload = generator.getNextPayload(insertionPoint.getBaseValue().getBytes());               
-                    if(tab.shellingPanel.feedbackChannel=="DNS")
-                    {
-                        String payloadS = callbacks.getHelpers().bytesToString(payload);
-                        payloadS = payloadS.replace("BURP_COLLAB_DOMAIN",collabLoc);
-                        payload = callbacks.getHelpers().stringToBytes(payloadS);
-                    }
-                    
+                    // domain name is now automatically provided by the getNextPayload function, used by both scanner and intruder in cooperation with our session tracking system
                     if(payload.length==1) 
                     { //payload generation failed, move onto next command
 			callbacks.printError("Payload generation failed!");
@@ -156,7 +154,7 @@ public class DirectScannerCheck extends ShellingScannerCheck {
         
             // OK, how can we get ALL the collab loc and how can we make sure we don't "steal" them from the scanner so it misses them?
             // we just want to make sure we are not missing any stuff we are interested in ourselves 
-            //this.tab.shellingPanel.logOutput("Checking for interactions with "+collabLoc);
+            //this.tab.shellingPanel.logOutput("Checking for interactions with "+any collabLoc);
             if(this.collabInter.size()>0) 
             { 
                 this.tab.shellingPanel.logOutput("Got an interaction for "+loc+"!");
