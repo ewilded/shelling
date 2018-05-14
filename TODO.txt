@@ -1,6 +1,7 @@
 SHELLING TODO
 --------------------------------
 - make the menu scalable
+- check that obfuscation trick from Daniel's presentation
 - automate the burp collab domain generation step? can we just run new collab window and get a new "Copy to clipboard" call through API instead of the GUI?
 - the windows argument injection pattern
 - introduce this IFS=,;`cat<<<uname,-a` by https://twitter.com/MrHappiey
