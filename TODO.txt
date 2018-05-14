@@ -1,25 +1,29 @@
 SHELLING TODO
 --------------------------------
-- make the menu scalable
-- check that obfuscation trick from Daniel's presentation
-- automate the burp collab domain generation step? can we just run new collab window and get a new "Copy to clipboard" call through API instead of the GUI?
-- the windows argument injection pattern
-- introduce this IFS=,;`cat<<<uname,-a` by https://twitter.com/MrHappiey
-- introduce (optional) argument injection testing; a nice list to start: https://security.szurek.pl/exploit-bypass-php-escapeshellarg-escapeshellcmd.html#known-bypassesexploits
-- L%60ping$IFS$9-n$IFS$915$IFS$94dim4tn3ikxxjozed521x5i3full9a.burpcollaborator.net%60dteetd_EQUA <-- this should not happen
-- finish up interface changes
-- windows-mode is sending {sleep,15}, what the fuck
-- implement collaborator scanner checks [ almost done ]
-- unify the intruder with the new ShellingPayloadGenerator class
-- add instructions to BappDesc.html
 
-Nice-to-haves:
+Unify the intruder with the new ShellingPayloadGenerator class
 
-- argument injection:
-	 - think of introducing argument injection mode (recent Dawid's RCEs :D)
-	 - add/mention the >file case :)
-- introduce terminal injection payloads (escape sequences) like this one https://www.exploit-db.com/exploits/33504/
-- windows stuff:
-	 - additional argument separators for windows: ;-_,=/ (find out compatible commands, as echo/type are fine, while ping fails)
-- make payload profiles, e.g. nospace to focus on no-space only
-- also, consider injections into sh expressions
+Introduce (optional) argument injection testing; a nice list to start: 
+	- nix: https://security.szurek.pl/exploit-bypass-php-escapeshellarg-escapeshellcmd.html#known-bypassesexploits
+	- nix: introduce terminal injection payloads (escape sequences) like this one https://www.exploit-db.com/exploits/33504/
+	- nix: Introduce this IFS=,;`cat<<<uname,-a` by https://twitter.com/MrHappiey
+	- nix: also, consider injections into sh expressions (?)
+	- win: the windows argument injection pattern /c "command" I "figured out" after reading the recently released reference
+	- win: additional argument separators for windows: ;-_,=/ (find out compatible commands, as echo/type are fine, while ping fails)
+	- win: check that obfuscation trick from Daniel's presentation (and prolly do more research on the subject)
+	- win: how about detecting command/argument injections by using > as the param separator... and UNC \\<PAYLOAD_MARK.COLLAB\ as its argument? ;]
+
+Fuckups that should not have happened:
+	- L%60ping$IFS$9-n$IFS$915$IFS$94dim4tn3ikxxjozed521x5i3full9a.burpcollaborator.net%60dteetd_EQUA <-- this should not happen
+	- windows-mode is sending {sleep,15}, what the fuck
+	- fix the collaborator scanner checks (now they miss all the non-matching responses, w have to be more sensitive - or even automatically recognize "our" payloads as they will be marked!)
+
+Improve the payload profiles (make a very good-effort, but optimized, default payload list) - e.g. nospace to focus on no-space only
+
+Update the fucking documentation
+
+Make sure the thing is BappSec-friendly :P
+
+Make sure the menu does not fuck up under lower resolutions (I am pretty sure it still does)
+
+Automate the burp collab domain generation step? can we just run new collab window and get a new "Copy to clipboard" call through API instead of the GUI?
