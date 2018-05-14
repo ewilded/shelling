@@ -1,11 +1,9 @@
 SHELLING TODO
 --------------------------------
-
 We also need to properly manage the requested Burp Collaborator sessions. Currently the scanner extension ignores all the feedback from the Collaborator server except for reverse lookups to the domain newly generated once the scan started. We need to report ALL collaborator events. Always. 
 
-The worst thing about Burp Collaborator is the payload length; much better to have a private instance at a domain as short as possible. Also, for private use, the length of the domain identifier could be much shorter (in most cases one byte would do the trick).
 
-OS-specific improvements:
+OS-specific improvements:	
 	- nix: https://security.szurek.pl/exploit-bypass-php-escapeshellarg-escapeshellcmd.html#known-bypassesexploits
 	- nix: introduce terminal injection payloads (escape sequences) like this one https://www.exploit-db.com/exploits/33504/
 	- nix: Introduce this IFS=,;`cat<<<uname,-a` by https://twitter.com/MrHappiey
@@ -22,7 +20,9 @@ OS-specific improvements:
 		- how about /out or /o counterpart (arg injection) of this?
 		- I believe we can improve the efficiency we discover argument injections... because we don't do it at all, do we? xD
 
+
 Fuckups that should not have happened:
+	- no payloads directly starting with command separators... did not seem as a problem until we came across the way perl handles open() - cmd injection happens, but only if the payload STARTS with a pipe
 	- L%60ping$IFS$9-n$IFS$915$IFS$94dim4tn3ikxxjozed521x5i3full9a.burpcollaborator.net%60dteetd_EQUA <-- this should not happen
 	- windows-mode is sending {sleep,15}, what the fuck
 	- fix the collaborator scanner checks (now they miss all the non-matching responses, w have to be more sensitive - or even automatically recognize "our" payloads as they will be marked!)
@@ -37,3 +37,4 @@ Make sure the menu does not fuck up under lower resolutions (I am pretty sure it
 
 Automate the burp collab domain generation step? can we just run new collab window and get a new "Copy to clipboard" call through API instead of the GUI?
 
+The worst thing about Burp Collaborator is the payload length; much better to have a private instance at a domain as short as possible. Also, for private use, the length of the domain identifier could be much shorter (in most cases one byte would do the trick).
