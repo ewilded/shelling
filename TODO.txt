@@ -1,8 +1,6 @@
 SHELLING TODO
 --------------------------------
 
-Unify the intruder with the new ShellingPayloadGenerator class	[progress]
-
 We also need to properly manage the requested Burp Collaborator sessions. Currently the scanner extension ignores all the feedback from the Collaborator server except for reverse lookups to the domain newly generated once the scan started. We need to report ALL collaborator events. Always. 
 
 The worst thing about Burp Collaborator is the payload length; much better to have a private instance at a domain as short as possible. Also, for private use, the length of the domain identifier could be much shorter (in most cases one byte would do the trick).
