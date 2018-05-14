@@ -13,8 +13,10 @@ import java.util.List;
 import java.util.ArrayList;
 import java.net.URL;
 import java.util.Iterator;
+import java.util.logging.Logger;
 import uk.co.pentest.SHELLING.IntruderPayloadGenerator;
 import uk.co.pentest.SHELLING.ShellingTab;
+import uk.co.pentest.SHELLING.collabSession;
 
 
 public class DirectScannerCheck extends ShellingScannerCheck {
@@ -62,12 +64,13 @@ public class DirectScannerCheck extends ShellingScannerCheck {
                     callbacks.issueAlert("HTTP connection failed");
                     return issues;
                 }                
-                generator = new IntruderPayloadGenerator("cmd", tab, true);    
+                generator = new IntruderPayloadGenerator("cmd", tab, "scanner");    
                 int counter=0;
                 if(tab.shellingPanel.feedbackChannel=="DNS")
                 {
                     this.collabClient = callbacks.createBurpCollaboratorClientContext(); 
-                    this.collabLoc = collabClient.generatePayload(true);                    
+                    this.collabLoc = collabClient.generatePayload(true);  
+                    this.tab.shellingPanel.collabSessions.add(new collabSession(collabLoc,urlStr));
                 }
                 while(generator.hasMorePayloads())
                 {
@@ -140,60 +143,76 @@ public class DirectScannerCheck extends ShellingScannerCheck {
     private boolean checkCollabInteractions()
     {
         // only DNS interactions are supported at the moment
-        this.collabInter = this.collabClient.fetchCollaboratorInteractionsFor(this.collabLoc);
-        this.tab.shellingPanel.logOutput("Checking for interactions with "+collabLoc);
-        if(this.collabInter.size()>0) 
-        { 
-            this.tab.shellingPanel.logOutput("Got an interaction for "+collabLoc+"!");
+        // now, we decided to generate a unique burp collaborator ID per attack (this is simpler than an additional level of encapsulation in the payload itself, which is already way too long)
+        // hence, we are going to fetch for all the interactions every time, one after another
+        
+        for(int h=0;h<this.tab.shellingPanel.collabSessions.size();h++)
+        {
+            String loc = this.tab.shellingPanel.collabSessions.get(h).getLoc();
+            String created = this.tab.shellingPanel.collabSessions.get(h).getLoc();
+            String url = this.tab.shellingPanel.collabSessions.get(h).getUrl();
+            this.collabInter = this.collabClient.fetchCollaboratorInteractionsFor(loc);
+            this.tab.shellingPanel.logOutput("Fetching for interaction with "+loc+" (payload generated at "+created+" for URL "+url);
+        
+            // OK, how can we get ALL the collab loc and how can we make sure we don't "steal" them from the scanner so it misses them?
+            // we just want to make sure we are not missing any stuff we are interested in ourselves 
+            //this.tab.shellingPanel.logOutput("Checking for interactions with "+collabLoc);
+            if(this.collabInter.size()>0) 
+            { 
+                this.tab.shellingPanel.logOutput("Got an interaction for "+loc+"!");
                 //if interaction(s) were found from the current poll request, add all to overall list and continue
-            this.collabInterItr = this.collabInter.iterator();
-                // only reading one, first interaction (at least now)
-            this.inter = this.collabInterItr.next();
+                this.collabInterItr = this.collabInter.iterator();
+                this.issues = new ArrayList<IScanIssue>();			            
+                // OK, now we read all of them
+                while(this.collabInterItr.hasNext())
+                {            
+                    this.inter = this.collabInterItr.next();
                 
- 	    this.issues = new ArrayList<IScanIssue>(1);			
-                // This method is used to retrieve a property of the interaction. 
-                // Properties of all interactions are: interaction_id, type, client_ip, and time_stamp. 
-                // Properties of DNS interactions are: query_type and raw_query. The raw_query value is Base64-encoded. 
-                // Properties of HTTP interactions are: protocol, request, and response. 
-                // The request and response values are Base64-encoded
+                    // This method is used to retrieve a property of the interaction. 
+                    // Properties of all interactions are: interaction_id, type, client_ip, and time_stamp. 
+                    // Properties of DNS interactions are: query_type and raw_query. The raw_query value is Base64-encoded. 
+                    // Properties of HTTP interactions are: protocol, request, and response. 
                 
-            byte[] collabQuery = this.helpers.base64Decode(this.inter.getProperty("raw_query"));
+                    // The request and response values are Base64-encoded
+                
+                    byte[] collabQuery = this.helpers.base64Decode(this.inter.getProperty("raw_query"));
             
-            // NOW, WHAT FOLLOWS IS THE UGLIEST SCULPTURE I HAVE EVER CODED:
-            
+                    // NOW, WHAT FOLLOWS IS THE UGLIEST SCULPTURE I HAVE EVER CODED:            
              
-            String rawS = this.helpers.bytesToString(collabQuery);
-            this.tab.shellingPanel.logOutput("Raw query: "+rawS);
-            byte[] trimed = new byte[collabQuery.length-16];
-            for(int i=13;i<collabQuery.length-3;i++)
-            {
-               trimed[i-13]=collabQuery[i];
+                    String rawS = this.helpers.bytesToString(collabQuery);
+                    this.tab.shellingPanel.logOutput("Raw query: "+rawS);
+                    byte[] trimed = new byte[collabQuery.length-16];
+                    for(int i=13;i<collabQuery.length-3;i++)
+                    {
+                        trimed[i-13]=collabQuery[i];
+                    }
+                    String collabQueryS = this.helpers.bytesToString(trimed);
+                    this.tab.shellingPanel.logOutput("Trimed query: "+collabQueryS);   
+                    byte[] t = new byte[1];
+                    t[0]=(byte)0x1e; // Record Separator            
+                    String parts[] = collabQueryS.trim().split(this.callbacks.getHelpers().bytesToString(t));
+            
+                    String payloadIndexS="0";
+                    
+                    if(parts.length>1) 
+                    {
+                        payloadIndexS=parts[0];            
+                        this.tab.shellingPanel.logOutput("Parts[0] (payload index):"+parts[0]);
+                    }
+                    if(payloadIndexS.startsWith("a")) payloadIndexS = payloadIndexS.replace("a","");
+                    int payloadIndex  = Integer.parseInt(payloadIndexS);
+                    //int payloadIndex = buf.getInt();
+                    String theGoldenPayload = this.generator.getPayload(payloadIndex);
+                    String details = "\nThe golden payload seems to be: "+theGoldenPayload;
+                    
+                    // BUT IT WORKS
+                    this.issues.add((IScanIssue) new BinaryPayloadIssue(this.callbacks,this.attackReq,details));
+                }
             }
-            String collabQueryS = this.helpers.bytesToString(trimed);
-            this.tab.shellingPanel.logOutput("Trimed query: "+collabQueryS);   
-            byte[] t = new byte[1];
-            t[0]=(byte)0x1e; // Record Separator            
-            String parts[] = collabQueryS.trim().split(this.callbacks.getHelpers().bytesToString(t));
-            
-            String payloadIndexS="0";
-            
-            if(parts.length>1) 
-            {
-                payloadIndexS=parts[0];            
-                this.tab.shellingPanel.logOutput("Parts[0] (payload index):"+parts[0]);
-            }
-            if(payloadIndexS.startsWith("a")) payloadIndexS = payloadIndexS.replace("a","");
-            int payloadIndex  = Integer.parseInt(payloadIndexS);
-            //int payloadIndex = buf.getInt();
-            String theGoldenPayload = this.generator.getPayload(payloadIndex);
-            String details = "\nThe golden payload seems to be: "+theGoldenPayload;
-            
-            // BUT IT WORKS
-            this.issues.add((IScanIssue) new BinaryPayloadIssue(this.callbacks,this.attackReq,details));
             // we need to change the constructor in order to pass some additional data            
             return true;
-        }
+        } 
+        // no single interaction was caught, return false
         return false;
-    }
-
-}
+    } // end of the method
+} // end of the class
