@@ -1,9 +1,10 @@
 /*
+ 
  The simple scanner check class for SHELLING.
  Sends all the payloads one after another, supports time feedback channel only
-
-DNS/HTTP are supported by the CollaboratorScannerCheck class
-
+ 
+ DNS/HTTP are supported by the CollaboratorScannerCheck class
+ 
 */
 
 package burp;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.net.URL;
 import java.util.Iterator;
-import uk.co.pentest.SHELLING.ShellingPayloadGenerator;
+import uk.co.pentest.SHELLING.IntruderPayloadGenerator;
 import uk.co.pentest.SHELLING.ShellingTab;
 
 
@@ -60,8 +61,8 @@ public class DirectScannerCheck extends ShellingScannerCheck {
                     callbacks.printError("HTTP connection failed");
                     callbacks.issueAlert("HTTP connection failed");
                     return issues;
-                }
-                generator = new ShellingPayloadGenerator(tab);
+                }                
+                generator = new IntruderPayloadGenerator("cmd", tab, true);    
                 int counter=0;
                 if(tab.shellingPanel.feedbackChannel=="DNS")
                 {
@@ -94,7 +95,7 @@ public class DirectScannerCheck extends ShellingScannerCheck {
                         attackReq = callbacks.makeHttpRequest(baseRequestResponse.getHttpService(),req);
                         byte[] resp = attackReq.getResponse();
                         long millisAfter = System.currentTimeMillis();
-                        if(millisAfter-millisBefore>15000) // default sleep is 15 seconds, so the difference has to be at least 15 seconds
+                        if(millisAfter-millisBefore>25000) // default sleep is 25 seconds, so the difference has to be at least 15 seconds
                         {
                             // raise an issue, abort further checks                        
                             //callbacks.printError(new String(exploitRR.getResponse()));					

@@ -6,14 +6,15 @@
 package burp;
 
 import java.util.List;
+import uk.co.pentest.SHELLING.IntruderPayloadGenerator;
 
-import uk.co.pentest.SHELLING.ShellingPayloadGenerator; // the new payload generator class
 import uk.co.pentest.SHELLING.ShellingTab;
 
 abstract class ShellingScannerCheck implements IScannerCheck {
 	protected IBurpExtenderCallbacks callbacks;
 	protected IExtensionHelpers helpers;
-	protected ShellingPayloadGenerator generator;	
+	//protected ShellingPayloadGenerator generator;	
+        protected IntruderPayloadGenerator generator;
         protected IHttpService checkHttpService;
 	public ShellingScannerCheck(IBurpExtenderCallbacks cb, ShellingTab tab) {
 		callbacks = cb;
