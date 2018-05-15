@@ -59,7 +59,8 @@ public class DirectScannerCheck extends ShellingScannerCheck {
                 }             
                 
                 // create new generator object with a dedicated collaborator subdomain (if DNS used as feedback channel)
-                generator = new IntruderPayloadGenerator("cmd", tab, "scanner");  
+                generator = new IntruderPayloadGenerator("cmd", tab, "scanner", baseRequestResponse);  
+                // the insertion point should deliver the prefix! to bad intruder can't do this
                 
                 // save the last generator for the purpose of the asynchronous checkForCollabInteractions() method
                 this.tab.shellingPanel.lastGenerator=generator;
