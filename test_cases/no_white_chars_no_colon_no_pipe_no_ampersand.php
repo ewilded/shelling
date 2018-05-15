@@ -1,6 +1,10 @@
 <?php
-if(isset($_POST['dir'])&&!preg_match('/\s+/',$_POST['dir'])&&!preg_match('/&|\||;/',$_POST['dir']))
+# filename: no_white_chars_no_colon_no_pipe_no_ampersand.php
+# vulnerable with newline as command separator
+# sample exploit:
+ 
+if(isset($_GET['dir'])&&!preg_match('/\s+/',$_GET['dir'])&&!preg_match('/&|\||;/',$_GET['dir']))
 {
-	 echo "Dir contents are:\n<br />".shell_exec("ls {$_POST['dir']}");
+	 echo "Dir contents are:\n<br />".shell_exec("ls {$_GET['dir']}");
 }
 ?>

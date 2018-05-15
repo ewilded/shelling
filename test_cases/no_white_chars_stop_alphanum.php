@@ -1,6 +1,11 @@
 <?php
-if(isset($_POST['dir'])&&!preg_match('/\s+/',$_POST['dir'])&&preg_match('/\w+$/',$_POST['dir']))
+# filename: no_white_chars_stop_alphanum.php
+# vulnerable, the payload needs to end with an alphanum character
+#
+
+echo "Dir contents are:\n";
+if(isset($_GET['dir'])&&!preg_match('/\s+/',$_GET['dir'])&&preg_match('/\w+$/',$_GET['dir']))
 {
-	 echo "Dir contents are:\n<br />".shell_exec("ls {$_POST['dir']}");
+	 echo "<br />".shell_exec("ls {$_GET['dir']}");
 }
 ?>

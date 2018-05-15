@@ -1,3 +1,7 @@
 <?php
-if(isset($_POST['dir'])) echo "Dir contents are:\n<br />".shell_exec("ls {$_POST['dir']}");
+# filename: simple.php
+# vulnerably, simply
+# 
+
+if(isset($_GET['dir'])) echo "Dir contents are:\n<br />".shell_exec("ls {$_GET['dir']}");
 ?>

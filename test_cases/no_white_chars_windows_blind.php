@@ -1,12 +1,16 @@
 <?php
-if(isset($_POST['dir'])&&!preg_match('/\s+/',$_POST['dir']))
+# filename: no_white_chars_windows_blind.php
+# vulnerable, no response directly shown
+# 
+
+if(isset($_GET['dir'])&&!preg_match('/\s+/',$_GET['dir']))
 {		 
-	shell_exec("dir {$_POST['dir']}>../listing.txt");
+	shell_exec("dir {$_GET['dir']}>../listing.txt");
 	echo "The index file has been updated.";
 }
 else
 {
-	echo "POST[dir] not set.";
+	echo "GET[dir] not set.";
 }
 ?>
 
