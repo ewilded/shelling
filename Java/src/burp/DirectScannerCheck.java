@@ -15,20 +15,14 @@ import java.net.URL;
 import java.util.Iterator;
 import uk.co.pentest.SHELLING.IntruderPayloadGenerator;
 import uk.co.pentest.SHELLING.ShellingTab;
-import uk.co.pentest.SHELLING.collabSession;
 
 
 public class DirectScannerCheck extends ShellingScannerCheck {
 
-        private ShellingTab tab;
-	private IBurpCollaboratorClientContext collabClient;	        
-        private List<IBurpCollaboratorInteraction> collabInter;
-        private List<IScanIssue> issues;
-        private IHttpRequestResponse base;
-        private IHttpRequestResponse attackReq;
+        private ShellingTab tab;	
         
-        private IBurpCollaboratorInteraction inter;
-        private Iterator<IBurpCollaboratorInteraction> collabInterItr;        
+        private List<IScanIssue> issues;        
+        private IHttpRequestResponse attackReq;                  
         
 	public DirectScannerCheck(IBurpExtenderCallbacks cb, ShellingTab tab) 
         {           
@@ -40,8 +34,8 @@ public class DirectScannerCheck extends ShellingScannerCheck {
 	@Override
 	public int consolidateDuplicateIssues(IScanIssue existingIssue,IScanIssue newIssue) {
 		return -1;
-	}
-	
+	}	        
+        
 	@Override
 	public List<IScanIssue> doActiveScan(IHttpRequestResponse baseRequestResponse,IScannerInsertionPoint insertionPoint) 
         {            
@@ -64,16 +58,16 @@ public class DirectScannerCheck extends ShellingScannerCheck {
                     return issues;
                 }             
                 
+                // create new generator object with a dedicated collaborator subdomain (if DNS used as feedback channel)
                 generator = new IntruderPayloadGenerator("cmd", tab, "scanner");  
-                loc = generator.loc; // obtain the collaborator domain generated for this one
-                if(tab.shellingPanel.feedbackChannel=="DNS")
-                {
-                     // this needs to be globalized as well 
-                    /*
-                      loc = this.tab.shellingPanel.collabClient.generatePayload(true);  
-                      this.tab.shellingPanel.collabSessions.add(new collabSession(loc,urlStr));
-                     */
-                }
+                
+                // save the last generator for the purpose of the asynchronous checkForCollabInteractions() method
+                this.tab.shellingPanel.lastGenerator=generator;
+                
+                // obtain the collaborator domain generated for this one, as we are going to be injecting it in our payloads
+                loc = generator.loc;
+                
+                generator.setBase(baseRequestResponse);
                 
                 int counter=0;
                 while(generator.hasMorePayloads())
@@ -107,110 +101,41 @@ public class DirectScannerCheck extends ShellingScannerCheck {
                             return this.issues;
                         }
                     }
+                    // filesystem as a feedback channel needs to be implemented too
                     else
                     {
                         counter++;
                         attackReq = callbacks.makeHttpRequest(baseRequestResponse.getHttpService(),req);
                         byte[] resp = attackReq.getResponse();
                     
-                        if(counter%200==0&&checkCollabInteractions()) // check for feedback every 200 requests
-                        {                         
-                           // raise an issue, abort further checks                        
-                           //callbacks.printError(new String(exploitRR.getResponse()));					
-                           this.tab.shellingPanel.logOutput("Returning issues");
-                           return this.issues;
+                        if(counter%200==0) // check for feedback every 200 requests
+                        {                
+                           
+                           this.issues=this.tab.shellingPanel.checkCollabInteractions();
+                           if(this.issues!=null&&this.issues.size()>0)
+                           {
+                                this.tab.shellingPanel.logOutput("Returning issues");
+                                return this.issues;
+                           }
                         }                                                
                     }
-                }
-               
+                }               
                 if(tab.shellingPanel.feedbackChannel=="DNS")
                 {
                     try 
                     {   
-                	Thread.sleep(20); // the question is what is the safe wait time here (not assuming to catch non-synchronous occurrences here - which is bollocks, by the way, has to be sorted as well)
+                	Thread.sleep(20); 
                     } 
                     catch(Exception e) 
                     {
                            // whateva
                     }
-                    checkCollabInteractions(); // check for feedback once again
-                    return this.issues;
                 }
-                return this.issues;
+                return this.tab.shellingPanel.checkCollabInteractions();
+                // check for interactions regardless to the params of this run
+                // ideally we should set up a scheduled job (e.g. every 10-15 minutes) to query for incoming collaborator interactions for us
+                // but as I don't know how to solve this, let's just make sure to run it with every active scan, intruder attack and on exit
+                // currently this will only work from the scanner, unless we figure out how to add custom issues directly by the plugin (instead of returning them from the doActiveScan() handler)
         }	        
-    private boolean checkCollabInteractions()
-    {
-        // only DNS interactions are supported at the moment
-        // now, we decided to generate a unique burp collaborator ID per attack (this is simpler than an additional level of encapsulation in the payload itself, which is already way too long)
-        // hence, we are going to fetch for all the interactions every time, one after another
-        
-        for(int h=0;h<this.tab.shellingPanel.collabSessions.size();h++)
-        {
-            String loc = this.tab.shellingPanel.collabSessions.get(h).getLoc();
-            String created = this.tab.shellingPanel.collabSessions.get(h).getLoc();
-            String url = this.tab.shellingPanel.collabSessions.get(h).getUrl();
-            this.collabInter = this.collabClient.fetchCollaboratorInteractionsFor(loc);
-            this.tab.shellingPanel.logOutput("Fetching for interaction with "+loc+" (payload generated at "+created+" for URL "+url);
-        
-            // OK, how can we get ALL the collab loc and how can we make sure we don't "steal" them from the scanner so it misses them?
-            // we just want to make sure we are not missing any stuff we are interested in ourselves 
-            //this.tab.shellingPanel.logOutput("Checking for interactions with "+any collabLoc);
-            if(this.collabInter.size()>0) 
-            { 
-                this.tab.shellingPanel.logOutput("Got an interaction for "+loc+"!");
-                //if interaction(s) were found from the current poll request, add all to overall list and continue
-                this.collabInterItr = this.collabInter.iterator();
-                this.issues = new ArrayList<IScanIssue>();			            
-                // OK, now we read all of them
-                while(this.collabInterItr.hasNext())
-                {            
-                    this.inter = this.collabInterItr.next();
-                
-                    // This method is used to retrieve a property of the interaction. 
-                    // Properties of all interactions are: interaction_id, type, client_ip, and time_stamp. 
-                    // Properties of DNS interactions are: query_type and raw_query. The raw_query value is Base64-encoded. 
-                    // Properties of HTTP interactions are: protocol, request, and response. 
-                
-                    // The request and response values are Base64-encoded
-                
-                    byte[] collabQuery = this.helpers.base64Decode(this.inter.getProperty("raw_query"));
-            
-                    // NOW, WHAT FOLLOWS IS THE UGLIEST SCULPTURE I HAVE EVER CODED:            
-             
-                    String rawS = this.helpers.bytesToString(collabQuery);
-                    this.tab.shellingPanel.logOutput("Raw query: "+rawS);
-                    byte[] trimed = new byte[collabQuery.length-16];
-                    for(int i=13;i<collabQuery.length-3;i++)
-                    {
-                        trimed[i-13]=collabQuery[i];
-                    }
-                    String collabQueryS = this.helpers.bytesToString(trimed);
-                    this.tab.shellingPanel.logOutput("Trimed query: "+collabQueryS);   
-                    byte[] t = new byte[1];
-                    t[0]=(byte)0x1e; // Record Separator            
-                    String parts[] = collabQueryS.trim().split(this.callbacks.getHelpers().bytesToString(t));
-            
-                    String payloadIndexS="0";
-                    
-                    if(parts.length>1) 
-                    {
-                        payloadIndexS=parts[0];            
-                        this.tab.shellingPanel.logOutput("Parts[0] (payload index):"+parts[0]);
-                    }
-                    if(payloadIndexS.startsWith("a")) payloadIndexS = payloadIndexS.replace("a","");
-                    int payloadIndex  = Integer.parseInt(payloadIndexS);
-                    //int payloadIndex = buf.getInt();
-                    String theGoldenPayload = this.generator.getPayload(payloadIndex);
-                    String details = "\nThe golden payload seems to be: "+theGoldenPayload;
-                    
-                    // BUT IT WORKS
-                    this.issues.add((IScanIssue) new BinaryPayloadIssue(this.callbacks,this.attackReq,details));
-                }
-            }
-            // we need to change the constructor in order to pass some additional data            
-            return true;
-        } 
-        // no single interaction was caught, return false
-        return false;
-    } // end of the method
+
 } // end of the class
