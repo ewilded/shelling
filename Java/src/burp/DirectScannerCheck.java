@@ -1,10 +1,8 @@
 /*
  
  The simple scanner check class for SHELLING.
- Sends all the payloads one after another, supports time feedback channel only
- 
- DNS/HTTP are supported by the CollaboratorScannerCheck class
- 
+ Sends all the payloads one after another, supports DNS (network) and sleep (time) feedback channels. Will also automatically support "file" once it becomes a thing.
+
 */
 
 package burp;
@@ -12,7 +10,6 @@ package burp;
 import java.util.List;
 import java.util.ArrayList;
 import java.net.URL;
-import java.util.Iterator;
 import uk.co.pentest.SHELLING.IntruderPayloadGenerator;
 import uk.co.pentest.SHELLING.ShellingTab;
 
@@ -40,13 +37,23 @@ public class DirectScannerCheck extends ShellingScannerCheck {
 	public List<IScanIssue> doActiveScan(IHttpRequestResponse baseRequestResponse,IScannerInsertionPoint insertionPoint) 
         {            
                 this.issues = null;
-                if(tab.shellingPanel.scannerChecks==false) return this.issues; // the switch
-              
+                if(tab.shellingPanel.scannerChecks==false) return this.issues; // the switch off (scanner is not enabled, goodbye)
+                
+                // 
+                // We will NO LONGER return scanner issues from this method for DNS and file feedback channels (because they are not direct).
+                // doActiveScan() will only return scan issues triggered directly by itself, the current running instance (when using file and time as feedback channels).
+                
+                // All the DNS interactions (synchronous/asynchronous, does not matter at this point) will be watched by the checkCollabSessions() call (triggered by Scanner/Intruder/Export/exit/schedule?)
+                // which will, in turn, will use the addScanIssue() API (with the help of code taken from this useful project https://github.com/PortSwigger/manual-scan-issues).
+                
+                // Hence, checkCollabInteractions() no longer needs to return issues. We just call it BEFORE starting the actual new scan (this should happen even if the method is again manual, in order not to miss any asynchronously called stuff from previous "auto" calls)
+                
                 
         	IRequestInfo reqInfo = helpers.analyzeRequest(baseRequestResponse);
 		URL url = reqInfo.getUrl();
                 int port = url.getPort();
                 String loc="";
+                int delaySeconds = this.tab.shellingPanel.getDelay();
 		boolean https=false;
                 String host = url.getHost();
                 if(url.getProtocol()=="https") https=true;
@@ -63,14 +70,15 @@ public class DirectScannerCheck extends ShellingScannerCheck {
                 // the insertion point should deliver the prefix! to bad intruder can't do this
                 
                 // save the last generator for the purpose of the asynchronous checkForCollabInteractions() method
-                this.tab.shellingPanel.lastGenerator=generator;
-                
-                // obtain the collaborator domain generated for this one, as we are going to be injecting it in our payloads
-                loc = generator.loc;
-                
+                if(this.tab.shellingPanel.feedbackChannel=="DNS")
+                {
+                    this.tab.shellingPanel.lastGenerator=generator;                    
+                    // obtain the collaborator domain generated for this one, as we are going to be injecting it in our payloads
+                    loc = generator.loc; // this might be empty as we MIGHT be using a different feedback channel
+                }                
                 generator.setBase(baseRequestResponse);
                 
-                int counter=0;
+                int counter=0; // we need to limit the frequency with which we are calling the collabSessions check, for the purpose of performance and good manners
                 while(generator.hasMorePayloads())
                 {
                     byte[] payload = generator.getNextPayload(insertionPoint.getBaseValue().getBytes());               
@@ -84,59 +92,76 @@ public class DirectScannerCheck extends ShellingScannerCheck {
                     byte [] req = insertionPoint.buildRequest(payload);
                     //callbacks.printError((new String(req))+"\n\n");
                     
-                    // feedback channel logic can be coded here, no need for separate checks
-                    if(tab.shellingPanel.feedbackChannel=="time")
+                    // 1. time as feedback channel (detecting a delay in the response)
+                    //if(tab.shellingPanel.feedbackChannel=="time")
+                    //{
+                    
+                    long millisBefore = System.currentTimeMillis(); // only used for time
+                    
+                    attackReq = callbacks.makeHttpRequest(baseRequestResponse.getHttpService(),req); // we perform the attack, because we already know the payload                    
+                    byte[] resp = attackReq.getResponse();
+                    
+                    long millisAfter = System.currentTimeMillis(); // only used for time
+                    
+                    // Default trigger threshold for "time" feedback channel is 25 seconds, so the difference has to be at least 15 seconds provided that it takes approx. 10 to get a normal response
+                    // anyway, made this customisable to anyone encountering false positives with this method.
+                    if(this.tab.shellingPanel.feedbackChannel=="time"&&millisAfter-millisBefore>delaySeconds*1000) 
                     {
-                        long millisBefore = System.currentTimeMillis();
-                        attackReq = callbacks.makeHttpRequest(baseRequestResponse.getHttpService(),req);
-                        byte[] resp = attackReq.getResponse();
-                        long millisAfter = System.currentTimeMillis();
-                        if(millisAfter-millisBefore>25000) // default sleep is 25 seconds, so the difference has to be at least 15 seconds
-                        {
-                            // raise an issue, abort further checks                        
-                            //callbacks.printError(new String(exploitRR.getResponse()));					
                             this.issues = new ArrayList<IScanIssue>(1);			
                             BinaryPayloadIssue issue;
                             issue = new BinaryPayloadIssue(callbacks,attackReq,"");
                             this.issues.add((IScanIssue) issue);
+                            // return upon the first hit - we should make this adjustable in the config as well
                             return this.issues;
-                        }
-                    }
-                    // filesystem as a feedback channel needs to be implemented too
-                    else
+                    }                    
+                    
+                    // 2. filesystem as a feedback channel needs to be implemented too
+                    // if set, it will do nothing here - which is good, as it is up to the user to inspect the filesystem
+                    // so far we are good with "time" and "file"
+                    // also, "response" will be handled right here once we start supporting it as a feedback channel
+                    
+                    // now "DNS"
+                    
+                    // 3. DNS as the feedback channel
+                    // So, the point is we do not want to stop sending payloads only because we encountered some collab interaction
+                    // as we might be dealing with a response to one of the previous payloads - which is good as we have to report it
+                    // but it does not mean we should stop sending payloads unless we can be sure we are dealing with different sessions (different collabLoc).
+                    
+                    // the check for collab interactions callback run periodically
+                    // we could rely entirely on the additional call of this we perform before exiting this method
+                    // but the problem is we might get stuck with long scans with the issue staying unnoticed (which would suck soo badly).
+                    if(tab.shellingPanel.feedbackChannel=="DNS")
                     {
                         counter++;
-                        attackReq = callbacks.makeHttpRequest(baseRequestResponse.getHttpService(),req);
-                        byte[] resp = attackReq.getResponse();
-                    
                         if(counter%200==0) // check for feedback every 200 requests
-                        {                
-                           
-                           this.issues=this.tab.shellingPanel.checkCollabInteractions();
-                           if(this.issues!=null&&this.issues.size()>0)
-                           {
-                                this.tab.shellingPanel.logOutput("Returning issues");
-                                return this.issues;
-                           }
+                        {                                           
+                           this.tab.shellingPanel.checkCollabInteractions(); // just call it and let it do its job (we could provide it with an argument (locId) so it filters
+                           // them out for us... but again, we want this to he handled separately, so it can ALSO catch Intruder-induced hits as Scanner issues (yup, that's the point of it)                           
+                           //if(this.issues!=null&&this.issues.size()>0)
+                           //{                                
+                           // we don't return here because we might be finding a response from a previous scan
+                           // and we don't want it to stop our CURRENT                                 
+                           //}
                         }                                                
                     }
-                }               
+                }
+                // OK there is no more payloads left in the generator
+                // now would be the good time to save the shellings_raw payload set in the collabSession, if we want to track it
+                // and do likewise with Intruder and export (if the "auto" mode is on)
+                
+                // we are just about to return null
                 if(tab.shellingPanel.feedbackChannel=="DNS")
                 {
                     try 
                     {   
-                	Thread.sleep(20); 
+                	Thread.sleep(10); 
+                        this.tab.shellingPanel.checkCollabInteractions(); // one last check after the scan is done
                     } 
                     catch(Exception e) 
                     {
                            // whateva
                     }
                 }
-                return this.tab.shellingPanel.checkCollabInteractions();
-                // check for interactions regardless to the params of this run
-                // ideally we should set up a scheduled job (e.g. every 10-15 minutes) to query for incoming collaborator interactions for us
-                // but as I don't know how to solve this, let's just make sure to run it with every active scan, intruder attack and on exit
-                // currently this will only work from the scanner, unless we figure out how to add custom issues directly by the plugin (instead of returning them from the doActiveScan() handler)
+                return null;
         }	        
-
 } // end of the class
