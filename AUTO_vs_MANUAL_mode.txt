@@ -37,4 +37,6 @@ So, the auto-magic mode means:
 - payload marking enabled when applicable (different argument pattern for DNS, different argument pattern for filesystem, not used at all with time or response) - for DNS the command & argument fields are out of user control in its entirety (both overriden with nslookup & PAYLOAD_MARK.BURP_COLLAB_DOMAIN), when using time it's ignored as well as the command used
 - automatic adjustments of the commands/arguments provided when need (e.g. if time is the feedback channel and target OS is ALL, theree are different commands & arguments to achieve the same goal), so it's an option still - we want the manual mode to give full freedom to the user and generate exactly what they used in argument & command fields (might be useful both in Scanner, Intruder and export (third-party intruder hehe) attacks.
 
+The feedback channel setting only makes sense in auto mode. In manual, it's up to the user (full control over the command and argument) to take care of their feedback channel.
+
 
