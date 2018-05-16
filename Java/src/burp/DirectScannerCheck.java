@@ -46,7 +46,8 @@ public class DirectScannerCheck extends ShellingScannerCheck {
                 // All the DNS interactions (synchronous/asynchronous, does not matter at this point) will be watched by the checkCollabSessions() call (triggered by Scanner/Intruder/Export/exit/schedule?)
                 // which will, in turn, will use the addScanIssue() API (with the help of code taken from this useful project https://github.com/PortSwigger/manual-scan-issues).
                 
-                // Hence, checkCollabInteractions() no longer needs to return issues. We just call it BEFORE starting the actual new scan (this should happen even if the method is again manual, in order not to miss any asynchronously called stuff from previous "auto" calls)
+                // Hence, checkCollabInteractions() no longer needs to return issues. We just call it BEFORE starting the actual new scan (this should happen even if the method is again manual, in order not to miss any asynchronously called stuff from previous "auto" calls) + DURING + AFTER.
+                this.tab.shellingPanel.checkCollabInteractions();
                 
                 
         	IRequestInfo reqInfo = helpers.analyzeRequest(baseRequestResponse);
