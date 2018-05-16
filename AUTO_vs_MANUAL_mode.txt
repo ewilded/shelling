@@ -9,11 +9,12 @@ It does make sense for feedback channels like:
 - network (nslookup <PAYLOAD_MARK>.burpcollaborator.net)
 - filesystem (touch /tmp/<PAYLOAD_MARK>ownedtxt)
 
-There is no point in using filesystem as a feedback channel for the scanner. 
-Scanner should support the following feedback channels:
+There is no point in using filesystem as a feedback channel for the scanner (well, it could, potentially, to make testing easier to automate - it just won't "detect" anything for us, but we could allow it for the flexibility - once we implement it, cause why not).
+Thus scanner should support the following feedback channels:
 - time
 - network
 - response
+- filesystem (* see the note above).
 
 
 What does the manual mode mean?
