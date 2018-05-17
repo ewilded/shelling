@@ -3,6 +3,8 @@ SHELLING TODO
 Fuckups that should not have happened:
 	- fix the fucking false negatives	
 
+Tune the output encoding of the default payload set
+
 OS-specific improvements:	
 	- nix: https://security.szurek.pl/exploit-bypass-php-escapeshellarg-escapeshellcmd.html#known-bypassesexploits
 	- nix: introduce terminal injection payloads (escape sequences) like this one https://www.exploit-db.com/exploits/33504/
