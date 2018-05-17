@@ -16,6 +16,7 @@ abstract class ShellingScannerCheck implements IScannerCheck {
 	//protected ShellingPayloadGenerator generator;	
         protected IntruderPayloadGenerator generator;
         protected IHttpService checkHttpService;
+        protected static int counter=0;
 	public ShellingScannerCheck(IBurpExtenderCallbacks cb, ShellingTab tab) {
 		callbacks = cb;
 		helpers = callbacks.getHelpers();

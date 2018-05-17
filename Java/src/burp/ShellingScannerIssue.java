@@ -2,8 +2,7 @@
 package burp;
 
 import java.net.URL;
-import java.util.Properties;
-import java.util.Set;
+
 
 abstract public class ShellingScannerIssue implements IScanIssue {
 	//IScanIssue fields
@@ -11,27 +10,35 @@ abstract public class ShellingScannerIssue implements IScanIssue {
 	private IHttpService httpService;
 	private String remediationBackground;
 	private URL url;
+        private String confidence="Certain";        
 	
 	private IBurpExtenderCallbacks callbacks;
 	private IExtensionHelpers helpers;
 	
-	private static String ISSUE_BACKGROUND = "Someone is having a bad day.";
-	private static String REM_BACKGROUND = "It's time to play.";
+	private String ISSUE_BACKGROUND = "Someone is having a good day.<br>";
+	private String REM_BACKGROUND = "It's time to play.<br>";
+        //private static int counter=0;
 	
-	ShellingScannerIssue(IBurpExtenderCallbacks cb,IHttpRequestResponse exploitRR, String details) {
-		callbacks = cb;
+	ShellingScannerIssue(IBurpExtenderCallbacks cb,IHttpRequestResponse exploitRR, String details, String feedbackMethod) {
+		callbacks = cb;                               
 		helpers = callbacks.getHelpers();
 		url = helpers.analyzeRequest(exploitRR).getUrl();
 		httpService = exploitRR.getHttpService();	
-		httpMessages = new IHttpRequestResponse[] {exploitRR};
-                ISSUE_BACKGROUND = ISSUE_BACKGROUND + details;
+		httpMessages = new IHttpRequestResponse[] {exploitRR};                
+                //counter++;
+                //this.feedbackChannel="(SHELLING - "+feedbackMethod+" - "+Integer.toString(this.counter)+")";
+                if(feedbackMethod=="time")
+                {
+                    this.confidence="Tentative"; // let's be honest with our users
+                }                
+                ISSUE_BACKGROUND = ISSUE_BACKGROUND + details; // let's see if this will fool the 'duplicate-detection' algorithm or whatever has been making our "details" global up until now                
+                //REM_BACKGROUND = "";
 	}
-
 	
 	//IScanIssue methods
 	@Override
 	public String getConfidence() {
-		return "Certain";
+		return this.confidence;
 	}
 	
 	@Override
@@ -70,8 +77,7 @@ abstract public class ShellingScannerIssue implements IScanIssue {
 	@Override
 	public String getRemediationDetail() {
 		return null;
-	}
-	
+	}	
 	@Override
 	public String getSeverity() {
 		return "High";

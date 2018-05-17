@@ -48,13 +48,20 @@ public class DirectScannerCheck extends ShellingScannerCheck {
                 
                 // Hence, checkCollabInteractions() no longer needs to return issues. We just call it BEFORE starting the actual new scan (this should happen even if the method is again manual, in order not to miss any asynchronously called stuff from previous "auto" calls) + DURING + AFTER.
                 this.tab.shellingPanel.checkCollabInteractions();
-                
+                                
                 
         	IRequestInfo reqInfo = helpers.analyzeRequest(baseRequestResponse);
 		URL url = reqInfo.getUrl();
                 int port = url.getPort();
                 String loc="";
                 int delaySeconds = this.tab.shellingPanel.getDelay();
+                delaySeconds -= 4; // small, SMALL tuning to avoid false negatives (making this thing a bit more sensitive); ping -c25 localhost took only 24 seconds and thus stayed undetected
+                // while if this becomes an issue do to slow response times, one can always increase the delay in options if false positives show up
+                // this delaySeconds shift (4 secs) should be lower the longer the natural response time is
+                // but we are not going too introduce intelligent tuning, are we? maybe manual?
+                // 
+                // in our case localhost is very fast, usually this will not happen
+                
 		boolean https=false;
                 String host = url.getHost();
                 if(url.getProtocol()=="https") https=true;
@@ -67,16 +74,15 @@ public class DirectScannerCheck extends ShellingScannerCheck {
                 }             
                 
                 // create new generator object with a dedicated collaborator subdomain (if DNS used as feedback channel)
-                generator = new IntruderPayloadGenerator("cmd", tab, "scanner", baseRequestResponse);  
+                generator = new IntruderPayloadGenerator("cmd", tab, "scanner", baseRequestResponse, insertionPoint.getInsertionPointName());  
                 // the insertion point should deliver the prefix! to bad intruder can't do this
                 
                 // save the last generator for the purpose of the asynchronous checkForCollabInteractions() method
                 if(this.tab.shellingPanel.feedbackChannel=="DNS")
                 {
-                    this.tab.shellingPanel.lastGenerator=generator;                    
-                    // obtain the collaborator domain generated for this one, as we are going to be injecting it in our payloads
-                    loc = generator.loc; // this might be empty as we MIGHT be using a different feedback channel
-                }                
+                    loc = generator.loc; // this might be empty as we MIGHT be using a different feedback channel    
+                }   
+                
                 generator.setBase(baseRequestResponse);
                 
                 int counter=0; // we need to limit the frequency with which we are calling the collabSessions check, for the purpose of performance and good manners
@@ -101,19 +107,26 @@ public class DirectScannerCheck extends ShellingScannerCheck {
                     
                     attackReq = callbacks.makeHttpRequest(baseRequestResponse.getHttpService(),req); // we perform the attack, because we already know the payload                    
                     byte[] resp = attackReq.getResponse();
+                    // BTW, how do we handle timeouts here?
                     
                     long millisAfter = System.currentTimeMillis(); // only used for time
                     
                     // Default trigger threshold for "time" feedback channel is 25 seconds, so the difference has to be at least 15 seconds provided that it takes approx. 10 to get a normal response
                     // anyway, made this customisable to anyone encountering false positives with this method.
-                    if(this.tab.shellingPanel.feedbackChannel=="time"&&millisAfter-millisBefore>delaySeconds*1000) 
+                    long diff = millisAfter-millisBefore;
+                    if(this.tab.shellingPanel.feedbackChannel=="time"&&diff>delaySeconds*1000) 
                     {
                             this.issues = new ArrayList<IScanIssue>(1);			
                             BinaryPayloadIssue issue;
-                            issue = new BinaryPayloadIssue(callbacks,attackReq,"");
+                            String details="A potential OS command injection vulnerability was detected using time as the feedback channel.<br><br>";
+                            details+="The following payload was supplied to the <b>"+insertionPoint.getInsertionPointName()+"</b> input parameter: <b>"+this.helpers.bytesToString(payload)+"</b><br><br>";
+                            details+="The server took <b>"+Long.toString(diff)+"</b> miliseconds to respond.<br><br>";
+                            details+="Please be aware that delayed response can happen for multiple reasons, therefore comparing response time with the expected time of additional delay introduced by payloads like <b>sleep 25</b> or <b>ping -n25 localhost</b> is prone to false positives. Investigate this instance manually.<br><br>If you are getting too many false positivies, try to increase the delay in SHELLING -> Global settings or consider using a different feedback channel, e.g. DNS.";
+                            issue = new BinaryPayloadIssue(callbacks,attackReq,details,"time");
+                            //issue.
                             this.issues.add((IScanIssue) issue);
                             // return upon the first hit - we should make this adjustable in the config as well
-                            return this.issues;
+                            return this.issues; // we don't worry about interrupting anything, it's just our own direct attack and it was successful, we got what we needed, no need to search for more valid payloads
                     }                    
                     
                     // 2. filesystem as a feedback channel needs to be implemented too
