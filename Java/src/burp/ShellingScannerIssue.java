@@ -11,7 +11,7 @@ abstract public class ShellingScannerIssue implements IScanIssue {
 	private String remediationBackground;
 	private URL url;
         private String confidence="Certain";        
-	
+	private String feedbackMethod;
 	private IBurpExtenderCallbacks callbacks;
 	private IExtensionHelpers helpers;
 	
@@ -25,6 +25,7 @@ abstract public class ShellingScannerIssue implements IScanIssue {
 		url = helpers.analyzeRequest(exploitRR).getUrl();
 		httpService = exploitRR.getHttpService();	
 		httpMessages = new IHttpRequestResponse[] {exploitRR};                
+                this.feedbackMethod=feedbackMethod;
                 //counter++;
                 //this.feedbackChannel="(SHELLING - "+feedbackMethod+" - "+Integer.toString(this.counter)+")";
                 if(feedbackMethod=="time")
@@ -61,7 +62,7 @@ abstract public class ShellingScannerIssue implements IScanIssue {
 	
 	@Override
 	public String getIssueName() {
-		return "Command Injection (SHELLING)";
+		return "Command Injection (SHELLING-"+this.feedbackMethod+")";
 	}
 	
 	@Override

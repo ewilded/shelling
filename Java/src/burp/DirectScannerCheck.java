@@ -47,7 +47,7 @@ public class DirectScannerCheck extends ShellingScannerCheck {
                 // which will, in turn, will use the addScanIssue() API (with the help of code taken from this useful project https://github.com/PortSwigger/manual-scan-issues).
                 
                 // Hence, checkCollabInteractions() no longer needs to return issues. We just call it BEFORE starting the actual new scan (this should happen even if the method is again manual, in order not to miss any asynchronously called stuff from previous "auto" calls) + DURING + AFTER.
-                this.tab.shellingPanel.checkCollabInteractions();
+                this.tab.shellingPanel.checkCollabInteractions(false);
                                 
                 
         	IRequestInfo reqInfo = helpers.analyzeRequest(baseRequestResponse);
@@ -88,6 +88,8 @@ public class DirectScannerCheck extends ShellingScannerCheck {
                 int counter=0; // we need to limit the frequency with which we are calling the collabSessions check, for the purpose of performance and good manners
                 while(generator.hasMorePayloads())
                 {
+                    if(tab.shellingPanel.stopAllRunningScans.isSelected()==true) break; // this should allow us to stop the scan (all of them) by ticking off the box, instantly
+                    
                     byte[] payload = generator.getNextPayload(insertionPoint.getBaseValue().getBytes());               
                     // domain name is now automatically provided by the getNextPayload function, used by both scanner and intruder in cooperation with our session tracking system
                     if(payload.length==1) 
@@ -149,7 +151,7 @@ public class DirectScannerCheck extends ShellingScannerCheck {
                         counter++;
                         if(counter%200==0) // check for feedback every 200 requests
                         {                                           
-                           this.tab.shellingPanel.checkCollabInteractions(); // just call it and let it do its job (we could provide it with an argument (locId) so it filters
+                           this.tab.shellingPanel.checkCollabInteractions(false); // just call it and let it do its job (we could provide it with an argument (locId) so it filters
                            // them out for us... but again, we want this to he handled separately, so it can ALSO catch Intruder-induced hits as Scanner issues (yup, that's the point of it)                           
                            //if(this.issues!=null&&this.issues.size()>0)
                            //{                                
@@ -169,7 +171,7 @@ public class DirectScannerCheck extends ShellingScannerCheck {
                     try 
                     {   
                 	Thread.sleep(10); 
-                        this.tab.shellingPanel.checkCollabInteractions(); // one last check after the scan is done
+                        this.tab.shellingPanel.checkCollabInteractions(true); // one last check after the scan is done (enforce this last one even if the previous one happened earlier than the limit
                     } 
                     catch(Exception e) 
                     {
