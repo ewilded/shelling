@@ -1,6 +1,6 @@
 <?php
-# filename: arginj_wget_singlequote.php
-# vulnerable to argument injection
+# filename: arginj_wget_noquotes.php
+# apparently NOT vulnerable to argument injection
 #
 error_reporting(E_ALL);
 //ini_set('display_errors',true);
@@ -39,7 +39,7 @@ function cmd_exec($cmd, &$stdout, &$stderr)
 
 	$command = 'wget';
 	$escaped_arg = escapeshellarg($_GET['url']); // while escapeshellarg should be used instead	
-	$all=$command." '".$escaped_arg."'";
+	$all=$command." ".$escaped_arg;
 
 	echo "Command after concatenation: $all\n";
 	$output='';
