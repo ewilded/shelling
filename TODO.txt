@@ -10,13 +10,6 @@ TODO for the current release (before pushing this to the store):
 
 - check payload 8 base for false negatives and shit that does not make sense:
 
-- fix the shit that does not make any sense, like:
-173	{ping,25}&	200	false	false	220	false	false	
-174	{ping,25}|	200	false	false	220	false	false	
-175	{ping,25};	200	false	false	220	false	false	
-177	{ping,25}&::	200	false	false	220	false	false	
-??
-
 - Make sure the menu does not fuck up under lower resolutions (I am pretty sure it still does)
 
 - SHIP IT!
