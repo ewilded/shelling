@@ -2,17 +2,11 @@ SHELLING TODO
 --------------------------------
 TODO for the current release (before pushing this to the store):
 
-- UNC!
-
-- test the tar thing, add known injections or remove them from the interface for now if none of them is implemented
-
-- finish the features and options already available in the GUI (arg injection)
-
-- check payload 8 base for false negatives and shit that does not make sense:
-
+- fix the performance/freeze problem with scanner (got it once ran 12 simultaneous tasks)
+- check payload 8 base for false negatives
 - Make sure the menu does not fuck up under lower resolutions (I am pretty sure it still does)
-
 - SHIP IT!
+
 
 TODO for the next release:
 - Documentation
@@ -54,5 +48,6 @@ X=$'cat\x20/etc/passwd'&&$X
 Improve the payload set:
 	- check the full paylaod set for incorrect payloads (ones that do not make sense -> will always fail)
 	- profiles (make a very good-effort, but optimized, default payload list) - 10-50 most effective payloads
+
 
 BTW: The worst thing about Burp Collaborator is the payload length; much better to have a private instance at a domain as short as possible. Also, for private use, the length of the domain identifier could be much shorter (in most cases even one byte would do the trick).
