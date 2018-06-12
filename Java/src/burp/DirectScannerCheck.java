@@ -10,6 +10,8 @@ package burp;
 import java.util.List;
 import java.util.ArrayList;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import uk.co.pentest.SHELLING.IntruderPayloadGenerator;
 import uk.co.pentest.SHELLING.ShellingTab;
 
@@ -18,6 +20,7 @@ public class DirectScannerCheck extends ShellingScannerCheck {
 
         private ShellingTab tab;	
         
+        private boolean last400Avoid=false; // whether the last request made was replied with a 400/something along these lines AND the payload contained a white char known to break things HTTP message format when used as literal
         private List<IScanIssue> issues;        
         private IHttpRequestResponse attackReq;                  
         
@@ -90,7 +93,7 @@ public class DirectScannerCheck extends ShellingScannerCheck {
                 {
                     if(tab.shellingPanel.stopAllRunningScans.isSelected()==true) break; // this should allow us to stop the scan (all of them) by ticking off the box, instantly
                     
-                    byte[] payload = generator.getNextPayload(insertionPoint.getBaseValue().getBytes());               
+                    byte[] payload = generator.getNextPayloadSmart(insertionPoint.getBaseValue().getBytes(),this.last400Avoid);               
                     // domain name is now automatically provided by the getNextPayload function, used by both scanner and intruder in cooperation with our session tracking system
                     if(payload.length==1) 
                     { //payload generation failed, move onto next command
@@ -98,7 +101,22 @@ public class DirectScannerCheck extends ShellingScannerCheck {
 			callbacks.issueAlert("Payload generation failed!");
                         return this.issues;
                     }
-                    byte [] req = insertionPoint.buildRequest(payload);
+                    
+                    
+                                        // To avoid Burp's default behaviour with automatic encoding of insertion points in Scanner
+                    // we replaced "byte [] req = insertionPoint.buildRequest(payload);"
+                    // with new BuildUnencodedRequest(helpers).buildUnencodedRequest(insertionPoint, helpers.stringToBytes(payload))
+                    // as adviced by Paj: https://support.portswigger.net/customer/portal/questions/17301079-design-new-extension-problem-with-buildrequest-and-url-encode
+                    // with his code snippet: https://gist.github.com/pajswigger/c1fff3ce6e5637126ff92bf57fba54e1
+                    
+                    byte [] req=null;
+                    try {
+                        req = new BuildUnencodedRequest(helpers).buildUnencodedRequest(insertionPoint, payload);
+                    } catch (Exception ex) {
+                        Logger.getLogger(DirectScannerCheck.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    //byte [] req = insertionPoint.buildRequest(payload);
                     //callbacks.printError((new String(req))+"\n\n");
                     
                     // 1. time as feedback channel (detecting a delay in the response)
@@ -109,7 +127,20 @@ public class DirectScannerCheck extends ShellingScannerCheck {
                     
                     attackReq = callbacks.makeHttpRequest(baseRequestResponse.getHttpService(),req); // we perform the attack, because we already know the payload                    
                     byte[] resp = attackReq.getResponse();
-                    // BTW, how do we handle timeouts here?
+                    
+                    if(attackReq.getStatusCode()==400&&this.tab.shellingPanel.includeLiteralWhites.isSelected()==true&&this.tab.shellingPanel.smart400Avoidance.isSelected()) // baddie avoidance
+                    {
+                        // search the payload
+                        for(int l=0;l<payload.length;l++)
+                        { 
+                            if(this.tab.shellingPanel.containsBaddies(payload))
+                            {
+                                this.last400Avoid=true; // it simply means: "literal white chars cause 400 responses from this target in this scan task
+                                this.tab.shellingPanel.logOutput("A baddie detected, turning 400 avoidance on (means no more literal white chars in this scan task)!");
+                                break;
+                            }
+                        }
+                    }
                     
                     long millisAfter = System.currentTimeMillis(); // only used for time
                     
