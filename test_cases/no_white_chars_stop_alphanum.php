@@ -9,3 +9,4 @@ if(isset($_GET['dir'])&&!preg_match('/\s+/',$_GET['dir'])&&preg_match('/\w+$/',$
 	 echo "<br />".shell_exec("ls {$_GET['dir']}");
 }
 ?>
+<a href="?dir=a">clickme</a>

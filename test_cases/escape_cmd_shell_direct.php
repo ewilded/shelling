@@ -5,3 +5,4 @@
 	$escaped_command = escapeshellcmd($command); 
 	system($escaped_command); 
 ?>
+<a href="?dir=.">clickme</a>

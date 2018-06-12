@@ -6,5 +6,6 @@
 	$command = 'dir '.$_GET['dir'];
 	$escaped_command = escapeshellcmd($command); 
 	file_put_contents('out.bat',$escaped_command);
-	system('out.bat');
+	echo system('out.bat');
 ?>
+<a href="?dir=.">clickme</a>

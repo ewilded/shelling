@@ -15,3 +15,4 @@ else
 ?>
 
 
+<a href="?dir=.">clickme</a>
