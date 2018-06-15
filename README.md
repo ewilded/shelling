@@ -375,7 +375,7 @@ Every time a set of payloads is generated (in result of running an Active Scan, 
 ##### Why?
 The main reason for implementing this Collaborator-enabled, Scanner-like capability for Intruder was the same reason we use Intruder. Sometimes we do not want to run a full Active Scan of a particular insertion point (with all the Scanner checks enabled, while disabling them just for one scanning task only to enable them again right after running it would be even more cumbersome), but instead we only want to test that insertion point for a particular vulnerability, like OS command injection. Also, Intruder gives us insight into the responses (while the scanner alone does not) -  speaking of which, check out this: https://github.com/ewilded/shelling/blob/master/README.md#flow.
 
-### Manual mode
+### The manual mode
 The manual mode does not allow one to specify the feedback channel, as we take care of the feedback channel ourselves.
 
 In turn, it gives control over the command and argument, so we can use a configuration like command=`touch` with argument=`/tmp/owned.PAYLOAD_MARK` (payload marking can be still used with manual mode), making the file system our feedback channel.
