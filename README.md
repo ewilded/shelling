@@ -53,9 +53,9 @@ This documentation has two purposes:
 	* [Export](#export)
 	* [Byte generator](#byte-generator)
 	* [Experimental injection modes](#experimental-injection-modes)
-	* [Problems and future improvements](#problems-and-future-improvements)
-	* [Test cases, real cases](#some-case-examples)
-	* [Other recommended tools, projects and special thanks](#tools-i-recommend-using-not-only-in-tandem-with-shelling-but-generally)
+* [Problems and future improvements](#problems-and-future-improvements)
+* [Test cases, real cases](#some-case-examples)
+* [Other recommended tools, projects and special thanks](#tools-i-recommend-using-not-only-in-tandem-with-shelling-but-generally)
 
 
 
@@ -404,7 +404,7 @@ Active Scanning is by default enabled in the *Global settings*:
 A set of payloads (and a separate Collaborator session) is generated individually for each of the insertion points. So, if we decide to scan the entire request (e.g. right click on the request/response in any tool -> `Do an active scan`), there number of active insertion points tested will directly depend on the request and Scanner's `Options -> Attack Insertion Points` configuration.
 
 Scans can be run on individual insertion points only, using Intruder:
-* ![Individual insertion point](screenshots/active_scanning2.png?raw=true "Individual insertion point")
+![Individual insertion point](screenshots/active_scanning2.png?raw=true "Individual insertion point")
 
 ## Intruder
 *A tip*: I personally recommend setting the  Intruder's "new tab behavior" to copy settings from the previous tab:
@@ -481,7 +481,7 @@ Please refer to TODO.txt. Also, I am always happy to see feedback. If you come a
 
 ## Some case examples
 ### 1) Test cases
-For example test cases (the number of all supported cases should be bigger than the total number of payloads generated) please refer to the [](test_cases/) directory. Below is a screenshot with the current results of these test cases, reflecting the coverage and tool's expected behavior:
+For example test cases (the number of all supported cases should be bigger than the total number of payloads generated) please refer to the  https://github.com/ewilded/shelling/tree/master/test_cases directory. Below is a screenshot with the current results of these test cases, reflecting the coverage and tool's expected behavior:
 
 ![Test results](screenshots/test_results.png?raw=true)
 
