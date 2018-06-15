@@ -12,7 +12,7 @@ It comes in the form of a Burp Suite plugin with the following main functionalit
 * Payload export to clipboard/file
 * Single byte generator
 
-The full capabilities of this plugin can only be achieved with Burp Pro version, however the tool can still be used with the free Burp Community version (with its inherent limitations like no Active Scanning and limited Intruder attacks)).
+The full capabilities of this plugin can only be achieved with Burp Pro version, however the tool can still be used with the free Burp Community version (with its inherent limitations like no Active Scanning and limited Intruder attacks).
 
 ![One](screenshots/one.png?raw=true)
 
@@ -30,7 +30,7 @@ This documentation has two purposes:
 
 
 # Table of contents
-* [Identifying possible reasons of getting false negatives](#Identifying-possible-reasons-of-getting-false-negatives)
+* [Identifying possible reasons of getting false negatives](#identifying-possible-reasons-of-getting-false-negatives)
 	* [The syntax problem](#the-syntax-problem)
 	* [The problem of input-sanitizing mechanisms](#the-problem-of-input-sanitizing-mechanisms)
 		* [Bad characters](#bad-characters)
