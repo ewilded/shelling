@@ -1,22 +1,16 @@
 SHELLING TODO
 --------------------------------
-TODO for the current release (before pushing this to the store):
-
-- fix the performance/freeze problem with scanner (got it once ran 12 simultaneous tasks)
-- check payload 8 base for false negatives
-- Make sure the menu does not fuck up under lower resolutions (I am pretty sure it still does)
-- SHIP IT!
-
 
 TODO for the next release:
-- Documentation
-- Warn about the scope issue in the documentation!
-- quotes!!!
-- Some form of best effort payloads
+- consider/test the double-separator idea (at least add it as an option)
+- make sure we do quotes right
+- better form of best effort payloads
 - payload number recalculation function for each config change, to update the "Save CNT payloads" tab title (so we'll know in advance how many payloads will be produced with the current confgiruation
 Also, we can compare the counter with the actual size to check for duplicates/skipped paylaods
+- go through ENTIRE Daniel's research 
+- response-based analysis as an additional feedback channel (for Scanner) and argument injection
+- make sure there are no invalid payloads in the payload set
 
-custom command syntax
 OS-specific improvements:
 	- nix: https://security.szurek.pl/exploit-bypass-php-escapeshellarg-escapeshellcmd.html#known-bypassesexploits
 	- nix: Introduce this IFS=,;`cat<<<uname,-a` by https://twitter.com/MrHappiey
@@ -28,7 +22,6 @@ cat${IFS}/etc/passwd
 cat</etc/passwd                 
 {cat,/etc/passwd} OR {ls,-las,/var} with args
 X=$'cat\x20/etc/passwd'&&$X
-
 	- nix: -exec, -e, -r and other argument injections for direct code execution are encouraged ;]
 	- nix: -o, -O and -out are also good outputfile candidates in nix, the problem is we don't have UNC support... or do we? what about URLs to other protocols, like scp:// and the like?
 		we have to figure out something like:
@@ -42,12 +35,3 @@ X=$'cat\x20/etc/passwd'&&$X
 	- win: check that obfuscation trick from Daniel's presentation (and prolly do more research on the subject)
 
 
-
-- response-based analysis as an additional feedback channel (for Scanner) and argument injection
-
-Improve the payload set:
-	- check the full paylaod set for incorrect payloads (ones that do not make sense -> will always fail)
-	- profiles (make a very good-effort, but optimized, default payload list) - 10-50 most effective payloads
-
-
-BTW: The worst thing about Burp Collaborator is the payload length; much better to have a private instance at a domain as short as possible. Also, for private use, the length of the domain identifier could be much shorter (in most cases even one byte would do the trick).
