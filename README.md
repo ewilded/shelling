@@ -1,6 +1,6 @@
 Original work by: Julian H. https://github.com/ewilded/shelling
 
-# SHELLING - a comprehensive OS command injection payload generator (an OLD version available in the Burp App Store as Command Injection Attacker).
+# SHELLING - a comprehensive OS command injection payload generator (an OLD version available in the Burp App Store as Command Injection Attacker, the current version has already been submitted and should be released soon).
 
 ![Logo](logo.png?raw=true)
 # What is SHELLING?
@@ -15,10 +15,13 @@ It comes in the form of a Burp Suite plugin with the following main functionalit
 The full capabilities of this plugin can only be achieved with Burp Pro version, however the tool can still be used with the free Burp Community version (with its inherent limitations like no Active Scanning and limited Intruder attacks)).
 
 ![One](screenshots/one.png?raw=true)
+
 ![Two](screenshots/two.png?raw=true)
+
 ![Three](screenshots/three.png?raw=true)
+
 ![Four](screenshots/four.png?raw=true)
-![Test results](screenshots/test_results.png?raw=true)
+
 
 # Purpose of this document
 This documentation has two purposes:
@@ -205,7 +208,7 @@ Therefore it would be great to use an alternative command separator like `%PATH:
 Unfortunately the default environmental variables under Windows do not contain any supported command separator, like `&`. 
 It WOULD work, here's why:
 
-* ![Little test](screenshots/win_shellshock.png?raw=true "Little test")
+ ![Little test](screenshots/win_shellshock.png?raw=true "Little test")
 
 * This behavior was described long time ago, being called the "Windows version" of the famous bash shellshock vulnerability (https://www.thesecurityfactory.be/command-injection-windows.html)
 
@@ -316,16 +319,16 @@ This section focuses only on explaining the main concepts and their implementati
 The default settings the plugin loads with should be optimum for most scenarios, so the tool can be used out of the box without any adjustments.
 
 ## Feedback channels
-Two out of above mentioned feedback channels (*DNS* and *time*) are fully supported (can be used out of the box without any additional tools or manual actions taken) in the *auto* mode. Feel free to use other feedback channels (*manual* mode only) whenever necessary.
+Two out of above mentioned feedback channels (**DNS** and **time**) are fully supported (can be used out of the box without any additional tools or manual actions taken) in the *auto* mode. Feel free to use other feedback channels (*manual* mode only) whenever necessary.
 
 ### DNS
-In order to catch both synchronous and asynchronous interactions with our payloads, the tool is using [Burp Collaborator] (https://portswigger.net/burp/help/collaborator).
+In order to catch both synchronous and asynchronous interactions with our payloads, the tool is using Burp Collaborator (https://portswigger.net/burp/help/collaborator).
 
 Burp Collaborator is heavily used by the Burp Active Scanner. 
 
 It can as well be used manually (just click on 'Burp'->'Burp Collaborator Client' and try it out yourself), so it can be combined with manual or semi-automated attacks (Repeater, Intruder, tampering through proxy, forging files, using external tools and so on).
 
-Luckily, Burp Suite also provides Burp Collaborator API so it can be used by extensions (and this is exactly what this plugin is doing when *DNS* feedback channel is used).
+Luckily, Burp Suite also provides Burp Collaborator API so it can be used by extensions (and this is exactly what this plugin is doing when **DNS** feedback channel is used).
 
 Service-wise, please keep in mind you can either use the default Collaborator service provided by Portswigger or set up your own. 
 
@@ -356,18 +359,18 @@ The mode setting only applies to Intruder and Export (and is ignored by the Acti
 
 ### The auto mode 
 This mode is enabled by default and recommended.
-The automatic mode does not allow one to explicitly specify the command to be injected and neither its argument. In this mode, the actual command used in the payload depends on the feedback channel (e.g. `nslookup` vs `sleep`) and the target OS (e.g. `sleep 25` for nix and `ping -n 25 localhost` for win, because `sleep` is not a thing on win). Also, whereas *DNS* serves as the feedback channel, payload marking is enforced. 
+The automatic mode does not allow one to explicitly specify the command to be injected and neither its argument. In this mode, the actual command used in the payload depends on the feedback channel (e.g. `nslookup` vs `sleep`) and the target OS (e.g. `sleep 25` for nix and `ping -n 25 localhost` for win, because `sleep` is not a thing on win). Also, whereas **DNS** serves as the feedback channel, payload marking is enforced. 
 
 #### Combining Intruder with Collaborator
 The coolest thing about the *auto* mode is the automated use of the Burp Collaborator service without the need to:
 * manually running the Burp Collaborator Client
-* copying the domain names from it ("Copy to clipboard")
+* copying the domain names from it (*Copy to clipboard*)
 * putting them into our payloads/configuration
 * keeping the Burp Collaborator Client window open, watching it for interactions
 
-Again, this mode is always used by the Scanner extension anyway regardless to the setting, which means this setting only applies to Intruder and Export. Yes, this means that by default Intruder attacks using payloads provided by this tool WILL DETECT Collaborator interactions (either right away or long after the attack was finished) ... and *create issues in the Target, just like they came from the Scanner*! 
+Again, this mode is always used by the Scanner extension anyway regardless to the setting, which means this setting only applies to Intruder and Export. Yes, this means that by default Intruder attacks using payloads provided by this tool **WILL DETECT** Collaborator interactions (either right away or long after the attack was finished) ... and **create issues in the Target, just like they came from the Scanner**! 
 
-Every time a set of payloads is generated (in result of running an Active Scan, an Intruder attack or an Export to file/clipboard) with *DNS* as the feedback channel, SHELLING requests the Collaborator service to create a new unique subdomain (just like if we hit the "Copy to clipboard" button in the Burp Collaborator Client - except it happens automatically) and remembers it after the payload set is generated. Every time the Collaborator Service returns interactions, they are all matched against all the domains generated and tracked till this point. By matching the subdomain and the payload marker, it is possible to identify the exact payload/payloads that caused it and (for Scanner and Intruder) trace the base request used for the attack. This set of information is sufficient for automatic insertion of a new issue to the 'Issues' list in the 'Site Map', both for Active Scanning and Intruder attacks (this won't work for Export only because there is no base request associated with its instance). See the Intruder section for an actual example (you won't see this trick in any other Burp plugin :D).
+Every time a set of payloads is generated (in result of running an Active Scan, an Intruder attack or an Export to file/clipboard) with **DNS** as the feedback channel, SHELLING requests the Collaborator service to create a new unique subdomain (just like if we hit the *Copy to clipboard* button in the Burp Collaborator Client - except it happens automatically) and remembers it after the payload set is generated. Every time the Collaborator Service returns interactions, they are all matched against all the domains generated and tracked till this point. By matching the subdomain and the payload marker, it is possible to identify the exact payload/payloads that caused it and (for Scanner and Intruder) trace the base request used for the attack. This set of information is sufficient for automatic insertion of a new issue to the *Issues* list in the *Site Map*, both for Active Scanning and Intruder attacks (this won't work for Export only because there is no base request associated with its instance). See the Intruder section for an actual example (you won't see this trick in any other Burp plugin :D).
 
 ##### Why?
 The main reason for implementing this Collaborator-enabled, Scanner-like capability for Intruder was the same reason we use Intruder. Sometimes we do not want to run a full Active Scan of a particular insertion point (with all the Scanner checks enabled, while disabling them just for one scanning task only to enable them again right after running it would be even more cumbersome), but instead we only want to test that insertion point for a particular vulnerability, like OS command injection. Also, Intruder gives us insight into the responses than the Scanner (speaking of which, see this).
@@ -393,10 +396,10 @@ I personally believe that the full payload set provides us with high confidence 
 Another scenario for using the full payload set are inputs that behave in a suspicious way (e.g. potential code injection issues detected by the Backslash Powered Scanner) and we are trying to guess the proper syntax and other input conditions - or at least partially automate and therefore speed up the guessing process, providing us with the clear list of payloads we have already tried.
 
 ## Scanner
-'''CAUTION:''' Always make sure the item you are about to Scan/Intrude is added to the scope! Issues added from Burp Extensions to targets not in the scope do not pop up!
+**CAUTION:** Always make sure the item you are about to Scan/Intrude is added to the scope! Issues added from Burp Extensions to targets not in the scope do not pop up!
 
 Active Scanning is by default enabled in the *Global settings*:
-* ![Global settings](screenshots/active_scanning.png?raw=true "Global settings")
+![Global settings](screenshots/active_scanning.png?raw=true "Global settings")
 
 A set of payloads (and a separate Collaborator session) is generated individually for each of the insertion points. So, if we decide to scan the entire request (e.g. right click on the request/response in any tool -> `Do an active scan`), there number of active insertion points tested will directly depend on the request and Scanner's `Options -> Attack Insertion Points` configuration.
 
@@ -404,47 +407,49 @@ Scans can be run on individual insertion points only, using Intruder:
 * ![Individual insertion point](screenshots/active_scanning2.png?raw=true "Individual insertion point")
 
 ## Intruder
-'''A tip''': I personally recommend setting the  Intruder's "new tab behavior" to copy settings from the previous tab:
-* ![New tab behavior](screenshots/new_tab_behavior.png?raw=true "New tab behavior")
+*A tip*: I personally recommend setting the  Intruder's "new tab behavior" to copy settings from the previous tab:
+![New tab behavior](screenshots/new_tab_behavior.png?raw=true "New tab behavior")
 
 It saves a lot of time and clicking (every new Intruder attack will automatically have the configuration copied from the previous one, so we do not have to set all the options up all over again).
 
 Setting up SHELLING for use with Intruder is very simple (once done, this setting will be copied to every new Intruder tab):
 1) Send the request of choice to Intruder:
-* ![Setting up Intruder](screenshots/send_to_intruder.png?raw=true "Setting up Intruder")
+![Setting up Intruder](screenshots/send_to_intruder.png?raw=true "Setting up Intruder")
 
 2) Pick `Extension generated` as the payload type:
-* ![Setting up Intruder](screenshots/setting_up_intruder.png?raw=true "Setting up Intruder")
+![Setting up Intruder](screenshots/setting_up_intruder.png?raw=true "Setting up Intruder")
 
 3) Pick `Command injection` as the generator:
-* ![Setting up Intruder](screenshots/setting_up_intruder2.png?raw=true "Setting up Intruder")
+![Setting up Intruder](screenshots/setting_up_intruder2.png?raw=true "Setting up Intruder")
 
 4) Make sure that the `Payload Encoding` is off (the output character encoding is handled separately by the tool from the `Evasive techniques` tab and the default encoding is URL):
-* ![Setting up Intruder](screenshots/setting_up_intruder3.png?raw=true "Setting up Intruder")
+![Setting up Intruder](screenshots/setting_up_intruder3.png?raw=true "Setting up Intruder")
 
 5) Make sure the target is added to the scope:
-* ![Scope](screenshots/scope.png?raw=true "Scope")
+![Scope](screenshots/scope.png?raw=true "Scope")
 
 ### Example 1: Intruder in auto mode
 OK, time for some magic! 
 The Intruder attack is already set. 
 Now let's just make sure the SHELLING mode is set to *auto* (it is by default):
-* ![Setting up Intruder](screenshots/auto_mode1.png?raw=true "Setting up Intruder")
+![Setting up Intruder](screenshots/auto_mode1.png?raw=true "Setting up Intruder")
 
-Now, we can already hit "Start"... However if we want to be able to see a bit of what's going on under the hood, we can do two things:
-1) Load Flow
-2) Go to the `Advanced` tab in SHELLING and enable "Verbose extension output":
-* ![Verbose output](screenshots/verbose_output.png?raw=true "Verbose output")
+Now, we can already hit "Start"... However if we want to be able to see a bit of what's going on under the hood:
+* Go to the `Advanced` tab in SHELLING and enable "Verbose extension output":
+![Verbose output](screenshots/verbose_output.png?raw=true "Verbose output")
+
 This will turn on debug information in the Extender -> Shelling -> Output tab:
-* ![Verbose output](screenshots/verbose_output2.png?raw=true "Verbose output")
+![Verbose output](screenshots/verbose_output2.png?raw=true "Verbose output")
 
 As we can see, at this point there are no issues for the target:
 * ![No issues](screenshots/no_issues.png?raw=true "No issues")
 
 We hit "Start attack" and watch the magic happen:
-* ![Magic happens](screenshots/magic_happens1.png?raw=true "Magic happens")
+Issue pops up:
+![Magic happens](screenshots/magic_happens1.png?raw=true "Magic happens")
 
-* ![Magic happens](screenshots/magic_happens2.png?raw=true "Magic happens")
+Plugin verbose output:
+![Magic happens](screenshots/magic_happens2.png?raw=true "Magic happens")
 
 ### Example 2: Intruder in manual mode
 Nothing exciting, check it out for yourself if you need it.
@@ -453,8 +458,10 @@ Nothing exciting, check it out for yourself if you need it.
 Payloads can be exported directly to the clipboard as well as to a text file (so they can be used with external tools, e.g. Intruder run from a Burp Suite installation that does not have SHELLING installed - or maybe even a tool using those payloads to test an application using a totally different protocol than HTTP (e.g. SIP, FTP, SMTP, Telnet, whatever).
 
 ## Byte generator
-The `Byte generator` is an additional auxiliary payload provider (can be used with Intruder instead of the `Command injection` generator. It provides the following predefined byte ranges:
-* ![Byte generator](screenshots/magic_happens2.png?raw=true "Byte generator")
+The *Byte generator* is an additional auxiliary payload provider (can be used with Intruder instead of the `Command injection` generator. It provides the following predefined byte ranges:
+
+![Byte generator](screenshots/magic_happens2.png?raw=true "Byte generator")
+
 I personally found it very useful for general fuzzing and research, like:
 * trying to discover alternative:
   * argument/command separators
@@ -465,15 +472,19 @@ I personally found it very useful for general fuzzing and research, like:
 
 ## Experimental injection modes
 SHELLING also supports two experimental injection modes (early stage of development):
-* argument injection (please refer to DETECTING_ARGUMENT_INJECTION.md for more details and feel free to play with it yourself)
+* argument injection (please refer to [](DETECTING_ARGUMENT_INJECTION.md) for more details and feel free to play with it yourself)
 * terminal injection (also known as escape sequence injection vulnerability, e.g. `curl -kis http://www.example.com/%1b%5d%32%3b%6f%77%6e%65%64%07%0a`)
 
 ## Problems and future improvements
 Please refer to TODO.txt. Also, I am always happy to see feedback. If you come across issues, false negatives or ideas for improvement, don't be shy.
 
+
 ## Some case examples
 ### 1) Test cases
-For example test cases (the number of all supported cases should be bigger than the total number of payloads generated) please refer to the test_cases/ directory. Below is a screenshot with the current results of these test cases, reflecting the coverage and tool's expected behaviour.
+For example test cases (the number of all supported cases should be bigger than the total number of payloads generated) please refer to the [](test_cases/) directory. Below is a screenshot with the current results of these test cases, reflecting the coverage and tool's expected behavior:
+
+![Test results](screenshots/test_results.png?raw=true)
+
 
 ### 2) Some real examples
 - https://chris-young.net/2017/04/12/pentest-ltd-ctf-securi-tay-2017-walkthrough/
@@ -482,19 +493,22 @@ For example test cases (the number of all supported cases should be bigger than 
 
 
 ## Recommended tools, projects and special thanks
-### Tools I recommend using (not only along with SHELLING, but generally)
+### Tools I recommend using (not only in tandem with SHELLING, but generally)
 #### Flow
-[Flow] (https://github.com/PortSwigger/flow) is a great plugin to monitor and search ALL the traffic going through Burp, I find it extremely useful).
+An extremely useful Burp Suite plugin simply allowing to monitor and search all the traffic processed by ALL Burp Suite plugins (Proxy, Intruder, Scanner, Extender, Target...). Only when using this plugin you can really know what you are ACTUALLY doing with Burp: https://github.com/PortSwigger/flow
 
 #### Backslash Powered Scanner
-[Backslash Powered Scanner] (https://github.com/PortSwigger/backslash-powered-scanner)
+The revolutionary, providing research-quality findings Backslash Powered Scanner by James Kettle: https://github.com/PortSwigger/backslash-powered-scanner
 
 #### Error message checks
-(https://github.com/augustd/burp-suite-error-message-checks)
+Although not directly related, this plugin allows better oversight of the responses we are receiving when using Active Scanning. 
+
+The capability of defining our own error message patterns along with their type and severity makes it possible to watch Scanner responses for patterns of our choice without the need of writing our own dedicated plugin: https://github.com/augustd/burp-suite-error-message-checks
 
 #### Daniel Bohannon's research 
-(https://github.com/danielbohannon)
-
+The mind-blowing science and art of command obfuscation by Daniel Bohannon: https://github.com/danielbohannon
 
 #### Special thanks
-I would like express my special thanks to Dawid Goluński and Daniel Bohannon for providing food for thought and inspiration with their awesome work.
+I would like to express my special thanks to Dawid Goluński and Daniel Bohannon for providing food for thought and inspiration for this project with their awesome work!
+Also, special thanks to Marcin Wołoszyn for the extremely useful Flow plugin! Helps me everyday, both with testing AND my own plugin development. 
+Keep it up, guys!
