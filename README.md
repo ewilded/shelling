@@ -228,7 +228,7 @@ Additionally, the following string terminators can be used (in case input was wr
 
 This way the base payload set is multiplied by all the feasible combinations of alternative argument separators, command separators and command terminators.
 
-The above separators could include double characters (like two spaces or two tabs, one after another). This is idea for optimisation aimed at defeating improperly written filters which only cut out single instances of banned characters, instead of removing them all. In such case two characters would get reduced to one, bypassing the filter and hitting the vulnerable function.
+The above separators could include double characters (like two spaces or two tabs, one after another). This is idea for optimization aimed at defeating improperly written filters which only cut out single instances of banned characters, instead of removing them all. In such case two characters would get reduced to one, bypassing the filter and hitting the vulnerable function.
 
 
 ### Regular expressions
@@ -337,7 +337,7 @@ Having and using a private Collaborator service makes more sense if we set it up
 Also, it's good to always run a health check of the Collaborator service before actually using it.
 
 ### time
-This is a well known feedback channel for detecting so called 'blind' variant of injection vulnerabilities. It's faster and it does not require external service like DNS. Also, the payloads are shorter. It shouold still be considered less reliable as it will NOT detect asynchronous vulnerabilities, whereas the payload is stored first and then executed by a different process or even system.
+This is a well known feedback channel for detecting so called 'blind' variant of injection vulnerabilities. It's faster and it does not require external service like DNS. Also, the payloads are shorter. It should still be considered less reliable as it will NOT detect asynchronous vulnerabilities, whereas the payload is stored first and then executed by a different process or even system.
 Upon successful execution, payloads utilizing this feedback channel (e.g. `sleep 25`) cause a significant delay in the response.
 
 ## Payload marking
