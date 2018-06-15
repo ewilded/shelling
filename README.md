@@ -54,8 +54,8 @@ This documentation has two purposes:
 	* [Byte generator](#byte-generator)
 	* [Experimental injection modes](#experimental-injection-modes)
 	* [Problems and future improvements](#problems-and-future-improvements)
-	* [Test cases, real cases](#Test-cases,-real-cases)
-	* [Other recommended tools, projects and special thanks](#other-recommended-tools,-projects-and-special-thanks)
+	* [Test cases, real cases](#some-case-examples)
+	* [Other recommended tools, projects and special thanks](#tools-i-recommend-using-not-only-in-tandem-with-shelling-but-generally)
 
 
 
@@ -442,7 +442,7 @@ This will turn on debug information in the Extender -> Shelling -> Output tab:
 ![Verbose output](screenshots/verbose_output2.png?raw=true "Verbose output")
 
 As we can see, at this point there are no issues for the target:
-* ![No issues](screenshots/no_issues.png?raw=true "No issues")
+![No issues](screenshots/no_issues.png?raw=true "No issues")
 
 We hit "Start attack" and watch the magic happen:
 Issue pops up:
@@ -472,7 +472,7 @@ I personally found it very useful for general fuzzing and research, like:
 
 ## Experimental injection modes
 SHELLING also supports two experimental injection modes (early stage of development):
-* argument injection (please refer to [](DETECTING_ARGUMENT_INJECTION.md) for more details and feel free to play with it yourself)
+* argument injection (please refer to https://github.com/ewilded/shelling/blob/master/DETECTING_ARGUMENT_INJECTION.md for more details and feel free to play with it yourself)
 * terminal injection (also known as escape sequence injection vulnerability, e.g. `curl -kis http://www.example.com/%1b%5d%32%3b%6f%77%6e%65%64%07%0a`)
 
 ## Problems and future improvements
