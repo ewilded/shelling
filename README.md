@@ -30,36 +30,36 @@ This documentation has two purposes:
 
 
 # Table of contents
-* Methodology - identifying possible reasons of false negatives (missed vulnerabilities)]
-	* The syntax problem
-	* The problem of input-sanitizing mechanisms
-		* Bad characters
-		* Regular expressions
-	* Platform-specific conditions
-	* The problem of the feedback channel
-* Using the tool
-	* Feedback channels
-		* DNS
-		* time
-	* Payload marking
-	* Difference between manual and automatic mode
-		* The auto mode
-		* The manual mode
-	* Different approaches to using this tool
-	* Scanner
-	* Intruder
-		* Intruder in auto mode (Collaborator integration!)
-		* Intruder in manual mode
-	* Export
-	* Byte generator
-	* Experimental injection modes
-	* Problems and future improvements
-	* Test cases, real cases
-	* Other recommended tools, projects and special thanks
+* [Identifying possible reasons of getting false negatives](#Identifying-possible-reasons-of-getting-false-negatives)
+	* [The syntax problem](#the-syntax-problem)
+	* [The problem of input-sanitizing mechanisms](#the-problem-of-input-sanitizing-mechanisms)
+		* [Bad characters](#bad-characters)
+		* [Regular expressions](#regular-expressions)
+	* [Platform-specific conditions](#platform-specific-conditions)
+	* [The problem of the feedback channel](#the-problem-of-the-feedback-channel)
+* [Using the tool](#using-the-tool)
+	* [Feedback channels](#feedback-channels)
+		* [DNS](#dns)
+		* [time](#time)
+	* [Payload marking](#payload-marking)
+	* [Difference between manual and automatic mode](#difference-between-manual-and-automatic-mode)
+		* [The auto mode](#the-auto-mode)
+		* [The manual mode](#the-manual-mode)
+	* [Different approaches to using this tool](#different-approaches-to-using-this-tool)
+	* [Scanner](#scanner)
+	* [Intruder](#intruder)
+		* [Intruder in auto mode - Collaborator integration!](#intruder-in-auto-mode)
+		* [Intruder in manual mode](#intruder-in-manual-mode)
+	* [Export](#export)
+	* [Byte generator](#byte-generator)
+	* [Experimental injection modes](#experimental-injection-modes)
+	* [Problems and future improvements](#problems-and-future-improvements)
+	* [Test cases, real cases](#Test-cases,-real-cases)
+	* [Other recommended tools, projects and special thanks](#other-recommended-tools,-projects-and-special-thanks)
 
 
 
-# Methodology - identifying possible reasons of false negatives (missed vulnerabilities)
+# Identifying possible reasons of getting false negatives
 
 Problems to face when creating OS command injection payloads:
 * the eventual syntax of the expression we are injecting into (e.g. quoted expressions)
@@ -228,7 +228,7 @@ Additionally, the following string terminators can be used (in case input was wr
 
 This way the base payload set is multiplied by all the feasible combinations of alternative argument separators, command separators and command terminators.
 
-The above separators could include double characters (like two spaces or two tabs, one after another). This is idea for optimization aimed at defeating improperly written filters which only cut out single instances of banned characters, instead of removing them all. In such case two characters would get reduced to one, bypassing the filter and hitting the vulnerable function.
+The above separators could include double characters (like two spaces or two tabs, one after another). This is idea for optimisation aimed at defeating improperly written filters which only cut out single instances of banned characters, instead of removing them all. In such case two characters would get reduced to one, bypassing the filter and hitting the vulnerable function.
 
 
 ### Regular expressions
@@ -337,7 +337,7 @@ Having and using a private Collaborator service makes more sense if we set it up
 Also, it's good to always run a health check of the Collaborator service before actually using it.
 
 ### time
-This is a well known feedback channel for detecting so called 'blind' variant of injection vulnerabilities. It's faster and it does not require external service like DNS. Also, the payloads are shorter. It should still be considered less reliable as it will NOT detect asynchronous vulnerabilities, whereas the payload is stored first and then executed by a different process or even system.
+This is a well known feedback channel for detecting so called 'blind' variant of injection vulnerabilities. It's faster and it does not require external service like DNS. Also, the payloads are shorter. It shouold still be considered less reliable as it will NOT detect asynchronous vulnerabilities, whereas the payload is stored first and then executed by a different process or even system.
 Upon successful execution, payloads utilizing this feedback channel (e.g. `sleep 25`) cause a significant delay in the response.
 
 ## Payload marking
@@ -428,7 +428,7 @@ Setting up SHELLING for use with Intruder is very simple (once done, this settin
 5) Make sure the target is added to the scope:
 ![Scope](screenshots/scope.png?raw=true "Scope")
 
-### Example 1: Intruder in auto mode
+### Intruder in auto mode
 OK, time for some magic! 
 The Intruder attack is already set. 
 Now let's just make sure the SHELLING mode is set to *auto* (it is by default):
@@ -451,7 +451,7 @@ Issue pops up:
 Plugin verbose output:
 ![Magic happens](screenshots/magic_happens2.png?raw=true "Magic happens")
 
-### Example 2: Intruder in manual mode
+### Intruder in manual mode
 Nothing exciting, check it out for yourself if you need it.
 
 ## Export
