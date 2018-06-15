@@ -1,6 +1,6 @@
 Original work by: Julian H. https://github.com/ewilded/shelling
 
-# SHELLING - a comprehensive OS command injection payload generator (available in the Burp App Store as Command Injection Attacker).
+# SHELLING - a comprehensive OS command injection payload generator (an OLD version available in the Burp App Store as Command Injection Attacker).
 
 ![Logo](logo.png?raw=true)
 # What is SHELLING?
@@ -12,7 +12,13 @@ It comes in the form of a Burp Suite plugin with the following main functionalit
 * Payload export to clipboard/file
 * Single byte generator
 
-The plugin can be used with the free Burp Community version, with its inherent limitations.
+The full capabilities of this plugin can only be achieved with Burp Pro version, however the tool can still be used with the free Burp Community version (with its inherent limitations like no Active Scanning and limited Intruder attacks)).
+
+![One](screenshots/one.png?raw=true)
+![Two](screenshots/two.png?raw=true)
+![Three](screenshots/three.png?raw=true)
+![Four](screenshots/four.png?raw=true)
+![Test results](screenshots/test_results.png?raw=true)
 
 # Purpose of this document
 This documentation has two purposes:
@@ -35,18 +41,19 @@ This documentation has two purposes:
 	* Payload marking
 	* Difference between manual and automatic mode
 		* The auto mode
-		* Manual mode
+		* The manual mode
 	* Different approaches to using this tool
 	* Scanner
 	* Intruder
+		* Intruder in auto mode (Collaborator integration!)
+		* Intruder in manual mode
 	* Export
 	* Byte generator
-	* Injection modes
-		* Command injection
-		* Argument injection
-		* Terminal injection
-	* Other recommended tools and projects
+	* Experimental injection modes
 	* Problems and future improvements
+	* Test cases, real cases
+	* Other recommended tools, projects and special thanks
+
 
 
 # Methodology - identifying possible reasons of false negatives (missed vulnerabilities)
@@ -65,7 +72,7 @@ The purpose of creating this tool was to reach the non-trivial OS command inject
 Let's consider the following vulnerable PHP script:
 ```
     <?php
-    if(isset($_GET['username'])) echo shell_exec("echo '{$_GET['username']}'>>/tmp/users.txt");
+    	if(isset($_GET['username'])) echo shell_exec("echo '{$_GET['username']}'>>/tmp/users.txt");
     ?>
 ```
 What makes this case different from the most common and obvious cases of OS command injection is the fact that the user-controlled variable is injected between single quotes in the final expression passed to the shell_exec function. Hence, one of the most obvious OS command injection test cases, like
@@ -127,7 +134,7 @@ Let's consider the following example:
     <?php
     if(isset($_POST['dir'])&&!preg_match('/\s+/',$_POST['dir']))
     {
-    echo "Dir contents are:\n<br />".shell_exec("ls {$_POST['dir']}");
+    	echo "Dir contents are:\n<br />".shell_exec("ls {$_POST['dir']}");
     }
     ?>
 ```
@@ -202,7 +209,7 @@ It WOULD work, here's why:
 
 * This behavior was described long time ago, being called the "Windows version" of the famous bash shellshock vulnerability (https://www.thesecurityfactory.be/command-injection-windows.html)
 
-I am still hoping for some undocumented cmd.exe function that will allow to forge `&` by some sort of single expression. More research is needed.
+I am still hoping for some undocumented cmd.exe function that will allow to forge `&` by some sort of single expression (or some hidden, undocumented special environmental variables not visible in `env` output). More research is needed.
 
 By the way, I also really hoped for the similar thing to work on nix. E.g. the `$LS_COLORS` variable looks more-less like: `rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37[...]`.
 Hence, I really hoped for expression like `ls .${LS_COLORS:10:1}id` to work (evaluating to `ls .;id` and treating `;` as a command separator). Unfortunately bash plays it safe and treats such a string as a literal:
@@ -231,7 +238,7 @@ The following vulnerable PHP will refuse to execute any OS commands as long as t
     <?php
     if(isset($_GET['dir'])&&preg_match('/\w+$/',$_GET['dir']))
     {
-    echo "Dir contents are:\n<br />".shell_exec("ls {$_GET['dir']}");
+    	echo "Dir contents are:\n<br />".shell_exec("ls {$_GET['dir']}");
     }
     ?>
 ```
@@ -242,7 +249,7 @@ Another example's regular expression requires the user-supplied value to both st
     <?php
     if(isset($_GET['dir'])&&preg_match('/^\w+\..*\w+\.\w+$/',$_GET['dir']))
     {
-    echo "Dir contents are:\n<br />".shell_exec("ls {$_GET['dir']}");
+    	echo "Dir contents are:\n<br />".shell_exec("ls {$_GET['dir']}");
     }
     ?>
 ```
@@ -280,8 +287,8 @@ This conditions are often untrue, especially the second one. So, let's deal with
     <?php
     if(isset($_GET['username']))
     {
-    $out=@shell_exec("ls /home/{$_GET['username']}");
-    file_put_contents('/var/www/user.lookups.txt',$out,FILE_APPEND);
+    	$out=@shell_exec("ls /home/{$_GET['username']}");
+    	file_put_contents('/var/www/user.lookups.txt',$out,FILE_APPEND);
     }
     ?>
 ```
@@ -334,7 +341,7 @@ Upon successful execution, payloads utilizing this feedback channel (e.g. `sleep
 The payload marking mechanism is very simple. Every single payload generated by the tool has its number (starting at 1). 
 If payload marking feature is on, upon generation, all instances of the special holder string `PAYLOAD_MARK` in the argument field are replaced with the payload number. This makes it easier to trace back the result to the successful payload that created it. 
 
-For example, if the command is set to `touch` and the argument is set to `/tmp/owned.PAYLOAD_MARK`, once the attack is finished and there is a file named /tmp/owned.1337, we know that payload number 1337 was the one responsible for creating the file. 
+For example, if the command is set to `touch` and the argument is set to `/tmp/owned.PAYLOAD_MARK`, once the attack is finished and there is a file named `/tmp/owned.1337`, we know that payload number 1337 was the one responsible for creating the file. 
 
 We could likewise do something like command=`echo` and argument=`PAYLOAD_MARK>>/tmp/owned`. This way the file `/tmp/owned` would contain all the IDs of the payloads that worked.
 
@@ -368,56 +375,126 @@ The main reason for implementing this Collaborator-enabled, Scanner-like capabil
 ### Manual mode
 The manual mode does not allow one to specify the feedback channel, as we take care of the feedback channel ourselves.
 
-In turn, it gives control over the command and argument, so we can use a configuration like command=`touch` with argument=`/tmp/owned.PAYLOAD_MARK` (payload marking can be still used with manual mode), making the file system our feedback channe.
+In turn, it gives control over the command and argument, so we can use a configuration like command=`touch` with argument=`/tmp/owned.PAYLOAD_MARK` (payload marking can be still used with manual mode), making the file system our feedback channel.
 
 Another example would be command=`echo` and argument = `1337`. Then we add `1337` to the 'Grep - match' option of the Intruder attack, using the direct output as the feedback channel (without payload marking).
 
 Also, payload marking does not make much sense when using time as the feedback channel (there either is a significant delay or not). But of course we could still do it in manual mode: command=`sleep` and argument=`PAYLOAD_MARK`, so if the payload works, the additional delay in seconds will be equal to the payload number.
 
 ## Different approaches to using this tool
-With its default configuration, SHELLING currently generates around 200 payloads (using most reasonable base syntaxes, terminator and encoding settings). This is a relatively high number and it will be reduced in future release, with the default setting going moving best effort payloads (so ideally the tool would only be using the user-defined 'X' first payloads from the list ordered by the likelihood of success).
+With its default configuration, SHELLING currently generates around 200 payloads (using most reasonable base syntaxes, terminator and encoding settings). This is a relatively high number and it will be reduced in future releases, with the default setting moving towards best effort payloads (so ideally the tool would only be using the user-defined 'X' first payloads from the list ordered by the likelihood of success).
 
 With all possible options enabled (all base syntaxes, target operating systems, evasive techniques and other types of injections) this number grows to thousands. 
 
-Therefore, using the full payload set is obviously not reliable for normal testing and is in my opinion an example of what what James Kettle called "the million payload approach" - explaining that Scanners have to provide so called "best effort payloads".
+Therefore, using the full payload set is obviously not reliable for normal testing and is in my opinion an example of what what James Kettle called "the million payload approach" - explaining that scanners have to provide so called "best effort payloads".
 
-I personally believe that the full payload set provides us with high confidence about the profoundness of the test we conducted against the particular input, but for practical reasons this approach should only be taken against features with high likelihood of calling local system binaries/scripts (like any system, diagnostic or file tools).
+I personally believe that the full payload set provides us with high confidence about the profoundness of the test we conducted against the particular input, but for practical reasons this approach should only be taken against features with high likelihood of calling local binaries/scripts (like any system, diagnostic or file-related tools).
 
 Another scenario for using the full payload set are inputs that behave in a suspicious way (e.g. potential code injection issues detected by the Backslash Powered Scanner) and we are trying to guess the proper syntax and other input conditions - or at least partially automate and therefore speed up the guessing process, providing us with the clear list of payloads we have already tried.
 
 ## Scanner
-## Intruder
-### Example 1: Intruder in manual mode
-### Example 2: Intruder in auto mode
+'''CAUTION:''' Always make sure the item you are about to Scan/Intrude is added to the scope! Issues added from Burp Extensions to targets not in the scope do not pop up!
 
+Active Scanning is by default enabled in the *Global settings*:
+* ![Global settings](screenshots/active_scanning.png?raw=true "Global settings")
+
+A set of payloads (and a separate Collaborator session) is generated individually for each of the insertion points. So, if we decide to scan the entire request (e.g. right click on the request/response in any tool -> `Do an active scan`), there number of active insertion points tested will directly depend on the request and Scanner's `Options -> Attack Insertion Points` configuration.
+
+Scans can be run on individual insertion points only, using Intruder:
+* ![Individual insertion point](screenshots/active_scanning2.png?raw=true "Individual insertion point")
+
+## Intruder
+'''A tip''': I personally recommend setting the  Intruder's "new tab behavior" to copy settings from the previous tab:
+* ![New tab behavior](screenshots/new_tab_behavior.png?raw=true "New tab behavior")
+
+It saves a lot of time and clicking (every new Intruder attack will automatically have the configuration copied from the previous one, so we do not have to set all the options up all over again).
+
+Setting up SHELLING for use with Intruder is very simple (once done, this setting will be copied to every new Intruder tab):
+1) Send the request of choice to Intruder:
+* ![Setting up Intruder](screenshots/send_to_intruder.png?raw=true "Setting up Intruder")
+
+2) Pick `Extension generated` as the payload type:
+* ![Setting up Intruder](screenshots/setting_up_intruder.png?raw=true "Setting up Intruder")
+
+3) Pick `Command injection` as the generator:
+* ![Setting up Intruder](screenshots/setting_up_intruder2.png?raw=true "Setting up Intruder")
+
+4) Make sure that the `Payload Encoding` is off (the output character encoding is handled separately by the tool from the `Evasive techniques` tab and the default encoding is URL):
+* ![Setting up Intruder](screenshots/setting_up_intruder3.png?raw=true "Setting up Intruder")
+
+5) Make sure the target is added to the scope:
+* ![Scope](screenshots/scope.png?raw=true "Scope")
+
+### Example 1: Intruder in auto mode
+OK, time for some magic! 
+The Intruder attack is already set. 
+Now let's just make sure the SHELLING mode is set to *auto* (it is by default):
+* ![Setting up Intruder](screenshots/auto_mode1.png?raw=true "Setting up Intruder")
+
+Now, we can already hit "Start"... However if we want to be able to see a bit of what's going on under the hood, we can do two things:
+1) Load Flow
+2) Go to the `Advanced` tab in SHELLING and enable "Verbose extension output":
+* ![Verbose output](screenshots/verbose_output.png?raw=true "Verbose output")
+This will turn on debug information in the Extender -> Shelling -> Output tab:
+* ![Verbose output](screenshots/verbose_output2.png?raw=true "Verbose output")
+
+As we can see, at this point there are no issues for the target:
+* ![No issues](screenshots/no_issues.png?raw=true "No issues")
+
+We hit "Start attack" and watch the magic happen:
+* ![Magic happens](screenshots/magic_happens1.png?raw=true "Magic happens")
+
+* ![Magic happens](screenshots/magic_happens2.png?raw=true "Magic happens")
+
+### Example 2: Intruder in manual mode
+Nothing exciting, check it out for yourself if you need it.
 
 ## Export
+Payloads can be exported directly to the clipboard as well as to a text file (so they can be used with external tools, e.g. Intruder run from a Burp Suite installation that does not have SHELLING installed - or maybe even a tool using those payloads to test an application using a totally different protocol than HTTP (e.g. SIP, FTP, SMTP, Telnet, whatever).
+
 ## Byte generator
+The `Byte generator` is an additional auxiliary payload provider (can be used with Intruder instead of the `Command injection` generator. It provides the following predefined byte ranges:
+* ![Byte generator](screenshots/magic_happens2.png?raw=true "Byte generator")
+I personally found it very useful for general fuzzing and research, like:
+* trying to discover alternative:
+  * argument/command separators
+  * string terminators
+  * breakout sequences
+  * error conditions
 
-## Other recommended tools and projects
-### Backslash Powered Scanner
-### Flow
-[Flow] (https://github.com/PortSwigger/flow) is a great plugin to monitor and search ALL the traffic going through Burp, I find it extremely useful).
 
-### Error message checks
-### Daniel's research
-
-## Injection modes
-### Command injection
-### Argument injection
-### Terminal injection
-
+## Experimental injection modes
+SHELLING also supports two experimental injection modes (early stage of development):
+* argument injection (please refer to DETECTING_ARGUMENT_INJECTION.md for more details and feel free to play with it yourself)
+* terminal injection (also known as escape sequence injection vulnerability, e.g. `curl -kis http://www.example.com/%1b%5d%32%3b%6f%77%6e%65%64%07%0a`)
 
 ## Problems and future improvements
-### Best effort payloads
-### More research on syntax
-### More research and evasive techniques
+Please refer to TODO.txt. Also, I am always happy to see feedback. If you come across issues, false negatives or ideas for improvement, don't be shy.
 
 ## Some case examples
 ### 1) Test cases
-For example test cases (the number of all supported cases should be bigger than the total number of payloads generated) please refer to the test_cases directory. Below is a screenshot with the current results of these test cases, reflecting the coverage and tool's expected behaviour.
+For example test cases (the number of all supported cases should be bigger than the total number of payloads generated) please refer to the test_cases/ directory. Below is a screenshot with the current results of these test cases, reflecting the coverage and tool's expected behaviour.
 
 ### 2) Some real examples
 - https://chris-young.net/2017/04/12/pentest-ltd-ctf-securi-tay-2017-walkthrough/
 - https://www.exploit-db.com/exploits/41892/
+- https://www.exploit-db.com/exploits/34461/
 
+
+## Recommended tools, projects and special thanks
+### Tools I recommend using (not only along with SHELLING, but generally)
+#### Flow
+[Flow] (https://github.com/PortSwigger/flow) is a great plugin to monitor and search ALL the traffic going through Burp, I find it extremely useful).
+
+#### Backslash Powered Scanner
+[Backslash Powered Scanner] (https://github.com/PortSwigger/backslash-powered-scanner)
+
+#### Error message checks
+(https://github.com/augustd/burp-suite-error-message-checks)
+
+#### Daniel Bohannon's research 
+(https://github.com/danielbohannon)
+
+
+#### Special thanks
+I would like express my special thanks to Dawid Goluński and Daniel Bohannon for providing food for thought and inspiration with their awesome work.
