@@ -30,7 +30,7 @@ This documentation has two purposes:
 
 
 # Table of contents
-* Methodology - identifying possible reasons of false negatives (missed vulnerabilities)
+* Methodology - identifying possible reasons of false negatives (missed vulnerabilities)]
 	* The syntax problem
 	* The problem of input-sanitizing mechanisms
 		* Bad characters
@@ -373,7 +373,7 @@ Again, this mode is always used by the Scanner extension anyway regardless to th
 Every time a set of payloads is generated (in result of running an Active Scan, an Intruder attack or an Export to file/clipboard) with **DNS** as the feedback channel, SHELLING requests the Collaborator service to create a new unique subdomain (just like if we hit the *Copy to clipboard* button in the Burp Collaborator Client - except it happens automatically) and remembers it after the payload set is generated. Every time the Collaborator Service returns interactions, they are all matched against all the domains generated and tracked till this point. By matching the subdomain and the payload marker, it is possible to identify the exact payload/payloads that caused it and (for Scanner and Intruder) trace the base request used for the attack. This set of information is sufficient for automatic insertion of a new issue to the *Issues* list in the *Site Map*, both for Active Scanning and Intruder attacks (this won't work for Export only because there is no base request associated with its instance). See the Intruder section for an actual example (you won't see this trick in any other Burp plugin :D).
 
 ##### Why?
-The main reason for implementing this Collaborator-enabled, Scanner-like capability for Intruder was the same reason we use Intruder. Sometimes we do not want to run a full Active Scan of a particular insertion point (with all the Scanner checks enabled, while disabling them just for one scanning task only to enable them again right after running it would be even more cumbersome), but instead we only want to test that insertion point for a particular vulnerability, like OS command injection. Also, Intruder gives us insight into the responses than the Scanner (speaking of which, see this).
+The main reason for implementing this Collaborator-enabled, Scanner-like capability for Intruder was the same reason we use Intruder. Sometimes we do not want to run a full Active Scan of a particular insertion point (with all the Scanner checks enabled, while disabling them just for one scanning task only to enable them again right after running it would be even more cumbersome), but instead we only want to test that insertion point for a particular vulnerability, like OS command injection. Also, Intruder gives us insight into the responses (while the scanner alone does not) -  speaking of which, check out this: https://github.com/ewilded/shelling/blob/master/README.md#flow.
 
 ### Manual mode
 The manual mode does not allow one to specify the feedback channel, as we take care of the feedback channel ourselves.
@@ -385,11 +385,11 @@ Another example would be command=`echo` and argument = `1337`. Then we add `1337
 Also, payload marking does not make much sense when using time as the feedback channel (there either is a significant delay or not). But of course we could still do it in manual mode: command=`sleep` and argument=`PAYLOAD_MARK`, so if the payload works, the additional delay in seconds will be equal to the payload number.
 
 ## Different approaches to using this tool
-With its default configuration, SHELLING currently generates around 200 payloads (using most reasonable base syntaxes, terminator and encoding settings). This is a relatively high number and it will be reduced in future releases, with the default setting moving towards best effort payloads (so ideally the tool would only be using the user-defined 'X' first payloads from the list ordered by the likelihood of success).
+With its default configuration, SHELLING currently generates around 200 payloads (using most reasonable base syntaxes, terminator and encoding settings). This is a relatively high number and it will be reduced in future releases, with the default setting moving towards best effort payloads (so ideally the tool would only be using the user-defined *X* first payloads from the list ordered by the likelihood of success).
 
 With all possible options enabled (all base syntaxes, target operating systems, evasive techniques and other types of injections) this number grows to thousands. 
 
-Therefore, using the full payload set is obviously not reliable for normal testing and is in my opinion an example of what what James Kettle called "the million payload approach" - explaining that scanners have to provide so called "best effort payloads".
+Therefore, using the full payload set is obviously not reliable for normal testing and is in my opinion an example of what what James Kettle called "the million payload approach" - explaining that scanners HAVE TO provide best effort payloads instead.
 
 I personally believe that the full payload set provides us with high confidence about the profoundness of the test we conducted against the particular input, but for practical reasons this approach should only be taken against features with high likelihood of calling local binaries/scripts (like any system, diagnostic or file-related tools).
 
