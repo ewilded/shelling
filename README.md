@@ -8,7 +8,7 @@ This project revolves around detecting OS command and argument injection flaws (
 
 Its main objectives are:
 * provide methodology for the OS command injection detection
-* provide software implementating this methogolody.
+* provide software implementating this methodology.
 
 # How this document is organised
 This documentation is divided into two separate sections:
