@@ -4,32 +4,19 @@ Original work by: Julian H. https://github.com/ewilded/shelling
 
 ![Logo](logo.png?raw=true)
 # What is SHELLING?
-This project revolves around detecting OS command and argument injection flaws (not limited to web applications). Its main objective is to generate a set of payloads capable of penetrating all improperly written sanitizers of user supplied input passed to OS shell overlay functions like `system()`, `shell_exec()` and the like.
+This project revolves around detecting OS command and argument injection flaws (not limited to web applications). 
 
-It comes in the form of a Burp Suite plugin with the following main functionalities:
-* Intruder payload provider
-* Scanner extension
-* Payload export to clipboard/file
-* Single byte generator
+Its main objectives are:
+* provide methodology for the OS command injection detection
+* provide software implementating this methogolody.
 
-The full capabilities of this plugin can only be achieved with Burp Pro version, however the tool can still be used with the free Burp Community version (with its inherent limitations like no Active Scanning and limited Intruder attacks).
-
-![One](screenshots/one.png?raw=true)
-
-![Two](screenshots/two.png?raw=true)
-
-![Three](screenshots/three.png?raw=true)
-
-![Four](screenshots/four.png?raw=true)
+# How this document is organised
+This documentation is divided into two separate sections:
+* The first section provides the methodology and results of the OS command and argument injection research conducted for the needs of this project.
+* The second section describes current and future tool's capabilities and usage.
 
 
-# Purpose of this document
-This documentation has two purposes:
-* present tool's capabilities and usage
-* provide the methodology and results of the OS command and argument injection research conducted for the needs of this project.
-
-
-# Table of contents
+# Table of contents - OS command injection
 * [Identifying possible reasons of getting false negatives](#identifying-possible-reasons-of-getting-false-negatives)
 	* [The syntax problem](#the-syntax-problem)
 	* [The problem of input-sanitizing mechanisms](#the-problem-of-input-sanitizing-mechanisms)
@@ -41,6 +28,9 @@ This documentation has two purposes:
 		* [Regular expressions](#regular-expressions)
 	* [Platform-specific conditions](#platform-specific-conditions)
 	* [The problem of the feedback channel](#the-problem-of-the-feedback-channel)
+
+# Table of contents - the tool
+* [User interface](#user-interface)
 * [Using the tool](#using-the-tool)
 	* [Feedback channels](#feedback-channels)
 		* [DNS](#dns)
@@ -59,6 +49,8 @@ This documentation has two purposes:
 	* [Experimental injection modes](#experimental-injection-modes)
 * [Problems and future improvements](#problems-and-future-improvements)
 * [Test cases, real cases](#some-case-examples)
+
+# Other projects and special thanks
 * [Other recommended tools, projects and special thanks](#tools-i-recommend-using-not-only-in-tandem-with-shelling-but-generally)
 
 
@@ -317,7 +309,29 @@ In order to avoid false negatives, when no command output is returned by the app
 
 
 
-# Using the tool
+# The tool
+The purpose of the SHELLING tool is to generate a set of payloads capable of penetrating all improperly written sanitizers of user supplied input passed to OS shell overlay functions like `system()`, `shell_exec()` and the like.
+
+It comes in the form of a Burp Suite plugin with the following main functionalities:
+* Intruder payload provider
+* Scanner extension
+* Payload export to clipboard/file
+* Single byte generator
+
+The full capabilities of this plugin can only be achieved with Burp Pro version, however the tool can still be used with the free Burp Community version (with its inherent limitations like no Active Scanning and limited Intruder attacks).
+
+## User Interface
+Below is a sneak peak of the most important sections of the user interface:
+
+![One](screenshots/one.png?raw=true)
+
+![Two](screenshots/two.png?raw=true)
+
+![Three](screenshots/three.png?raw=true)
+
+![Four](screenshots/four.png?raw=true)
+
+## Using the tool
 This section focuses only on explaining the main concepts and their implementation, without describing obvious and/or least important options. Most of the sections below are somehow related and it was not that easy to decide in what order they should be presented. Hence, if anything seems unclear and questions arise, just keep reading on.
 
 The default settings the plugin loads with should be optimum for most scenarios, so the tool can be used out of the box without any adjustments.
