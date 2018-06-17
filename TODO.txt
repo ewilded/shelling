@@ -33,5 +33,10 @@ X=$'cat\x20/etc/passwd'&&$X
 	- win: the windows argument injection pattern /c "command" I "figured out" after reading the recently released reference
 	- win: additional argument separators for windows: ;-_,=/ (find out compatible commands, as echo/type are fine, while ping fails)
 	- win: check that obfuscation trick from Daniel's presentation (and prolly do more research on the subject)
+	- win: 
+	C:\Users\win>echo aaa > 'test&whoami'
+'whoami'' is not recognized as an internal or external command,
+operable program or batch file.
+WHAT?!?!?!! :DDD
 
 
