@@ -1,6 +1,7 @@
 Original work by: Julian H. https://github.com/ewilded/shelling
 
-# SHELLING - a comprehensive OS command injection payload generator (an OLD version available in the Burp App Store as Command Injection Attacker, the current version has already been submitted and should be released soon).
+# SHELLING - a comprehensive OS command injection payload generator
+# An OLDER version is currently available in the Burp App Store as Command Injection Attacker. The current version (available here) has already been submitted to the Bapp Store and should be released there soon.
 
 ![Logo](logo.png?raw=true)
 # What is SHELLING?
@@ -8,7 +9,7 @@ This project revolves around detecting OS command and argument injection flaws (
 
 Its main objectives are:
 * provide methodology for the OS command injection detection
-* provide software implementating this methodology.
+* provide software implementating this methodology
 
 # How this document is organised
 This documentation is divided into two separate sections:
@@ -210,10 +211,11 @@ It WOULD work, here's why:
 
 I am still hoping for some undocumented cmd.exe function that will allow to forge `&` by some sort of single expression (or some hidden, undocumented special environmental variables not visible in `env` output). More research is needed.
 
-By the way, I also really hoped for the similar thing to work on nix. E.g. the `$LS_COLORS` variable looks more-less like: `rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37[...]`.
+By the way, I also really hoped for a similar thing to work on nix. E.g. the `$LS_COLORS` variable looks more-less like: `rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37[...]`.
 Hence, I really hoped for expression like `ls .${LS_COLORS:10:1}id` to work (evaluating to `ls .;id` and treating `;` as a command separator). Unfortunately bash plays it safe and treats such a string as a literal:
 `ls: cannot access '.;id': No such file or directory`. Who knows... More research is needed (especially with cmd.exe as it is not open source, but also on other shells like dash (and powershell!).
 
+Another good research target are common language functions themselves (e.g. escapeshellcmd() or Java's GetRuntime().exec() - as it has built in protection from injecting additional commands, nothing I tried worked so far - except for argument injection of course, but that always depends on the hardcoded binary that is being called).
 
 #### String separators
 Additionally, the following string terminators can be used (in case input was written into a file or a database before execution and our goal was to get rid of everything appended to our payload in order to avoid syntax issues):
@@ -478,7 +480,7 @@ Payloads can be exported directly to the clipboard as well as to a text file (so
 ## Byte generator
 The *Byte generator* is an additional auxiliary payload provider (can be used with Intruder instead of the `Command injection` generator. It provides the following predefined byte ranges:
 
-![Byte generator](screenshots/magic_happens2.png?raw=true "Byte generator")
+![Byte generator](screenshots/byte_generator.png?raw=true "Byte generator")
 
 I personally found it very useful for general fuzzing and research, like:
 * trying to discover alternative:
