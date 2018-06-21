@@ -3,7 +3,7 @@ SHELLING TODO
 
 TODO for the next release:
 - consider/test the double-separator idea (at least add it as an option)
-- make sure we do quotes right
+- make sure we do quotes right (e.g. check against https://www.exploit-db.com/exploits/39767)
 - better form of best effort payloads
 - payload number recalculation function for each config change, to update the "Save CNT payloads" tab title (so we'll know in advance how many payloads will be produced with the current confgiruation
 Also, we can compare the counter with the actual size to check for duplicates/skipped paylaods
