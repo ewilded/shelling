@@ -1,6 +1,19 @@
 SHELLING TODO
 --------------------------------
 
+- a potential bug to verify:
+                    if(mode=="scanner"&&this.tab.shellingPanel.includeLiteralWhites.isSelected()==false&&this.tab.shellingPanel.smart400Avoidance.isSelected()==true) 
+                    {
+                        byte[] tmp = this.callbacks.getHelpers().stringToBytes(this.shellings_raw.get(j));
+                        if(this.tab.shellingPanel.containsBaddies(tmp))
+                        {
+                            continue; // skip to the next encodeModel
+                        }
+                    }
+
+this.tab.shellingPanel.includeLiteralWhites.isSelected()==false ??? wasn't this supposed to be the opposite?!
+
+
 TODO for the next release:
 - consider/test the double-separator idea (at least add it as an option)
 - make sure we do quotes right (e.g. check against https://www.exploit-db.com/exploits/39767)
