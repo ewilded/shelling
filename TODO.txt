@@ -1,6 +1,6 @@
 SHELLING TODO
 --------------------------------
-
+- add >(MALICIOUS_COMMAND) >(MALICIOUS_COMMAND) bash syntax
 - a potential bug to verify:
                     if(mode=="scanner"&&this.tab.shellingPanel.includeLiteralWhites.isSelected()==false&&this.tab.shellingPanel.smart400Avoidance.isSelected()==true) 
                     {
