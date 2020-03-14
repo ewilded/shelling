@@ -1,0 +1,432 @@
+/c "whoami <A><B>rnme"
+/c "whoami <A><B>rnme'
+/c "whoami<A><B>rnme"
+/c "whoami<A><B>rnme'
+/c 'whoami <A><B>rnme"
+/c 'whoami <A><B>rnme'
+/c 'whoami<A><B>rnme"
+/c 'whoami<A><B>rnme'
+/c whoami <A><B>rnme"
+/c whoami <A><B>rnme'
+/c whoami<A><B>rnme"
+/c whoami<A><B>rnme'
+/c "whoami <A><B>rnme<C>
+/c "whoami<A><B>rnme<C>
+/c 'whoami <A><B>rnme<C>
+/c 'whoami<A><B>rnme<C>
+/c whoami <A><B>rnme<C>
+/c whoami<A><B>rnme<C>
+/c "whoami <A><B>rnme<C><D>
+/c "whoami<A><B>rnme<C><D>
+/c 'whoami <A><B>rnme<C><D>
+/c 'whoami<A><B>rnme<C><D>
+/c whoami <A><B>rnme<C><D>
+/c whoami<A><B>rnme<C><D>
+/c "whoami <A><B>rnme"<D>
+/c "whoami <A><B>rnme'<D>
+/c "whoami<A><B>rnme"<D>
+/c "whoami<A><B>rnme'<D>
+/c 'whoami <A><B>rnme"<D>
+/c 'whoami <A><B>rnme'<D>
+/c 'whoami<A><B>rnme"<D>
+/c 'whoami<A><B>rnme'<D>
+/c whoami <A><B>rnme"<D>
+/c whoami <A><B>rnme'<D>
+/c whoami<A><B>rnme"<D>
+/c whoami<A><B>rnme'<D>
+/c "whoami <A>rnme"
+/c "whoami <A>rnme'
+/c "whoami<A>rnme"
+/c "whoami<A>rnme'
+/c 'whoami <A>rnme"
+/c 'whoami <A>rnme'
+/c 'whoami<A>rnme"
+/c 'whoami<A>rnme'
+/c whoami <A>rnme"
+/c whoami <A>rnme'
+/c whoami<A>rnme"
+/c whoami<A>rnme'
+/c "whoami <A>rnme<C>
+/c "whoami<A>rnme<C>
+/c 'whoami <A>rnme<C>
+/c 'whoami<A>rnme<C>
+/c whoami <A>rnme<C>
+/c whoami<A>rnme<C>
+/c "whoami <A>rnme<C><D>
+/c "whoami<A>rnme<C><D>
+/c 'whoami <A>rnme<C><D>
+/c 'whoami<A>rnme<C><D>
+/c whoami <A>rnme<C><D>
+/c whoami<A>rnme<C><D>
+/c "whoami <A>rnme"<D>
+/c "whoami <A>rnme'<D>
+/c "whoami<A>rnme"<D>
+/c "whoami<A>rnme'<D>
+/c 'whoami <A>rnme"<D>
+/c 'whoami <A>rnme'<D>
+/c 'whoami<A>rnme"<D>
+/c 'whoami<A>rnme'<D>
+/c whoami <A>rnme"<D>
+/c whoami <A>rnme'<D>
+/c whoami<A>rnme"<D>
+/c whoami<A>rnme'<D>
+/c "whoami "<B>rnme"
+/c "whoami "<B>rnme'
+/c "whoami '<B>rnme"
+/c "whoami '<B>rnme'
+/c "whoami"<B>rnme"
+/c "whoami"<B>rnme'
+/c "whoami'<B>rnme"
+/c "whoami'<B>rnme'
+/c 'whoami "<B>rnme"
+/c 'whoami "<B>rnme'
+/c 'whoami '<B>rnme"
+/c 'whoami '<B>rnme'
+/c 'whoami"<B>rnme"
+/c 'whoami"<B>rnme'
+/c 'whoami'<B>rnme"
+/c 'whoami'<B>rnme'
+/c whoami "<B>rnme"
+/c whoami "<B>rnme'
+/c whoami '<B>rnme"
+/c whoami '<B>rnme'
+/c whoami"<B>rnme"
+/c whoami"<B>rnme'
+/c whoami'<B>rnme"
+/c whoami'<B>rnme'
+/c "whoami "<B>rnme<C>
+/c "whoami '<B>rnme<C>
+/c "whoami"<B>rnme<C>
+/c "whoami'<B>rnme<C>
+/c 'whoami "<B>rnme<C>
+/c 'whoami '<B>rnme<C>
+/c 'whoami"<B>rnme<C>
+/c 'whoami'<B>rnme<C>
+/c whoami "<B>rnme<C>
+/c whoami '<B>rnme<C>
+/c whoami"<B>rnme<C>
+/c whoami'<B>rnme<C>
+/c "whoami "<B>rnme<C><D>
+/c "whoami '<B>rnme<C><D>
+/c "whoami"<B>rnme<C><D>
+/c "whoami'<B>rnme<C><D>
+/c 'whoami "<B>rnme<C><D>
+/c 'whoami '<B>rnme<C><D>
+/c 'whoami"<B>rnme<C><D>
+/c 'whoami'<B>rnme<C><D>
+/c whoami "<B>rnme<C><D>
+/c whoami '<B>rnme<C><D>
+/c whoami"<B>rnme<C><D>
+/c whoami'<B>rnme<C><D>
+/c "whoami "<B>rnme"<D>
+/c "whoami "<B>rnme'<D>
+/c "whoami '<B>rnme"<D>
+/c "whoami '<B>rnme'<D>
+/c "whoami"<B>rnme"<D>
+/c "whoami"<B>rnme'<D>
+/c "whoami'<B>rnme"<D>
+/c "whoami'<B>rnme'<D>
+/c 'whoami "<B>rnme"<D>
+/c 'whoami "<B>rnme'<D>
+/c 'whoami '<B>rnme"<D>
+/c 'whoami '<B>rnme'<D>
+/c 'whoami"<B>rnme"<D>
+/c 'whoami"<B>rnme'<D>
+/c 'whoami'<B>rnme"<D>
+/c 'whoami'<B>rnme'<D>
+/c whoami "<B>rnme"<D>
+/c whoami "<B>rnme'<D>
+/c whoami '<B>rnme"<D>
+/c whoami '<B>rnme'<D>
+/c whoami"<B>rnme"<D>
+/c whoami"<B>rnme'<D>
+/c whoami'<B>rnme"<D>
+/c whoami'<B>rnme'<D>
+/c "whoami "rnme"
+/c "whoami "rnme'
+/c "whoami 'rnme"
+/c "whoami 'rnme'
+/c "whoami"rnme"
+/c "whoami"rnme'
+/c "whoami'rnme"
+/c "whoami'rnme'
+/c 'whoami "rnme"
+/c 'whoami "rnme'
+/c 'whoami 'rnme"
+/c 'whoami 'rnme'
+/c 'whoami"rnme"
+/c 'whoami"rnme'
+/c 'whoami'rnme"
+/c 'whoami'rnme'
+/c whoami "rnme"
+/c whoami "rnme'
+/c whoami 'rnme"
+/c whoami 'rnme'
+/c whoami"rnme"
+/c whoami"rnme'
+/c whoami'rnme"
+/c whoami'rnme'
+/c "whoami "rnme<C>
+/c "whoami 'rnme<C>
+/c "whoami"rnme<C>
+/c "whoami'rnme<C>
+/c 'whoami "rnme<C>
+/c 'whoami 'rnme<C>
+/c 'whoami"rnme<C>
+/c 'whoami'rnme<C>
+/c whoami "rnme<C>
+/c whoami 'rnme<C>
+/c whoami"rnme<C>
+/c whoami'rnme<C>
+/c "whoami "rnme<C><D>
+/c "whoami 'rnme<C><D>
+/c "whoami"rnme<C><D>
+/c "whoami'rnme<C><D>
+/c 'whoami "rnme<C><D>
+/c 'whoami 'rnme<C><D>
+/c 'whoami"rnme<C><D>
+/c 'whoami'rnme<C><D>
+/c whoami "rnme<C><D>
+/c whoami 'rnme<C><D>
+/c whoami"rnme<C><D>
+/c whoami'rnme<C><D>
+/c "whoami "rnme"<D>
+/c "whoami "rnme'<D>
+/c "whoami 'rnme"<D>
+/c "whoami 'rnme'<D>
+/c "whoami"rnme"<D>
+/c "whoami"rnme'<D>
+/c "whoami'rnme"<D>
+/c "whoami'rnme'<D>
+/c 'whoami "rnme"<D>
+/c 'whoami "rnme'<D>
+/c 'whoami 'rnme"<D>
+/c 'whoami 'rnme'<D>
+/c 'whoami"rnme"<D>
+/c 'whoami"rnme'<D>
+/c 'whoami'rnme"<D>
+/c 'whoami'rnme'<D>
+/c whoami "rnme"<D>
+/c whoami "rnme'<D>
+/c whoami 'rnme"<D>
+/c whoami 'rnme'<D>
+/c whoami"rnme"<D>
+/c whoami"rnme'<D>
+/c whoami'rnme"<D>
+/c whoami'rnme'<D>
+/r "whoami <A><B>rnme"
+/r "whoami <A><B>rnme'
+/r "whoami<A><B>rnme"
+/r "whoami<A><B>rnme'
+/r 'whoami <A><B>rnme"
+/r 'whoami <A><B>rnme'
+/r 'whoami<A><B>rnme"
+/r 'whoami<A><B>rnme'
+/r whoami <A><B>rnme"
+/r whoami <A><B>rnme'
+/r whoami<A><B>rnme"
+/r whoami<A><B>rnme'
+/r "whoami <A><B>rnme<C>
+/r "whoami<A><B>rnme<C>
+/r 'whoami <A><B>rnme<C>
+/r 'whoami<A><B>rnme<C>
+/r whoami <A><B>rnme<C>
+/r whoami<A><B>rnme<C>
+/r "whoami <A><B>rnme<C><D>
+/r "whoami<A><B>rnme<C><D>
+/r 'whoami <A><B>rnme<C><D>
+/r 'whoami<A><B>rnme<C><D>
+/r whoami <A><B>rnme<C><D>
+/r whoami<A><B>rnme<C><D>
+/r "whoami <A><B>rnme"<D>
+/r "whoami <A><B>rnme'<D>
+/r "whoami<A><B>rnme"<D>
+/r "whoami<A><B>rnme'<D>
+/r 'whoami <A><B>rnme"<D>
+/r 'whoami <A><B>rnme'<D>
+/r 'whoami<A><B>rnme"<D>
+/r 'whoami<A><B>rnme'<D>
+/r whoami <A><B>rnme"<D>
+/r whoami <A><B>rnme'<D>
+/r whoami<A><B>rnme"<D>
+/r whoami<A><B>rnme'<D>
+/r "whoami <A>rnme"
+/r "whoami <A>rnme'
+/r "whoami<A>rnme"
+/r "whoami<A>rnme'
+/r 'whoami <A>rnme"
+/r 'whoami <A>rnme'
+/r 'whoami<A>rnme"
+/r 'whoami<A>rnme'
+/r whoami <A>rnme"
+/r whoami <A>rnme'
+/r whoami<A>rnme"
+/r whoami<A>rnme'
+/r "whoami <A>rnme<C>
+/r "whoami<A>rnme<C>
+/r 'whoami <A>rnme<C>
+/r 'whoami<A>rnme<C>
+/r whoami <A>rnme<C>
+/r whoami<A>rnme<C>
+/r "whoami <A>rnme<C><D>
+/r "whoami<A>rnme<C><D>
+/r 'whoami <A>rnme<C><D>
+/r 'whoami<A>rnme<C><D>
+/r whoami <A>rnme<C><D>
+/r whoami<A>rnme<C><D>
+/r "whoami <A>rnme"<D>
+/r "whoami <A>rnme'<D>
+/r "whoami<A>rnme"<D>
+/r "whoami<A>rnme'<D>
+/r 'whoami <A>rnme"<D>
+/r 'whoami <A>rnme'<D>
+/r 'whoami<A>rnme"<D>
+/r 'whoami<A>rnme'<D>
+/r whoami <A>rnme"<D>
+/r whoami <A>rnme'<D>
+/r whoami<A>rnme"<D>
+/r whoami<A>rnme'<D>
+/r "whoami "<B>rnme"
+/r "whoami "<B>rnme'
+/r "whoami '<B>rnme"
+/r "whoami '<B>rnme'
+/r "whoami"<B>rnme"
+/r "whoami"<B>rnme'
+/r "whoami'<B>rnme"
+/r "whoami'<B>rnme'
+/r 'whoami "<B>rnme"
+/r 'whoami "<B>rnme'
+/r 'whoami '<B>rnme"
+/r 'whoami '<B>rnme'
+/r 'whoami"<B>rnme"
+/r 'whoami"<B>rnme'
+/r 'whoami'<B>rnme"
+/r 'whoami'<B>rnme'
+/r whoami "<B>rnme"
+/r whoami "<B>rnme'
+/r whoami '<B>rnme"
+/r whoami '<B>rnme'
+/r whoami"<B>rnme"
+/r whoami"<B>rnme'
+/r whoami'<B>rnme"
+/r whoami'<B>rnme'
+/r "whoami "<B>rnme<C>
+/r "whoami '<B>rnme<C>
+/r "whoami"<B>rnme<C>
+/r "whoami'<B>rnme<C>
+/r 'whoami "<B>rnme<C>
+/r 'whoami '<B>rnme<C>
+/r 'whoami"<B>rnme<C>
+/r 'whoami'<B>rnme<C>
+/r whoami "<B>rnme<C>
+/r whoami '<B>rnme<C>
+/r whoami"<B>rnme<C>
+/r whoami'<B>rnme<C>
+/r "whoami "<B>rnme<C><D>
+/r "whoami '<B>rnme<C><D>
+/r "whoami"<B>rnme<C><D>
+/r "whoami'<B>rnme<C><D>
+/r 'whoami "<B>rnme<C><D>
+/r 'whoami '<B>rnme<C><D>
+/r 'whoami"<B>rnme<C><D>
+/r 'whoami'<B>rnme<C><D>
+/r whoami "<B>rnme<C><D>
+/r whoami '<B>rnme<C><D>
+/r whoami"<B>rnme<C><D>
+/r whoami'<B>rnme<C><D>
+/r "whoami "<B>rnme"<D>
+/r "whoami "<B>rnme'<D>
+/r "whoami '<B>rnme"<D>
+/r "whoami '<B>rnme'<D>
+/r "whoami"<B>rnme"<D>
+/r "whoami"<B>rnme'<D>
+/r "whoami'<B>rnme"<D>
+/r "whoami'<B>rnme'<D>
+/r 'whoami "<B>rnme"<D>
+/r 'whoami "<B>rnme'<D>
+/r 'whoami '<B>rnme"<D>
+/r 'whoami '<B>rnme'<D>
+/r 'whoami"<B>rnme"<D>
+/r 'whoami"<B>rnme'<D>
+/r 'whoami'<B>rnme"<D>
+/r 'whoami'<B>rnme'<D>
+/r whoami "<B>rnme"<D>
+/r whoami "<B>rnme'<D>
+/r whoami '<B>rnme"<D>
+/r whoami '<B>rnme'<D>
+/r whoami"<B>rnme"<D>
+/r whoami"<B>rnme'<D>
+/r whoami'<B>rnme"<D>
+/r whoami'<B>rnme'<D>
+/r "whoami "rnme"
+/r "whoami "rnme'
+/r "whoami 'rnme"
+/r "whoami 'rnme'
+/r "whoami"rnme"
+/r "whoami"rnme'
+/r "whoami'rnme"
+/r "whoami'rnme'
+/r 'whoami "rnme"
+/r 'whoami "rnme'
+/r 'whoami 'rnme"
+/r 'whoami 'rnme'
+/r 'whoami"rnme"
+/r 'whoami"rnme'
+/r 'whoami'rnme"
+/r 'whoami'rnme'
+/r whoami "rnme"
+/r whoami "rnme'
+/r whoami 'rnme"
+/r whoami 'rnme'
+/r whoami"rnme"
+/r whoami"rnme'
+/r whoami'rnme"
+/r whoami'rnme'
+/r "whoami "rnme<C>
+/r "whoami 'rnme<C>
+/r "whoami"rnme<C>
+/r "whoami'rnme<C>
+/r 'whoami "rnme<C>
+/r 'whoami 'rnme<C>
+/r 'whoami"rnme<C>
+/r 'whoami'rnme<C>
+/r whoami "rnme<C>
+/r whoami 'rnme<C>
+/r whoami"rnme<C>
+/r whoami'rnme<C>
+/r "whoami "rnme<C><D>
+/r "whoami 'rnme<C><D>
+/r "whoami"rnme<C><D>
+/r "whoami'rnme<C><D>
+/r 'whoami "rnme<C><D>
+/r 'whoami 'rnme<C><D>
+/r 'whoami"rnme<C><D>
+/r 'whoami'rnme<C><D>
+/r whoami "rnme<C><D>
+/r whoami 'rnme<C><D>
+/r whoami"rnme<C><D>
+/r whoami'rnme<C><D>
+/r "whoami "rnme"<D>
+/r "whoami "rnme'<D>
+/r "whoami 'rnme"<D>
+/r "whoami 'rnme'<D>
+/r "whoami"rnme"<D>
+/r "whoami"rnme'<D>
+/r "whoami'rnme"<D>
+/r "whoami'rnme'<D>
+/r 'whoami "rnme"<D>
+/r 'whoami "rnme'<D>
+/r 'whoami 'rnme"<D>
+/r 'whoami 'rnme'<D>
+/r 'whoami"rnme"<D>
+/r 'whoami"rnme'<D>
+/r 'whoami'rnme"<D>
+/r 'whoami'rnme'<D>
+/r whoami "rnme"<D>
+/r whoami "rnme'<D>
+/r whoami 'rnme"<D>
+/r whoami 'rnme'<D>
+/r whoami"rnme"<D>
+/r whoami"rnme'<D>
+/r whoami'rnme"<D>
+/r whoami'rnme'<D>
