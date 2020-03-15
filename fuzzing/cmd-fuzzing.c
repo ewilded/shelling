@@ -21,29 +21,43 @@
 
 byte fuzz_bytes[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 91, 92, 93, 94, 95, 96, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254}; // up to 255
 
-void runCmdA(LPSTR appname, char * command_line, const char * command_template, int * indexbytes)
+// we want to write interesting results into a file instead of the stdout (too high volume and cmd.exe does not handle it well - mem use keeps growing - when output is simply redirected into a file with > )
+HANDLE outfile;
+
+void runCmdA(LPSTR appname, LPSTR command_line, const char * command_template, int * indexbytes)
 {
-	// printf("[DEBUG] Trying %s \n",command_template); // actually this can be printed earlier
+	//printf("Trying %s (%s)\n", command_template, (char *)command_line);
 	int slen = strlen(command_template);
 	int i;
-	printf(" ");
+	char debug_buff[21]; // max 4*5 bytes +  nullbyte
+	memset(debug_buff,0,21);
+	char curr_buff[6]; // max 5 bytes + nullbyte
+	memset(curr_buff,0,6);
 	for(i=0;i<slen;i++)
 	{
 		if(command_template[i]=='A')
 		{
-			printf("[%u]",(byte)command_line[indexbytes[0]]);
+			snprintf(curr_buff,5,"[%u]",(byte)command_line[indexbytes[0]]);
+			strcat(debug_buff,curr_buff);
+			memset(curr_buff,0,6);
 		}
 		if(command_template[i]=='B')
 		{
-			printf("[%u]",(byte)command_line[indexbytes[1]]);
+			snprintf(curr_buff,5,"[%u]",(byte)command_line[indexbytes[1]]);
+			strcat(debug_buff,curr_buff);
+			memset(curr_buff,0,6);
 		}
 		if(command_template[i]=='C')
 		{
-			printf("[%u]",(byte)command_line[indexbytes[2]]);
+			snprintf(curr_buff,5,"[%u]",(byte)command_line[indexbytes[2]]);
+			strcat(debug_buff,curr_buff);
+			memset(curr_buff,0,6);
 		}
 		if(command_template[i]=='D')
 		{
-			printf("[%u]",(byte)command_line[indexbytes[3]]);
+			snprintf(curr_buff,5,"[%u]",(byte)command_line[indexbytes[3]]);
+			strcat(debug_buff,curr_buff);
+			memset(curr_buff,0,6);
 		}
 	}
 	// Interestingly, this returns ERROR_FILE_NOT_FOUND when "cmd.exe" is provided without the full path
@@ -84,7 +98,7 @@ void runCmdA(LPSTR appname, char * command_line, const char * command_template, 
 	bytes_read=0;	
 	memset(outbuf,0,32768);
 	memset(tBuf,0,257);	
-	int proc = CreateProcessA(appname, (LPSTR)command_line, 0, 0, TRUE, NORMAL_PRIORITY_CLASS, NULL, NULL, si_w, &pi);
+	int proc = CreateProcessA(appname, command_line, 0, 0, TRUE, NORMAL_PRIORITY_CLASS, NULL, NULL, si_w, &pi);
 	if(proc==0)
 	{
 		printf("We're doing it wrong: GetLastError() returned %u.\n", GetLastError()); // For example: GetLastError() returning 2 means ERROR_FILE_NOT_FOUND
@@ -111,15 +125,35 @@ void runCmdA(LPSTR appname, char * command_line, const char * command_template, 
 				strcat_s(outbuf, sizeof(outbuf), tBuf);
 			}
 		}
-		if(strstr(outbuf,"desktop"))
+		char msg[60]; // command line up to 28 chars + space + debug_buff up to 20, + space + EXEC\+ nullbyte  -> 57
+		memset(msg,0,60);
+			
+		DWORD dwBytesToWrite;
+		DWORD dwBytesWritten = 0;
+		int rn_exec = 0;
+		int whoami_exec = 0;
+		if(strstr(outbuf,"desktop")) whoami_exec=1;
+		if(strstr(outbuf,"EXECUTION")) rn_exec=1;
+		if(whoami_exec||rn_exec)
 		{
-			printf("[+]"); // just indicates that the first command executed, helpful for studying different syntax approaches
+			strcat(msg,command_template);
+			strcat(msg," ");
+			strcat(msg,debug_buff);
+			strcat(msg," ");
+			if(whoami_exec) strcat(msg,"+"); // just indicates that the first command executed, helpful for studying different syntax approaches
+			if(rn_exec) strcat(msg,"EXEC"); // indicates the second command executed (rnme), which is far more interesting			
+			strcat(msg,"\n");
+ 			dwBytesToWrite = (DWORD)strlen(msg);			
+
+			WriteFile( 
+                    outfile,           // open file handle
+                    msg,      // start of data to write
+                    dwBytesToWrite,  // number of bytes to write
+                    &dwBytesWritten, // number of bytes that were written
+                    NULL);
+			printf(msg);
 		}
-		if(strstr(outbuf,"EXECUTION"))
-		{
-			printf("[SUCCESS!]: %s\n",command_line);
-			//printf("\n%s\n",outbuf);
-		}
+		
 		if (WaitForSingleObject(pi.hProcess, 5000) != WAIT_OBJECT_0)	// wait up to five seconds
 		{
 			//printf("WaitForSingleObject GetLastError(): %u.\n", GetLastError());
@@ -130,18 +164,17 @@ void runCmdA(LPSTR appname, char * command_line, const char * command_template, 
 			//printf("GetExitCodeProcess GetLastError(): %u.\n", GetLastError());
 			return;
 		}
-		printf("\n");
 		return;
 	}
 }
 // this function takes one param: the command_line template string (the general syntax), locates the index of the "A" letter and does fuzzing by automatically replacing it with payloads
 void fuzzABCD(char * command_line) 
 {
-	//printf("CHUJ");
+	printf("[FUZZING] %s\n", command_line);
 	LPSTR appname ="C:\\Windows\\system32\\cmd.exe";
 	char buff[100];
 	memset(buff,0,100);
-	strcpy(buff,command_line); // wink wink ;]
+	strcpy(buff,command_line); // wink buffer overflow wink ;]
 	// unless we are doing multibyte, we do not need to iterate over the full ASCII range
 	// (we can skip digits and letters)	
 	// find A position
@@ -161,8 +194,6 @@ void fuzzABCD(char * command_line)
 	byte j = 0;
 	byte k = 0;
 	byte l = 0;
-	
-	printf(command_line);
 
 	if(positionA!=NULL)
 	{
@@ -220,6 +251,21 @@ void fuzzABCD(char * command_line)
 						}
 					}
  				}
+				else
+				{
+					if(positionD!=NULL)
+					{
+						for(l=0;l<203;l++)
+						{
+							buff[indexABCD[3]] = fuzz_bytes[l];
+							runCmdA(appname, buff, command_line, indexABCD);	
+						}
+					}
+					else
+					{	// position D is NULL, we're done here
+						runCmdA(appname, buff, command_line, indexABCD);
+					}
+				}
 			} // the code above looks good
 		}
 	} // the code above looks good
@@ -276,25 +322,50 @@ void fuzzABCD(char * command_line)
 					}
 				}
  			}
+			else
+			{
+				if(positionD!=NULL)
+				{
+					for(l=0;l<203;l++)
+					{
+						buff[indexABCD[3]] = fuzz_bytes[l];
+						runCmdA(appname, buff, command_line, indexABCD);	
+					}
+				}
+				else
+				{	// position D is NULL, we're done here
+					runCmdA(appname, buff, command_line, indexABCD);
+				}
+			}
 		} // the code above looks good	
 	}
 }
 
 int main(int argc, char** argv) 
 {
-	// 1. read the templates in
-	// 2. fuzz
-	// 3. grep the output
-	/*
-	char command_template[100];
-	memset(command_template,0,100);	
-	scanf("%s" , command_template); // wink wink, buffer overflow ;]
-	printf("%s", command_template);
-	*/
-	char * templates[] = {"/c \"whoami <A><B>rnme\"", "/c \"whoami <A><B>rnme'", "/c \"whoami<A><B>rnme\"", "/c \"whoami<A><B>rnme'", "/c 'whoami <A><B>rnme\"", "/c 'whoami <A><B>rnme'", "/c 'whoami<A><B>rnme\"", "/c 'whoami<A><B>rnme'", "/c whoami <A><B>rnme\"", "/c whoami <A><B>rnme'", "/c whoami<A><B>rnme\"", "/c whoami<A><B>rnme'", "/c \"whoami <A><B>rnme<C>", "/c \"whoami<A><B>rnme<C>", "/c 'whoami <A><B>rnme<C>", "/c 'whoami<A><B>rnme<C>", "/c whoami <A><B>rnme<C>", "/c whoami<A><B>rnme<C>", "/c \"whoami <A><B>rnme<C><D>", "/c \"whoami<A><B>rnme<C><D>", "/c 'whoami <A><B>rnme<C><D>", "/c 'whoami<A><B>rnme<C><D>", "/c whoami <A><B>rnme<C><D>", "/c whoami<A><B>rnme<C><D>", "/c \"whoami <A><B>rnme\"<D>", "/c \"whoami <A><B>rnme'<D>", "/c \"whoami<A><B>rnme\"<D>", "/c \"whoami<A><B>rnme'<D>", "/c 'whoami <A><B>rnme\"<D>", "/c 'whoami <A><B>rnme'<D>", "/c 'whoami<A><B>rnme\"<D>", "/c 'whoami<A><B>rnme'<D>", "/c whoami <A><B>rnme\"<D>", "/c whoami <A><B>rnme'<D>", "/c whoami<A><B>rnme\"<D>", "/c whoami<A><B>rnme'<D>", "/c \"whoami <A>rnme\"", "/c \"whoami <A>rnme'", "/c \"whoami<A>rnme\"", "/c \"whoami<A>rnme'", "/c 'whoami <A>rnme\"", "/c 'whoami <A>rnme'", "/c 'whoami<A>rnme\"", "/c 'whoami<A>rnme'", "/c whoami <A>rnme\"", "/c whoami <A>rnme'", "/c whoami<A>rnme\"", "/c whoami<A>rnme'", "/c \"whoami <A>rnme<C>", "/c \"whoami<A>rnme<C>", "/c 'whoami <A>rnme<C>", "/c 'whoami<A>rnme<C>", "/c whoami <A>rnme<C>", "/c whoami<A>rnme<C>", "/c \"whoami <A>rnme<C><D>", "/c \"whoami<A>rnme<C><D>", "/c 'whoami <A>rnme<C><D>", "/c 'whoami<A>rnme<C><D>", "/c whoami <A>rnme<C><D>", "/c whoami<A>rnme<C><D>", "/c \"whoami <A>rnme\"<D>", "/c \"whoami <A>rnme'<D>", "/c \"whoami<A>rnme\"<D>", "/c \"whoami<A>rnme'<D>", "/c 'whoami <A>rnme\"<D>", "/c 'whoami <A>rnme'<D>", "/c 'whoami<A>rnme\"<D>", "/c 'whoami<A>rnme'<D>", "/c whoami <A>rnme\"<D>", "/c whoami <A>rnme'<D>", "/c whoami<A>rnme\"<D>", "/c whoami<A>rnme'<D>", "/c \"whoami \"<B>rnme\"", "/c \"whoami \"<B>rnme'", "/c \"whoami '<B>rnme\"", "/c \"whoami '<B>rnme'", "/c \"whoami\"<B>rnme\"", "/c \"whoami\"<B>rnme'", "/c \"whoami'<B>rnme\"", "/c \"whoami'<B>rnme'", "/c 'whoami \"<B>rnme\"", "/c 'whoami \"<B>rnme'", "/c 'whoami '<B>rnme\"", "/c 'whoami '<B>rnme'", "/c 'whoami\"<B>rnme\"", "/c 'whoami\"<B>rnme'", "/c 'whoami'<B>rnme\"", "/c 'whoami'<B>rnme'", "/c whoami \"<B>rnme\"", "/c whoami \"<B>rnme'", "/c whoami '<B>rnme\"", "/c whoami '<B>rnme'", "/c whoami\"<B>rnme\"", "/c whoami\"<B>rnme'", "/c whoami'<B>rnme\"", "/c whoami'<B>rnme'", "/c \"whoami \"<B>rnme<C>", "/c \"whoami '<B>rnme<C>", "/c \"whoami\"<B>rnme<C>", "/c \"whoami'<B>rnme<C>", "/c 'whoami \"<B>rnme<C>", "/c 'whoami '<B>rnme<C>", "/c 'whoami\"<B>rnme<C>", "/c 'whoami'<B>rnme<C>", "/c whoami \"<B>rnme<C>", "/c whoami '<B>rnme<C>", "/c whoami\"<B>rnme<C>", "/c whoami'<B>rnme<C>", "/c \"whoami \"<B>rnme<C><D>", "/c \"whoami '<B>rnme<C><D>", "/c \"whoami\"<B>rnme<C><D>", "/c \"whoami'<B>rnme<C><D>", "/c 'whoami \"<B>rnme<C><D>", "/c 'whoami '<B>rnme<C><D>", "/c 'whoami\"<B>rnme<C><D>", "/c 'whoami'<B>rnme<C><D>", "/c whoami \"<B>rnme<C><D>", "/c whoami '<B>rnme<C><D>", "/c whoami\"<B>rnme<C><D>", "/c whoami'<B>rnme<C><D>", "/c \"whoami \"<B>rnme\"<D>", "/c \"whoami \"<B>rnme'<D>", "/c \"whoami '<B>rnme\"<D>", "/c \"whoami '<B>rnme'<D>", "/c \"whoami\"<B>rnme\"<D>", "/c \"whoami\"<B>rnme'<D>", "/c \"whoami'<B>rnme\"<D>", "/c \"whoami'<B>rnme'<D>", "/c 'whoami \"<B>rnme\"<D>", "/c 'whoami \"<B>rnme'<D>", "/c 'whoami '<B>rnme\"<D>", "/c 'whoami '<B>rnme'<D>", "/c 'whoami\"<B>rnme\"<D>", "/c 'whoami\"<B>rnme'<D>", "/c 'whoami'<B>rnme\"<D>", "/c 'whoami'<B>rnme'<D>", "/c whoami \"<B>rnme\"<D>", "/c whoami \"<B>rnme'<D>", "/c whoami '<B>rnme\"<D>", "/c whoami '<B>rnme'<D>", "/c whoami\"<B>rnme\"<D>", "/c whoami\"<B>rnme'<D>", "/c whoami'<B>rnme\"<D>", "/c whoami'<B>rnme'<D>", "/c \"whoami \"rnme\"", "/c \"whoami \"rnme'", "/c \"whoami 'rnme\"", "/c \"whoami 'rnme'", "/c \"whoami\"rnme\"", "/c \"whoami\"rnme'", "/c \"whoami'rnme\"", "/c \"whoami'rnme'", "/c 'whoami \"rnme\"", "/c 'whoami \"rnme'", "/c 'whoami 'rnme\"", "/c 'whoami 'rnme'", "/c 'whoami\"rnme\"", "/c 'whoami\"rnme'", "/c 'whoami'rnme\"", "/c 'whoami'rnme'", "/c whoami \"rnme\"", "/c whoami \"rnme'", "/c whoami 'rnme\"", "/c whoami 'rnme'", "/c whoami\"rnme\"", "/c whoami\"rnme'", "/c whoami'rnme\"", "/c whoami'rnme'", "/c \"whoami \"rnme<C>", "/c \"whoami 'rnme<C>", "/c \"whoami\"rnme<C>", "/c \"whoami'rnme<C>", "/c 'whoami \"rnme<C>", "/c 'whoami 'rnme<C>", "/c 'whoami\"rnme<C>", "/c 'whoami'rnme<C>", "/c whoami \"rnme<C>", "/c whoami 'rnme<C>", "/c whoami\"rnme<C>", "/c whoami'rnme<C>", "/c \"whoami \"rnme<C><D>", "/c \"whoami 'rnme<C><D>", "/c \"whoami\"rnme<C><D>", "/c \"whoami'rnme<C><D>", "/c 'whoami \"rnme<C><D>", "/c 'whoami 'rnme<C><D>", "/c 'whoami\"rnme<C><D>", "/c 'whoami'rnme<C><D>", "/c whoami \"rnme<C><D>", "/c whoami 'rnme<C><D>", "/c whoami\"rnme<C><D>", "/c whoami'rnme<C><D>", "/c \"whoami \"rnme\"<D>", "/c \"whoami \"rnme'<D>", "/c \"whoami 'rnme\"<D>", "/c \"whoami 'rnme'<D>", "/c \"whoami\"rnme\"<D>", "/c \"whoami\"rnme'<D>", "/c \"whoami'rnme\"<D>", "/c \"whoami'rnme'<D>", "/c 'whoami \"rnme\"<D>", "/c 'whoami \"rnme'<D>", "/c 'whoami 'rnme\"<D>", "/c 'whoami 'rnme'<D>", "/c 'whoami\"rnme\"<D>", "/c 'whoami\"rnme'<D>", "/c 'whoami'rnme\"<D>", "/c 'whoami'rnme'<D>", "/c whoami \"rnme\"<D>", "/c whoami \"rnme'<D>", "/c whoami 'rnme\"<D>", "/c whoami 'rnme'<D>", "/c whoami\"rnme\"<D>", "/c whoami\"rnme'<D>", "/c whoami'rnme\"<D>", "/c whoami'rnme'<D>", "/r \"whoami <A><B>rnme\"", "/r \"whoami <A><B>rnme'", "/r \"whoami<A><B>rnme\"", "/r \"whoami<A><B>rnme'", "/r 'whoami <A><B>rnme\"", "/r 'whoami <A><B>rnme'", "/r 'whoami<A><B>rnme\"", "/r 'whoami<A><B>rnme'", "/r whoami <A><B>rnme\"", "/r whoami <A><B>rnme'", "/r whoami<A><B>rnme\"", "/r whoami<A><B>rnme'", "/r \"whoami <A><B>rnme<C>", "/r \"whoami<A><B>rnme<C>", "/r 'whoami <A><B>rnme<C>", "/r 'whoami<A><B>rnme<C>", "/r whoami <A><B>rnme<C>", "/r whoami<A><B>rnme<C>", "/r \"whoami <A><B>rnme<C><D>", "/r \"whoami<A><B>rnme<C><D>", "/r 'whoami <A><B>rnme<C><D>", "/r 'whoami<A><B>rnme<C><D>", "/r whoami <A><B>rnme<C><D>", "/r whoami<A><B>rnme<C><D>", "/r \"whoami <A><B>rnme\"<D>", "/r \"whoami <A><B>rnme'<D>", "/r \"whoami<A><B>rnme\"<D>", "/r \"whoami<A><B>rnme'<D>", "/r 'whoami <A><B>rnme\"<D>", "/r 'whoami <A><B>rnme'<D>", "/r 'whoami<A><B>rnme\"<D>", "/r 'whoami<A><B>rnme'<D>", "/r whoami <A><B>rnme\"<D>", "/r whoami <A><B>rnme'<D>", "/r whoami<A><B>rnme\"<D>", "/r whoami<A><B>rnme'<D>", "/r \"whoami <A>rnme\"", "/r \"whoami <A>rnme'", "/r \"whoami<A>rnme\"", "/r \"whoami<A>rnme'", "/r 'whoami <A>rnme\"", "/r 'whoami <A>rnme'", "/r 'whoami<A>rnme\"", "/r 'whoami<A>rnme'", "/r whoami <A>rnme\"", "/r whoami <A>rnme'", "/r whoami<A>rnme\"", "/r whoami<A>rnme'", "/r \"whoami <A>rnme<C>", "/r \"whoami<A>rnme<C>", "/r 'whoami <A>rnme<C>", "/r 'whoami<A>rnme<C>", "/r whoami <A>rnme<C>", "/r whoami<A>rnme<C>", "/r \"whoami <A>rnme<C><D>", "/r \"whoami<A>rnme<C><D>", "/r 'whoami <A>rnme<C><D>", "/r 'whoami<A>rnme<C><D>", "/r whoami <A>rnme<C><D>", "/r whoami<A>rnme<C><D>", "/r \"whoami <A>rnme\"<D>", "/r \"whoami <A>rnme'<D>", "/r \"whoami<A>rnme\"<D>", "/r \"whoami<A>rnme'<D>", "/r 'whoami <A>rnme\"<D>", "/r 'whoami <A>rnme'<D>", "/r 'whoami<A>rnme\"<D>", "/r 'whoami<A>rnme'<D>", "/r whoami <A>rnme\"<D>", "/r whoami <A>rnme'<D>", "/r whoami<A>rnme\"<D>", "/r whoami<A>rnme'<D>", "/r \"whoami \"<B>rnme\"", "/r \"whoami \"<B>rnme'", "/r \"whoami '<B>rnme\"", "/r \"whoami '<B>rnme'", "/r \"whoami\"<B>rnme\"", "/r \"whoami\"<B>rnme'", "/r \"whoami'<B>rnme\"", "/r \"whoami'<B>rnme'", "/r 'whoami \"<B>rnme\"", "/r 'whoami \"<B>rnme'", "/r 'whoami '<B>rnme\"", "/r 'whoami '<B>rnme'", "/r 'whoami\"<B>rnme\"", "/r 'whoami\"<B>rnme'", "/r 'whoami'<B>rnme\"", "/r 'whoami'<B>rnme'", "/r whoami \"<B>rnme\"", "/r whoami \"<B>rnme'", "/r whoami '<B>rnme\"", "/r whoami '<B>rnme'", "/r whoami\"<B>rnme\"", "/r whoami\"<B>rnme'", "/r whoami'<B>rnme\"", "/r whoami'<B>rnme'", "/r \"whoami \"<B>rnme<C>", "/r \"whoami '<B>rnme<C>", "/r \"whoami\"<B>rnme<C>", "/r \"whoami'<B>rnme<C>", "/r 'whoami \"<B>rnme<C>", "/r 'whoami '<B>rnme<C>", "/r 'whoami\"<B>rnme<C>", "/r 'whoami'<B>rnme<C>", "/r whoami \"<B>rnme<C>", "/r whoami '<B>rnme<C>", "/r whoami\"<B>rnme<C>", "/r whoami'<B>rnme<C>", "/r \"whoami \"<B>rnme<C><D>", "/r \"whoami '<B>rnme<C><D>", "/r \"whoami\"<B>rnme<C><D>", "/r \"whoami'<B>rnme<C><D>", "/r 'whoami \"<B>rnme<C><D>", "/r 'whoami '<B>rnme<C><D>", "/r 'whoami\"<B>rnme<C><D>", "/r 'whoami'<B>rnme<C><D>", "/r whoami \"<B>rnme<C><D>", "/r whoami '<B>rnme<C><D>", "/r whoami\"<B>rnme<C><D>", "/r whoami'<B>rnme<C><D>", "/r \"whoami \"<B>rnme\"<D>", "/r \"whoami \"<B>rnme'<D>", "/r \"whoami '<B>rnme\"<D>", "/r \"whoami '<B>rnme'<D>", "/r \"whoami\"<B>rnme\"<D>", "/r \"whoami\"<B>rnme'<D>", "/r \"whoami'<B>rnme\"<D>", "/r \"whoami'<B>rnme'<D>", "/r 'whoami \"<B>rnme\"<D>", "/r 'whoami \"<B>rnme'<D>", "/r 'whoami '<B>rnme\"<D>", "/r 'whoami '<B>rnme'<D>", "/r 'whoami\"<B>rnme\"<D>", "/r 'whoami\"<B>rnme'<D>", "/r 'whoami'<B>rnme\"<D>", "/r 'whoami'<B>rnme'<D>", "/r whoami \"<B>rnme\"<D>", "/r whoami \"<B>rnme'<D>", "/r whoami '<B>rnme\"<D>", "/r whoami '<B>rnme'<D>", "/r whoami\"<B>rnme\"<D>", "/r whoami\"<B>rnme'<D>", "/r whoami'<B>rnme\"<D>", "/r whoami'<B>rnme'<D>", "/r \"whoami \"rnme\"", "/r \"whoami \"rnme'", "/r \"whoami 'rnme\"", "/r \"whoami 'rnme'", "/r \"whoami\"rnme\"", "/r \"whoami\"rnme'", "/r \"whoami'rnme\"", "/r \"whoami'rnme'", "/r 'whoami \"rnme\"", "/r 'whoami \"rnme'", "/r 'whoami 'rnme\"", "/r 'whoami 'rnme'", "/r 'whoami\"rnme\"", "/r 'whoami\"rnme'", "/r 'whoami'rnme\"", "/r 'whoami'rnme'", "/r whoami \"rnme\"", "/r whoami \"rnme'", "/r whoami 'rnme\"", "/r whoami 'rnme'", "/r whoami\"rnme\"", "/r whoami\"rnme'", "/r whoami'rnme\"", "/r whoami'rnme'", "/r \"whoami \"rnme<C>", "/r \"whoami 'rnme<C>", "/r \"whoami\"rnme<C>", "/r \"whoami'rnme<C>", "/r 'whoami \"rnme<C>", "/r 'whoami 'rnme<C>", "/r 'whoami\"rnme<C>", "/r 'whoami'rnme<C>", "/r whoami \"rnme<C>", "/r whoami 'rnme<C>", "/r whoami\"rnme<C>", "/r whoami'rnme<C>", "/r \"whoami \"rnme<C><D>", "/r \"whoami 'rnme<C><D>", "/r \"whoami\"rnme<C><D>", "/r \"whoami'rnme<C><D>", "/r 'whoami \"rnme<C><D>", "/r 'whoami 'rnme<C><D>", "/r 'whoami\"rnme<C><D>", "/r 'whoami'rnme<C><D>", "/r whoami \"rnme<C><D>", "/r whoami 'rnme<C><D>", "/r whoami\"rnme<C><D>", "/r whoami'rnme<C><D>", "/r \"whoami \"rnme\"<D>", "/r \"whoami \"rnme'<D>", "/r \"whoami 'rnme\"<D>", "/r \"whoami 'rnme'<D>", "/r \"whoami\"rnme\"<D>", "/r \"whoami\"rnme'<D>", "/r \"whoami'rnme\"<D>", "/r \"whoami'rnme'<D>", "/r 'whoami \"rnme\"<D>", "/r 'whoami \"rnme'<D>", "/r 'whoami 'rnme\"<D>", "/r 'whoami 'rnme'<D>", "/r 'whoami\"rnme\"<D>", "/r 'whoami\"rnme'<D>", "/r 'whoami'rnme\"<D>", "/r 'whoami'rnme'<D>", "/r whoami \"rnme\"<D>", "/r whoami \"rnme'<D>", "/r whoami 'rnme\"<D>", "/r whoami 'rnme'<D>", "/r whoami\"rnme\"<D>", "/r whoami\"rnme'<D>", "/r whoami'rnme\"<D>", "/r whoami'rnme'<D>"};
+
+	outfile = CreateFile("OUTPUT.txt",                // name of the write
+                       GENERIC_WRITE|GENERIC_READ,          // open for writing
+                       FILE_SHARE_READ,                      // do not share
+                       NULL,                   // default security
+                       CREATE_ALWAYS,             // create new file only
+                       FILE_ATTRIBUTE_NORMAL,  // normal file
+                       NULL);                  // no attr. template
+	if (outfile == INVALID_HANDLE_VALUE) 
+	{ 
+		printf("FATAL ERROR: Could not open the OUTPUT.txt for writing, exiting.");
+		return -1;
+	}
+	// templates generated with cmd-fuzzing-generate-templates.py
+	char * templates[] = {"/c \"whoami ABrnme\"", "/c \"whoami ABrnme'", "/c \"whoamiABrnme\"", "/c \"whoamiABrnme'", "/c 'whoami ABrnme\"", "/c 'whoami ABrnme'", "/c 'whoamiABrnme\"", "/c 'whoamiABrnme'", "/c whoami ABrnme\"", "/c whoami ABrnme'", "/c whoamiABrnme\"", "/c whoamiABrnme'", "/c \"whoami ABrnmeC", "/c \"whoamiABrnmeC", "/c 'whoami ABrnmeC", "/c 'whoamiABrnmeC", "/c whoami ABrnmeC", "/c whoamiABrnmeC", "/c \"whoami ABrnmeCD", "/c \"whoamiABrnmeCD", "/c 'whoami ABrnmeCD", "/c 'whoamiABrnmeCD", "/c whoami ABrnmeCD", "/c whoamiABrnmeCD", "/c \"whoami ABrnme\"D", "/c \"whoami ABrnme'D", "/c \"whoamiABrnme\"D", "/c \"whoamiABrnme'D", "/c 'whoami ABrnme\"D", "/c 'whoami ABrnme'D", "/c 'whoamiABrnme\"D", "/c 'whoamiABrnme'D", "/c whoami ABrnme\"D", "/c whoami ABrnme'D", "/c whoamiABrnme\"D", "/c whoamiABrnme'D", "/c \"whoami Arnme\"", "/c \"whoami Arnme'", "/c \"whoamiArnme\"", "/c \"whoamiArnme'", "/c 'whoami Arnme\"", "/c 'whoami Arnme'", "/c 'whoamiArnme\"", "/c 'whoamiArnme'", "/c whoami Arnme\"", "/c whoami Arnme'", "/c whoamiArnme\"", "/c whoamiArnme'", "/c \"whoami ArnmeC", "/c \"whoamiArnmeC", "/c 'whoami ArnmeC", "/c 'whoamiArnmeC", "/c whoami ArnmeC", "/c whoamiArnmeC", "/c \"whoami ArnmeCD", "/c \"whoamiArnmeCD", "/c 'whoami ArnmeCD", "/c 'whoamiArnmeCD", "/c whoami ArnmeCD", "/c whoamiArnmeCD", "/c \"whoami Arnme\"D", "/c \"whoami Arnme'D", "/c \"whoamiArnme\"D", "/c \"whoamiArnme'D", "/c 'whoami Arnme\"D", "/c 'whoami Arnme'D", "/c 'whoamiArnme\"D", "/c 'whoamiArnme'D", "/c whoami Arnme\"D", "/c whoami Arnme'D", "/c whoamiArnme\"D", "/c whoamiArnme'D", "/c \"whoami \"Brnme\"", "/c \"whoami \"Brnme'", "/c \"whoami 'Brnme\"", "/c \"whoami 'Brnme'", "/c \"whoami\"Brnme\"", "/c \"whoami\"Brnme'", "/c \"whoami'Brnme\"", "/c \"whoami'Brnme'", "/c 'whoami \"Brnme\"", "/c 'whoami \"Brnme'", "/c 'whoami 'Brnme\"", "/c 'whoami 'Brnme'", "/c 'whoami\"Brnme\"", "/c 'whoami\"Brnme'", "/c 'whoami'Brnme\"", "/c 'whoami'Brnme'", "/c whoami \"Brnme\"", "/c whoami \"Brnme'", "/c whoami 'Brnme\"", "/c whoami 'Brnme'", "/c whoami\"Brnme\"", "/c whoami\"Brnme'", "/c whoami'Brnme\"", "/c whoami'Brnme'", "/c \"whoami \"BrnmeC", "/c \"whoami 'BrnmeC", "/c \"whoami\"BrnmeC", "/c \"whoami'BrnmeC", "/c 'whoami \"BrnmeC", "/c 'whoami 'BrnmeC", "/c 'whoami\"BrnmeC", "/c 'whoami'BrnmeC", "/c whoami \"BrnmeC", "/c whoami 'BrnmeC", "/c whoami\"BrnmeC", "/c whoami'BrnmeC", "/c \"whoami \"BrnmeCD", "/c \"whoami 'BrnmeCD", "/c \"whoami\"BrnmeCD", "/c \"whoami'BrnmeCD", "/c 'whoami \"BrnmeCD", "/c 'whoami 'BrnmeCD", "/c 'whoami\"BrnmeCD", "/c 'whoami'BrnmeCD", "/c whoami \"BrnmeCD", "/c whoami 'BrnmeCD", "/c whoami\"BrnmeCD", "/c whoami'BrnmeCD", "/c \"whoami \"Brnme\"D", "/c \"whoami \"Brnme'D", "/c \"whoami 'Brnme\"D", "/c \"whoami 'Brnme'D", "/c \"whoami\"Brnme\"D", "/c \"whoami\"Brnme'D", "/c \"whoami'Brnme\"D", "/c \"whoami'Brnme'D", "/c 'whoami \"Brnme\"D", "/c 'whoami \"Brnme'D", "/c 'whoami 'Brnme\"D", "/c 'whoami 'Brnme'D", "/c 'whoami\"Brnme\"D", "/c 'whoami\"Brnme'D", "/c 'whoami'Brnme\"D", "/c 'whoami'Brnme'D", "/c whoami \"Brnme\"D", "/c whoami \"Brnme'D", "/c whoami 'Brnme\"D", "/c whoami 'Brnme'D", "/c whoami\"Brnme\"D", "/c whoami\"Brnme'D", "/c whoami'Brnme\"D", "/c whoami'Brnme'D", "/c \"whoami \"rnme\"", "/c \"whoami \"rnme'", "/c \"whoami 'rnme\"", "/c \"whoami 'rnme'", "/c \"whoami\"rnme\"", "/c \"whoami\"rnme'", "/c \"whoami'rnme\"", "/c \"whoami'rnme'", "/c 'whoami \"rnme\"", "/c 'whoami \"rnme'", "/c 'whoami 'rnme\"", "/c 'whoami 'rnme'", "/c 'whoami\"rnme\"", "/c 'whoami\"rnme'", "/c 'whoami'rnme\"", "/c 'whoami'rnme'", "/c whoami \"rnme\"", "/c whoami \"rnme'", "/c whoami 'rnme\"", "/c whoami 'rnme'", "/c whoami\"rnme\"", "/c whoami\"rnme'", "/c whoami'rnme\"", "/c whoami'rnme'", "/c \"whoami \"rnmeC", "/c \"whoami 'rnmeC", "/c \"whoami\"rnmeC", "/c \"whoami'rnmeC", "/c 'whoami \"rnmeC", "/c 'whoami 'rnmeC", "/c 'whoami\"rnmeC", "/c 'whoami'rnmeC", "/c whoami \"rnmeC", "/c whoami 'rnmeC", "/c whoami\"rnmeC", "/c whoami'rnmeC", "/c \"whoami \"rnmeCD", "/c \"whoami 'rnmeCD", "/c \"whoami\"rnmeCD", "/c \"whoami'rnmeCD", "/c 'whoami \"rnmeCD", "/c 'whoami 'rnmeCD", "/c 'whoami\"rnmeCD", "/c 'whoami'rnmeCD", "/c whoami \"rnmeCD", "/c whoami 'rnmeCD", "/c whoami\"rnmeCD", "/c whoami'rnmeCD", "/c \"whoami \"rnme\"D", "/c \"whoami \"rnme'D", "/c \"whoami 'rnme\"D", "/c \"whoami 'rnme'D", "/c \"whoami\"rnme\"D", "/c \"whoami\"rnme'D", "/c \"whoami'rnme\"D", "/c \"whoami'rnme'D", "/c 'whoami \"rnme\"D", "/c 'whoami \"rnme'D", "/c 'whoami 'rnme\"D", "/c 'whoami 'rnme'D", "/c 'whoami\"rnme\"D", "/c 'whoami\"rnme'D", "/c 'whoami'rnme\"D", "/c 'whoami'rnme'D", "/c whoami \"rnme\"D", "/c whoami \"rnme'D", "/c whoami 'rnme\"D", "/c whoami 'rnme'D", "/c whoami\"rnme\"D", "/c whoami\"rnme'D", "/c whoami'rnme\"D", "/c whoami'rnme'D", "/r \"whoami ABrnme\"", "/r \"whoami ABrnme'", "/r \"whoamiABrnme\"", "/r \"whoamiABrnme'", "/r 'whoami ABrnme\"", "/r 'whoami ABrnme'", "/r 'whoamiABrnme\"", "/r 'whoamiABrnme'", "/r whoami ABrnme\"", "/r whoami ABrnme'", "/r whoamiABrnme\"", "/r whoamiABrnme'", "/r \"whoami ABrnmeC", "/r \"whoamiABrnmeC", "/r 'whoami ABrnmeC", "/r 'whoamiABrnmeC", "/r whoami ABrnmeC", "/r whoamiABrnmeC", "/r \"whoami ABrnmeCD", "/r \"whoamiABrnmeCD", "/r 'whoami ABrnmeCD", "/r 'whoamiABrnmeCD", "/r whoami ABrnmeCD", "/r whoamiABrnmeCD", "/r \"whoami ABrnme\"D", "/r \"whoami ABrnme'D", "/r \"whoamiABrnme\"D", "/r \"whoamiABrnme'D", "/r 'whoami ABrnme\"D", "/r 'whoami ABrnme'D", "/r 'whoamiABrnme\"D", "/r 'whoamiABrnme'D", "/r whoami ABrnme\"D", "/r whoami ABrnme'D", "/r whoamiABrnme\"D", "/r whoamiABrnme'D", "/r \"whoami Arnme\"", "/r \"whoami Arnme'", "/r \"whoamiArnme\"", "/r \"whoamiArnme'", "/r 'whoami Arnme\"", "/r 'whoami Arnme'", "/r 'whoamiArnme\"", "/r 'whoamiArnme'", "/r whoami Arnme\"", "/r whoami Arnme'", "/r whoamiArnme\"", "/r whoamiArnme'", "/r \"whoami ArnmeC", "/r \"whoamiArnmeC", "/r 'whoami ArnmeC", "/r 'whoamiArnmeC", "/r whoami ArnmeC", "/r whoamiArnmeC", "/r \"whoami ArnmeCD", "/r \"whoamiArnmeCD", "/r 'whoami ArnmeCD", "/r 'whoamiArnmeCD", "/r whoami ArnmeCD", "/r whoamiArnmeCD", "/r \"whoami Arnme\"D", "/r \"whoami Arnme'D", "/r \"whoamiArnme\"D", "/r \"whoamiArnme'D", "/r 'whoami Arnme\"D", "/r 'whoami Arnme'D", "/r 'whoamiArnme\"D", "/r 'whoamiArnme'D", "/r whoami Arnme\"D", "/r whoami Arnme'D", "/r whoamiArnme\"D", "/r whoamiArnme'D", "/r \"whoami \"Brnme\"", "/r \"whoami \"Brnme'", "/r \"whoami 'Brnme\"", "/r \"whoami 'Brnme'", "/r \"whoami\"Brnme\"", "/r \"whoami\"Brnme'", "/r \"whoami'Brnme\"", "/r \"whoami'Brnme'", "/r 'whoami \"Brnme\"", "/r 'whoami \"Brnme'", "/r 'whoami 'Brnme\"", "/r 'whoami 'Brnme'", "/r 'whoami\"Brnme\"", "/r 'whoami\"Brnme'", "/r 'whoami'Brnme\"", "/r 'whoami'Brnme'", "/r whoami \"Brnme\"", "/r whoami \"Brnme'", "/r whoami 'Brnme\"", "/r whoami 'Brnme'", "/r whoami\"Brnme\"", "/r whoami\"Brnme'", "/r whoami'Brnme\"", "/r whoami'Brnme'", "/r \"whoami \"BrnmeC", "/r \"whoami 'BrnmeC", "/r \"whoami\"BrnmeC", "/r \"whoami'BrnmeC", "/r 'whoami \"BrnmeC", "/r 'whoami 'BrnmeC", "/r 'whoami\"BrnmeC", "/r 'whoami'BrnmeC", "/r whoami \"BrnmeC", "/r whoami 'BrnmeC", "/r whoami\"BrnmeC", "/r whoami'BrnmeC", "/r \"whoami \"BrnmeCD", "/r \"whoami 'BrnmeCD", "/r \"whoami\"BrnmeCD", "/r \"whoami'BrnmeCD", "/r 'whoami \"BrnmeCD", "/r 'whoami 'BrnmeCD", "/r 'whoami\"BrnmeCD", "/r 'whoami'BrnmeCD", "/r whoami \"BrnmeCD", "/r whoami 'BrnmeCD", "/r whoami\"BrnmeCD", "/r whoami'BrnmeCD", "/r \"whoami \"Brnme\"D", "/r \"whoami \"Brnme'D", "/r \"whoami 'Brnme\"D", "/r \"whoami 'Brnme'D", "/r \"whoami\"Brnme\"D", "/r \"whoami\"Brnme'D", "/r \"whoami'Brnme\"D", "/r \"whoami'Brnme'D", "/r 'whoami \"Brnme\"D", "/r 'whoami \"Brnme'D", "/r 'whoami 'Brnme\"D", "/r 'whoami 'Brnme'D", "/r 'whoami\"Brnme\"D", "/r 'whoami\"Brnme'D", "/r 'whoami'Brnme\"D", "/r 'whoami'Brnme'D", "/r whoami \"Brnme\"D", "/r whoami \"Brnme'D", "/r whoami 'Brnme\"D", "/r whoami 'Brnme'D", "/r whoami\"Brnme\"D", "/r whoami\"Brnme'D", "/r whoami'Brnme\"D", "/r whoami'Brnme'D", "/r \"whoami \"rnme\"", "/r \"whoami \"rnme'", "/r \"whoami 'rnme\"", "/r \"whoami 'rnme'", "/r \"whoami\"rnme\"", "/r \"whoami\"rnme'", "/r \"whoami'rnme\"", "/r \"whoami'rnme'", "/r 'whoami \"rnme\"", "/r 'whoami \"rnme'", "/r 'whoami 'rnme\"", "/r 'whoami 'rnme'", "/r 'whoami\"rnme\"", "/r 'whoami\"rnme'", "/r 'whoami'rnme\"", "/r 'whoami'rnme'", "/r whoami \"rnme\"", "/r whoami \"rnme'", "/r whoami 'rnme\"", "/r whoami 'rnme'", "/r whoami\"rnme\"", "/r whoami\"rnme'", "/r whoami'rnme\"", "/r whoami'rnme'", "/r \"whoami \"rnmeC", "/r \"whoami 'rnmeC", "/r \"whoami\"rnmeC", "/r \"whoami'rnmeC", "/r 'whoami \"rnmeC", "/r 'whoami 'rnmeC", "/r 'whoami\"rnmeC", "/r 'whoami'rnmeC", "/r whoami \"rnmeC", "/r whoami 'rnmeC", "/r whoami\"rnmeC", "/r whoami'rnmeC", "/r \"whoami \"rnmeCD", "/r \"whoami 'rnmeCD", "/r \"whoami\"rnmeCD", "/r \"whoami'rnmeCD", "/r 'whoami \"rnmeCD", "/r 'whoami 'rnmeCD", "/r 'whoami\"rnmeCD", "/r 'whoami'rnmeCD", "/r whoami \"rnmeCD", "/r whoami 'rnmeCD", "/r whoami\"rnmeCD", "/r whoami'rnmeCD", "/r \"whoami \"rnme\"D", "/r \"whoami \"rnme'D", "/r \"whoami 'rnme\"D", "/r \"whoami 'rnme'D", "/r \"whoami\"rnme\"D", "/r \"whoami\"rnme'D", "/r \"whoami'rnme\"D", "/r \"whoami'rnme'D", "/r 'whoami \"rnme\"D", "/r 'whoami \"rnme'D", "/r 'whoami 'rnme\"D", "/r 'whoami 'rnme'D", "/r 'whoami\"rnme\"D", "/r 'whoami\"rnme'D", "/r 'whoami'rnme\"D", "/r 'whoami'rnme'D", "/r whoami \"rnme\"D", "/r whoami \"rnme'D", "/r whoami 'rnme\"D", "/r whoami 'rnme'D", "/r whoami\"rnme\"D", "/r whoami\"rnme'D", "/r whoami'rnme\"D", "/r whoami'rnme'D"};
+	
+	// At this point the only practical problem that remains is the ever-growing memory use even through there are no malloc() calls. The easiest workaroundn might be to split these tests into separate per-command line series.
+	
+	//char * templates[] = {"/c \"whoamiArnme\""};
+	
 	int count = sizeof(templates)/8; // sizeof divided by 8 - count
-	printf("%d ",count); 
 	int i=0;
 	for(i=0;i<count;i++) fuzzABCD(templates[i]);
+	CloseHandle(outfile);
 	return 0;	
 }
