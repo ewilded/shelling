@@ -67,6 +67,40 @@ void runCmdA(LPSTR appname, LPSTR command_line, const char * command_template, i
 			memset(curr_buff,0,6);
 		}
 	}
+	
+	// this should go up, before the execution
+	char msg[60]; // command line up to 28 chars + space + debug_buff up to 20, + space + EXEC\+ nullbyte  -> 57
+	memset(msg,0,60);
+	strcat(msg,command_template);
+	strcat(msg," ");
+	strcat(msg,debug_buff);
+	strcat(msg," ");
+	// OK, this needs to be written to the fuzzing-curr-commandline.tmp file now
+	HANDLE feedback_file = CreateFileA("fuzzing-curr-commandline.tmp",  // name of the write
+        GENERIC_WRITE,    // open for reading & writing
+        FILE_SHARE_READ,               
+        NULL,                   // default security
+        CREATE_ALWAYS,          // create new file only
+        FILE_ATTRIBUTE_NORMAL,  // normal file
+    NULL);                  // no attr. template
+	if(feedback_file==INVALID_HANDLE_VALUE)
+	{
+		printf("FATAL ERROR: cannot create the fuzzing-curr-template.tmp feedback channel file! Exiting.");
+		return;
+	}
+	DWORD dwBytesToWrite = (DWORD)strlen(msg);			
+	DWORD dwBytesWritten = 0;
+	if(!WriteFile(feedback_file, // open file handle
+        msg,      // start of data to write
+        dwBytesToWrite,  // number of bytes to write
+        &dwBytesWritten, // number of bytes that were written
+        NULL))
+	{
+		printf("FATAL ERROR: cannot writ the fuzzing-curr-template.tmp feedback channel file! Exiting.");
+		return;
+	}
+	CloseHandle(feedback_file);
+	
 	// Interestingly, this returns ERROR_FILE_NOT_FOUND when "cmd.exe" is provided without the full path
     PROCESS_INFORMATION pi; 
 	// taken from https://stackoverflow.com/questions/10866944/how-can-i-read-a-child-processs-output
@@ -132,37 +166,7 @@ void runCmdA(LPSTR appname, LPSTR command_line, const char * command_template, i
 				strcat_s(outbuf, sizeof(outbuf), tBuf);
 			}
 		}
-		char msg[60]; // command line up to 28 chars + space + debug_buff up to 20, + space + EXEC\+ nullbyte  -> 57
-		memset(msg,0,60);
-		strcat(msg,command_template);
-		strcat(msg," ");
-		strcat(msg,debug_buff);
-		strcat(msg," ");
-		// OK, this needs to be written to the fuzzing-curr-commandline.tmp file now
-		HANDLE feedback_file = CreateFileA("fuzzing-curr-commandline.tmp",  // name of the write
-                       GENERIC_WRITE,    // open for reading & writing
-                       FILE_SHARE_READ,               
-                       NULL,                   // default security
-                       CREATE_ALWAYS,          // create new file only
-                       FILE_ATTRIBUTE_NORMAL,  // normal file
-                       NULL);                  // no attr. template
-		if(feedback_file==INVALID_HANDLE_VALUE)
-		{
-			printf("FATAL ERROR: cannot create the fuzzing-curr-template.tmp feedback channel file! Exiting.");
-			return;
-		}
-		DWORD dwBytesToWrite = (DWORD)strlen(msg);			
-		DWORD dwBytesWritten = 0;
-		if(!WriteFile(feedback_file, // open file handle
-                    msg,      // start of data to write
-                    dwBytesToWrite,  // number of bytes to write
-                    &dwBytesWritten, // number of bytes that were written
-                    NULL))
-		{
-			printf("FATAL ERROR: cannot writ the fuzzing-curr-template.tmp feedback channel file! Exiting.");
-			return;
-		}
-		CloseHandle(feedback_file);
+
 		
 		int rn_exec = 0; // rn exec only means that the first command executed (mildly interesting)
 		int whoami_exec = 0; // whoami exec means that the injected command executed (more interesting)
@@ -379,7 +383,7 @@ int main(int argc, char** argv)
 	unsigned int count = sizeof(templates)/8; // sizeof divided by 8 - count
 	if(argc!=2)
 	{
-		printf("Usage: %s <NUM>\nWhereas <NUM> is a number.",argv[0]);
+		printf("Usage: %s <NUM>\nWhereas <NUM> is a number.", argv[0]);
 		return;
 	}
 	int index = atoi(argv[1]);
